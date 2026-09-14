@@ -16,11 +16,11 @@ permalink: /wm/aether-geometric-aware-unified-world-modeling-1945539008/
 
 ### Method
 
-![Figure](/assets/images/1945539008_aether_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539008_aether_fig1.png) 
 
 _Figure 1: An overview of Aether, trained entirely on synthetic data - highlighting 4D reconstruction, action-conditioned 4D prediction, and visual planning._
 
-![Figure](/assets/images/1945539008_aether_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539008_aether_fig2.png) 
 
 _Figure 4: The overall pipeline of Aether - with different condition combinations, Aether can serve different tasks._
 

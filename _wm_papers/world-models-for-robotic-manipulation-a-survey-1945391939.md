@@ -16,11 +16,11 @@ permalink: /wm/world-models-for-robotic-manipulation-a-survey-1945391939/
 
 ### Method
 
-![Figure](/assets/images/1945391939_wmsurvey_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945391939_wmsurvey_fig1.png) 
 
 _Fig. 1: 世界模型預測與任務相關的未來世界演變（通常以觀測與機器人動作為條件）。本文以三個互補軸線整理文獻：預測表示 (predicted representation)、預測核心 (predictive core)，以及預測在動作介面、學習基礎設施、學習生命週期中所扮演的角色。_
 
-![Figure](/assets/images/1945391939_wmsurvey_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945391939_wmsurvey_fig2.png) 
 
 _Fig. 3: 直接預測-動作介面的功能分類法 (Functional taxonomy)。(a-b) 整合式預測-動作模型將預測嵌入動作生成模型內部；(c-e) 顯式預測規劃器將預測暴露為中介目標（子目標、軌跡、或結構化計畫），交由下游控制器實現。_
 

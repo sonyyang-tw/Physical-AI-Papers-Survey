@@ -16,11 +16,11 @@ WorldBench 是一個影片式基準，專門用來評估生成式世界模型對
 
 ### Method
 
-![Figure](/assets/images/1945392538_worldbench_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392538_worldbench_fig1.png) 
 
 _Figure 1: WorldBench 生成與評測流程總覽（Kubric/PyBullet/Blender 生成場景，並以多層次物理任務評測世界模型）。_
 
-![Figure](/assets/images/1945392538_worldbench_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392538_worldbench_fig2.png) 
 
 _Figure 2: 物理參數估計 pipeline 總覽 — 由輸入影片經棋盤格偵測與 SAM2 萃取 3D 位置後估計物理常數。_
 

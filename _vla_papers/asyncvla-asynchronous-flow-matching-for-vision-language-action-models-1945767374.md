@@ -16,11 +16,11 @@ permalink: /vla/asyncvla-asynchronous-flow-matching-for-vision-language-action-m
 
 ### Method
 
-![Figure](/assets/images/1945767374_asyncvla_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945767374_asyncvla_fig1.png) 
 
 _Figure 1: AsyncVLA 框架概覽，包含三個組件：(a) SFM 對所有動作 token 套用統一時間排程 t，從噪聲（t=1）同步生成到動作（t=0）；(b) 信心評分器估計各動作 token 的置信度並遮蔽低置信度 token。_
 
-![Figure](/assets/images/1945767374_asyncvla_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945767374_asyncvla_fig2.png) 
 
 _Figure 2: AsyncVLA 在 LIBERO-Long 任務套件上的自我修正能力示意。上排為 SFM 產生的第一輪動作，下排為後續 AFM 重新生成的第二輪動作。_
 

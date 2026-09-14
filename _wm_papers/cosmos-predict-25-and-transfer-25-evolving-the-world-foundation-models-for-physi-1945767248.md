@@ -16,11 +16,11 @@ Cosmos Predict 2.5 與 Cosmos Transfer 2.5 是 NVIDIA Cosmos 世界基礎模型 
 
 ### Method
 
-![Figure](/assets/images/1945767248_cosmospredict25_fig1.svg) 
+![Figure]({{ site.baseurl }}/assets/images/1945767248_cosmospredict25_fig1.svg) 
 
 _Figure 1: 影片資料整理 (curation) pipeline 總覽 — 將原始多源真實世界影片轉換為高品質、標註、去重的訓練資料集。_
 
-![Figure](/assets/images/1945767248_cosmospredict25_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945767248_cosmospredict25_fig2.png) 
 
 _Figure 2: Cosmos-Predict2.5 整體架構 — 在潛在空間中反覆堆疊自注意力與交叉注意力區塊，統一 Text2World / Image2World / Video2World 生成流程。_
 

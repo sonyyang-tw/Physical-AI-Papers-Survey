@@ -16,11 +16,11 @@ VLA 模型雖已成為通用機械手臂操作的主流方法,但少有研究以
 
 ### Method
 
-![Figure](/assets/images/1945539857_saevla_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539857_saevla_fig1.png) 
 
 _Figure 1: SAE 訓練與特徵解析流程總覽_
 
-![Figure](/assets/images/1945539857_saevla_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539857_saevla_fig2.png) 
 
 _Figure 2: 特徵操控(steering)實驗架構_
 

@@ -16,11 +16,11 @@ permalink: /vla/rt-2-vision-language-action-models-transfer-web-knowledge-to-rob
 
 ### Method
 
-![Figure](/assets/images/1945474821_rt2_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945474821_rt2_fig1.png) 
 
 _Figure 1: RT-2 overview — robot actions represented as text tokens, co-trained with Internet-scale vision-language data_
 
-![Figure](/assets/images/1945474821_rt2_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945474821_rt2_fig2.png) 
 
 _Figure 2: RT-2 generalizes to real-world situations requiring reasoning, symbol understanding, and human recognition_
 

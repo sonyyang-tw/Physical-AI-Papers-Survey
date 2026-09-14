@@ -16,11 +16,11 @@ permalink: /vla/eventvla-event-driven-visual-evidence-memory-for-long-horizon-vi
 
 ### Method
 
-![Figure](/assets/images/1945538699_eventvla_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945538699_eventvla_fig1.png) 
 
 _Figure 1：EventVLA 總覽。EventVLA 透過儲存稀疏且任務關鍵的視覺證據(visual evidence)來處理需要長時程記憶的操作任務，圖中說明其核心設計理念與整體資料流程。_
 
-![Figure](/assets/images/1945538699_eventvla_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945538699_eventvla_fig2.png) 
 
 _Figure 2：EventVLA 框架架構。EventVLA 維護一個由基礎視覺錨點(visual anchors)與互動驅動事件關鍵幀(event keyframes)組成的稀疏視覺證據記憶庫，並透過 KEM 模組進行關鍵事件記憶的建立與檢索。_
 

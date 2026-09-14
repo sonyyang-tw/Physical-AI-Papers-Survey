@@ -16,11 +16,11 @@ permalink: /vla/haf-adapting-generalist-vlas-to-humanoid-whole-body-loco-manipul
 
 ### Method
 
-![Figure](/assets/images/1945364999_haf_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945364999_haf_fig1.png) 
 
 _Figure 1: HAF overview._
 
-![Figure](/assets/images/1945364999_haf_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945364999_haf_fig2.png) 
 
 _Figure 2: HAF VLA pipeline._
 

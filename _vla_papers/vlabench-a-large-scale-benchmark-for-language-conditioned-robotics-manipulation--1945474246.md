@@ -16,11 +16,11 @@ permalink: /vla/vlabench-a-large-scale-benchmark-for-language-conditioned-roboti
 
 ### Method
 
-![Figure](/assets/images/1945474246_vlabench_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945474246_vlabench_fig1.png) 
 
 _Figure 1: VLABench overview._
 
-![Figure](/assets/images/1945474246_vlabench_fig6.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945474246_vlabench_fig6.png) 
 
 _Figure 6: VLABench evaluation workflow._
 

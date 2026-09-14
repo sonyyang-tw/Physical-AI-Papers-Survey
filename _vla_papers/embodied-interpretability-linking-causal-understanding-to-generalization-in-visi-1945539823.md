@@ -16,11 +16,11 @@ VLA policy 在分布外情境經常失效,作者推測其原因是模型的決�
 
 ### Method
 
-![Figure](/assets/images/1945539823_embodied_interp_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539823_embodied_interp_fig1.png) 
 
 _Figure 1: 透過動作歸因（action attribution）分析 VLA 的泛化能力。以「將其他杯子疊放在紅色杯子上」任務為例，失敗的試驗更依賴無關的視覺線索（如背景、紋理、陰影）做決策；成功的試驗則更依賴任務相關的線索（如機械手臂、末端執行器、杯子）。_
 
-![Figure](/assets/images/1945539823_embodied_interp_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539823_embodied_interp_fig2.png) 
 
 _Figure 2: 本文所提出可解釋性方法總覽。(A) 面板呈現產生介入顯著性分數（Interventional Significance Score, ISS）的管線，透過對多視角觀察施加 Bernoulli 遮罩與高斯混合擾動所誘發的動作差異，聚合成顯著圖，再以線性插值形成連續的 ISS 序列。(B) 面板定義「無關質量比」（Nuisance Mass Ratio, NMR）指標，透過計算 top-k 篩選後的顯著區域與預先定義的無關區段之間的正規化交集，量化策略對非因果特徵的依賴程度。_
 

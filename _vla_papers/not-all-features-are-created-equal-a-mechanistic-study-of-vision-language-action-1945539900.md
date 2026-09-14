@@ -16,11 +16,11 @@ VLA 模型結合感知、語言與運動控制於單一架構,但其如何將多
 
 ### Method
 
-![Figure](/assets/images/1945539900_notallfeatures_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539900_notallfeatures_fig1.png) 
 
 _Figure 1: Three core findings on pi0.5 — activation injection recovers baseline behavior, cross-task override, and feature attribution_
 
-![Figure](/assets/images/1945539900_notallfeatures_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539900_notallfeatures_fig2.png) 
 
 _Figure 2: Methodology overview — activation recording from VLA backbone/action expert and counterfactual replay_
 

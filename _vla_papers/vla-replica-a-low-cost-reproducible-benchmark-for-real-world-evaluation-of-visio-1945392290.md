@@ -16,11 +16,11 @@ VLA 模型在通用機器人操作上展現了強大潛力,但其真實世界評
 
 ### Method
 
-![Figure](/assets/images/1945392290_vlareplica_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392290_vlareplica_fig1.png) 
 
 _Figure 1: VLA-REPLICA overview._
 
-![Figure](/assets/images/1945392290_vlareplica_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392290_vlareplica_fig2.png) 
 
 _Figure 2: VLA-REPLICA method architecture._
 

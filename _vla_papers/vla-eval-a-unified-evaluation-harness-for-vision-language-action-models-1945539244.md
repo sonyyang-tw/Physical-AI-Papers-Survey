@@ -16,7 +16,7 @@ DreamerAD 是第一個針對自動駕駛設計的「潛在空間世界模型」�
 
 ### Method
 
-![Figure](/assets/images/1945539244_vlaeval_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539244_vlaeval_fig1.png) 
 
 _Figure 1: vla-eval overview teaser figure._
 

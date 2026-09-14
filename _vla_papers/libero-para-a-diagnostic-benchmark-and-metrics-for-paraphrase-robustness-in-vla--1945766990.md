@@ -16,11 +16,11 @@ permalink: /vla/libero-para-a-diagnostic-benchmark-and-metrics-for-paraphrase-ro
 
 ### Method
 
-![Figure](/assets/images/1945766990_liberopara_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945766990_liberopara_fig1.png) 
 
 _Figure 1: 資料稀缺微調下的釋義穩健性差距 ——VLA 模型可能在微調時過擬合於特定的指令措辭，導致對同義改寫的指令泛化能力不足。_
 
-![Figure](/assets/images/1945766990_liberopara_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945766990_liberopara_fig2.png) 
 
 _Figure 2: LIBERO-Para 總覽 ——相較於原始 LIBERO，LIBERO-Para 透過受控的兩軸釋義（物件、動作）評估資料稀缺微調下的釋義穩健性。_
 

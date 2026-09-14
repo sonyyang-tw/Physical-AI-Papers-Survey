@@ -16,11 +16,11 @@ permalink: /wm/driverse-navigation-world-model-for-driving-simulation-via-multim
 
 ### Method
 
-![Figure](/assets/images/1945539343_driverse_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539343_driverse_fig1.png) 
 
 _Figure 1: DriVerse navigation world model overview - 從單張圖片與導航軌跡生成高品質、與真實駕駛場景對齊的影片。_
 
-![Figure](/assets/images/1945539343_driverse_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539343_driverse_fig2.png) 
 
 _Figure 2: DriVerse framework overview - 靜態對齊(Multimodal Trajectory Prompting)與動態對齊(Motion Alignment)兩大模組架構。_
 

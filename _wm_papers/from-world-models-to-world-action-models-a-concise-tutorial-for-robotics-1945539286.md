@@ -16,11 +16,11 @@ permalink: /wm/from-world-models-to-world-action-models-a-concise-tutorial-for-r
 
 ### Method
 
-![Figure](/assets/images/1945539286_wamtutorial_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539286_wamtutorial_fig1.png) 
 
 _Figure 1: Illustration of the components of a world._
 
-![Figure](/assets/images/1945539286_wamtutorial_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539286_wamtutorial_fig2.png) 
 
 _Figure 8: Taxonomy of world action models — coupling future observation prediction with robot action generation in different ways._
 

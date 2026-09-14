@@ -16,11 +16,11 @@ permalink: /wm/a-step-toward-world-models-a-survey-on-robotic-manipulation-19453
 
 ### Method
 
-![Figure](/assets/images/1945392081_survey_wm_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392081_survey_wm_fig1.png) 
 
 _Fig. 1: Conceptual flow of the survey — clarifying motivation, scope, and pathways toward more general and capable world models._
 
-![Figure](/assets/images/1945392081_survey_wm_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392081_survey_wm_fig2.png) 
 
 _Fig. 3: Overview of world model paradigms — implicit world models, latent-dynamics world models, and video-generation-based world models._
 

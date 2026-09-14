@@ -20,9 +20,9 @@ Main method：不同於 VLA 把動作生成視為獨立於視覺理解的下游�
 
 幾張重要的論文方法截圖：Figure 1（總覽圖，展示 DreamZero 的整體概念與泛化能力對比）、Figure 4（模型架構圖，展示 joint video-action 擴散骨幹如何處理輸入觀測、生成未來影片幀與對應動作序列）。
 
-![Figure](/assets/images/1951337490_dz_overview.png) 
+![Figure]({{ site.baseurl }}/assets/images/1951337490_dz_overview.png) 
 
-![Figure](/assets/images/1951337490_dz_arch.png) 
+![Figure]({{ site.baseurl }}/assets/images/1951337490_dz_arch.png) 
 
 ### Result
 

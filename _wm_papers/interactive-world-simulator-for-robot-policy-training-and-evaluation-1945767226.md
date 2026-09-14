@@ -16,7 +16,7 @@ permalink: /wm/interactive-world-simulator-for-robot-policy-training-and-evaluat
 
 ### Method
 
-![Figure](/assets/images/1945767226_iws_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945767226_iws_fig1.png) 
 
 _Fig. 2 (原文編號): Method Overview。訓練分兩階段：第一階段訓練將 RGB 觀測映射為緊湊 2D 潛在表示的自編碼器；第二階段凍結自編碼器，訓練動作條件的一致性模型 (consistency model) 在潛在空間中透過下一幀監督學習未來視覺動態，並於推論時自回歸預測未來潛在狀態以生成長時序影片。_
 

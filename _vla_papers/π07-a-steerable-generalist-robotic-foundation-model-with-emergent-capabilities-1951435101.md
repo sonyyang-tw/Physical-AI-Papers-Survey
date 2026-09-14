@@ -20,9 +20,9 @@ Main method：以「多樣情境條件」訓練為核心，把 prompt 從單純�
 
 幾張重要的論文方法截圖：Fig. 1（總覽圖，展示 π0.7 的多樣情境條件框架與整體能力）、Fig. 2（架構總覽圖，展示 4B VLM + MEM 影片編碼器 + 860M action expert 的模型結構，以及高階語意策略與 BAGEL-based world model 如何在推論時協同運作）。
 
-![Figure](/assets/images/1951435101_pi07_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1951435101_pi07_fig1.png) 
 
-![Figure](/assets/images/1951435101_pi07_arch.png) 
+![Figure]({{ site.baseurl }}/assets/images/1951435101_pi07_arch.png) 
 
 ### Result
 

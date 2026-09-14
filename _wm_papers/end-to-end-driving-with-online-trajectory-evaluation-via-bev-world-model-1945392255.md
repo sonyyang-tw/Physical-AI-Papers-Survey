@@ -16,11 +16,11 @@ End-to-end自動駕駛透過將感知、預測、規劃整合進一個完全可�
 
 ### Method
 
-![Figure](/assets/images/1945392255_wote_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392255_wote_fig1.png) 
 
 _Figure 1: WoTE概念圖 - 以往end-to-end駕駛方法著重學習高品質軌跡(a);WoTE則進一步用BEV world model對候選軌跡進行線上評估(b)。_
 
-![Figure](/assets/images/1945392255_wote_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392255_wote_fig2.png) 
 
 _Figure 2: WoTE整體架構 - 分為Trajectory Prediction(BEV encoder編碼多視角影像產生軌跡候選)與Trajectory Evaluation(BEV world model預測未來狀態並評分)兩大部分。_
 

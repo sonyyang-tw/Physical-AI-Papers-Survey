@@ -16,7 +16,7 @@ Helix 是 Figure AI 發表的一種「System 1、System 2」式 VLA 模型,號�
 
 ### Method
 
-![Figure](/assets/images/1945393112_helix_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945393112_helix_fig1.png) 
 
 _Figure 1: Scaling curves for different approaches to acquiring new robot skills — heuristic manipulation scales with PhD engineering time, imitation learning scales with collected data, Helix enables new skills specified on the fly via language (Helix 官網未提供獨立的 System 1/System 2 架構示意圖，僅以文字描述架構)_
 

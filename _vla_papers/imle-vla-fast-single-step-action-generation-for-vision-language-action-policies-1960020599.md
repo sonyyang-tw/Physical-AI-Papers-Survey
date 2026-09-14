@@ -20,11 +20,11 @@ IMLE-VLA 提出一種以 conditional Implicit Maximum Likelihood Estimation (cIM
 
 **關鍵方法圖示** ：Fig. 1（已嵌入下方）展示 IMLE-VLA 作為「即插即用」單步動作頭取代原本迭代式模組的整體架構；Fig. 5（已嵌入下方）展示三類真實世界實驗（單步操作、多步序列推理、動態反應性任務）的定性比較，顯示 IMLE-VLA 動作更快、更平滑、成功率更高。
 
-![Figure](/assets/images/1960020599_imle_overview.png) 
+![Figure]({{ site.baseurl }}/assets/images/1960020599_imle_overview.png) 
 
 _Fig. 1: IMLE-VLA 整體架構 — 以單步 cIMLE 動作頭取代迭代式 diffusion/flow-matching 動作頭_
 
-![Figure](/assets/images/1960020599_imle_experiments.png) 
+![Figure]({{ site.baseurl }}/assets/images/1960020599_imle_experiments.png) 
 
 _Fig. 5: 真實世界三類任務實驗（單步操作、多步序列推理、動態反應性）定性比較_
 

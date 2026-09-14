@@ -16,11 +16,11 @@ World model(WM,即學習出來的模擬器)對機器人領域的潛在影響非�
 
 ### Method
 
-![Figure](/assets/images/1945767558_weaver_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945767558_weaver_fig1.png) 
 
 _Figure 1: WEAVER — a world model satisfying high fidelity, long-horizon consistency, and efficient generation, enabling policy evaluation, policy improvement, and test-time planning._
 
-![Figure](/assets/images/1945767558_weaver_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945767558_weaver_fig2.png) 
 
 _Figure 2: WEAVER architecture — world model encodes memory/history/action for latent rollouts, with a latent verifier (reward + critic heads) steering the policy distribution._
 

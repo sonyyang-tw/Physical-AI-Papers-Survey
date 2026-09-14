@@ -16,11 +16,11 @@ Generalist機器人政策(generalist robot policy)已能執行大量操作技能
 
 ### Method
 
-![Figure](/assets/images/1945391989_ctrlworld_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945391989_ctrlworld_fig1.png) 
 
 _Figure 1: Ctrl-World overview — policy-in-the-loop rollouts with generalist robot policies for evaluation and improvement._
 
-![Figure](/assets/images/1945391989_ctrlworld_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945391989_ctrlworld_fig2.png) 
 
 _Figure 2: Ctrl-World architecture — multi-view joint prediction, pose-conditioned memory retrieval, and frame-level action conditioning._
 

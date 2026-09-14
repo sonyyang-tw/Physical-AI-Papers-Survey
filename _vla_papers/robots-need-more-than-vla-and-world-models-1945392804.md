@@ -16,7 +16,7 @@ permalink: /vla/robots-need-more-than-vla-and-world-models-1945392804/
 
 ### Method
 
-![Figure](/assets/images/1945392804_robots_need_more_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392804_robots_need_more_fig1.png) 
 
 _Figure 1: 下一代機器人技術將來自遠超越單純擴大視覺語言動作（VLA）模型規模的進展。_
 

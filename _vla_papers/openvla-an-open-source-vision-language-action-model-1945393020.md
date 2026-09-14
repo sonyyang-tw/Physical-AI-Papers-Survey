@@ -16,11 +16,11 @@ permalink: /vla/openvla-an-open-source-vision-language-action-model-1945393020/
 
 ### Method
 
-![Figure](/assets/images/1945393020_openvla_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945393020_openvla_fig1.png) 
 
 _Figure 1: OpenVLA overview_
 
-![Figure](/assets/images/1945393020_openvla_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945393020_openvla_fig2.png) 
 
 _Figure 2: OpenVLA model architecture_
 

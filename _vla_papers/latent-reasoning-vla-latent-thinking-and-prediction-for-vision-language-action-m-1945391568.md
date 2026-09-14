@@ -16,11 +16,11 @@ Vision-Language-Action (VLA) 模型能從 Chain-of-Thought (CoT) 推理中受益
 
 ### Method
 
-![Figure](/assets/images/1945391568_lara_vla_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945391568_lara_vla_fig1.png) 
 
 _Figure 1: CoT 形式比較 ——(a) 文字CoT顯式生成推理token；(b) 多數視覺CoT以離散視覺目標token表示推理；(c) LaRA-VLA 將文字與視覺推理內化為連續潛在表示（latent）。_
 
-![Figure](/assets/images/1945391568_lara_vla_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945391568_lara_vla_fig2.png) 
 
 _Figure 2: LaRA-VLA 方法架構總覽 ——訓練分三階段：(i) 顯式CoT微調並對齊視覺預測潛在與逆動力學表示、(ii) 潛在化階段、(iii) 動作學習階段。_
 

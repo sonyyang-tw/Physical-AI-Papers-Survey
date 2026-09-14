@@ -20,7 +20,7 @@ permalink: /vla/huro-robotizing-human-videos-for-scalable-vla-pretraining-196405
 
 下圖為 HuRo 整體架構概覽（圖一）與資料集建構管線細節（圖二）：
 
-![Figure](/assets/images/1964050194_huro_fig1.png) ![Figure](/assets/images/1964050194_huro_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1964050194_huro_fig1.png) ![Figure]({{ site.baseurl }}/assets/images/1964050194_huro_fig2.png) 
 
 ### Result
 

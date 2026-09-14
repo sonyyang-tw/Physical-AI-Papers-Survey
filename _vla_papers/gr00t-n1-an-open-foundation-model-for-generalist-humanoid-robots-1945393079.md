@@ -16,11 +16,11 @@ permalink: /vla/gr00t-n1-an-open-foundation-model-for-generalist-humanoid-robots
 
 ### Method
 
-![Figure](/assets/images/1945393079_groot_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945393079_groot_fig2.png) 
 
 _Figure 2: GR00T N1 Model Overview — dual-system VLA design converting image/language into action tokens_
 
-![Figure](/assets/images/1945393079_groot_fig3.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945393079_groot_fig3.png) 
 
 _Figure 3: GR00T N1 Model Architecture — trained across embodiments from single-arm robots to bimanual humanoid hands_
 

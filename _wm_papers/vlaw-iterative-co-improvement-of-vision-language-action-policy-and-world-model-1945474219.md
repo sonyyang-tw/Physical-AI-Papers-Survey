@@ -16,11 +16,11 @@ permalink: /wm/vlaw-iterative-co-improvement-of-vision-language-action-policy-an
 
 ### Method
 
-![Figure](/assets/images/1945474219_vlaw_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945474219_vlaw_fig1.png) 
 
 _Figure 1: VLAW overview - learning an action-conditioned world model from limited real-world rollouts to generate large-scale synthetic data in imagination._
 
-![Figure](/assets/images/1945474219_vlaw_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945474219_vlaw_fig2.png) 
 
 _Figure 3: Detailed VLAW pipeline - rollout, ground world model, generate synthetic trajectories via closed-loop policy-world model interaction, then optimize the VLA policy with a vision-language reward model._
 

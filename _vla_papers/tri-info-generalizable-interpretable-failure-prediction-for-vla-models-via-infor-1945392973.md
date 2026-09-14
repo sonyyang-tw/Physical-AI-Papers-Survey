@@ -16,11 +16,11 @@ VLA 模型已被部署在多樣化任務中,但它們仍是黑盒,其與物理�
 
 ### Method
 
-![Figure](/assets/images/1945392973_triinfo_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392973_triinfo_fig1.png) 
 
 _Figure 1: Information-theoretic metrics shift at failure onset — representative failure trajectories under three failure modes_
 
-![Figure](/assets/images/1945392973_triinfo_fig3.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392973_triinfo_fig3.png) 
 
 _Figure 3: VLA control as a closed-loop information processing pipeline, the scaffold for the eight derived metrics_
 

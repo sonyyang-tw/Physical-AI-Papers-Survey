@@ -16,11 +16,11 @@ permalink: /wm/mimicgen-a-data-generation-system-for-scalable-robot-learning-usi
 
 ### Method
 
-![Figure](/assets/images/1945473767_mimicgen_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945473767_mimicgen_fig1.png) 
 
 _Figure 1: MimicGen Overview - generating large diverse datasets from a small number of human demonstrations by re-purposing them for new settings._
 
-![Figure](/assets/images/1945473767_mimicgen_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945473767_mimicgen_fig2.png) 
 
 _Figure 2: MimicGen System Pipeline - parsing source demos into object-centric subtask segments and adapting them to generate new demonstrations._
 

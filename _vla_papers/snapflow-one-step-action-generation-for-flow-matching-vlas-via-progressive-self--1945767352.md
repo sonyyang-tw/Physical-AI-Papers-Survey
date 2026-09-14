@@ -16,7 +16,7 @@ VLA 模型在通用機器人操作上展現了強大潛力,但其真實世界評
 
 ### Method
 
-![Figure](/assets/images/1945767352_snapflow_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945767352_snapflow_fig1.png) 
 
 _Figure 1: SnapFlow 概覽。SnapFlow 是一種可即插即用的自蒸餾方法，適用於流匹配（flow-matching）VLA：訓練時混合流匹配目標與兩步 Euler shortcut 目標，推論時以單次前向傳遞取代原本 10 步的去噪迴圈，VLM 前綴共享且不需修改。_
 

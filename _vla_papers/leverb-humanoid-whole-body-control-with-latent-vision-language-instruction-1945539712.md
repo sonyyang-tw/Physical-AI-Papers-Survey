@@ -16,11 +16,11 @@ LeVERB 是第一個針對人形機器人全身控制（Whole-Body Control, WBC�
 
 ### Method
 
-![Figure](/assets/images/1945539712_leverb_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539712_leverb_fig1.png) 
 
 _Figure 1: 論文貢獻總覽 ——上方為照片級擬真且動力學精確的人形視覺語言全身控制 benchmark；中間為僅以合成資料訓練、於真實世界零樣本部署的雙程序 VLA 模型；下方為解耦視覺語言與動力學層級動作處理的模型架構總覽。_
 
-![Figure](/assets/images/1945539712_leverb_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539712_leverb_fig2.png) 
 
 _Figure 2: 資料蒐集與訓練管線細節。步驟一：在 IsaacSim 中收集重定向動作的合成照片級資料集並標註文字指令；步驟二：以動作軌跡重建任務訓練 LeVERB-VL，得到正規化的潛在動詞詞彙並為資料集中每段軌跡快取潛在動詞；步驟三：以此潛在動詞條件化 LeVERB-A，該模型由教師追蹤策略以 DAgger 蒸餾而成。_
 

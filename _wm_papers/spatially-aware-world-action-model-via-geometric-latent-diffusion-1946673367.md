@@ -10,7 +10,7 @@ permalink: /wm/spatially-aware-world-action-model-via-geometric-latent-diffusion
 
 World Action Models (WAMs)利用大規模預訓練的影片擴散模型，同時預測未來觀測與動作，繼承了網路規模影片中豐富的視覺與物理先驗知識，是機器人策略學習的一個有前景的範式。然而現有方法幾乎都只在 RGB 觀測上操作，未能利用 3D 資訊。本文提出 Spatially Aware World Action Model (SA-WAM)，將預訓練的影片模型改造為可同時預測動作、RGB 與深度的模型，在單一擴散骨幹網路中實現具 3D 感知能力的世界建模與動作預測。作者設計了一種非線性編碼，將無界的深度訊號映射到凍結 VAE tokenizer 所預期的有界輸入域，使得無需針對 3D 進行專門微調即可重複利用該 tokenizer，在不犧牲預訓練先驗的前提下納入幾何資訊。SA-WAM 在 RoboCasa 與 LIBERO-Plus benchmark 上取得 state-of-the-art 結果，同時提升了未來狀態的預測品質；此外在真實世界 UR5 機械臂評測中，於隨機化環境下相較強基準有顯著提升。作者也分析了世界模型預測品質與 rollout 成功率之間的相關性，為 WAM 的效能與改進方向提供了洞見。
 
-![Figure](/assets/images/1946673367_diagram_sa-wam.png) ![Figure](/assets/images/1946673367_robocasa_fig3.png) 
+![Figure]({{ site.baseurl }}/assets/images/1946673367_diagram_sa-wam.png) ![Figure]({{ site.baseurl }}/assets/images/1946673367_robocasa_fig3.png) 
 
 ### Method
 

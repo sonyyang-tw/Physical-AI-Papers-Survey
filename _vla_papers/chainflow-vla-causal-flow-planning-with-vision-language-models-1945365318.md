@@ -18,11 +18,11 @@ ChainFlow-VLA 是一個針對端到端自動駕駛規劃問題的框架，統一
 
 ### Method
 
-![Figure](/assets/images/1945365318_chainflow_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945365318_chainflow_fig1.png) 
 
 _Figure 1: 三種將 VLM 整合進端到端自動駕駛的典範比較。(a) VLM 引導式管線：VLM 預測高層引導訊號來操控端到端模型，但會產生資訊瓶頸，限制細粒度軌跡精修；(b) 特徵層融合：結合 VLM 與感知骨幹網路，經融合模組後接動作專家，但缺乏原則性機制來確保局部動態與全域軌跡結構的一致性；(c) 本文方法（ChainFlow-VLA）：將軌跡預測表述為統一的因果-流程（causal-flow）過程，AR 生成器產生具時序一致性的候選軌跡，再由擴散模型於殘差空間中精修，並以微調後的 VLM 表徵作為語意流條件注入，實現因果推理、全域最佳化與高層語意之間的緊密耦合。_
 
-![Figure](/assets/images/1945365318_chainflow_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945365318_chainflow_fig2.png) 
 
 _Figure 2: ChainFlow-VLA 架構圖。模型先執行自回歸軌跡生成（Chain）以產生 K 個因果候選軌跡，接著透過 VLM 引導的殘差擴散（Flow）進行精修。藉由學習 AR 候選軌跡與真實軌跡之間的殘差，模型將因果 rollout 與 VLM 語意引導統一起來，把規劃問題表述為在 AR 誘導模式上的 VLM 條件式殘差分布混合。_
 

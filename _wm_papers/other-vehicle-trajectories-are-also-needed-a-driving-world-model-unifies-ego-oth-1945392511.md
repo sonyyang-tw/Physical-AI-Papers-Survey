@@ -16,11 +16,11 @@ EOT-WM 是一個自動駕駛用的世界模型，重點在於同時控制「自�
 
 ### Method
 
-![Figure](/assets/images/1945392511_eotwm_fig1.jpg) 
+![Figure]({{ site.baseurl }}/assets/images/1945392511_eotwm_fig1.jpg) 
 
 _Figure 1: EOT-WM能生成更真實的影片,並可同時控制ego車輛與其他車輛的軌跡,這些軌跡以video space方式表示。_
 
-![Figure](/assets/images/1945392511_eotwm_fig2.jpg) 
+![Figure]({{ site.baseurl }}/assets/images/1945392511_eotwm_fig2.jpg) 
 
 _Figure 2: EOT-WM架構示意圖。_
 

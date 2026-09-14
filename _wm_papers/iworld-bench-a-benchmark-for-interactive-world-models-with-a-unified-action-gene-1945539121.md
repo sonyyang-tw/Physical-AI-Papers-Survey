@@ -16,11 +16,11 @@ permalink: /wm/iworld-bench-a-benchmark-for-interactive-world-models-with-a-unif
 
 ### Method
 
-![Figure](/assets/images/1945539121_iworldbench_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539121_iworldbench_fig1.png) 
 
 _Figure 1: iWorld-Bench 總覽，涵蓋 UGV/UAV/人類/機器人四種視角，結合統一的 Action Generation Framework 評測互動式世界模型。_
 
-![Figure](/assets/images/1945539121_iworldbench_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539121_iworldbench_fig2.png) 
 
 _Figure 2: 資料處理流程與總覽，包含資料收集、統一化、VLM 輔助標註、人工驗證四步驟。_
 

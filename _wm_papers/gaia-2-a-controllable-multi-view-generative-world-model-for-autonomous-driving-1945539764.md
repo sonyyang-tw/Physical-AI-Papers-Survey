@@ -16,11 +16,11 @@ GAIA-2 是 Wayve 提出的可控多視角生成式世界模型，作為 GAIA-1 �
 
 ### Method
 
-![Figure](/assets/images/1945539764_gaia2_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539764_gaia2_fig1.png) 
 
 _Figure 1: GAIA-2 'from scratch' 生成範例，展示合成場景的多樣性。_
 
-![Figure](/assets/images/1945539764_gaia2_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539764_gaia2_fig2.png) 
 
 _Figure 2: GAIA-2 world model 架構示意圖 — 全環景相機視角由影片 tokenizer 獨立編碼，再由世界模型整合多視角潛在表徵。_
 

@@ -16,11 +16,11 @@ permalink: /vla/offline-semantic-guidance-for-efficient-vision-language-action-p
 
 ### Method
 
-![Figure](/assets/images/1945473850_vlaad_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945473850_vlaad_fig1.png) 
 
 _Figure 1: VLA-AD 整體架構：透過凍結的教師 VLA（如 OpenVLA-7B 或 pi0.5-4B）與 VLM 提供平行離線監督，訓練輕量學生 VLA。_
 
-![Figure](/assets/images/1945473850_vlaad_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945473850_vlaad_fig2.png) 
 
 _Figure 2: Qwen2.5-VL 對三段 OpenVLA-7B rollouts（libero_object）產生的階段錨定描述（approaching, transporting, placing）之定性範例。_
 

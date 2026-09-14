@@ -16,7 +16,7 @@ permalink: /vla/vision-language-action-in-robotics-a-survey-of-datasets-benchmar
 
 ### Method
 
-![Figure](/assets/images/1945392329_survey2_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392329_survey2_fig2.png) 
 
 _Figure 2: Survey scope overview._
 

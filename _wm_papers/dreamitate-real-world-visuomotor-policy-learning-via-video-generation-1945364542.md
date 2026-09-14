@@ -16,11 +16,11 @@ permalink: /wm/dreamitate-real-world-visuomotor-policy-learning-via-video-genera
 
 ### Method
 
-![Figure](/assets/images/1945364542_dreamitate_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945364542_dreamitate_fig1.png) 
 
 _Figure 1: Real-World Visuomotor Policy Learning via Video Generation - Dreamitate fine-tunes a video generative model to synthesize videos of tool-use demonstrations, which are tracked to extract robot actions._
 
-![Figure](/assets/images/1945364542_dreamitate_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945364542_dreamitate_fig2.png) 
 
 _Figure 2: Method Overview - stereo camera recordings of human demonstrations, video model fine-tuning, and 3D trajectory extraction for closed-loop execution._
 

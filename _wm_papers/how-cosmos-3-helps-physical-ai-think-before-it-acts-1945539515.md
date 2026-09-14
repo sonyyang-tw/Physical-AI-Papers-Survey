@@ -16,11 +16,11 @@ NVIDIA Cosmos 3 是 NVIDIA 於 2026 年 6 月發布的開放式「世界基礎�
 
 ### Method
 
-![Figure](/assets/images/1945539515_cosmos3_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539515_cosmos3_fig1.png) 
 
 _Figure 1: Cosmos 3 作為 Physical AI 的通用骨幹模型，統一建模語言、影像、影片、音訊與動作，涵蓋理解與生成任務。_
 
-![Figure](/assets/images/1945539515_cosmos3_fig3.svg) 
+![Figure]({{ site.baseurl }}/assets/images/1945539515_cosmos3_fig3.svg) 
 
 _Figure 5: Cosmos 3 的 Mixture-of-Transformers (MoT) 架構 — 單一 transformer 同時處理自回歸（AR）與擴散（DM）子序列，透過共享自注意力機制連結兩者。_
 

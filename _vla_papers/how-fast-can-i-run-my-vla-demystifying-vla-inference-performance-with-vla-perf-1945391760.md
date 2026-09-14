@@ -16,11 +16,11 @@ permalink: /vla/how-fast-can-i-run-my-vla-demystifying-vla-inference-performance
 
 ### Method
 
-![Figure](/assets/images/1945391760_vlaperf_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945391760_vlaperf_fig1.png) 
 
 _Fig. 1：從 Foundational VLA 到 Efficient VLA 的轉變。Foundational VLA 受限於即時性不足、運算成本過高、資料收集效率低等根本挑戰；透過高效模型設計、高效訓練、高效資料收集三大核心方法，Efficient VLA 得以在邊緣裝置上實現高效能部署。_
 
-![Figure](/assets/images/1945391760_vlaperf_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945391760_vlaperf_fig2.png) 
 
 _Fig. 3：VLA 模型總覽。VLA 整合視覺編碼器擷取視覺特徵、LLM 骨幹網路融合多模態輸入、以及動作解碼器（MLP-based、自回歸式、或生成式）產生機器人控制訊號，實現端到端的視覺-語言-動作推理以完成具身操作任務。_
 

@@ -16,11 +16,11 @@ permalink: /vla/memoryvla-perceptual-cognitive-memory-in-vision-language-action-
 
 ### Method
 
-![Figure](/assets/images/1945363954_memoryvla_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945363954_memoryvla_fig1.png) 
 
 _Figure 1：動機示意圖。(a) 在按按鈕等任務中，操作前後的視覺狀態幾乎相同，凸顯了時序建模的必要性。(b) 人類透過雙重記憶系統處理操作任務：知覺記憶(perceptual memory)與認知記憶(cognitive memory)協同運作。_
 
-![Figure](/assets/images/1945363954_memoryvla_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945363954_memoryvla_fig2.png) 
 
 _Figure 2：MemoryVLA 整體架構。RGB 觀測與語言指令由 7B VLM 編碼為知覺(perceptual)與認知(cognitive)tokens，組成短期工作記憶(working memory)，並透過感知-認知記憶庫(PCMB)進行檢索、融合與固化，最終驅動動作解碼。_
 

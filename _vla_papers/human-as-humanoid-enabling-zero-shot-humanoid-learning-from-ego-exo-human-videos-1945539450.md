@@ -16,11 +16,11 @@ permalink: /vla/human-as-humanoid-enabling-zero-shot-humanoid-learning-from-ego-
 
 ### Method
 
-![Figure](/assets/images/1945539450_hah_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539450_hah_fig1.png) 
 
 _Figure 1: Human-as-Humanoid introduction figure._
 
-![Figure](/assets/images/1945539450_hah_fig3.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539450_hah_fig3.png) 
 
 _Figure 3: Human-as-Humanoid network architecture._
 

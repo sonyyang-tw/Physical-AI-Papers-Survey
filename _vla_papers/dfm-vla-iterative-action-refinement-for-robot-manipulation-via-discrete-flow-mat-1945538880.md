@@ -16,11 +16,11 @@ EOT-WM 是一個自動駕駛用的世界模型，重點在於同時控制「自�
 
 ### Method
 
-![Figure](/assets/images/1945538880_dfmvla_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945538880_dfmvla_fig1.png) 
 
 _Figure 1: 解碼範式比較 ——(1) 自迴歸（AR）模型需要與動作序列長度相同的步數；(2) 離散擴散/流匹配方法可用更少步數迭代精煉動作。_
 
-![Figure](/assets/images/1945538880_dfmvla_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945538880_dfmvla_fig2.png) 
 
 _Figure 2: DFM-VLA 整體架構 ——給定語言-視覺上下文與帶噪動作 token，模型預測乾淨動作並透過離散流匹配進行迭代式精煉。_
 

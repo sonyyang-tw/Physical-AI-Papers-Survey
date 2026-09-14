@@ -16,11 +16,11 @@ permalink: /vla/explicit-language-memory-for-long-horizon-planning-in-vision-lan
 
 ### Method
 
-![Figure](/assets/images/1945364103_explmem_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945364103_explmem_fig1.png) 
 
 _圖示：基於 pi-0.5 的兩階段(two-stage)架構示意，說明語言記憶模組如何嵌入既有 VLA 推理流程中，於長時程規劃任務中提供顯式的語言層級記憶支援。_
 
-![Figure](/assets/images/1945364103_explmem_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945364103_explmem_fig2.png) 
 
 _圖示：顯式語言記憶(Explicit Language Memory)架構細節。展示語言記憶模組如何記錄、更新並檢索過去子任務完成狀態的語言化摘要，供長時程規劃決策使用，避免因視覺狀態相似而產生的子任務判斷錯誤。_
 

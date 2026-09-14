@@ -16,7 +16,7 @@ permalink: /wm/world-model-for-robot-learning-a-comprehensive-survey-1945539095/
 
 ### Method
 
-![Figure](/assets/images/1945539095_survey_wm2_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539095_survey_wm2_fig1.png) 
 
 _Figure 1: Overview of the organization of this survey - architectural coupling of world models with robot policies, world models as simulators, and related evaluation/benchmarks._
 

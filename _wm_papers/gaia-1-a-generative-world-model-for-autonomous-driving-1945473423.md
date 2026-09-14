@@ -16,11 +16,11 @@ GAIA-1（Generative AI for Autonomy）是 Wayve 提出的生成式世界模型�
 
 ### Method
 
-![Figure](/assets/images/1945473423_gaia1_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945473423_gaia1_fig1.png) 
 
 _Figure 1: GAIA-1 multimodal video generation - future rollouts conditioned on actions._
 
-![Figure](/assets/images/1945473423_gaia1_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945473423_gaia1_fig2.png) 
 
 _Figure 2: Architecture of GAIA-1 - encoding video/text/action into tokens, autoregressive world model, video decoder._
 

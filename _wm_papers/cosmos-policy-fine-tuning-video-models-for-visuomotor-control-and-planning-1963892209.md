@@ -20,7 +20,7 @@ permalink: /wm/cosmos-policy-fine-tuning-video-models-for-visuomotor-control-and
 
 下圖為 Cosmos Policy 總覽（圖一）與潛在擴散序列/潛在影格注入機制圖解（圖二）：
 
-![Figure](/assets/images/1963892209_cosmos_fig1.jpeg) ![Figure](/assets/images/1963892209_cosmos_fig2.jpeg) 
+![Figure]({{ site.baseurl }}/assets/images/1963892209_cosmos_fig1.jpeg) ![Figure]({{ site.baseurl }}/assets/images/1963892209_cosmos_fig2.jpeg) 
 
 ### Result
 

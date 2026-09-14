@@ -16,11 +16,11 @@ WorldOlympiad 是一個用來全面診斷「影片式世界模型」(video-based
 
 ### Method
 
-![Figure](/assets/images/1945767203_worldolympiad_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945767203_worldolympiad_fig1.png) 
 
 _Figure 1: Overview of the WorldOlympiad pipeline for data collection, long-video generation, and multi-dimensional evaluation._
 
-![Figure](/assets/images/1945767203_worldolympiad_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945767203_worldolympiad_fig2.png) 
 
 _Figure 3: Data standardization pipeline from raw videos to refined action-caption annotations._
 

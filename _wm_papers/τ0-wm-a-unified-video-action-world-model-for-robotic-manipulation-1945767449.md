@@ -16,11 +16,11 @@ permalink: /wm/τ0-wm-a-unified-video-action-world-model-for-robotic-manipulatio
 
 ### Method
 
-![Figure](/assets/images/1945767449_tau0wm_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945767449_tau0wm_fig1.png) 
 
 _Fig. 1: Overview of the τ0-WM framework — jointly training a Video Action Model and Action-Conditioned Video Simulator for test-time action selection._
 
-![Figure](/assets/images/1945767449_tau0wm_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945767449_tau0wm_fig2.png) 
 
 _Fig. 2: Architecture of τ0-WM — Video Action Model (VAM) as policy interface and Action-Conditioned Video Simulator (ACVS) as evaluation interface._
 

@@ -16,11 +16,11 @@ permalink: /vla/pi0-a-vision-language-action-flow-model-for-general-robot-contro
 
 ### Method
 
-![Figure](/assets/images/1945365620_pi0_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945365620_pi0_fig1.png) 
 
 _Figure 1: pi0 overview — VLM backbone plus action expert producing continuous actions via flow matching_
 
-![Figure](/assets/images/1945365620_pi0_fig3.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945365620_pi0_fig3.png) 
 
 _Figure 3: Overview of the framework — pre-training mixture, flow matching VLA model with VLM backbone and action expert_
 

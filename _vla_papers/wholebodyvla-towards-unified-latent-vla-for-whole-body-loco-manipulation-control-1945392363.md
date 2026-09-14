@@ -16,11 +16,11 @@ WorldBench 是一個影片式基準，專門用來評估生成式世界模型對
 
 ### Method
 
-![Figure](/assets/images/1945392363_wholebodyvla_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392363_wholebodyvla_fig1.png) 
 
 _Figure 1: WholeBodyVLA teaser._
 
-![Figure](/assets/images/1945392363_wholebodyvla_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945392363_wholebodyvla_fig2.png) 
 
 _Figure 2: WholeBodyVLA pipeline._
 

@@ -16,11 +16,11 @@ V-JEPA 2 是 Meta FAIR 提出的自監督影片模型，結合網路規模的影
 
 ### Method
 
-![Figure](/assets/images/1945474552_vjepa2_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945474552_vjepa2_fig1.png) 
 
 _Figure: V-JEPA 2 Abstract 概論圖 — 影片與圖片自監督預訓練，結合少量機器人資料訓練 action-conditioned world model。_
 
-![Figure](/assets/images/1945474552_vjepa2_fig2.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945474552_vjepa2_fig2.png) 
 
 _Figure 1: V-JEPA 2 Overview — 以 1M 小時網路影片與 1M 圖片預訓練 visual mask denoising 影片模型架構。_
 

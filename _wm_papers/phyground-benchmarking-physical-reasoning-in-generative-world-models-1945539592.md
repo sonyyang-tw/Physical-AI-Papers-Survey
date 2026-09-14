@@ -16,11 +16,11 @@ PhyGround 是一個針對「生成式世界模型（影片生成模型）是否�
 
 ### Method
 
-![Figure](/assets/images/1945539592_phyground_fig1.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539592_phyground_fig1.png) 
 
 _Figure 1: Overview of PhyGround - 將每個影片生成模型的整體物理推理分數拆解為13種物理定律的個別分數,由459位標註者進行大規模、有品質控管的人工評估。_
 
-![Figure](/assets/images/1945539592_phyground_fig5.png) 
+![Figure]({{ site.baseurl }}/assets/images/1945539592_phyground_fig5.png) 
 
 _Figure 5: Annotation design workflow - PhyGround人工標註流程設計架構圖。_
 
