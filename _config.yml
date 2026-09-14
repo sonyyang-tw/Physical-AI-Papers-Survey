@@ -1,0 +1,25 @@
+title: Physical AI Papers Survey
+description: "VLA 與 World Model 論文精選導讀資料庫"
+baseurl: "/Physical-AI-Papers-Survey"
+url: "https://sonyyang-tw.github.io"
+
+collections:
+  vla_papers:
+    output: true
+  wm_papers:
+    output: true
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  parse_block_html: true
+
+exclude:
+  - "*.py"
+  - "export/"
+  - "Gemfile"
+  - "README.md"
+
+plugins:
+  - jekyll-relative-links

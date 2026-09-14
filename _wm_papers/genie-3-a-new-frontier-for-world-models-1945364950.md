@@ -1,0 +1,60 @@
+---
+layout: paper
+title: "Genie 3: A New Frontier for World Models"
+section: wm
+page_id: "1945364950"
+permalink: /Physical-AI-Papers-Survey/wm/genie-3-a-new-frontier-for-world-models-1945364950/
+---
+
+**Paper** : [Genie 3: A new frontier for world models](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/)  
+**Source** : 官方技術部落格（Google DeepMind）  
+**arXiv ID** : 無正式 arXiv 論文，來源為官方技術報告／部落格（首次於 2025 年 8 月預覽，2026 年初擴大公開）
+
+### Abstract
+
+Genie 3 是 Google DeepMind 推出的通用世界模型，能根據文字提示即時生成可互動的動態環境：使用者可在生成的世界中以每秒 24 幀、720p 解析度即時導覽，並在數分鐘內維持場景的一致性。DeepMind 將世界模型定位為能理解世界、模擬環境演化、協助代理人（agent）預測環境如何隨動作變化的 AI 系統，視為邁向 AGI 的重要基石。相較於前代 Genie 1、Genie 2（僅能為代理人生成新環境），Genie 3 首次支援即時互動生成，並提升了長時間的一致性與真實感。2026 年初 DeepMind 透過名為 Project Genie 的互動原型將其擴大開放給 Ultra 用戶使用。
+
+### Method
+
+![Figure](/Physical-AI-Papers-Survey/assets/images/1945364950_genie3_fig1.jpg) 
+
+_Figure: Genie 3 相較於 GameNGen、Genie 2、Veo 的比較表，涵蓋控制性、解析度、互動延遲等關鍵能力。_
+
+![Figure](/Physical-AI-Papers-Survey/assets/images/1945364950_genie3_fig2.jpg) 
+
+_Figure: 生成的古希臘神殿場景於 0:00、0:20、0:40 三個時間點的畫面，展示模型的視覺記憶與環境一致性。_
+
+  * 要解決的問題：如何讓 AI 生成的世界既具有沉浸感（可即時互動），又能在較長時間內保持物理與場景一致性；自回歸式逐幀生成環境比生成完整影片更困難，因為誤差會隨時間累積（error accumulation）。
+  * Main method：以自回歸方式即時生成環境畫面，讓使用者輸入文字提示以建立世界，並可透過走、騎、飛、駕駛等方式在世界中移動探索；後續（Project Genie）進一步整合 Nano Banana Pro 與 Gemini，讓使用者能以文字與圖片提示建立與擴展環境、建立角色並定義互動方式。
+  * 與以往方式的差異：Genie 1、2 僅能離線生成新環境供代理人訓練使用，Genie 3 則是 DeepMind 第一個支援「即時互動」的世界模型，使用者可以在生成過程中即時操控與探索，而非只是被動觀看生成結果。
+  * 重要方法設計：核心挑戰在於自回歸生成的長時間一致性——需要模型在持續生成新畫面的同時，記住並維持先前生成內容中的場景結構、物體位置與物理規律；2026 年進一步整合 Google 街景資料庫（280 億張跨 110 國的街景影像）,讓生成的世界能根基於真實地理場景。
+
+
+
+### Result
+
+  * 結果與增強部分：可即時（24 fps）生成 720p 解析度的可互動世界，一致性可維持數分鐘；透過 Project Genie 的公開原型與 Google I/O 2026 展示的街景整合，展示了從研究原型走向大規模應用的進展。實際應用案例包括 Waymo 於 2026 年 2 月宣布以 Genie 3 為基礎打造 Waymo World Model，用於生成訓練自駕車所需的長尾（long-tail）駕駛情境。
+  * 是否公正/需查證處：以上內容主要來自官方部落格與新聞報導的質性描述，缺乏第三方獨立評測的量化指標（例如與其他世界模型在特定基準上的直接比較），需要查證是否有學術論文或第三方評測對 Genie 3 的一致性、真實感做過量化比較。
+
+
+
+### Limitation
+
+  * 官方部落格自陳的限制：世界一致性僅能維持數分鐘，超過後場景會開始漂移（drift）；目前尚不支援細粒度的物理操作（fine-grained physical manipulation）；模型在場景中呈現可讀文字方面表現不佳；複雜的多代理人互動仍具挑戰性。
+  * 從結果來看，這些限制顯示 Genie 3 目前更適合用於短時間、探索式的環境模擬與資料生成（如自駕車長尾情境），而非長時間、高精度物理互動的任務（如精細機器人操作）。
+
+
+
+### Related work
+
+  * Genie 3 是 Genie 1、Genie 2 的直接後繼版本，在「代理人環境生成」的基礎上加入即時互動能力，是同系列內部最主要的演進脈絡。
+  * 較新的相關應用包括 Waymo World Model（2026 年 2 月，建立於 Genie 3 之上，應用於自駕車訓練），顯示 Genie 3 的技術已延伸至工業應用場景，值得後續追蹤。
+  * 判斷 related work 值得 survey 的程度：高，Genie 系列代表通用互動世界模型的技術前沿，適合與 NVIDIA Cosmos 3（另一通用世界基礎模型）做橫向比較。
+
+
+
+### Conclusion
+
+  * 綜合評價：Genie 3 展示了世界模型從「訓練代理人的模擬器」演進到「可即時互動的生成式環境」這一重要趨勢，其影響力（尤其在 Waymo 等實際應用上的落地）值得高度關注；但目前公開資訊多來自官方部落格與新聞報導，缺乏學術論文等級的技術細節與量化評測，建議在引用具體數據前進一步查證官方技術報告或未來可能發表的論文。
+  * 與其他文章的關係：Genie 3 與 NVIDIA Cosmos 3、GAIA 系列同屬「世界基礎模型」的大方向，但 Genie 3 更偏向通用、開放式的互動環境生成，GAIA 系列專注自動駕駛，Cosmos 3 則明確定位為物理 AI（機器人、自駕車）的世界基礎模型；三者可視為同一波「世界模型基礎設施化」浪潮下不同應用取向的代表。
+  * ROCm/AMD 關聯：官方部落格未揭露具體訓練或推論所使用的硬體平台，看不出與 ROCm/AMD 有明確關聯；可推測的潛在關聯方向是即時自回歸影片生成模型對推論延遲與吞吐的高要求，這類負載對 ROCm 推論生態的支援程度值得留意，但此純屬推測，官方資料未提及。

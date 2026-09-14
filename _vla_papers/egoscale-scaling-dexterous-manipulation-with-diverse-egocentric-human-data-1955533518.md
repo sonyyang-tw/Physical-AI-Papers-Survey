@@ -1,0 +1,45 @@
+---
+layout: paper
+title: "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data"
+section: vla
+page_id: "1955533518"
+permalink: /Physical-AI-Papers-Survey/vla/egoscale-scaling-dexterous-manipulation-with-diverse-egocentric-human-data-1955533518/
+---
+
+### Abstract
+
+人類行為是學習物理智能中最具擴展性的資料來源之一，但如何有效運用它來訓練靈巧操作（dexterous manipulation）仍不明朗。先前工作已展示在受限場景下的「人到機器人」遷移，但大規模人類資料是否能支撐細粒度、高自由度的靈巧操作仍是未知數。本文提出 EgoScale，一個建立在大規模第一人稱（egocentric）人類資料上的人到靈巧操作遷移框架。作者在超過 20,854 小時、具動作標註的第一人稱人類影片上訓練一個 Vision-Language-Action（VLA）模型——規模超過先前研究 20 倍以上——並發現人類資料規模與驗證損失（validation loss）之間存在對數線性（log-linear）縮放定律。此驗證損失與下游真實機器人表現高度相關，證實大規模人類資料是可預測的監督訊號來源。除了規模本身，作者提出一套簡單的兩階段遷移流程：大規模人類預訓練，接著輕量對齊的人機中訓練（mid-training）。此方法使模型具備強大的長 horizon 靈巧操作能力，並能以極少機器人監督完成一次性（one-shot）任務適應。最終策略在 22 自由度靈巧機械手上，相較無預訓練基線平均成功率提升 54%，且能有效遷移到自由度較低的機械手，顯示大規模人類動作提供了可重複使用、與具身無關的運動先驗。
+
+### Method
+
+**要解決的問題** ：VLA 模型高度依賴機器人遙操作（teleoperation）資料，但這類資料成本極高、難以規模化，尤其對高自由度靈巧操作（如仿人機械手）更是如此。人類每天執行的靈巧操作行為是理論上最豐富、最具擴展性的資料來源，但過去尚不清楚：(1) 大規模第一人稱人類影片能否真正支撐細粒度、高 DoF 的操作學習；(2) 這類資料規模化後是否有可預測的效益（scaling law）。
+
+**Main method** ：EgoScale 分為兩階段。第一階段是大規模人類預訓練——在 20,854 小時具動作標註（透過手部/身體姿態估計取得偽動作標籤）的第一人稱人類影片上訓練 VLA 骨幹，涵蓋遠超機器人資料集的場景與技能多樣性。第二階段是輕量對齊的人機中訓練（human-robot mid-training）：用少量目標機器人資料，將預訓練骨幹對齊到實際機器人具身（22 自由度靈巧機械手），完成長 horizon 靈巧操作與一次性任務適應。
+
+**和以往方式的差異** ：先前的人到機器人遷移研究多侷限於受限場景、小規模資料，且缺乏系統性驗證「資料規模」本身的效益。EgoScale 首次在超過 20,000 小時規模（20 倍於先前工作）的人類資料上，系統性量化了資料規模與驗證損失之間的對數線性縮放定律，並證明此驗證損失能可靠預測真實機器人下游表現——這使「大規模人類資料」從一種輔助手段，轉變為可預測、可規劃投資回報的核心監督訊號來源，是方法論與實證雙重貢獻，而非單純資料量的堆疊。
+
+**關鍵方法圖** ： ![Figure](/Physical-AI-Papers-Survey/assets/images/1955533518_egoscale_pull.png) 展示 EgoScale 整體流程：大規模第一人稱人類資料採集 → VLA 預訓練 → 人機對齊中訓練 → 22 DoF 靈巧機械手部署，以及跨具身遷移到較低自由度機械手的能力。 ![Figure](/Physical-AI-Papers-Survey/assets/images/1955533518_egoscale_arch.png) 展示 EgoScale 模型架構細節，包括如何從人類影片中提取偽動作標籤並與機器人動作空間對齊。
+
+### Result
+
+**Result 結果如何，主要增強了哪些部分** ：最終策略在 22 自由度靈巧機械手上，相較無預訓練基線（no-pretraining baseline）平均成功率提升 54%；且此策略能有效遷移至自由度更低的機械手，顯示所學到的運動先驗具有跨具身通用性。此外，驗證損失與人類資料規模之間呈現清晰的對數線性關係，且此驗證損失與下游真實機器人任務表現高度相關——這是本文除了絕對性能提升外，另一項具有指導意義的量化貢獻。
+
+**Result 是否公正，其他論文提出的結果有沒有和這篇論文 result 不符** ：論文由 NVIDIA GEAR 團隊（含 Linxi "Jim" Fan、Yuke Zhu、Danfei Xu 等）與 UC Berkeley（Trevor Darrell）、University of Maryland（Furong Huang）合作完成，屬於嚴謹的學術產出，實驗設計（scaling law + 下游任務相關性驗證）具說服力。目前尚未見獨立第三方復現或挑戰其 54% 提升數字的公開文獻；由於使用了自建的大規模資料集（非公開 benchmark），外部驗證難度較高，讀者應留意「54%」提升幅度高度依賴其基線設定與任務選擇。
+
+### Limitation
+
+**有沒有已知的 limitation** ：論文本身聚焦於「規模化 + 對齊」這一路徑的有效性驗證，但对於偽動作標籤（來自人類姿態估計）的雜訊/誤差如何影響下游策略的精細動作精度，未見充分的敏感度分析。此外，全部評測基於單一機構（NVIDIA GEAR）內部設定的任務與機械手平台，跨機構、跨硬體平台的通用性尚待外部驗證。
+
+**從 result 來看 limitation 和弱項是甚麼** ：模型在低自由度機械手上的遷移效果雖然「有效」，但論文未明確量化這種遷移相較原生 22 DoF 機械手效能的具體差距，可能存在自由度降低導致的精細度損失；長 horizon 任務的成功率提升是否能持續擴展到更長、更複雜的任務鏈也未有明確結論。
+
+### Related work
+
+**arXiv 上有沒有更新的 related work** ：與本文同團隊（NVIDIA GEAR）幾乎同期發表的 DreamDojo（arXiv:2602.06949，本次同時推送至 World Model Papers 頁面）採用類似的「大規模第一人稱人類影片」資料策略，但聚焦於 world model（影片預測）而非直接的動作策略學習，兩篇論文互為補充，共同構成 NVIDIA GEAR 在「人類資料規模化用於具身智能」這條研究路線上的雙引擎（一為 world model，一為 VLA policy）。
+
+**判斷 related work 值得 survey 的程度** ：高度值得。DreamDojo 與 EgoScale 出自同一批作者（Yuke Zhu、Ruijie Zheng、Linxi Fan 等重疊），共享同一批基礎設施與資料處理管線，建議後續 survey 應將兩篇論文一併對照閱讀，理解 NVIDIA 如何將「人類影片」同時餵入 world model 與 policy 兩條路線。
+
+### Conclusion
+
+**給這篇文章綜合評價，值不值得參考** ：值得參考。EgoScale 首次在近 21,000 小時規模上系統驗證了「人類資料 scaling law 可預測機器人下游表現」這一假設，為業界規劃資料採集投資提供了量化依據，具有方法論指導意義，而不只是單一模型的效能提升。對於任何考慮以人類影片作為機器人訓練資料補充來源的團隊都具參考價值。
+
+**做出跟其他重要文章的關係相依圖，並判斷 ROCm/AMD 在此領域上尚待補強的部分** ：關係上，EgoScale 與 π0 / π0.5（Physical Intelligence）、GR00T N1（NVIDIA）同屬「通用機器人基礎模型」譜系，但 EgoScale 的獨特定位是「以人類資料規模化取代機器人遙操作資料」，可視為對這些旗艦 VLA 模型資料策略的補充路線；同時與同團隊的 DreamDojo（world model 路線）、更早的 GR00T N1.7（結合 Cosmos world model）構成 NVIDIA GEAR 完整的資料-模型堆疊。ROCm/AMD 在此領域的差距主要在於：(1) 缺乏針對大規模影片/動作聯合資料的高效訓練框架與算子最佳化（VLA 訓練管線目前高度綁定 NVIDIA CUDA 生態）；(2) 缺乏公開的、驗證過 scaling law 的大規模人類影片資料集與對應訓練配方，AMD 若要在此領域建立差異化，可考慮投資於 ROCm 上針對「影片-動作聯合預訓練」的效能基準測試與參考實作，降低此類大規模預訓練工作負載遷移到 ROCm 平台的門檻。
