@@ -6,7 +6,7 @@ permalink: /wm/
 
 # World Model Papers
 
-本頁由自動化 Paper Survey Harness 維護。每日排程會依照下方主題分類，各挑選一篇當日新發布（arXiv）或近期重要的 top conference 論文，依 [Paper Survey Templates](https://amd.atlassian.net/wiki/spaces/~7120202efb3fa0e25641df84f2d104b06e0bd0/pages/1945197249/Paper+Survey+Templates) 的格式建立子頁面，並同步發送 Teams 通知摘要。
+本頁由自動化 Paper Survey Harness 維護，每日依照下方主題分類，挑選一篇當日新發布（arXiv）或近期重要的 top conference 論文，撰寫完整導讀並建立子頁面。
 
 每篇論文標題皆為連結，點擊可進入該論文的完整 survey 子頁面（Abstract / Method / Result / Limitation / Related work / Conclusion）。
 
@@ -129,7 +129,7 @@ Scope：定期重新定義此領域的綜述論文。
 
 ## 每日 Paper 推送記錄
 
-> 以下由排程任務自動新增。每篇新論文依 [Paper Survey Templates](https://amd.atlassian.net/wiki/spaces/~7120202efb3fa0e25641df84f2d104b06e0bd0/pages/1945197249/Paper+Survey+Templates) 格式建立子頁面，並標註推送日期、所屬主題分類、來源（arXiv 當日新作 / top conference）。
+> 以下由排程任務自動新增，每篇新論文皆標註推送日期、所屬主題分類、來源（arXiv 當日新作 / top conference）。
 
 _(尚無記錄 — 排程啟動後將自動累積)_
 

@@ -20,4 +20,4 @@ World Model 研究：影片生成式世界模型、機器人動作條件世界�
 
 ---
 
-*由 Paper Survey Harness 自動維護。*
+*由 Paper Survey Harness 自動維護，每日持續更新。*

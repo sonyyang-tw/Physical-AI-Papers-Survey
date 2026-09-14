@@ -8,6 +8,10 @@ collections:
     output: true
   wm_papers:
     output: true
+  en_vla_papers:
+    output: true
+  en_wm_papers:
+    output: true
 
 markdown: kramdown
 kramdown:
