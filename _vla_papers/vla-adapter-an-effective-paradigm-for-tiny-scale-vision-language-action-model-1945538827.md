@@ -3,7 +3,7 @@ layout: paper
 title: "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model"
 section: vla
 page_id: "1945538827"
-permalink: /Physical-AI-Papers-Survey/vla/vla-adapter-an-effective-paradigm-for-tiny-scale-vision-language-action-model-1945538827/
+permalink: /vla/vla-adapter-an-effective-paradigm-for-tiny-scale-vision-language-action-model-1945538827/
 ---
 
 **Paper** : [VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model](https://arxiv.org/abs/2509.09372)  
@@ -16,11 +16,11 @@ Vision-Language-Action (VLA) 模型通常透過在機器人資料上預訓練大
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945538827_vlaadapter_fig1.png) 
+![Figure](/assets/images/1945538827_vlaadapter_fig1.png) 
 
 _Figure 2: 既有代表性 VL 到 A 的橋接範式（bridge paradigms）比較，說明過去方法如何連接視覺語言模型輸出與動作生成。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945538827_vlaadapter_fig2.png) 
+![Figure](/assets/images/1945538827_vlaadapter_fig2.png) 
 
 _Figure 3: VLA-Adapter 提出的整體框架，關鍵元件包含條件探索（condition exploration）與 Bridge Attention 設計。_
 

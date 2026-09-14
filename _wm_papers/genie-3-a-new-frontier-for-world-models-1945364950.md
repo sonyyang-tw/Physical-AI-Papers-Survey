@@ -3,7 +3,7 @@ layout: paper
 title: "Genie 3: A New Frontier for World Models"
 section: wm
 page_id: "1945364950"
-permalink: /Physical-AI-Papers-Survey/wm/genie-3-a-new-frontier-for-world-models-1945364950/
+permalink: /wm/genie-3-a-new-frontier-for-world-models-1945364950/
 ---
 
 **Paper** : [Genie 3: A new frontier for world models](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/)  
@@ -16,11 +16,11 @@ Genie 3 是 Google DeepMind 推出的通用世界模型，能根據文字提示�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945364950_genie3_fig1.jpg) 
+![Figure](/assets/images/1945364950_genie3_fig1.jpg) 
 
 _Figure: Genie 3 相較於 GameNGen、Genie 2、Veo 的比較表，涵蓋控制性、解析度、互動延遲等關鍵能力。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945364950_genie3_fig2.jpg) 
+![Figure](/assets/images/1945364950_genie3_fig2.jpg) 
 
 _Figure: 生成的古希臘神殿場景於 0:00、0:20、0:40 三個時間點的畫面，展示模型的視覺記憶與環境一致性。_
 

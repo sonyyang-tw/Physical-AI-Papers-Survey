@@ -3,7 +3,7 @@ layout: paper
 title: "Do World Action Models Generalize Better than VLAs? A Robustness Study"
 section: vla
 page_id: "1945392664"
-permalink: /Physical-AI-Papers-Survey/vla/do-world-action-models-generalize-better-than-vlas-a-robustness-study-1945392664/
+permalink: /vla/do-world-action-models-generalize-better-than-vlas-a-robustness-study-1945392664/
 ---
 
 **Paper** : [Do World Action Models Generalize Better than VLAs? A Robustness Study](https://arxiv.org/abs/2603.22078)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/do-world-action-models-generalize-bett
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392664_wamvla_robust_fig1.png) 
+![Figure](/assets/images/1945392664_wamvla_robust_fig1.png) 
 
 _Figure 1: RoboTwin 2.0-Plus 任務上的擾動範例。（各種噪聲 N、光照 L 等擾動代號定義詳見論文附錄 A）_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392664_wamvla_robust_fig3.png) 
+![Figure](/assets/images/1945392664_wamvla_robust_fig3.png) 
 
 _Figure 3: Cosmos-policy 所預測的未來影像示例。展示 LIBERO-Plus 中三種擾動類型（噪聲、光照、背景變化）下的真實影像（GT）與 Cosmos-policy 預測影像（Pred.）對比，說明其世界模型的動態預測能力。_
 

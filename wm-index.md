@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "World Model Papers"
-permalink: /Physical-AI-Papers-Survey/wm/
+permalink: /wm/
 ---
 
 # World Model Papers
@@ -16,12 +16,12 @@ permalink: /Physical-AI-Papers-Survey/wm/
 
 ## 基礎/參考模型（不分主題，任何 survey 都應知道的里程碑）
 
-1. [GAIA-1: A Generative World Model for Autonomous Driving](/Physical-AI-Papers-Survey/wm/gaia-1-a-generative-world-model-for-autonomous-driving-1945473423/) — arXiv:2309.17080 (Wayve)
-2. [Mastering Diverse Domains through World Models (DreamerV3)](/Physical-AI-Papers-Survey/wm/mastering-diverse-domains-through-world-models-dreamerv3-1945767304/) — arXiv:2301.04104 / Nature 2025
-3. [Genie 3: A New Frontier for World Models](/Physical-AI-Papers-Survey/wm/genie-3-a-new-frontier-for-world-models-1945364950/) — DeepMind 官方部落格
-4. [How Cosmos 3 Helps Physical AI Think Before It Acts](/Physical-AI-Papers-Survey/wm/how-cosmos-3-helps-physical-ai-think-before-it-acts-1945539515/) — NVIDIA 官方技術報告
-5. [V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning](/Physical-AI-Papers-Survey/wm/v-jepa-2-self-supervised-video-models-enable-understanding-prediction-and-planni-1945474552/) — arXiv:2506.09985 (Meta)
-6. [GAIA-2: A Controllable Multi-View Generative World Model for Autonomous Driving](/Physical-AI-Papers-Survey/wm/gaia-2-a-controllable-multi-view-generative-world-model-for-autonomous-driving-1945539764/) — arXiv:2503.20523 (Wayve)
+1. [GAIA-1: A Generative World Model for Autonomous Driving](/wm/gaia-1-a-generative-world-model-for-autonomous-driving-1945473423/) — arXiv:2309.17080 (Wayve)
+2. [Mastering Diverse Domains through World Models (DreamerV3)](/wm/mastering-diverse-domains-through-world-models-dreamerv3-1945767304/) — arXiv:2301.04104 / Nature 2025
+3. [Genie 3: A New Frontier for World Models](/wm/genie-3-a-new-frontier-for-world-models-1945364950/) — DeepMind 官方部落格
+4. [How Cosmos 3 Helps Physical AI Think Before It Acts](/wm/how-cosmos-3-helps-physical-ai-think-before-it-acts-1945539515/) — NVIDIA 官方技術報告
+5. [V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning](/wm/v-jepa-2-self-supervised-video-models-enable-understanding-prediction-and-planni-1945474552/) — arXiv:2506.09985 (Meta)
+6. [GAIA-2: A Controllable Multi-View Generative World Model for Autonomous Driving](/wm/gaia-2-a-controllable-multi-view-generative-world-model-for-autonomous-driving-1945539764/) — arXiv:2503.20523 (Wayve)
 
 ---
 
@@ -29,12 +29,12 @@ permalink: /Physical-AI-Papers-Survey/wm/
 
 ## 基礎/參考模型（不分主題，任何 survey 都應知道的里程碑）
 
-1. [GAIA-1: A Generative World Model for Autonomous Driving](/Physical-AI-Papers-Survey/wm/gaia-1-a-generative-world-model-for-autonomous-driving-1945473423/) — arXiv:2309.17080 (Wayve)
-2. [Mastering Diverse Domains through World Models (DreamerV3)](/Physical-AI-Papers-Survey/wm/mastering-diverse-domains-through-world-models-dreamerv3-1945767304/) — arXiv:2301.04104 / Nature 2025
-3. [Genie 3: A New Frontier for World Models](/Physical-AI-Papers-Survey/wm/genie-3-a-new-frontier-for-world-models-1945364950/) — DeepMind 官方部落格
-4. [How Cosmos 3 Helps Physical AI Think Before It Acts](/Physical-AI-Papers-Survey/wm/how-cosmos-3-helps-physical-ai-think-before-it-acts-1945539515/) — NVIDIA 官方技術報告
-5. [V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning](/Physical-AI-Papers-Survey/wm/v-jepa-2-self-supervised-video-models-enable-understanding-prediction-and-planni-1945474552/) — arXiv:2506.09985 (Meta)
-6. [GAIA-2: A Controllable Multi-View Generative World Model for Autonomous Driving](/Physical-AI-Papers-Survey/wm/gaia-2-a-controllable-multi-view-generative-world-model-for-autonomous-driving-1945539764/) — arXiv:2503.20523 (Wayve)
+1. [GAIA-1: A Generative World Model for Autonomous Driving](/wm/gaia-1-a-generative-world-model-for-autonomous-driving-1945473423/) — arXiv:2309.17080 (Wayve)
+2. [Mastering Diverse Domains through World Models (DreamerV3)](/wm/mastering-diverse-domains-through-world-models-dreamerv3-1945767304/) — arXiv:2301.04104 / Nature 2025
+3. [Genie 3: A New Frontier for World Models](/wm/genie-3-a-new-frontier-for-world-models-1945364950/) — DeepMind 官方部落格
+4. [How Cosmos 3 Helps Physical AI Think Before It Acts](/wm/how-cosmos-3-helps-physical-ai-think-before-it-acts-1945539515/) — NVIDIA 官方技術報告
+5. [V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning](/wm/v-jepa-2-self-supervised-video-models-enable-understanding-prediction-and-planni-1945474552/) — arXiv:2506.09985 (Meta)
+6. [GAIA-2: A Controllable Multi-View Generative World Model for Autonomous Driving](/wm/gaia-2-a-controllable-multi-view-generative-world-model-for-autonomous-driving-1945539764/) — arXiv:2503.20523 (Wayve)
 
 ---
 
@@ -52,10 +52,10 @@ Scope：直接與機器人動作空間耦合的 world model，用於規劃、pol
 
 代表論文：
 
-- [Ctrl-World: A Controllable Generative World Model for Robot Manipulation](/Physical-AI-Papers-Survey/wm/ctrl-world-a-controllable-generative-world-model-for-robot-manipulation-1945391989/) — arXiv:2510.10125 (ICLR 2026) — 可控多視角生成式 world model，透過想像 rollout 提升 policy 成功率
-- [τ0-WM: A Unified Video-Action World Model for Robotic Manipulation](/Physical-AI-Papers-Survey/wm/τ0-wm-a-unified-video-action-world-model-for-robotic-manipulation-1945767449/) — arXiv:2606.01027 (AGIBOT) — 統一影片-動作 world model
-- [WEAVER, Better, Faster, Longer: An Effective World Model for Robotic Manipulation](/Physical-AI-Papers-Survey/wm/weaver-better-faster-longer-an-effective-world-model-for-robotic-manipulation-1945767558/) — arXiv:2606.13672 — 多視角 world model (flow-matching)
-- [VLAW: Iterative Co-Improvement of Vision-Language-Action Policy and World Model](/Physical-AI-Papers-Survey/wm/vlaw-iterative-co-improvement-of-vision-language-action-policy-and-world-model-1945474219/) — arXiv:2602.12063 — VLA policy 與 world model 迭代共同改進
+- [Ctrl-World: A Controllable Generative World Model for Robot Manipulation](/wm/ctrl-world-a-controllable-generative-world-model-for-robot-manipulation-1945391989/) — arXiv:2510.10125 (ICLR 2026) — 可控多視角生成式 world model，透過想像 rollout 提升 policy 成功率
+- [τ0-WM: A Unified Video-Action World Model for Robotic Manipulation](/wm/τ0-wm-a-unified-video-action-world-model-for-robotic-manipulation-1945767449/) — arXiv:2606.01027 (AGIBOT) — 統一影片-動作 world model
+- [WEAVER, Better, Faster, Longer: An Effective World Model for Robotic Manipulation](/wm/weaver-better-faster-longer-an-effective-world-model-for-robotic-manipulation-1945767558/) — arXiv:2606.13672 — 多視角 world model (flow-matching)
+- [VLAW: Iterative Co-Improvement of Vision-Language-Action Policy and World Model](/wm/vlaw-iterative-co-improvement-of-vision-language-action-policy-and-world-model-1945474219/) — arXiv:2602.12063 — VLA policy 與 world model 迭代共同改進
 
 ### 3. World Models for Autonomous Driving
 
@@ -63,10 +63,10 @@ Scope：用於駕駛場景生成、模擬、閉環評測與規劃的影片/laten
 
 代表論文：
 
-- [DriVerse: Navigation World Model for Driving Simulation via Multimodal Trajectory Prompting and Motion Alignment](/Physical-AI-Papers-Survey/wm/driverse-navigation-world-model-for-driving-simulation-via-multimodal-trajectory-1945539343/) — arXiv:2504.18576 (ACM MM 2025)
-- [End-to-End Driving with Online Trajectory Evaluation via BEV World Model (WoTE)](/Physical-AI-Papers-Survey/wm/end-to-end-driving-with-online-trajectory-evaluation-via-bev-world-model-1945392255/) — arXiv:2504.01941 (ICCV 2025)
-- [DreamerAD: Efficient Reinforcement Learning via Latent World Model for Autonomous Driving](/Physical-AI-Papers-Survey/wm/dreamerad-efficient-reinforcement-learning-via-latent-world-model-for-autonomous-1945365119/) — arXiv:2603.24587
-- [Other Vehicle Trajectories Are Also Needed: A Driving World Model Unifies Ego-Other Vehicle Trajectories in Video Latent Space (EOT-WM)](/Physical-AI-Papers-Survey/wm/other-vehicle-trajectories-are-also-needed-a-driving-world-model-unifies-ego-oth-1945392511/) — arXiv:2503.09215
+- [DriVerse: Navigation World Model for Driving Simulation via Multimodal Trajectory Prompting and Motion Alignment](/wm/driverse-navigation-world-model-for-driving-simulation-via-multimodal-trajectory-1945539343/) — arXiv:2504.18576 (ACM MM 2025)
+- [End-to-End Driving with Online Trajectory Evaluation via BEV World Model (WoTE)](/wm/end-to-end-driving-with-online-trajectory-evaluation-via-bev-world-model-1945392255/) — arXiv:2504.01941 (ICCV 2025)
+- [DreamerAD: Efficient Reinforcement Learning via Latent World Model for Autonomous Driving](/wm/dreamerad-efficient-reinforcement-learning-via-latent-world-model-for-autonomous-1945365119/) — arXiv:2603.24587
+- [Other Vehicle Trajectories Are Also Needed: A Driving World Model Unifies Ego-Other Vehicle Trajectories in Video Latent Space (EOT-WM)](/wm/other-vehicle-trajectories-are-also-needed-a-driving-world-model-unifies-ego-oth-1945392511/) — arXiv:2503.09215
 
 ### 4. Model-Based RL / Latent Dynamics for Control
 
@@ -75,7 +75,7 @@ Scope：經典 model-based RL，用學習到的 latent 動態模型做規劃/想
 代表論文：
 
 - DreamerV3（見上方基礎模型）
-- [Dream-MPC: Gradient-Based Model Predictive Control with Latent Imagination](/Physical-AI-Papers-Survey/wm/dream-mpc-gradient-based-model-predictive-control-with-latent-imagination-1945365146/) — arXiv:2605.04568 (ICML 2026)
+- [Dream-MPC: Gradient-Based Model Predictive Control with Latent Imagination](/wm/dream-mpc-gradient-based-model-predictive-control-with-latent-imagination-1945365146/) — arXiv:2605.04568 (ICML 2026)
 
 ### 5. World Model Evaluation & Physical-Reasoning Benchmarks
 
@@ -83,11 +83,11 @@ Scope：評估 world model 物理一致性、可控性、具身實用性的 benc
 
 代表論文：
 
-- [PhyGround: Benchmarking Physical Reasoning in Generative World Models](/Physical-AI-Papers-Survey/wm/phyground-benchmarking-physical-reasoning-in-generative-world-models-1945539592/) — arXiv:2605.10806
-- [WorldBench: Benchmarking Physical Understanding of World Models by Isolating Physics Concepts](/Physical-AI-Papers-Survey/wm/worldbench-benchmarking-physical-understanding-of-world-models-by-isolating-phys-1945392538/) — arXiv:2601.21282
-- [RoboWM-Bench: A Benchmark for Evaluating World Models in Robotic Manipulation](/Physical-AI-Papers-Survey/wm/robowm-bench-a-benchmark-for-evaluating-world-models-in-robotic-manipulation-1945365171/) — arXiv:2604.19092
-- [WorldOlympiad: Can Your World Model Survive a Triathlon?](/Physical-AI-Papers-Survey/wm/worldolympiad-can-your-world-model-survive-a-triathlon-1945767203/) — arXiv:2606.11129
-- [iWorld-Bench: A Benchmark for Interactive World Models with a Unified Action Generation Framework](/Physical-AI-Papers-Survey/wm/iworld-bench-a-benchmark-for-interactive-world-models-with-a-unified-action-gene-1945539121/) — arXiv:2605.03941
+- [PhyGround: Benchmarking Physical Reasoning in Generative World Models](/wm/phyground-benchmarking-physical-reasoning-in-generative-world-models-1945539592/) — arXiv:2605.10806
+- [WorldBench: Benchmarking Physical Understanding of World Models by Isolating Physics Concepts](/wm/worldbench-benchmarking-physical-understanding-of-world-models-by-isolating-phys-1945392538/) — arXiv:2601.21282
+- [RoboWM-Bench: A Benchmark for Evaluating World Models in Robotic Manipulation](/wm/robowm-bench-a-benchmark-for-evaluating-world-models-in-robotic-manipulation-1945365171/) — arXiv:2604.19092
+- [WorldOlympiad: Can Your World Model Survive a Triathlon?](/wm/worldolympiad-can-your-world-model-survive-a-triathlon-1945767203/) — arXiv:2606.11129
+- [iWorld-Bench: A Benchmark for Interactive World Models with a Unified Action Generation Framework](/wm/iworld-bench-a-benchmark-for-interactive-world-models-with-a-unified-action-gene-1945539121/) — arXiv:2605.03941
 
 ### 6. World Models as Data Engines / Simulators for Robot Learning
 
@@ -95,12 +95,12 @@ Scope：明確用 world model 生成合成訓練資料、擴增模擬、縮小 s
 
 代表論文：
 
-- [WoVR: World Models as Reliable Simulators for Post-Training VLA Policies with RL](/Physical-AI-Papers-Survey/wm/wovr-world-models-as-reliable-simulators-for-post-training-vla-policies-with-rl-1945473965/) — arXiv:2602.13977
-- [Interactive World Simulator for Robot Policy Training and Evaluation](/Physical-AI-Papers-Survey/wm/interactive-world-simulator-for-robot-policy-training-and-evaluation-1945767226/) — arXiv:2603.08546
-- [Targeting World Models to Compromise Robot Learning Pipelines](/Physical-AI-Papers-Survey/wm/targeting-world-models-to-compromise-robot-learning-pipelines-1945473989/) — arXiv:2606.09499 — world model 資料下毒的對抗式/安全性新興子主題
-- [Cosmos Predict 2.5 & Transfer 2.5: Evolving the World Foundation Models for Physical AI](/Physical-AI-Papers-Survey/wm/cosmos-predict-25-and-transfer-25-evolving-the-world-foundation-models-for-physi-1945767248/) — NVIDIA 官方技術報告
-- [MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations](/Physical-AI-Papers-Survey/wm/mimicgen-a-data-generation-system-for-scalable-robot-learning-using-human-demons-1945473767/) — arXiv:2310.17596 (CoRL 2023, baseline)
-- [Dreamitate: Real-World Visuomotor Policy Learning via Video Generation](/Physical-AI-Papers-Survey/wm/dreamitate-real-world-visuomotor-policy-learning-via-video-generation-1945364542/) — arXiv:2406.16862 (CoRL 2024, baseline)
+- [WoVR: World Models as Reliable Simulators for Post-Training VLA Policies with RL](/wm/wovr-world-models-as-reliable-simulators-for-post-training-vla-policies-with-rl-1945473965/) — arXiv:2602.13977
+- [Interactive World Simulator for Robot Policy Training and Evaluation](/wm/interactive-world-simulator-for-robot-policy-training-and-evaluation-1945767226/) — arXiv:2603.08546
+- [Targeting World Models to Compromise Robot Learning Pipelines](/wm/targeting-world-models-to-compromise-robot-learning-pipelines-1945473989/) — arXiv:2606.09499 — world model 資料下毒的對抗式/安全性新興子主題
+- [Cosmos Predict 2.5 & Transfer 2.5: Evolving the World Foundation Models for Physical AI](/wm/cosmos-predict-25-and-transfer-25-evolving-the-world-foundation-models-for-physi-1945767248/) — NVIDIA 官方技術報告
+- [MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations](/wm/mimicgen-a-data-generation-system-for-scalable-robot-learning-using-human-demons-1945473767/) — arXiv:2310.17596 (CoRL 2023, baseline)
+- [Dreamitate: Real-World Visuomotor Policy Learning via Video Generation](/wm/dreamitate-real-world-visuomotor-policy-learning-via-video-generation-1945364542/) — arXiv:2406.16862 (CoRL 2024, baseline)
 
 ### 7. World Models Surveys & Taxonomy Papers（meta-tracking 主題）
 
@@ -108,11 +108,11 @@ Scope：定期重新定義此領域的綜述論文。
 
 代表論文：
 
-- [World Model for Robot Learning: A Comprehensive Survey](/Physical-AI-Papers-Survey/wm/world-model-for-robot-learning-a-comprehensive-survey-1945539095/) — arXiv:2605.00080
-- [World Models for Robotic Manipulation: A Survey](/Physical-AI-Papers-Survey/wm/world-models-for-robotic-manipulation-a-survey-1945391939/) — arXiv:2606.00113
-- [A Step Toward World Models: A Survey on Robotic Manipulation](/Physical-AI-Papers-Survey/wm/a-step-toward-world-models-a-survey-on-robotic-manipulation-1945392081/) — arXiv:2511.02097
-- [From World Models to World Action Models: A Concise Tutorial for Robotics](/Physical-AI-Papers-Survey/wm/from-world-models-to-world-action-models-a-concise-tutorial-for-robotics-1945539286/) — arXiv:2607.00836 — 銜接 VLA/WAM 姊妹主題
-- [Aether: Geometric-Aware Unified World Modeling](/Physical-AI-Papers-Survey/wm/aether-geometric-aware-unified-world-modeling-1945539008/) — arXiv:2503.18945 (ICCV 2025 Outstanding Paper)
+- [World Model for Robot Learning: A Comprehensive Survey](/wm/world-model-for-robot-learning-a-comprehensive-survey-1945539095/) — arXiv:2605.00080
+- [World Models for Robotic Manipulation: A Survey](/wm/world-models-for-robotic-manipulation-a-survey-1945391939/) — arXiv:2606.00113
+- [A Step Toward World Models: A Survey on Robotic Manipulation](/wm/a-step-toward-world-models-a-survey-on-robotic-manipulation-1945392081/) — arXiv:2511.02097
+- [From World Models to World Action Models: A Concise Tutorial for Robotics](/wm/from-world-models-to-world-action-models-a-concise-tutorial-for-robotics-1945539286/) — arXiv:2607.00836 — 銜接 VLA/WAM 姊妹主題
+- [Aether: Geometric-Aware Unified World Modeling](/wm/aether-geometric-aware-unified-world-modeling-1945539008/) — arXiv:2503.18945 (ICCV 2025 Outstanding Paper)
 
 ---
 
@@ -135,7 +135,7 @@ _(尚無記錄 — 排程啟動後將自動累積)_
 
 ### 推送日期: 2026-09-08
 
-[Spatially Aware World Action Model via Geometric Latent Diffusion](/Physical-AI-Papers-Survey/wm/spatially-aware-world-action-model-via-geometric-latent-diffusion-1946673367/) — World Action Models (Video-Action Joint Modeling) — arXiv 2609.02531，2026年9月2日新作，尚未於本頁記錄過
+[Spatially Aware World Action Model via Geometric Latent Diffusion](/wm/spatially-aware-world-action-model-via-geometric-latent-diffusion-1946673367/) — World Action Models (Video-Action Joint Modeling) — arXiv 2609.02531，2026年9月2日新作，尚未於本頁記錄過
 
 選中原因：作者群包含 Google DeepMind 研究員 Cordelia Schmid，符合「科技大廠/知名實驗室出品」準則；方法論上首次以「不改動凍結 VAE tokenizer」的方式將深度模態無縫注入既有 RGB World Action Model 擴散骨幹，屬於真正的架構創新而非既有技巧的小幅組合；同時在 RoboCasa、LIBERO-Plus 模擬 benchmark 與真實 UR5 機械臂上都取得 state-of-the-art 結果，驗證完整度高。
 
@@ -143,7 +143,7 @@ _(尚無記錄 — 排程啟動後將自動累積)_
 
 ### 推送日期: 2026-09-09
 
-[World Action Models are Zero-shot Policies (DreamZero)](/Physical-AI-Papers-Survey/wm/world-action-models-are-zero-shot-policies-dreamzero-1951337490/) — Robot-Specific Action-Conditioned World Models（主題分類2）— arXiv:2602.15922，2026年2月17日提交，top conference caliber 出品（第三方 RoboArena 排行榜驗證第一名）、尚未於本頁記錄過
+[World Action Models are Zero-shot Policies (DreamZero)](/wm/world-action-models-are-zero-shot-policies-dreamzero-1951337490/) — Robot-Specific Action-Conditioned World Models（主題分類2）— arXiv:2602.15922，2026年2月17日提交，top conference caliber 出品（第三方 RoboArena 排行榜驗證第一名）、尚未於本頁記錄過
 
 選中原因：作者群為 NVIDIA 主導的大型團隊（含 Linxi "Jim" Fan、Jan Kautz、Yuke Zhu 等知名研究者），符合「科技大廠/知名實驗室出品」準則；以「video as dense world representation」的視角將動作生成與影片預測統一為單一擴散骨幹的聯合去噪任務，是與既有 VLA 動作解碼、甚至既有 cascaded WAM 設計明確區隔的架構創新，而非既有技巧的小幅組合；在第三方維護的 RoboArena 公開排行榜（2026年4月）上以 1750 Elo 排名第一，領先 π0.5（1622）與 π-FAST（1592），驗證具高度公信力。
 
@@ -151,7 +151,7 @@ DreamZero 解決「VLA 語意泛化強、但物理動作泛化弱」的問題：
 
 ### 推送日期: 2026-09-10
 
-[DreamDojo: A Generalist Robot World Model from Large-Scale Human Videos](/Physical-AI-Papers-Survey/wm/dreamdojo-a-generalist-robot-world-model-from-large-scale-human-videos-1955665089/) — Robot-Specific Action-Conditioned World Models（主題分類2，兼具資料規模化元素）— arXiv:2602.06949，2026年2月6日提交，top conference caliber 出品（NVIDIA GEAR 主導，作者含 Jitendra Malik、Pieter Abbeel、Yuke Zhu、Linxi "Jim" Fan 等）、尚未於本頁記錄過
+[DreamDojo: A Generalist Robot World Model from Large-Scale Human Videos](/wm/dreamdojo-a-generalist-robot-world-model-from-large-scale-human-videos-1955665089/) — Robot-Specific Action-Conditioned World Models（主題分類2，兼具資料規模化元素）— arXiv:2602.06949，2026年2月6日提交，top conference caliber 出品（NVIDIA GEAR 主導，作者含 Jitendra Malik、Pieter Abbeel、Yuke Zhu、Linxi "Jim" Fan 等）、尚未於本頁記錄過
 
 選中原因：作者群為 NVIDIA GEAR 大型團隊，並有 UC Berkeley 知名學者（Jitendra Malik、Pieter Abbeel）加入，符合「科技大廠/知名實驗室出品」準則；以「連續潛在動作」作為統一代理動作機制，首次將 world model 預訓練資料規模化到 44,000 小時第一人稱人類影片（約 96 倍於現有最多樣機器人資料集），並設計蒸餾管線達成 10.81 FPS 即時推論，是資料規模化與工程落地並重的架構創新，而非既有技巧的小幅組合；與同團隊 EgoScale（arXiv:2602.16710，本次同時推送至 VLA Papers 頁面）共享資料與基礎設施，構成 NVIDIA GEAR「人類資料規模化」路線的 world model 端。
 
@@ -159,7 +159,7 @@ DreamDojo 解決「機器人 world model 高度依賴機器人自身資料、規
 
 ### 推送日期: 2026-09-11
 
-[Inference-time Physics Alignment of Video Generative Models with Latent World Models](/Physical-AI-Papers-Survey/wm/inference-time-physics-alignment-of-video-generative-models-with-latent-world-mo-1959634541/) — World Model Evaluation & Physical-Reasoning Benchmarks（主題分類5，兼具與基礎模型 V-JEPA 2 的下游應用關係）— arXiv:2601.10553，2026年1月15日提交（2月27日修訂v2），top conference caliber（ICCV 2025 Perception Test PhysicsIQ Challenge 冠軍）、尚未於本頁記錄過
+[Inference-time Physics Alignment of Video Generative Models with Latent World Models](/wm/inference-time-physics-alignment-of-video-generative-models-with-latent-world-mo-1959634541/) — World Model Evaluation & Physical-Reasoning Benchmarks（主題分類5，兼具與基礎模型 V-JEPA 2 的下游應用關係）— arXiv:2601.10553，2026年1月15日提交（2月27日修訂v2），top conference caliber（ICCV 2025 Perception Test PhysicsIQ Challenge 冠軍）、尚未於本頁記錄過
 
 選中原因：作者群包含 Meta FAIR 資深研究員 Nicolas Ballas 與 Michal Drozdzal（Ballas 為 V-JEPA/JEPA 系列共同主導者），符合「科技大廠/知名實驗室出品」準則；直接以 ICCV 2025 Perception Test PhysicsIQ Challenge 官方排行榜第一名（62.64%，超越前 SOTA 7.42 個百分點）驗證，屬第三方獨立評測背書的 top-conference-caliber 成果；方法論上首次將「提升影片生成物理合理性」重新定義為推論時對齊問題，以潛在世界模型 V-JEPA 2 作為獎勵訊號引導多條候選去噪軌跡，是與既有訓練時修正方案明確區隔的架構創新，而非既有技巧的小幅組合。
 
@@ -167,7 +167,7 @@ DreamDojo 解決「機器人 world model 高度依賴機器人自身資料、規
 
 ### 推送日期: 2026-09-14
 
-[Cosmos Policy: Fine-Tuning Video Models for Visuomotor Control and Planning](/Physical-AI-Papers-Survey/wm/cosmos-policy-fine-tuning-video-models-for-visuomotor-control-and-planning-1963892209/) — Robot-Specific Action-Conditioned World Models（主題分類2）— arXiv:2601.16163，2026年1月22日提交，已被 ICLR 2026 接受（top conference caliber）、尚未於本頁記錄過
+[Cosmos Policy: Fine-Tuning Video Models for Visuomotor Control and Planning](/wm/cosmos-policy-fine-tuning-video-models-for-visuomotor-control-and-planning-1963892209/) — Robot-Specific Action-Conditioned World Models（主題分類2）— arXiv:2601.16163，2026年1月22日提交，已被 ICLR 2026 接受（top conference caliber）、尚未於本頁記錄過
 
 選中原因：作者群包含 NVIDIA 研究員（Ming-Yu Liu、Jinwei Gu 等）與史丹佛大學知名學者（Chelsea Finn、Shuran Song、Percy Liang），符合「科技大廠/知名實驗室出品」準則；已被 ICLR 2026 正式接受，同時符合「top conference caliber」準則；核心的「潛在影格注入」（latent frame injection）機制在不修改預訓練影片模型架構的前提下，將動作生成、未來狀態預測與價值評估統一表述為同一擴散序列的生成任務，是與既有「影片模型+額外動作頭+多階段訓練」範式明確區隔的架構創新，而非既有技巧的小幅組合；在模擬與真實世界雙軌評測上均取得 state-of-the-art 結果，驗證完整度高。
 

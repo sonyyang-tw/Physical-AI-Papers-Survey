@@ -3,7 +3,7 @@ layout: paper
 title: "In-Context World Modeling for Robotic Control"
 section: vla
 page_id: "1945474654"
-permalink: /Physical-AI-Papers-Survey/vla/in-context-world-modeling-for-robotic-control-1945474654/
+permalink: /vla/in-context-world-modeling-for-robotic-control-1945474654/
 ---
 
 **Paper** : [In-Context World Modeling for Robotic Control](https://arxiv.org/abs/2606.26025)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/in-context-world-modeling-for-robotic-
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945474654_icwm_fig1.png) 
+![Figure](/assets/images/1945474654_icwm_fig1.png) 
 
 _Figure 1: In-Context World Modeling (ICWM) 概念圖。標準 VLA 模型因固定的觀察-動作假設，在新的系統配置下經常失敗；如同人類會探索陌生的控制介面以建立心智世界模型，ICWM 使機器人能透過自我探測（self-probing）的互動上下文，自主推斷系統動態。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945474654_icwm_fig2.png) 
+![Figure](/assets/images/1945474654_icwm_fig2.png) 
 
 _Figure 2: ICWM 訓練與推論管線總覽。(1) 訓練階段：模型在跨多種系統配置蒐集的資料上訓練，其中與任務無關的互動片段被前置（prepend）到每筆訓練樣本作為上下文；(2) 推論階段：機器人於測試時先執行隨機探索以蒐集系統上下文，再據此透過上下文內推論（in-context inference）引導策略生成精確動作。_
 

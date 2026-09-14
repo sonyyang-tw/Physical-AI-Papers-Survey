@@ -3,7 +3,7 @@ layout: paper
 title: "Discrete Diffusion VLA: Bringing Discrete Diffusion to Action Decoding in Vision-Language-Action Policies"
 section: vla
 page_id: "1945364352"
-permalink: /Physical-AI-Papers-Survey/vla/discrete-diffusion-vla-bringing-discrete-diffusion-to-action-decoding-in-vision--1945364352/
+permalink: /vla/discrete-diffusion-vla-bringing-discrete-diffusion-to-action-decoding-in-vision--1945364352/
 ---
 
 **Paper** : [DreamerAD: Efficient Reinforcement Learning via Latent World Model for Autonomous Driving](https://arxiv.org/abs/2603.24587)  
@@ -16,11 +16,11 @@ DreamerAD 是第一個針對自動駕駛設計的「潛在空間世界模型」�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945364352_figure1_teaser.png) 
+![Figure](/assets/images/1945364352_figure1_teaser.png) 
 
 _Figure 1: 論文概論/teaser 圖，展示 DreamerAD 相較於既有 pixel-level diffusion world model 的加速與可解釋性優勢。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945364352_figure2_method.png) 
+![Figure](/assets/images/1945364352_figure2_method.png) 
 
 _Figure 2: DreamerAD 方法論架構圖，展示 shortcut forcing、自迴歸密集獎勵模型與 GRPO 高斯詞彙取樣三項機制如何整合於潛在空間 RL 訓練流程中。_
 

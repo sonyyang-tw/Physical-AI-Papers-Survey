@@ -3,7 +3,7 @@ layout: paper
 title: "Offline Semantic Guidance for Efficient Vision-Language-Action Policy Distillation"
 section: vla
 page_id: "1945473850"
-permalink: /Physical-AI-Papers-Survey/vla/offline-semantic-guidance-for-efficient-vision-language-action-policy-distillati-1945473850/
+permalink: /vla/offline-semantic-guidance-for-efficient-vision-language-action-policy-distillati-1945473850/
 ---
 
 **Paper** : [Offline Semantic Guidance for Efficient Vision-Language-Action Policy Distillation](https://arxiv.org/abs/2605.16241)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/offline-semantic-guidance-for-efficien
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473850_vlaad_fig1.png) 
+![Figure](/assets/images/1945473850_vlaad_fig1.png) 
 
 _Figure 1: VLA-AD 整體架構：透過凍結的教師 VLA（如 OpenVLA-7B 或 pi0.5-4B）與 VLM 提供平行離線監督，訓練輕量學生 VLA。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473850_vlaad_fig2.png) 
+![Figure](/assets/images/1945473850_vlaad_fig2.png) 
 
 _Figure 2: Qwen2.5-VL 對三段 OpenVLA-7B rollouts（libero_object）產生的階段錨定描述（approaching, transporting, placing）之定性範例。_
 

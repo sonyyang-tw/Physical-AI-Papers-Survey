@@ -3,7 +3,7 @@ layout: paper
 title: "Other Vehicle Trajectories Are Also Needed: A Driving World Model Unifies Ego-Other Vehicle Trajectories in Video Latent Space (EOT-WM)"
 section: wm
 page_id: "1945392511"
-permalink: /Physical-AI-Papers-Survey/wm/other-vehicle-trajectories-are-also-needed-a-driving-world-model-unifies-ego-oth-1945392511/
+permalink: /wm/other-vehicle-trajectories-are-also-needed-a-driving-world-model-unifies-ego-oth-1945392511/
 ---
 
 **Paper** : [Other Vehicle Trajectories Are Also Needed: A Driving World Model Unifies Ego-Other Vehicle Trajectories in Video Latent Space (EOT-WM)](https://arxiv.org/abs/2503.09215)  
@@ -16,11 +16,11 @@ EOT-WM 是一個自動駕駛用的世界模型，重點在於同時控制「自�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392511_eotwm_fig1.jpg) 
+![Figure](/assets/images/1945392511_eotwm_fig1.jpg) 
 
 _Figure 1: EOT-WM能生成更真實的影片,並可同時控制ego車輛與其他車輛的軌跡,這些軌跡以video space方式表示。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392511_eotwm_fig2.jpg) 
+![Figure](/assets/images/1945392511_eotwm_fig2.jpg) 
 
 _Figure 2: EOT-WM架構示意圖。_
 

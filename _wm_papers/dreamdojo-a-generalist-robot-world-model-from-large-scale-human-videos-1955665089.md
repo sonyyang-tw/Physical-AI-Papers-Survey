@@ -3,7 +3,7 @@ layout: paper
 title: "DreamDojo: A Generalist Robot World Model from Large-Scale Human Videos"
 section: wm
 page_id: "1955665089"
-permalink: /Physical-AI-Papers-Survey/wm/dreamdojo-a-generalist-robot-world-model-from-large-scale-human-videos-1955665089/
+permalink: /wm/dreamdojo-a-generalist-robot-world-model-from-large-scale-human-videos-1955665089/
 ---
 
 ### Abstract
@@ -18,7 +18,7 @@ permalink: /Physical-AI-Papers-Survey/wm/dreamdojo-a-generalist-robot-world-mode
 
 **和以往方式的差異** ：與過去侷限於機器人自身資料規模的 world model 不同，DreamDojo 首次系統性地將「人類第一人稱影片」規模化到 44K 小時這一數量級，並用連續潛在動作機制解決了「人類影片無動作標籤」這一長期障礙，使得從人類日常行為中遷移互動知識、physics 理解成為可能；這與同團隊 EgoScale（arXiv:2602.16710，本次同時推送至 VLA Papers 頁面）在 policy 學習端的路線形成呼應，但 DreamDojo 專注於「預測」而非「直接生成動作」，補全了 world model 這一側的資料規模化路徑。
 
-**關鍵方法圖** ： ![Figure](/Physical-AI-Papers-Survey/assets/images/1955665089_dreamdojo_overview.png) 展示 DreamDojo 整體流程：從 44K 小時人類第一人稱影片出發，經連續潛在動作提取與預訓練，到後訓練對齊機器人具身，最終支援遠端操作、策略評估、模型式規劃等下游應用。 ![Figure](/Physical-AI-Papers-Survey/assets/images/1955665089_dreamdojo_benchmark.png) 展示在多個分布外（OOD）benchmark 上的系統性評測結果，驗證模型模擬開放世界、接觸豐富任務的能力。
+**關鍵方法圖** ： ![Figure](/assets/images/1955665089_dreamdojo_overview.png) 展示 DreamDojo 整體流程：從 44K 小時人類第一人稱影片出發，經連續潛在動作提取與預訓練，到後訓練對齊機器人具身，最終支援遠端操作、策略評估、模型式規劃等下游應用。 ![Figure](/assets/images/1955665089_dreamdojo_benchmark.png) 展示在多個分布外（OOD）benchmark 上的系統性評測結果，驗證模型模擬開放世界、接觸豐富任務的能力。
 
 ### Result
 

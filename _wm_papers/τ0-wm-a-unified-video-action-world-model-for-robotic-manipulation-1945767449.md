@@ -3,7 +3,7 @@ layout: paper
 title: "τ0-WM: A Unified Video-Action World Model for Robotic Manipulation"
 section: wm
 page_id: "1945767449"
-permalink: /Physical-AI-Papers-Survey/wm/τ0-wm-a-unified-video-action-world-model-for-robotic-manipulation-1945767449/
+permalink: /wm/τ0-wm-a-unified-video-action-world-model-for-robotic-manipulation-1945767449/
 ---
 
 **Paper** : [τ0-WM: A Unified Video-Action World Model for Robotic Manipulation](https://arxiv.org/abs/2606.01027)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/wm/τ0-wm-a-unified-video-action-world-mod
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945767449_tau0wm_fig1.png) 
+![Figure](/assets/images/1945767449_tau0wm_fig1.png) 
 
 _Fig. 1: Overview of the τ0-WM framework — jointly training a Video Action Model and Action-Conditioned Video Simulator for test-time action selection._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945767449_tau0wm_fig2.png) 
+![Figure](/assets/images/1945767449_tau0wm_fig2.png) 
 
 _Fig. 2: Architecture of τ0-WM — Video Action Model (VAM) as policy interface and Action-Conditioned Video Simulator (ACVS) as evaluation interface._
 

@@ -3,7 +3,7 @@ layout: paper
 title: "τ0-VLA: a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation"
 section: vla
 page_id: "1946673513"
-permalink: /Physical-AI-Papers-Survey/vla/τ0-vla-a-hierarchical-robot-foundation-model-with-world-model-guided-test-time-c-1946673513/
+permalink: /vla/τ0-vla-a-hierarchical-robot-foundation-model-with-world-model-guided-test-time-c-1946673513/
 ---
 
 ### Abstract
@@ -12,7 +12,7 @@ permalink: /Physical-AI-Papers-Survey/vla/τ0-vla-a-hierarchical-robot-foundatio
 
 長 horizon 機器人操作任務需要機器人同時「可靠執行單一技能」和「在延展的任務序列上做出連貫的決策」。多數現有的階層式 (hierarchical) VLA 模型對每個高階決策僅用單次前向傳播 (single forward pass) 完成，沒有機制可以在困難或關鍵的決策點上分配額外運算資源。本文提出 τ0-VLA，一個階層式機器人基礎模型，將高階子任務 (subtask) 生成重新定義為透過 world-model 引導的測試時運算 (test-time computation, TTC) 的可擴展推論問題。在每個推論步驟中，高階策略利用執行記憶 (execution memory) 生成子任務，並在需要時對多個候選方案進行搜尋後才做出最終決策；低階策略則負責在多種機器人具身 (embodiment) 上執行生成的子任務。整個系統在 40,115 小時的異質真實世界資料上以多模態共同訓練 (multimodal co-training) 完成訓練。無論在同分布或分布偏移 (distribution-shifted) 的情境下，投入額外測試時運算皆能大幅提升「下一個子任務」預測的準確率，且這些準確率的提升確實能轉化為長 horizon 真實機器人操作任務更高的閉環 (closed-loop) 成功率。
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1946673513_teaser2.png) ![Figure](/Physical-AI-Papers-Survey/assets/images/1946673513_framework2.png) 
+![Figure](/assets/images/1946673513_teaser2.png) ![Figure](/assets/images/1946673513_framework2.png) 
 
 ### Method
 

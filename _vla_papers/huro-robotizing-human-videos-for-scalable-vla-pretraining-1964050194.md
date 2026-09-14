@@ -3,7 +3,7 @@ layout: paper
 title: "HuRo: Robotizing Human Videos for Scalable VLA Pretraining"
 section: vla
 page_id: "1964050194"
-permalink: /Physical-AI-Papers-Survey/vla/huro-robotizing-human-videos-for-scalable-vla-pretraining-1964050194/
+permalink: /vla/huro-robotizing-human-videos-for-scalable-vla-pretraining-1964050194/
 ---
 
 ### Abstract
@@ -20,7 +20,7 @@ permalink: /Physical-AI-Papers-Survey/vla/huro-robotizing-human-videos-for-scala
 
 下圖為 HuRo 整體架構概覽（圖一）與資料集建構管線細節（圖二）：
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1964050194_huro_fig1.png) ![Figure](/Physical-AI-Papers-Survey/assets/images/1964050194_huro_fig2.png) 
+![Figure](/assets/images/1964050194_huro_fig1.png) ![Figure](/assets/images/1964050194_huro_fig2.png) 
 
 ### Result
 

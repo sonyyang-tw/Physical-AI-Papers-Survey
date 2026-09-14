@@ -3,7 +3,7 @@ layout: paper
 title: "Mastering Diverse Domains through World Models (DreamerV3)"
 section: wm
 page_id: "1945767304"
-permalink: /Physical-AI-Papers-Survey/wm/mastering-diverse-domains-through-world-models-dreamerv3-1945767304/
+permalink: /wm/mastering-diverse-domains-through-world-models-dreamerv3-1945767304/
 ---
 
 **Paper** : [Mastering diverse control tasks through world models](https://www.nature.com/articles/s41586-025-08744-2)（arXiv 預印本：[Mastering Diverse Domains through World Models](https://arxiv.org/abs/2301.04104)）  
@@ -16,11 +16,11 @@ DreamerV3 是 Danijar Hafner 等人（Google DeepMind）提出的通用強化學
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945767304_dreamerv3_fig1.png) 
+![Figure](/assets/images/1945767304_dreamerv3_fig1.png) 
 
 _Figure 1: Benchmark summary。使用固定超參數，Dreamer 在多種基準與資料預算下超越調校過的專家演算法，並大幅優於 PPO；同時 Dreamer 在 Minecraft 遊戲中僅憑稀疏獎勵從零開始學會挖鑽石，這是先前方法需要人類資料或領域啟發式規則才能解決的長期挑戰。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945767304_dreamerv3_fig2.png) 
+![Figure](/assets/images/1945767304_dreamerv3_fig2.png) 
 
 _Figure 3 (a) World Model Learning: Dreamer 的訓練流程。世界模型（RSSM）將感官輸入編碼為離散表示 z_t，並由具遞歸狀態 h_t 的序列模型依動作 a_t 預測；輸入被重建以確保表示具資訊量，演員與評論家則依世界模型預測的抽象表示軌跡學習動作與價值。_
 

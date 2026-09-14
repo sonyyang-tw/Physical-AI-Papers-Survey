@@ -3,7 +3,7 @@ layout: paper
 title: "Decoding Task Progress from VLA Representations"
 section: vla
 page_id: "1945539940"
-permalink: /Physical-AI-Papers-Survey/vla/decoding-task-progress-from-vla-representations-1945539940/
+permalink: /vla/decoding-task-progress-from-vla-representations-1945539940/
 ---
 
 **Paper** : [Decoding Task Progress from VLA Representations](https://arxiv.org/abs/2608.13474)  
@@ -16,11 +16,11 @@ VLA 模型正快速朝向作為通用操作策略部署,但目前缺乏理解其
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539940_taskprogress_fig1.png) 
+![Figure](/assets/images/1945539940_taskprogress_fig1.png) 
 
 _Figure 1: Task progress is linearly readable from pi0.5 internal activations via a linear probe on residual-stream activations_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539940_taskprogress_fig2.png) 
+![Figure](/assets/images/1945539940_taskprogress_fig2.png) 
 
 _Figure 2: Decodability of the progress feature across layers (SigLIP, PaliGemma Gemma backbone, action expert) and probe performance vs. capacity_
 

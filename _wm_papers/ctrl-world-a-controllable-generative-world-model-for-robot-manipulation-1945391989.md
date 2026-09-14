@@ -3,7 +3,7 @@ layout: paper
 title: "Ctrl-World: A Controllable Generative World Model for Robot Manipulation"
 section: wm
 page_id: "1945391989"
-permalink: /Physical-AI-Papers-Survey/wm/ctrl-world-a-controllable-generative-world-model-for-robot-manipulation-1945391989/
+permalink: /wm/ctrl-world-a-controllable-generative-world-model-for-robot-manipulation-1945391989/
 ---
 
 **Paper** : [Ctrl-World: A Controllable Generative World Model for Robot Manipulation](https://arxiv.org/abs/2510.10125)  
@@ -16,11 +16,11 @@ Generalist機器人政策(generalist robot policy)已能執行大量操作技能
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945391989_ctrlworld_fig1.png) 
+![Figure](/assets/images/1945391989_ctrlworld_fig1.png) 
 
 _Figure 1: Ctrl-World overview — policy-in-the-loop rollouts with generalist robot policies for evaluation and improvement._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945391989_ctrlworld_fig2.png) 
+![Figure](/assets/images/1945391989_ctrlworld_fig2.png) 
 
 _Figure 2: Ctrl-World architecture — multi-view joint prediction, pose-conditioned memory retrieval, and frame-level action conditioning._
 

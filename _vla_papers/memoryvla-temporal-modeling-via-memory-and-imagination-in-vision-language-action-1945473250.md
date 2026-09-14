@@ -3,7 +3,7 @@ layout: paper
 title: "MemoryVLA++: Temporal Modeling via Memory and Imagination in Vision-Language-Action Models"
 section: vla
 page_id: "1945473250"
-permalink: /Physical-AI-Papers-Survey/vla/memoryvla-temporal-modeling-via-memory-and-imagination-in-vision-language-action-1945473250/
+permalink: /vla/memoryvla-temporal-modeling-via-memory-and-imagination-in-vision-language-action-1945473250/
 ---
 
 **Paper** : [MemoryVLA++: Temporal Modeling via Memory and Imagination in Vision-Language-Action Models](https://arxiv.org/abs/2606.09827)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/memoryvla-temporal-modeling-via-memory
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473250_memoryvlapp_fig1.png) 
+![Figure](/assets/images/1945473250_memoryvlapp_fig1.png) 
 
 _Fig. 2：三種典型 VLA 範式的核心思路比較。傳統 VLA 屬於反應式(reactive)，僅依賴當前觀測；MemoryVLA 引入「工作記憶-情節記憶」機制；而 MemoryVLA++ 進一步加入想像(imagination)模組，結合記憶與世界模型對未來進行預測。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473250_memoryvlapp_fig2.png) 
+![Figure](/assets/images/1945473250_memoryvlapp_fig2.png) 
 
 _Fig. 3：MemoryVLA++ 整體架構。當前 RGB 觀測與語言指令由 7B VLM 編碼為知覺與認知 tokens 形成工作記憶；工作記憶進一步與世界模型想像模組、時序感知動作專家(action expert)整合，實現記憶與想像雙軌的時序建模。_
 

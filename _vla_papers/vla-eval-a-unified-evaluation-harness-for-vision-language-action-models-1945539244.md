@@ -3,7 +3,7 @@ layout: paper
 title: "vla-eval: A Unified Evaluation Harness for Vision-Language-Action Models"
 section: vla
 page_id: "1945539244"
-permalink: /Physical-AI-Papers-Survey/vla/vla-eval-a-unified-evaluation-harness-for-vision-language-action-models-1945539244/
+permalink: /vla/vla-eval-a-unified-evaluation-harness-for-vision-language-action-models-1945539244/
 ---
 
 **Paper** : [DreamerAD: Efficient Reinforcement Learning via Latent World Model for Autonomous Driving](https://arxiv.org/abs/2603.24587)  
@@ -16,7 +16,7 @@ DreamerAD 是第一個針對自動駕駛設計的「潛在空間世界模型」�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539244_vlaeval_fig1.png) 
+![Figure](/assets/images/1945539244_vlaeval_fig1.png) 
 
 _Figure 1: vla-eval overview teaser figure._
 

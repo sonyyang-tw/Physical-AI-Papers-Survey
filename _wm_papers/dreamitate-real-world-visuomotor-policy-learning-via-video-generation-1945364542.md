@@ -3,7 +3,7 @@ layout: paper
 title: "Dreamitate: Real-World Visuomotor Policy Learning via Video Generation"
 section: wm
 page_id: "1945364542"
-permalink: /Physical-AI-Papers-Survey/wm/dreamitate-real-world-visuomotor-policy-learning-via-video-generation-1945364542/
+permalink: /wm/dreamitate-real-world-visuomotor-policy-learning-via-video-generation-1945364542/
 ---
 
 **Paper** : [Dreamitate: Real-World Visuomotor Policy Learning via Video Generation](https://arxiv.org/abs/2406.16862)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/wm/dreamitate-real-world-visuomotor-policy
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945364542_dreamitate_fig1.png) 
+![Figure](/assets/images/1945364542_dreamitate_fig1.png) 
 
 _Figure 1: Real-World Visuomotor Policy Learning via Video Generation - Dreamitate fine-tunes a video generative model to synthesize videos of tool-use demonstrations, which are tracked to extract robot actions._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945364542_dreamitate_fig2.png) 
+![Figure](/assets/images/1945364542_dreamitate_fig2.png) 
 
 _Figure 2: Method Overview - stereo camera recordings of human demonstrations, video model fine-tuning, and 3D trajectory extraction for closed-loop execution._
 

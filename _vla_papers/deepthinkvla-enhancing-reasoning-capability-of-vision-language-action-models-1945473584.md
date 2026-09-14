@@ -3,7 +3,7 @@ layout: paper
 title: "DeepThinkVLA: Enhancing Reasoning Capability of Vision-Language-Action Models"
 section: vla
 page_id: "1945473584"
-permalink: /Physical-AI-Papers-Survey/vla/deepthinkvla-enhancing-reasoning-capability-of-vision-language-action-models-1945473584/
+permalink: /vla/deepthinkvla-enhancing-reasoning-capability-of-vision-language-action-models-1945473584/
 ---
 
 **Paper** : [DeepThinkVLA: Enhancing Reasoning Capability of Vision-Language-Action Models](https://arxiv.org/abs/2511.15669)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/deepthinkvla-enhancing-reasoning-capab
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473584_deepthinkvla_fig2.png) 
+![Figure](/assets/images/1945473584_deepthinkvla_fig2.png) 
 
 _Figure 1：VLA 架構比較。DeepThinkVLA 提出一種混合設計，將自回歸式(autoregressive) Chain-of-Thought 推理與並行動作解碼(parallel action decoding)相結合，兼顧推理能力與推論效率。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473584_deepthinkvla_fig1.png) 
+![Figure](/assets/images/1945473584_deepthinkvla_fig1.png) 
 
 _Figure 2：具身 CoT 資料集建構的兩階段流程。第一階段透過夾爪狀態變化擷取關鍵幀並查詢雲端大型視覺語言模型(LVLM)；第二階段則在本地 VLM 上進行微調，以生成高品質的具身推理鏈標註。_
 

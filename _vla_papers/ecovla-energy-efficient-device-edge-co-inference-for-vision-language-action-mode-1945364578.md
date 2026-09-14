@@ -3,7 +3,7 @@ layout: paper
 title: "EcoVLA: Energy-Efficient Device-Edge Co-Inference for Vision-Language-Action Models under Real-Time Constraints"
 section: vla
 page_id: "1945364578"
-permalink: /Physical-AI-Papers-Survey/vla/ecovla-energy-efficient-device-edge-co-inference-for-vision-language-action-mode-1945364578/
+permalink: /vla/ecovla-energy-efficient-device-edge-co-inference-for-vision-language-action-mode-1945364578/
 ---
 
 **Paper** : [EcoVLA: Energy-Efficient Device-Edge Co-Inference for Vision-Language-Action Models under Real-Time Constraints](https://arxiv.org/abs/2608.15502)  
@@ -16,11 +16,11 @@ Vision-Language-Action (VLA) 模型已成為具身智能（Embodied AI）的重�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945364578_ecovla_fig1.png) 
+![Figure](/assets/images/1945364578_ecovla_fig1.png) 
 
 _Figure 1: EcoVLA 的挑戰與動機 ——說明裝置端-邊緣端協同推論在即時性與能耗限制下面臨的核心問題。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945364578_ecovla_fig2.png) 
+![Figure](/assets/images/1945364578_ecovla_fig2.png) 
 
 _Figure 2: EcoVLA 框架總覽 ——展示裝置端與邊緣端協同推論架構如何在滿足即時性約束下最佳化能耗。_
 

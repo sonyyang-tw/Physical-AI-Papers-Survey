@@ -3,7 +3,7 @@ layout: paper
 title: "OpenVLA: An Open-Source Vision-Language-Action Model"
 section: vla
 page_id: "1945393020"
-permalink: /Physical-AI-Papers-Survey/vla/openvla-an-open-source-vision-language-action-model-1945393020/
+permalink: /vla/openvla-an-open-source-vision-language-action-model-1945393020/
 ---
 
 **Paper** : [OpenVLA: An Open-Source Vision-Language-Action Model](https://arxiv.org/abs/2406.09246)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/openvla-an-open-source-vision-language
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945393020_openvla_fig1.png) 
+![Figure](/assets/images/1945393020_openvla_fig1.png) 
 
 _Figure 1: OpenVLA overview_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945393020_openvla_fig2.png) 
+![Figure](/assets/images/1945393020_openvla_fig2.png) 
 
 _Figure 2: OpenVLA model architecture_
 

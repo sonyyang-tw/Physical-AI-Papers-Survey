@@ -3,7 +3,7 @@ layout: paper
 title: "Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation"
 section: vla
 page_id: "1945391543"
-permalink: /Physical-AI-Papers-Survey/vla/dual-latent-memory-in-vision-language-action-models-for-robotic-manipulation-1945391543/
+permalink: /vla/dual-latent-memory-in-vision-language-action-models-for-robotic-manipulation-1945391543/
 ---
 
 **Paper** : [Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation (LaMem-VLA)](https://arxiv.org/abs/2607.07608)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/dual-latent-memory-in-vision-language-
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945391543_lamemvla_fig1.png) 
+![Figure](/assets/images/1945391543_lamemvla_fig1.png) 
 
 _Figure 1：記憶增強型 VLA 模型的範式比較。與先前將歷史經驗存於輔助記憶庫、再透過檢索方式消費記憶的作法不同，圖中對比了不同記憶機制的設計理念與資訊流動方式。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945391543_lamemvla_fig2.png) 
+![Figure](/assets/images/1945391543_lamemvla_fig2.png) 
 
 _Figure 2：LaMem-VLA 框架架構。給定指令與當前觀測，視覺-語言編碼器首先將輸入編碼為多模態表徵，再透過雙尺度潛在記憶(dual-scale latent memory)機制進行記憶的寫入、檢索與融合，驅動動作生成。_
 

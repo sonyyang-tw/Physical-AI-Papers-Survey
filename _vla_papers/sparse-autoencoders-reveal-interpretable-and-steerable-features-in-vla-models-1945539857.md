@@ -3,7 +3,7 @@ layout: paper
 title: "Sparse Autoencoders Reveal Interpretable and Steerable Features in VLA Models"
 section: vla
 page_id: "1945539857"
-permalink: /Physical-AI-Papers-Survey/vla/sparse-autoencoders-reveal-interpretable-and-steerable-features-in-vla-models-1945539857/
+permalink: /vla/sparse-autoencoders-reveal-interpretable-and-steerable-features-in-vla-models-1945539857/
 ---
 
 **Paper** : [Sparse Autoencoders Reveal Interpretable and Steerable Features in VLA Models](https://arxiv.org/abs/2603.19183)  
@@ -16,11 +16,11 @@ VLA 模型雖已成為通用機械手臂操作的主流方法,但少有研究以
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539857_saevla_fig1.png) 
+![Figure](/assets/images/1945539857_saevla_fig1.png) 
 
 _Figure 1: SAE 訓練與特徵解析流程總覽_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539857_saevla_fig2.png) 
+![Figure](/assets/images/1945539857_saevla_fig2.png) 
 
 _Figure 2: 特徵操控(steering)實驗架構_
 

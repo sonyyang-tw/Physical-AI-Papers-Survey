@@ -3,7 +3,7 @@ layout: paper
 title: "HAF: Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action Flow and Spectral Latent RL"
 section: vla
 page_id: "1945364999"
-permalink: /Physical-AI-Papers-Survey/vla/haf-adapting-generalist-vlas-to-humanoid-whole-body-loco-manipulation-via-hierar-1945364999/
+permalink: /vla/haf-adapting-generalist-vlas-to-humanoid-whole-body-loco-manipulation-via-hierar-1945364999/
 ---
 
 **Paper** : [HAF: Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action Flow and Spectral Latent RL](https://arxiv.org/abs/2608.16837)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/haf-adapting-generalist-vlas-to-humano
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945364999_haf_fig1.png) 
+![Figure](/assets/images/1945364999_haf_fig1.png) 
 
 _Figure 1: HAF overview._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945364999_haf_fig2.png) 
+![Figure](/assets/images/1945364999_haf_fig2.png) 
 
 _Figure 2: HAF VLA pipeline._
 

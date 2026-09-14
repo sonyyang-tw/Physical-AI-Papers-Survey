@@ -3,7 +3,7 @@ layout: paper
 title: "Targeting World Models to Compromise Robot Learning Pipelines"
 section: wm
 page_id: "1945473989"
-permalink: /Physical-AI-Papers-Survey/wm/targeting-world-models-to-compromise-robot-learning-pipelines-1945473989/
+permalink: /wm/targeting-world-models-to-compromise-robot-learning-pipelines-1945473989/
 ---
 
 **Paper** : [Targeting World Models to Compromise Robot Learning Pipelines](https://arxiv.org/abs/2606.09499)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/wm/targeting-world-models-to-compromise-ro
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473989_wmattack_fig1.png) 
+![Figure](/assets/images/1945473989_wmattack_fig1.png) 
 
 _Figure 1: 「視覺提示劫持 (Visual Prompt Hijacking)」攻擊示意圖，針對文字條件世界模型，用惡意提示覆寫使用者原始提示，導致生成危險的學習軌跡並傳播至下游機器人策略。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473989_wmattack_fig2.png) 
+![Figure](/assets/images/1945473989_wmattack_fig2.png) 
 
 _Figure 2: 威脅模型視覺化。惡意資料提供者透過針對機器人學習流程中的世界模型下手，將危險行為或改變後的轉移動態植入原本安全的遙操作資料中，藉此在繞過資料集層級安全檢查的同時毒害下游機器人策略。_
 

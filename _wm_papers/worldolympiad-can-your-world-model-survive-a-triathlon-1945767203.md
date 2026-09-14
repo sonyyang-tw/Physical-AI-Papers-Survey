@@ -3,7 +3,7 @@ layout: paper
 title: "WorldOlympiad: Can Your World Model Survive a Triathlon?"
 section: wm
 page_id: "1945767203"
-permalink: /Physical-AI-Papers-Survey/wm/worldolympiad-can-your-world-model-survive-a-triathlon-1945767203/
+permalink: /wm/worldolympiad-can-your-world-model-survive-a-triathlon-1945767203/
 ---
 
 **Paper** : [WorldOlympiad: Can Your World Model Survive a Triathlon?](https://arxiv.org/abs/2606.11129)  
@@ -16,11 +16,11 @@ WorldOlympiad 是一個用來全面診斷「影片式世界模型」(video-based
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945767203_worldolympiad_fig1.png) 
+![Figure](/assets/images/1945767203_worldolympiad_fig1.png) 
 
 _Figure 1: Overview of the WorldOlympiad pipeline for data collection, long-video generation, and multi-dimensional evaluation._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945767203_worldolympiad_fig2.png) 
+![Figure](/assets/images/1945767203_worldolympiad_fig2.png) 
 
 _Figure 3: Data standardization pipeline from raw videos to refined action-caption annotations._
 

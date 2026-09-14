@@ -3,7 +3,7 @@ layout: paper
 title: "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning"
 section: wm
 page_id: "1945474552"
-permalink: /Physical-AI-Papers-Survey/wm/v-jepa-2-self-supervised-video-models-enable-understanding-prediction-and-planni-1945474552/
+permalink: /wm/v-jepa-2-self-supervised-video-models-enable-understanding-prediction-and-planni-1945474552/
 ---
 
 **Paper** : [V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning](https://arxiv.org/abs/2506.09985)  
@@ -16,11 +16,11 @@ V-JEPA 2 是 Meta FAIR 提出的自監督影片模型，結合網路規模的影
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945474552_vjepa2_fig1.png) 
+![Figure](/assets/images/1945474552_vjepa2_fig1.png) 
 
 _Figure: V-JEPA 2 Abstract 概論圖 — 影片與圖片自監督預訓練，結合少量機器人資料訓練 action-conditioned world model。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945474552_vjepa2_fig2.png) 
+![Figure](/assets/images/1945474552_vjepa2_fig2.png) 
 
 _Figure 1: V-JEPA 2 Overview — 以 1M 小時網路影片與 1M 圖片預訓練 visual mask denoising 影片模型架構。_
 

@@ -3,7 +3,7 @@ layout: paper
 title: "VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning Tasks"
 section: vla
 page_id: "1945474246"
-permalink: /Physical-AI-Papers-Survey/vla/vlabench-a-large-scale-benchmark-for-language-conditioned-robotics-manipulation--1945474246/
+permalink: /vla/vlabench-a-large-scale-benchmark-for-language-conditioned-robotics-manipulation--1945474246/
 ---
 
 **Paper** : [VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning Tasks](https://arxiv.org/abs/2412.18194)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/vlabench-a-large-scale-benchmark-for-l
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945474246_vlabench_fig1.png) 
+![Figure](/assets/images/1945474246_vlabench_fig1.png) 
 
 _Figure 1: VLABench overview._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945474246_vlabench_fig6.png) 
+![Figure](/assets/images/1945474246_vlabench_fig6.png) 
 
 _Figure 6: VLABench evaluation workflow._
 

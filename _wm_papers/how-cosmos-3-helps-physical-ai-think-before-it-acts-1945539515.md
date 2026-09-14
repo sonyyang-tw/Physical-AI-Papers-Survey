@@ -3,7 +3,7 @@ layout: paper
 title: "How Cosmos 3 Helps Physical AI Think Before It Acts"
 section: wm
 page_id: "1945539515"
-permalink: /Physical-AI-Papers-Survey/wm/how-cosmos-3-helps-physical-ai-think-before-it-acts-1945539515/
+permalink: /wm/how-cosmos-3-helps-physical-ai-think-before-it-acts-1945539515/
 ---
 
 **Paper** : [How Cosmos 3 Helps Physical AI Think Before It Acts](https://blogs.nvidia.com/blog/cosmos-3-physical-ai-open-world-foundation-model/)（另可參考 [NVIDIA Cosmos 3 技術報告](https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf) 與 [NVIDIA Cosmos 產品頁](https://www.nvidia.com/en-us/ai/cosmos/)）  
@@ -16,11 +16,11 @@ NVIDIA Cosmos 3 是 NVIDIA 於 2026 年 6 月發布的開放式「世界基礎�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539515_cosmos3_fig1.png) 
+![Figure](/assets/images/1945539515_cosmos3_fig1.png) 
 
 _Figure 1: Cosmos 3 作為 Physical AI 的通用骨幹模型，統一建模語言、影像、影片、音訊與動作，涵蓋理解與生成任務。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539515_cosmos3_fig3.svg) 
+![Figure](/assets/images/1945539515_cosmos3_fig3.svg) 
 
 _Figure 5: Cosmos 3 的 Mixture-of-Transformers (MoT) 架構 — 單一 transformer 同時處理自回歸（AR）與擴散（DM）子序列，透過共享自注意力機制連結兩者。_
 

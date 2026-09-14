@@ -3,7 +3,7 @@ layout: paper
 title: "WoVR: World Models as Reliable Simulators for Post-Training VLA Policies with RL"
 section: wm
 page_id: "1945473965"
-permalink: /Physical-AI-Papers-Survey/wm/wovr-world-models-as-reliable-simulators-for-post-training-vla-policies-with-rl-1945473965/
+permalink: /wm/wovr-world-models-as-reliable-simulators-for-post-training-vla-policies-with-rl-1945473965/
 ---
 
 **Paper** : [WoVR: World Models as Reliable Simulators for Post-Training VLA Policies with RL](https://arxiv.org/abs/2602.13977)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/wm/wovr-world-models-as-reliable-simulator
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473965_wovr_fig1.png) 
+![Figure](/assets/images/1945473965_wovr_fig1.png) 
 
 _Figure 2 (原文編號): WoVR 總覽，透過強化世界模型作為可控模擬器、Keyframe-Initialized Rollouts (KIR) 減少誤差深度、以及 PACE 維持策略與模型對齊，建立可靠的強化學習框架。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473965_wovr_fig2.png) 
+![Figure](/assets/images/1945473965_wovr_fig2.png) 
 
 _Figure 3 (原文編號): 動作條件世界模型架構，基於影片擴散骨幹並透過雙通道動作注入設計實現逐幀可控性與穩定的分塊自回歸生成。_
 

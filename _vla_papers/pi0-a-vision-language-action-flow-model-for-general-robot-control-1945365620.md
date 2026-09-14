@@ -3,7 +3,7 @@ layout: paper
 title: "Pi0: A Vision-Language-Action Flow Model for General Robot Control"
 section: vla
 page_id: "1945365620"
-permalink: /Physical-AI-Papers-Survey/vla/pi0-a-vision-language-action-flow-model-for-general-robot-control-1945365620/
+permalink: /vla/pi0-a-vision-language-action-flow-model-for-general-robot-control-1945365620/
 ---
 
 **Paper** : [π0: A Vision-Language-Action Flow Model for General Robot Control](https://arxiv.org/abs/2410.24164)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/pi0-a-vision-language-action-flow-mode
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945365620_pi0_fig1.png) 
+![Figure](/assets/images/1945365620_pi0_fig1.png) 
 
 _Figure 1: pi0 overview — VLM backbone plus action expert producing continuous actions via flow matching_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945365620_pi0_fig3.png) 
+![Figure](/assets/images/1945365620_pi0_fig3.png) 
 
 _Figure 3: Overview of the framework — pre-training mixture, flow matching VLA model with VLM backbone and action expert_
 

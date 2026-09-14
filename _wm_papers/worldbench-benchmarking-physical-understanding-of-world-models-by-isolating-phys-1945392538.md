@@ -3,7 +3,7 @@ layout: paper
 title: "WorldBench: Benchmarking Physical Understanding of World Models by Isolating Physics Concepts"
 section: wm
 page_id: "1945392538"
-permalink: /Physical-AI-Papers-Survey/wm/worldbench-benchmarking-physical-understanding-of-world-models-by-isolating-phys-1945392538/
+permalink: /wm/worldbench-benchmarking-physical-understanding-of-world-models-by-isolating-phys-1945392538/
 ---
 
 **Paper** : [WorldBench: Benchmarking Physical Understanding of World Models by Isolating Physics Concepts](https://arxiv.org/abs/2601.21282)  
@@ -16,11 +16,11 @@ WorldBench 是一個影片式基準，專門用來評估生成式世界模型對
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392538_worldbench_fig1.png) 
+![Figure](/assets/images/1945392538_worldbench_fig1.png) 
 
 _Figure 1: WorldBench 生成與評測流程總覽（Kubric/PyBullet/Blender 生成場景，並以多層次物理任務評測世界模型）。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392538_worldbench_fig2.png) 
+![Figure](/assets/images/1945392538_worldbench_fig2.png) 
 
 _Figure 2: 物理參數估計 pipeline 總覽 — 由輸入影片經棋盤格偵測與 SAM2 萃取 3D 位置後估計物理常數。_
 

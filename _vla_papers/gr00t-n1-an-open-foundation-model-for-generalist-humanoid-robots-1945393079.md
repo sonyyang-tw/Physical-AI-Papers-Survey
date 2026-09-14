@@ -3,7 +3,7 @@ layout: paper
 title: "GR00T N1: An Open Foundation Model for Generalist Humanoid Robots"
 section: vla
 page_id: "1945393079"
-permalink: /Physical-AI-Papers-Survey/vla/gr00t-n1-an-open-foundation-model-for-generalist-humanoid-robots-1945393079/
+permalink: /vla/gr00t-n1-an-open-foundation-model-for-generalist-humanoid-robots-1945393079/
 ---
 
 **Paper** : [GR00T N1: An Open Foundation Model for Generalist Humanoid Robots](https://arxiv.org/abs/2503.14734)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/gr00t-n1-an-open-foundation-model-for-
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945393079_groot_fig2.png) 
+![Figure](/assets/images/1945393079_groot_fig2.png) 
 
 _Figure 2: GR00T N1 Model Overview — dual-system VLA design converting image/language into action tokens_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945393079_groot_fig3.png) 
+![Figure](/assets/images/1945393079_groot_fig3.png) 
 
 _Figure 3: GR00T N1 Model Architecture — trained across embodiments from single-arm robots to bimanual humanoid hands_
 

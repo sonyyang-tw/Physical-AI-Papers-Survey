@@ -3,7 +3,7 @@ layout: paper
 title: "Vision-Language-Action in Robotics: A Survey of Datasets, Benchmarks, and Data Engines"
 section: vla
 page_id: "1945392329"
-permalink: /Physical-AI-Papers-Survey/vla/vision-language-action-in-robotics-a-survey-of-datasets-benchmarks-and-data-engi-1945392329/
+permalink: /vla/vision-language-action-in-robotics-a-survey-of-datasets-benchmarks-and-data-engi-1945392329/
 ---
 
 **Paper** : [Vision-Language-Action in Robotics: A Survey of Datasets, Benchmarks, and Data Engines](https://arxiv.org/abs/2604.23001)  
@@ -16,7 +16,7 @@ permalink: /Physical-AI-Papers-Survey/vla/vision-language-action-in-robotics-a-s
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392329_survey2_fig2.png) 
+![Figure](/assets/images/1945392329_survey2_fig2.png) 
 
 _Figure 2: Survey scope overview._
 

@@ -3,7 +3,7 @@ layout: paper
 title: "Helix: A Vision-Language-Action Model for Generalist Humanoid Control"
 section: vla
 page_id: "1945393112"
-permalink: /Physical-AI-Papers-Survey/vla/helix-a-vision-language-action-model-for-generalist-humanoid-control-1945393112/
+permalink: /vla/helix-a-vision-language-action-model-for-generalist-humanoid-control-1945393112/
 ---
 
 **Paper** : [Helix: A Vision-Language-Action Model for Generalist Humanoid Control](https://www.figure.ai/news/helix)  
@@ -16,7 +16,7 @@ Helix 是 Figure AI 發表的一種「System 1、System 2」式 VLA 模型,號�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945393112_helix_fig1.png) 
+![Figure](/assets/images/1945393112_helix_fig1.png) 
 
 _Figure 1: Scaling curves for different approaches to acquiring new robot skills — heuristic manipulation scales with PhD engineering time, imitation learning scales with collected data, Helix enables new skills specified on the fly via language (Helix 官網未提供獨立的 System 1/System 2 架構示意圖，僅以文字描述架構)_
 

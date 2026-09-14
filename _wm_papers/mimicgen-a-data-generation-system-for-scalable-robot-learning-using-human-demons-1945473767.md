@@ -3,7 +3,7 @@ layout: paper
 title: "MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations"
 section: wm
 page_id: "1945473767"
-permalink: /Physical-AI-Papers-Survey/wm/mimicgen-a-data-generation-system-for-scalable-robot-learning-using-human-demons-1945473767/
+permalink: /wm/mimicgen-a-data-generation-system-for-scalable-robot-learning-using-human-demons-1945473767/
 ---
 
 **Paper** : [MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations](https://arxiv.org/abs/2310.17596)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/wm/mimicgen-a-data-generation-system-for-s
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473767_mimicgen_fig1.png) 
+![Figure](/assets/images/1945473767_mimicgen_fig1.png) 
 
 _Figure 1: MimicGen Overview - generating large diverse datasets from a small number of human demonstrations by re-purposing them for new settings._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473767_mimicgen_fig2.png) 
+![Figure](/assets/images/1945473767_mimicgen_fig2.png) 
 
 _Figure 2: MimicGen System Pipeline - parsing source demos into object-centric subtask segments and adapting them to generate new demonstrations._
 

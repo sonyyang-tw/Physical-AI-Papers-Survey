@@ -3,7 +3,7 @@ layout: paper
 title: "LoHoVLA: A Unified Vision-Language-Action Model for Long-Horizon Embodied Tasks"
 section: vla
 page_id: "1945538792"
-permalink: /Physical-AI-Papers-Survey/vla/lohovla-a-unified-vision-language-action-model-for-long-horizon-embodied-tasks-1945538792/
+permalink: /vla/lohovla-a-unified-vision-language-action-model-for-long-horizon-embodied-tasks-1945538792/
 ---
 
 **Paper** : [LoHoVLA: A Unified Vision-Language-Action Model for Long-Horizon Embodied Tasks](https://arxiv.org/abs/2506.00411)  
@@ -16,7 +16,7 @@ permalink: /Physical-AI-Papers-Survey/vla/lohovla-a-unified-vision-language-acti
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945538792_lohovla_fig1.png) 
+![Figure](/assets/images/1945538792_lohovla_fig1.png) 
 
 _Figure 1: LoHoVLA 概論圖與方法架構圖 ——上方對比 vanilla VLA 與階層式架構的差異，下方展示 LoHoVLA 統一模型同時生成語言子任務 token 與動作 token 的整體架構。_
 

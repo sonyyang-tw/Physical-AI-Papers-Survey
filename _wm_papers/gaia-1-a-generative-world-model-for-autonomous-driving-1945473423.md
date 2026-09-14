@@ -3,7 +3,7 @@ layout: paper
 title: "GAIA-1: A Generative World Model for Autonomous Driving"
 section: wm
 page_id: "1945473423"
-permalink: /Physical-AI-Papers-Survey/wm/gaia-1-a-generative-world-model-for-autonomous-driving-1945473423/
+permalink: /wm/gaia-1-a-generative-world-model-for-autonomous-driving-1945473423/
 ---
 
 **Paper** : [GAIA-1: A Generative World Model for Autonomous Driving](https://arxiv.org/abs/2309.17080)  
@@ -16,11 +16,11 @@ GAIA-1（Generative AI for Autonomy）是 Wayve 提出的生成式世界模型�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473423_gaia1_fig1.png) 
+![Figure](/assets/images/1945473423_gaia1_fig1.png) 
 
 _Figure 1: GAIA-1 multimodal video generation - future rollouts conditioned on actions._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945473423_gaia1_fig2.png) 
+![Figure](/assets/images/1945473423_gaia1_fig2.png) 
 
 _Figure 2: Architecture of GAIA-1 - encoding video/text/action into tokens, autoregressive world model, video decoder._
 

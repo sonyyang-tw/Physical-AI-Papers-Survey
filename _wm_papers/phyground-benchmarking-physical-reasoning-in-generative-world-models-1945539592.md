@@ -3,7 +3,7 @@ layout: paper
 title: "PhyGround: Benchmarking Physical Reasoning in Generative World Models"
 section: wm
 page_id: "1945539592"
-permalink: /Physical-AI-Papers-Survey/wm/phyground-benchmarking-physical-reasoning-in-generative-world-models-1945539592/
+permalink: /wm/phyground-benchmarking-physical-reasoning-in-generative-world-models-1945539592/
 ---
 
 **Paper** : [PhyGround: Benchmarking Physical Reasoning in Generative World Models](https://arxiv.org/abs/2605.10806)  
@@ -16,11 +16,11 @@ PhyGround 是一個針對「生成式世界模型（影片生成模型）是否�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539592_phyground_fig1.png) 
+![Figure](/assets/images/1945539592_phyground_fig1.png) 
 
 _Figure 1: Overview of PhyGround - 將每個影片生成模型的整體物理推理分數拆解為13種物理定律的個別分數,由459位標註者進行大規模、有品質控管的人工評估。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539592_phyground_fig5.png) 
+![Figure](/assets/images/1945539592_phyground_fig5.png) 
 
 _Figure 5: Annotation design workflow - PhyGround人工標註流程設計架構圖。_
 

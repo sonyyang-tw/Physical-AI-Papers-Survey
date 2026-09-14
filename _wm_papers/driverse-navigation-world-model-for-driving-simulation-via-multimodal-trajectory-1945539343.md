@@ -3,7 +3,7 @@ layout: paper
 title: "DriVerse: Navigation World Model for Driving Simulation via Multimodal Trajectory Prompting and Motion Alignment"
 section: wm
 page_id: "1945539343"
-permalink: /Physical-AI-Papers-Survey/wm/driverse-navigation-world-model-for-driving-simulation-via-multimodal-trajectory-1945539343/
+permalink: /wm/driverse-navigation-world-model-for-driving-simulation-via-multimodal-trajectory-1945539343/
 ---
 
 **Paper** : [DriVerse: Navigation World Model for Driving Simulation via Multimodal Trajectory Prompting and Motion Alignment](https://arxiv.org/abs/2504.18576)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/wm/driverse-navigation-world-model-for-dri
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539343_driverse_fig1.png) 
+![Figure](/assets/images/1945539343_driverse_fig1.png) 
 
 _Figure 1: DriVerse navigation world model overview - 從單張圖片與導航軌跡生成高品質、與真實駕駛場景對齊的影片。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539343_driverse_fig2.png) 
+![Figure](/assets/images/1945539343_driverse_fig2.png) 
 
 _Figure 2: DriVerse framework overview - 靜態對齊(Multimodal Trajectory Prompting)與動態對齊(Motion Alignment)兩大模組架構。_
 

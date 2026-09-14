@@ -3,7 +3,7 @@ layout: paper
 title: "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control"
 section: vla
 page_id: "1945474821"
-permalink: /Physical-AI-Papers-Survey/vla/rt-2-vision-language-action-models-transfer-web-knowledge-to-robotic-control-1945474821/
+permalink: /vla/rt-2-vision-language-action-models-transfer-web-knowledge-to-robotic-control-1945474821/
 ---
 
 **Paper** : [RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control](https://arxiv.org/abs/2307.15818)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/rt-2-vision-language-action-models-tra
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945474821_rt2_fig1.png) 
+![Figure](/assets/images/1945474821_rt2_fig1.png) 
 
 _Figure 1: RT-2 overview — robot actions represented as text tokens, co-trained with Internet-scale vision-language data_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945474821_rt2_fig2.png) 
+![Figure](/assets/images/1945474821_rt2_fig2.png) 
 
 _Figure 2: RT-2 generalizes to real-world situations requiring reasoning, symbol understanding, and human recognition_
 

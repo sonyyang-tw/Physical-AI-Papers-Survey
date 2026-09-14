@@ -3,7 +3,7 @@ layout: paper
 title: "Inference-time Physics Alignment of Video Generative Models with Latent World Models"
 section: wm
 page_id: "1959634541"
-permalink: /Physical-AI-Papers-Survey/wm/inference-time-physics-alignment-of-video-generative-models-with-latent-world-mo-1959634541/
+permalink: /wm/inference-time-physics-alignment-of-video-generative-models-with-latent-world-mo-1959634541/
 ---
 
 ### Abstract
@@ -20,11 +20,11 @@ permalink: /Physical-AI-Papers-Survey/wm/inference-time-physics-alignment-of-vid
 
 **關鍵方法圖示** ：Figure 1（已嵌入下方，teaser）展示本方法在 PhysicsIQ benchmark 上於單幀（I2V）與多幀（V2V）條件式生成情境下皆取得新的 state-of-the-art；Figure 3（已嵌入下方，method overview）詳細呈現以滑動視窗（sliding window）方式運用 V-JEPA-2 對候選去噪軌跡進行評分與引導的整體流程。
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1959634541_wmreward_teaser.png) 
+![Figure](/assets/images/1959634541_wmreward_teaser.png) 
 
 _Figure 1: 在 PhysicsIQ benchmark 上，WMReward 於 I2V 與 V2V 條件式生成皆取得新 SOTA_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1959634541_wmreward_method.png) 
+![Figure](/assets/images/1959634541_wmreward_method.png) 
 
 _Figure 3: Method Overview — 以 V-JEPA-2 潛在世界模型作為獎勵，透過滑動視窗引導候選去噪軌跡_
 

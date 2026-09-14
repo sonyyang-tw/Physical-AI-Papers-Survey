@@ -3,7 +3,7 @@ layout: paper
 title: "iWorld-Bench: A Benchmark for Interactive World Models with a Unified Action Generation Framework"
 section: wm
 page_id: "1945539121"
-permalink: /Physical-AI-Papers-Survey/wm/iworld-bench-a-benchmark-for-interactive-world-models-with-a-unified-action-gene-1945539121/
+permalink: /wm/iworld-bench-a-benchmark-for-interactive-world-models-with-a-unified-action-gene-1945539121/
 ---
 
 **Paper** : [iWorld-Bench: A Benchmark for Interactive World Models with a Unified Action Generation Framework](https://arxiv.org/abs/2605.03941)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/wm/iworld-bench-a-benchmark-for-interactiv
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539121_iworldbench_fig1.png) 
+![Figure](/assets/images/1945539121_iworldbench_fig1.png) 
 
 _Figure 1: iWorld-Bench 總覽，涵蓋 UGV/UAV/人類/機器人四種視角，結合統一的 Action Generation Framework 評測互動式世界模型。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539121_iworldbench_fig2.png) 
+![Figure](/assets/images/1945539121_iworldbench_fig2.png) 
 
 _Figure 2: 資料處理流程與總覽，包含資料收集、統一化、VLM 輔助標註、人工驗證四步驟。_
 

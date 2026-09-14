@@ -3,7 +3,7 @@ layout: paper
 title: "RoboWM-Bench: A Benchmark for Evaluating World Models in Robotic Manipulation"
 section: wm
 page_id: "1945365171"
-permalink: /Physical-AI-Papers-Survey/wm/robowm-bench-a-benchmark-for-evaluating-world-models-in-robotic-manipulation-1945365171/
+permalink: /wm/robowm-bench-a-benchmark-for-evaluating-world-models-in-robotic-manipulation-1945365171/
 ---
 
 **Paper** : [RoboWM-Bench: A Benchmark for Evaluating World Models in Robotic Manipulation](https://arxiv.org/abs/2604.19092)  
@@ -16,11 +16,11 @@ RoboWM-Bench 是一個以「機器人操作（manipulation）」為核心的基�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945365171_robowm_fig1.png) 
+![Figure](/assets/images/1945365171_robowm_fig1.png) 
 
 _Figure 1: RoboWM-Bench 總覽 — 透過具身接地執行評估影片世界模型，涵蓋人手與機器人操作預測轉換為動作序列。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945365171_robowm_fig2.png) 
+![Figure](/assets/images/1945365171_robowm_fig2.png) 
 
 _Figure 2: RoboWM-Bench Pipeline — 從初始場景觀測，透過 real-to-sim 重建對應真實場景並在模擬環境中驗證動作可執行性。_
 

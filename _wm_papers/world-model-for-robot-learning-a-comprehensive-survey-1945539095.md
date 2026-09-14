@@ -3,7 +3,7 @@ layout: paper
 title: "World Model for Robot Learning: A Comprehensive Survey"
 section: wm
 page_id: "1945539095"
-permalink: /Physical-AI-Papers-Survey/wm/world-model-for-robot-learning-a-comprehensive-survey-1945539095/
+permalink: /wm/world-model-for-robot-learning-a-comprehensive-survey-1945539095/
 ---
 
 **Paper** : [World Model for Robot Learning: A Comprehensive Survey](https://arxiv.org/abs/2605.00080)  
@@ -16,7 +16,7 @@ permalink: /Physical-AI-Papers-Survey/wm/world-model-for-robot-learning-a-compre
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539095_survey_wm2_fig1.png) 
+![Figure](/assets/images/1945539095_survey_wm2_fig1.png) 
 
 _Figure 1: Overview of the organization of this survey - architectural coupling of world models with robot policies, world models as simulators, and related evaluation/benchmarks._
 

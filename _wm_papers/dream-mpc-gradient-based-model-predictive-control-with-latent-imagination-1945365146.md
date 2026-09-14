@@ -3,7 +3,7 @@ layout: paper
 title: "Dream-MPC: Gradient-Based Model Predictive Control with Latent Imagination"
 section: wm
 page_id: "1945365146"
-permalink: /Physical-AI-Papers-Survey/wm/dream-mpc-gradient-based-model-predictive-control-with-latent-imagination-1945365146/
+permalink: /wm/dream-mpc-gradient-based-model-predictive-control-with-latent-imagination-1945365146/
 ---
 
 **Paper** : [Dream-MPC: Gradient-Based Model Predictive Control with Latent Imagination](https://arxiv.org/abs/2605.04568)  
@@ -16,7 +16,7 @@ Dream-MPC 提出一種以梯度為基礎（gradient-based）的模型預測控�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945365146_dreammpc_fig2.png) 
+![Figure](/assets/images/1945365146_dreammpc_fig2.png) 
 
 _Figure 2: Overview of the proposed approach - Dream-MPC以gradient-based MPC在latent space z中優化從policy網路rollout出的動作序列,N條候選軌跡經取樣後平行優化。(註:論文中的Figure 1為結果彙總圖表,非概念圖,故此處僅嵌入方法架構圖Figure 2。)_
 

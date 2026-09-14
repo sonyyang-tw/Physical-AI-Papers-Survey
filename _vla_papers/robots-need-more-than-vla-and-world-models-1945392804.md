@@ -3,7 +3,7 @@ layout: paper
 title: "Robots Need More than VLA and World Models"
 section: vla
 page_id: "1945392804"
-permalink: /Physical-AI-Papers-Survey/vla/robots-need-more-than-vla-and-world-models-1945392804/
+permalink: /vla/robots-need-more-than-vla-and-world-models-1945392804/
 ---
 
 **Paper** : [Robots Need More than VLA and World Models](https://arxiv.org/abs/2606.06556)  
@@ -16,7 +16,7 @@ permalink: /Physical-AI-Papers-Survey/vla/robots-need-more-than-vla-and-world-mo
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392804_robots_need_more_fig1.png) 
+![Figure](/assets/images/1945392804_robots_need_more_fig1.png) 
 
 _Figure 1: 下一代機器人技術將來自遠超越單純擴大視覺語言動作（VLA）模型規模的進展。_
 

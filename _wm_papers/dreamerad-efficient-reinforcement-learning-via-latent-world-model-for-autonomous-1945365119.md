@@ -3,7 +3,7 @@ layout: paper
 title: "DreamerAD: Efficient Reinforcement Learning via Latent World Model for Autonomous Driving"
 section: wm
 page_id: "1945365119"
-permalink: /Physical-AI-Papers-Survey/wm/dreamerad-efficient-reinforcement-learning-via-latent-world-model-for-autonomous-1945365119/
+permalink: /wm/dreamerad-efficient-reinforcement-learning-via-latent-world-model-for-autonomous-1945365119/
 ---
 
 **Paper** : [DreamerAD: Efficient Reinforcement Learning via Latent World Model for Autonomous Driving](https://arxiv.org/abs/2603.24587)  
@@ -16,11 +16,11 @@ DreamerAD 是第一個針對自動駕駛設計的「潛在空間世界模型」�
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945365119_dreamerad_fig1a.png) ![Figure](/Physical-AI-Papers-Survey/assets/images/1945365119_dreamerad_fig1b.png) ![Figure](/Physical-AI-Papers-Survey/assets/images/1945365119_dreamerad_fig1c.png) 
+![Figure](/assets/images/1945365119_dreamerad_fig1a.png) ![Figure](/assets/images/1945365119_dreamerad_fig1b.png) ![Figure](/assets/images/1945365119_dreamerad_fig1c.png) 
 
 _Figure 1: World model imagination training guided by diverse trajectories - world model對候選軌跡想像未來結果,RGB序列顯示預測畫面搭配reward分數(紅:碰撞風險,綠:安全),右側BEV圖顯示危險路徑(紅)與安全路徑(綠)的對比。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945365119_dreamerad_fig3.png) 
+![Figure](/assets/images/1945365119_dreamerad_fig3.png) 
 
 _Figure 3: DreamerAD RL訓練架構總覽 - 包含Policy Generation and Sampling、Shortcut Forcing World Model、Autoregressive Dense Reward Model三大階段。_
 

@@ -3,7 +3,7 @@ layout: paper
 title: "DualCoT-VLA: Visual-Linguistic Chain of Thought via Parallel Reasoning for Vision-Language-Action Models"
 section: vla
 page_id: "1945767494"
-permalink: /Physical-AI-Papers-Survey/vla/dualcot-vla-visual-linguistic-chain-of-thought-via-parallel-reasoning-for-vision-1945767494/
+permalink: /vla/dualcot-vla-visual-linguistic-chain-of-thought-via-parallel-reasoning-for-vision-1945767494/
 ---
 
 **Paper** : [Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos with Human-Aligned Embodiments](https://arxiv.org/abs/2606.32009)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/dualcot-vla-visual-linguistic-chain-of
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945767494_dualcotvla_fig1.png) 
+![Figure](/assets/images/1945767494_dualcotvla_fig1.png) 
 
 _Figure 1: DualCoT-VLA 整體架構。VLM backbone 處理由視覺觀測、語言指令與兩組可學習 query token 組成的統一序列；DualCoT-VLA 對 VLA 模型採用視覺-語言雙重思維鏈（visual-linguistic CoT）。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945767494_dualcotvla_fig2.png) 
+![Figure](/assets/images/1945767494_dualcotvla_fig2.png) 
 
 _Figure 2(a): Visual CoT 示意圖。可學習的空間 query 向量透過交叉注意力將視覺 CoT token 的壓縮輸出隱狀態解碼為高解析度特徵圖，並以凍結的 DA3 密集特徵作為 MSE 損失的監督訊號。_
 

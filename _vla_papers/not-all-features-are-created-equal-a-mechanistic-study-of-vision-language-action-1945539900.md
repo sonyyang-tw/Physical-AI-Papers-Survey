@@ -3,7 +3,7 @@ layout: paper
 title: "Not All Features Are Created Equal: A Mechanistic Study of Vision-Language-Action Models"
 section: vla
 page_id: "1945539900"
-permalink: /Physical-AI-Papers-Survey/vla/not-all-features-are-created-equal-a-mechanistic-study-of-vision-language-action-1945539900/
+permalink: /vla/not-all-features-are-created-equal-a-mechanistic-study-of-vision-language-action-1945539900/
 ---
 
 **Paper** : [Not All Features Are Created Equal: A Mechanistic Study of Vision-Language-Action Models](https://arxiv.org/abs/2603.19233)  
@@ -16,11 +16,11 @@ VLA 模型結合感知、語言與運動控制於單一架構,但其如何將多
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539900_notallfeatures_fig1.png) 
+![Figure](/assets/images/1945539900_notallfeatures_fig1.png) 
 
 _Figure 1: Three core findings on pi0.5 — activation injection recovers baseline behavior, cross-task override, and feature attribution_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539900_notallfeatures_fig2.png) 
+![Figure](/assets/images/1945539900_notallfeatures_fig2.png) 
 
 _Figure 2: Methodology overview — activation recording from VLA backbone/action expert and counterfactual replay_
 

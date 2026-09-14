@@ -3,7 +3,7 @@ layout: paper
 title: "From World Models to World Action Models: A Concise Tutorial for Robotics"
 section: wm
 page_id: "1945539286"
-permalink: /Physical-AI-Papers-Survey/wm/from-world-models-to-world-action-models-a-concise-tutorial-for-robotics-1945539286/
+permalink: /wm/from-world-models-to-world-action-models-a-concise-tutorial-for-robotics-1945539286/
 ---
 
 **Paper** : [From World Models to World Action Models: A Concise Tutorial for Robotics](https://arxiv.org/abs/2607.00836)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/wm/from-world-models-to-world-action-model
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539286_wamtutorial_fig1.png) 
+![Figure](/assets/images/1945539286_wamtutorial_fig1.png) 
 
 _Figure 1: Illustration of the components of a world._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539286_wamtutorial_fig2.png) 
+![Figure](/assets/images/1945539286_wamtutorial_fig2.png) 
 
 _Figure 8: Taxonomy of world action models — coupling future observation prediction with robot action generation in different ways._
 

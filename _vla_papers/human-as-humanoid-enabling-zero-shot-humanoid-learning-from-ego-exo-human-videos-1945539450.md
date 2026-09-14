@@ -3,7 +3,7 @@ layout: paper
 title: "Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos with Human-Aligned Embodiments"
 section: vla
 page_id: "1945539450"
-permalink: /Physical-AI-Papers-Survey/vla/human-as-humanoid-enabling-zero-shot-humanoid-learning-from-ego-exo-human-videos-1945539450/
+permalink: /vla/human-as-humanoid-enabling-zero-shot-humanoid-learning-from-ego-exo-human-videos-1945539450/
 ---
 
 **Paper** : [Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos with Human-Aligned Embodiments](https://arxiv.org/abs/2606.32009)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/human-as-humanoid-enabling-zero-shot-h
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539450_hah_fig1.png) 
+![Figure](/assets/images/1945539450_hah_fig1.png) 
 
 _Figure 1: Human-as-Humanoid introduction figure._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945539450_hah_fig3.png) 
+![Figure](/assets/images/1945539450_hah_fig3.png) 
 
 _Figure 3: Human-as-Humanoid network architecture._
 

@@ -3,7 +3,7 @@ layout: paper
 title: "Cosmos Policy: Fine-Tuning Video Models for Visuomotor Control and Planning"
 section: wm
 page_id: "1963892209"
-permalink: /Physical-AI-Papers-Survey/wm/cosmos-policy-fine-tuning-video-models-for-visuomotor-control-and-planning-1963892209/
+permalink: /wm/cosmos-policy-fine-tuning-video-models-for-visuomotor-control-and-planning-1963892209/
 ---
 
 ### Abstract
@@ -20,7 +20,7 @@ permalink: /Physical-AI-Papers-Survey/wm/cosmos-policy-fine-tuning-video-models-
 
 下圖為 Cosmos Policy 總覽（圖一）與潛在擴散序列/潛在影格注入機制圖解（圖二）：
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1963892209_cosmos_fig1.jpeg) ![Figure](/Physical-AI-Papers-Survey/assets/images/1963892209_cosmos_fig2.jpeg) 
+![Figure](/assets/images/1963892209_cosmos_fig1.jpeg) ![Figure](/assets/images/1963892209_cosmos_fig2.jpeg) 
 
 ### Result
 

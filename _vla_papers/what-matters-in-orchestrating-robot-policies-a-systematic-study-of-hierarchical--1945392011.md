@@ -3,7 +3,7 @@ layout: paper
 title: "What Matters in Orchestrating Robot Policies: A Systematic Study of Hierarchical VLA Agents"
 section: vla
 page_id: "1945392011"
-permalink: /Physical-AI-Papers-Survey/vla/what-matters-in-orchestrating-robot-policies-a-systematic-study-of-hierarchical--1945392011/
+permalink: /vla/what-matters-in-orchestrating-robot-policies-a-systematic-study-of-hierarchical--1945392011/
 ---
 
 **Paper** : [HAF: Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action Flow and Spectral Latent RL](https://arxiv.org/abs/2608.16837)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/what-matters-in-orchestrating-robot-po
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392011_orchvla_fig1.png) 
+![Figure](/assets/images/1945392011_orchvla_fig1.png) 
 
 _Figure 1: 階層式 VLA 系統有潛力透過生成合適的指令來彌補低層 VLA 的不足，藉此達成組合式泛化（compositional generalization），尤其適用於長時程與需要推理的任務。本文研究 Hi-VLA 系統的關鍵設計選擇。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392011_orchvla_fig2.png) 
+![Figure](/assets/images/1945392011_orchvla_fig2.png) 
 
 _Figure 6: 觀測表示流程。研究三種將原始影像觀測轉換為文字的方式：(1) 直接查詢 VLM、(2) 在查詢中加入（VLM 生成的）邊界框資訊、(3) 在查詢中加入特權接觸資訊（privileged contact information）。_
 

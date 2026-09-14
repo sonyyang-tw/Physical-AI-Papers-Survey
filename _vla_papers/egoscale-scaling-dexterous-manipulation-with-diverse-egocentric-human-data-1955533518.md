@@ -3,7 +3,7 @@ layout: paper
 title: "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data"
 section: vla
 page_id: "1955533518"
-permalink: /Physical-AI-Papers-Survey/vla/egoscale-scaling-dexterous-manipulation-with-diverse-egocentric-human-data-1955533518/
+permalink: /vla/egoscale-scaling-dexterous-manipulation-with-diverse-egocentric-human-data-1955533518/
 ---
 
 ### Abstract
@@ -18,7 +18,7 @@ permalink: /Physical-AI-Papers-Survey/vla/egoscale-scaling-dexterous-manipulatio
 
 **和以往方式的差異** ：先前的人到機器人遷移研究多侷限於受限場景、小規模資料，且缺乏系統性驗證「資料規模」本身的效益。EgoScale 首次在超過 20,000 小時規模（20 倍於先前工作）的人類資料上，系統性量化了資料規模與驗證損失之間的對數線性縮放定律，並證明此驗證損失能可靠預測真實機器人下游表現——這使「大規模人類資料」從一種輔助手段，轉變為可預測、可規劃投資回報的核心監督訊號來源，是方法論與實證雙重貢獻，而非單純資料量的堆疊。
 
-**關鍵方法圖** ： ![Figure](/Physical-AI-Papers-Survey/assets/images/1955533518_egoscale_pull.png) 展示 EgoScale 整體流程：大規模第一人稱人類資料採集 → VLA 預訓練 → 人機對齊中訓練 → 22 DoF 靈巧機械手部署，以及跨具身遷移到較低自由度機械手的能力。 ![Figure](/Physical-AI-Papers-Survey/assets/images/1955533518_egoscale_arch.png) 展示 EgoScale 模型架構細節，包括如何從人類影片中提取偽動作標籤並與機器人動作空間對齊。
+**關鍵方法圖** ： ![Figure](/assets/images/1955533518_egoscale_pull.png) 展示 EgoScale 整體流程：大規模第一人稱人類資料採集 → VLA 預訓練 → 人機對齊中訓練 → 22 DoF 靈巧機械手部署，以及跨具身遷移到較低自由度機械手的能力。 ![Figure](/assets/images/1955533518_egoscale_arch.png) 展示 EgoScale 模型架構細節，包括如何從人類影片中提取偽動作標籤並與機器人動作空間對齊。
 
 ### Result
 

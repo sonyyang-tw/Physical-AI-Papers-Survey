@@ -3,7 +3,7 @@ layout: paper
 title: "World Action Models: The Next Frontier in Embodied AI"
 section: vla
 page_id: "1945392639"
-permalink: /Physical-AI-Papers-Survey/vla/world-action-models-the-next-frontier-in-embodied-ai-1945392639/
+permalink: /vla/world-action-models-the-next-frontier-in-embodied-ai-1945392639/
 ---
 
 **Paper** : [World Action Models: The Next Frontier in Embodied AI](https://arxiv.org/abs/2605.12090)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/vla/world-action-models-the-next-frontier-
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392639_wam_survey_fig1.png) 
+![Figure](/assets/images/1945392639_wam_survey_fig1.png) 
 
 _Figure 1: World Action Models (WAMs) 代表性研究的時序演進與分類。左側分支呈現 Joint WAM 架構的發展，將世界預測與動作生成緊密耦合，並進一步分歧為自回歸（Autoregressive）與擴散式（Diffusion-based）表徵方案，其中連續式方法再細分為 Unified Stream 與 Multi-Stream 骨幹；右側分支總結 Cascaded WAM 管線的發展，其中世界建模與動作執行主要解耦，沿著顯式（Explicit）與隱式（Implicit）表徵對齊路線演進。_
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392639_wam_survey_fig2.png) 
+![Figure](/assets/images/1945392639_wam_survey_fig2.png) 
 
 _Figure 2: 本綜述回顧之 World Action Models (WAMs) 全景路線圖與分類。文獻被系統性歸類為四大核心維度：背景（Background）、架構（Architecture）、訓練資料（Training data）、評測協定（Evaluation）。_
 

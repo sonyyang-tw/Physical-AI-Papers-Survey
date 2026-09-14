@@ -3,7 +3,7 @@ layout: paper
 title: "A Step Toward World Models: A Survey on Robotic Manipulation"
 section: wm
 page_id: "1945392081"
-permalink: /Physical-AI-Papers-Survey/wm/a-step-toward-world-models-a-survey-on-robotic-manipulation-1945392081/
+permalink: /wm/a-step-toward-world-models-a-survey-on-robotic-manipulation-1945392081/
 ---
 
 **Paper** : [A Step Toward World Models: A Survey on Robotic Manipulation](https://arxiv.org/abs/2511.02097)  
@@ -16,11 +16,11 @@ permalink: /Physical-AI-Papers-Survey/wm/a-step-toward-world-models-a-survey-on-
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392081_survey_wm_fig1.png) 
+![Figure](/assets/images/1945392081_survey_wm_fig1.png) 
 
 _Fig. 1: Conceptual flow of the survey — clarifying motivation, scope, and pathways toward more general and capable world models._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392081_survey_wm_fig2.png) 
+![Figure](/assets/images/1945392081_survey_wm_fig2.png) 
 
 _Fig. 3: Overview of world model paradigms — implicit world models, latent-dynamics world models, and video-generation-based world models._
 

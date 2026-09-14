@@ -3,7 +3,7 @@ layout: paper
 title: "WholeBodyVLA: Towards Unified Latent VLA for Whole-Body Loco-Manipulation Control"
 section: vla
 page_id: "1945392363"
-permalink: /Physical-AI-Papers-Survey/vla/wholebodyvla-towards-unified-latent-vla-for-whole-body-loco-manipulation-control-1945392363/
+permalink: /vla/wholebodyvla-towards-unified-latent-vla-for-whole-body-loco-manipulation-control-1945392363/
 ---
 
 **Paper** : [WorldBench: Benchmarking Physical Understanding of World Models by Isolating Physics Concepts](https://arxiv.org/abs/2601.21282)  
@@ -16,11 +16,11 @@ WorldBench 是一個影片式基準，專門用來評估生成式世界模型對
 
 ### Method
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392363_wholebodyvla_fig1.png) 
+![Figure](/assets/images/1945392363_wholebodyvla_fig1.png) 
 
 _Figure 1: WholeBodyVLA teaser._
 
-![Figure](/Physical-AI-Papers-Survey/assets/images/1945392363_wholebodyvla_fig2.png) 
+![Figure](/assets/images/1945392363_wholebodyvla_fig2.png) 
 
 _Figure 2: WholeBodyVLA pipeline._
 
