@@ -7,62 +7,54 @@ permalink: /wm/phyground-benchmarking-physical-reasoning-in-generative-world-mod
 ---
 
 **Paper** : [PhyGround: Benchmarking Physical Reasoning in Generative World Models](https://arxiv.org/abs/2605.10806)  
-**Source** : arXiv (cs.CV / cs.AI / cs.LG)，Preprint，專案頁：<https://phyground.github.io/>  
+**Source** : arXiv (cs.CV / cs.AI / cs.LG), Preprint, Project page: <https://phyground.github.io/>  
 **arXiv ID** : 2605.10806
 
 ### Abstract
 
-PhyGround 是一個針對「生成式世界模型（影片生成模型）是否真正理解物理規律」而設計的評測基準（benchmark）。作者指出，現有的物理導向影片評測基準雖已有進展，但仍面臨三大挑戰：評測框架過於粗略而掩蓋了特定物理定律層面的失敗、標註者的回應偏差與疲勞影響判斷的有效性、以及自動化評測器對物理不夠敏感或難以稽核。PhyGround 包含 250 個經策劃的 prompt，每個都附有預期的物理結果，並涵蓋固體力學、流體力學與光學共 13 類物理定律的分類法（taxonomy），每個定律都被拆解為可觀察的子問題以支援逐定律的診斷。作者透過大規模、品質控管的人類研究（借鑑社會科學實驗設計）評估 8 個現代影片生成模型，共有 459 名標註者提供 5,796 份完整標註與超過 37,400 個細粒度標籤；品質控管後保留的標註呈現高度的 split-half 模型排名相關性（Spearman's rho > 0.90）。為支援可重現的自動化評測，作者也釋出 PhyJudge-9B，一個開源的、物理專用的視覺語言模型（VLM）評判器，其整體相對偏差顯著低於 Gemini-3.1-Pro（3.3% 對 16.6%）。
+PhyGround is a benchmark designed to evaluate whether generative world models (video generation models) truly understand physical laws. The authors point out that while existing physics-oriented video benchmarks have made progress, they still face three major challenges: evaluation frameworks that are too coarse-grained and mask failures at the level of specific physical laws, annotator response bias and fatigue that affect the validity of judgments, and automated evaluators that are insufficiently sensitive to physics or difficult to audit. PhyGround includes 250 curated prompts, each paired with an expected physical outcome, and covers a taxonomy of 13 categories of physical laws spanning solid mechanics, fluid dynamics, and optics, with each law broken down into observable sub-questions to support per-law diagnosis. The authors evaluate 8 modern video generation models through a large-scale, quality-controlled human study (drawing on social science experimental design), with 459 annotators providing 5,796 complete annotations and over 37,400 fine-grained labels; after quality control, the retained annotations show a high split-half model ranking correlation (Spearman's rho > 0.90). To support reproducible automated evaluation, the authors also release PhyJudge-9B, an open-source, physics-specialized vision-language model (VLM) judge, whose overall relative bias is significantly lower than that of Gemini-3.1-Pro (3.3% versus 16.6%).
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945539592_phyground_fig1.png) 
 
-_Figure 1: Overview of PhyGround - 將每個影片生成模型的整體物理推理分數拆解為13種物理定律的個別分數,由459位標註者進行大規模、有品質控管的人工評估。_
+_Figure 1: Overview of PhyGround - decomposing each video generation model's overall physical reasoning score into individual scores across 13 categories of physical laws, evaluated through large-scale, quality-controlled human evaluation by 459 annotators._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945539592_phyground_fig5.png) 
 
-_Figure 5: Annotation design workflow - PhyGround人工標註流程設計架構圖。_
+_Figure 5: Annotation design workflow - architecture diagram of PhyGround's human annotation process design._
 
-  * 要解決的問題：如何嚴謹、細粒度地評估影片生成／世界模型是否遵守真實世界的物理規律，而非僅憑粗略的整體評分掩蓋特定物理定律上的失敗；同時要解決人類標註品質不穩定（偏差、疲勞）與自動化評判器物理知識不足、難以稽核的問題。
-  * Main method：PhyGround 建立一套「準則導向（criteria-grounded）」的基準，核心設計包括：
-    * 250 個經策劃的 prompt，每個都標註了預期物理結果（expected physical outcome）。
-    * 13 類物理定律的分類法，橫跨固體力學、流體動力學與光學。
-    * 每個定律拆解為可觀察的子問題（sub-questions），使評測能做到逐定律（per-law）的診斷，而非單一整體分數。
-    * 借鑑社會科學實驗設計方法，控管大規模人類標註（459 人、5,796 份標註、37.4K 細粒度標籤）的品質，並用 split-half 方法驗證標註可靠性。
-    * 釋出 PhyJudge-9B，一個經物理知識強化訓練的開源 VLM 評判器，用以自動化複現評測。
-  * 與以往方式的差異：以往的物理向影片基準常將多個物理概念/定律糾纏在單一測試題中評分，難以定位具體失敗原因；PhyGround 透過「定律拆解成子問題」的設計做到解耦（disentangled）評測，並用社會科學等級的實驗設計來控管人類標註品質，同時提供比通用 VLM（如 Gemini-3.1-Pro）偏差更低的專用評判模型。
-  * 重要方法設計描述：可以想像整個評測流程分三層——(1) Prompt 層：250 個 prompt 覆蓋 13 類物理定律，每個 prompt 附帶明確的「預期物理結果」描述；(2) 生成層：8 個現代影片生成模型分別依 prompt 生成影片；(3) 評測層：對每部生成影片，標註者針對該定律下的一組可觀察子問題（例如「物體是否維持恆定體積」、「液體是否符合黏度預期行為」）逐項打分，形成細粒度標籤；同時 PhyJudge-9B 作為自動化替代評判器，經過品質控管的人類標籤訓練/校準後，可在無需大規模人類標註的情況下重現評測結果。
-
-
+  * **Problem addressed**: How to rigorously and fine-grainedly evaluate whether video generation / world models obey real-world physical laws, rather than masking failures on specific physical laws with coarse overall scores; and at the same time addressing the instability of human annotation quality (bias, fatigue) and the insufficient physical knowledge and auditability of automated evaluators.
+  * **Main method**: PhyGround establishes a "criteria-grounded" benchmark, with the core design including:
+    * 250 curated prompts, each annotated with an expected physical outcome.
+    * A taxonomy of 13 categories of physical laws spanning solid mechanics, fluid dynamics, and optics.
+    * Each law is decomposed into observable sub-questions, enabling per-law diagnosis rather than a single overall score.
+    * Drawing on social science experimental design methods to control the quality of large-scale human annotation (459 people, 5,796 annotations, 37.4K fine-grained labels), and using a split-half method to verify annotation reliability.
+    * Releasing PhyJudge-9B, an open-source VLM judge trained with enhanced physical knowledge, to enable automated reproduction of the evaluation.
+  * **Difference from prior approaches**: Previous physics-oriented video benchmarks often entangle multiple physical concepts/laws within a single test item, making it difficult to pinpoint the exact cause of failure. PhyGround achieves disentangled evaluation by decomposing laws into sub-questions, and uses social-science-grade experimental design to control the quality of human annotation, while also providing a specialized evaluation model with lower bias than general-purpose VLMs (such as Gemini-3.1-Pro).
+  * **Key design details**: The entire evaluation process can be imagined as three layers — (1) Prompt layer: 250 prompts covering 13 categories of physical laws, each with an explicit "expected physical outcome" description; (2) Generation layer: 8 modern video generation models each generate videos according to the prompts; (3) Evaluation layer: for each generated video, annotators score a set of observable sub-questions under that law item by item (e.g., "does the object maintain constant volume," "does the fluid behave according to expected viscosity"), forming fine-grained labels; meanwhile, PhyJudge-9B serves as an automated substitute evaluator, and after being trained/calibrated on quality-controlled human labels, can reproduce the evaluation results without requiring large-scale human annotation.
 
 ### Result
 
-  * 主要成果：完成了對 8 個現代影片生成模型的大規模人類評測（5,796 份標註、37.4K 細粒度標籤），標註品質經 split-half 驗證達到高相關性（Spearman's rho > 0.90），顯示評測結果穩定可信；同時 PhyJudge-9B 相較於 Gemini-3.1-Pro 有更低的評判偏差（3.3% 對 16.6%）。
-  * 增強部分：主要增強「物理推理評測的細粒度診斷能力」（逐定律分析而非整體評分）與「自動化評判的物理準確度／可稽核性」（PhyJudge-9B 優於通用大型 VLM）。
-  * 是否公正：摘要中提供的 PhyJudge-9B vs Gemini-3.1-Pro 偏差比較（3.3% vs 16.6%）是作者自己的評測結果，屬於自我報告的比較；由於這是一個新發布的 benchmark（2026年5月），目前需要查證是否已有其他論文使用 PhyGround 對相同或不同模型集合重新評測、驗證排名一致性。
-
-
+  * **Main results**: A large-scale human evaluation of 8 modern video generation models was completed (5,796 annotations, 37.4K fine-grained labels), with annotation quality validated by split-half analysis achieving high correlation (Spearman's rho > 0.90), indicating stable and credible evaluation results. Meanwhile, PhyJudge-9B shows lower evaluation bias compared to Gemini-3.1-Pro (3.3% versus 16.6%).
+  * **Contributions**: The main contributions are enhancing "fine-grained diagnostic ability for physical reasoning evaluation" (per-law analysis rather than an overall score) and "the physical accuracy/auditability of automated evaluation" (PhyJudge-9B outperforming general-purpose large VLMs).
+  * **Fairness**: The comparison between PhyJudge-9B and Gemini-3.1-Pro bias (3.3% vs 16.6%) provided in the abstract is the authors' own evaluation result, and is a self-reported comparison. Since this is a newly released benchmark (May 2026), it currently needs to be verified whether other papers have used PhyGround to re-evaluate the same or different sets of models to verify ranking consistency.
 
 ### Limitation
 
-  * 論文中自陳的限制：僅根據 arXiv abstract 頁面資訊，摘要本身未詳列 limitation 章節內容（全文56頁、39圖、40表，需要查證全文的 limitation/discussion 章節）。
-  * 從結果推測的弱項：
-    * 僅評測了 8 個現代影片生成模型，覆蓋範圍可能無法代表所有主流模型（尤其新模型更新速度快，benchmark 可能很快過時）。
-    * 大規模人群標註（459 人）雖經品質控管，但人類對「物理正確性」的主觀判斷仍可能存在文化/背景差異，論文雖借鑑社會科學實驗設計以控管，但無法完全消除主觀性。
-    * PhyJudge-9B 作為 9B 規模的專用模型，其物理知識覆蓋範圍是否能推廣到 PhyGround 未涵蓋的物理現象（例如電磁學、熱力學等未列入 13 類定律的領域），摘要未說明。
-
-
+  * **Limitations stated by the authors**: Based only on the arXiv abstract page, the abstract itself does not detail the limitations section (the full paper is 56 pages with 39 figures and 40 tables, and verification of the limitations/discussion section in the full text is needed).
+  * **Weaknesses inferred from the results**:
+    * Only 8 modern video generation models were evaluated, and this coverage may not represent all mainstream models (especially since new models are updated rapidly, and the benchmark may quickly become outdated).
+    * Although the large-scale crowd annotation (459 people) underwent quality control, human subjective judgments of "physical correctness" may still vary across cultural/background differences; while the paper draws on social science experimental design to control for this, subjectivity cannot be completely eliminated.
+    * As a 9B-scale specialized model, whether PhyJudge-9B's physical knowledge coverage can generalize to physical phenomena not covered by PhyGround (e.g., electromagnetism, thermodynamics, and other domains not included in the 13 categories of laws) is not addressed in the abstract.
 
 ### Related work
 
-  * 需要查證其他論文的比較數據：PhyGround 與同期（2601, 即 2026 年 1 月發表）的 WorldBench（arXiv:2601.21282，本次同時處理的另一篇論文）主題高度相似，皆聚焦物理定律的解耦評測，值得交叉比較兩者的分類法設計、評測規模與發現的模型失敗模式是否一致。
-  * Related work 值得 survey 的程度：高。物理推理評測是目前 world model / 影片生成領域的熱門子方向（PhyGround、WorldBench 等benchmark 密集出現於 2026 上半年），建議整理成一個小型 survey 專門比較各基準的分類法與發現。
-
-
+  * Other papers' comparison data need to be verified: PhyGround shares a highly similar theme with the contemporaneous (2601, i.e., January 2026) WorldBench (arXiv:2601.21282, another paper processed in this same batch), both focusing on disentangled evaluation of physical laws. It is worth cross-comparing the taxonomy design, evaluation scale, and identified model failure modes of the two.
+  * **How worth surveying this related work is**: High. Physical reasoning evaluation is currently a popular sub-direction in the world model / video generation field (PhyGround, WorldBench, and other benchmarks appeared densely in the first half of 2026), and it is recommended to compile a small survey specifically comparing the taxonomies and findings of various benchmarks.
 
 ### Conclusion
 
-  * 綜合評價：PhyGround 是一個方法論嚴謹（借鑑社會科學實驗設計）、規模龐大（37.4K 標籤）且提供可重現自動化評測工具（PhyJudge-9B）的物理推理基準，對於想要系統性評估或改進世界模型物理一致性的研究者，具有高度參考價值；其對「解耦式」評測的設計理念也值得其他 benchmark 借鏡。
-  * 與其他重要文章的關係：與 WorldBench（同樣是 2026 年出現的物理解耦評測基準）構成直接的方法論競爭/互補關係，兩者都指出現有影片生成模型在物理一致性上普遍不足；建議兩篇一起研讀比較其分類法差異。
-  * ROCm/AMD 待補強部分：論文未提及訓練/推論所用硬體平台，看不出與 ROCm/AMD 的明確關聯。若 AMD 團隊要使用 PhyGround 評測自家（或以 ROCm 訓練/推論的）世界模型，可直接採用其公開的 prompts、人類標註與 PhyJudge-9B 評判器，但論文本身未涉及 ROCm 相關內容，不宜臆測。
+  * **Overall assessment**: PhyGround is a methodologically rigorous (drawing on social science experimental design), large-scale (37.4K labels) benchmark for physical reasoning that also provides a reproducible automated evaluation tool (PhyJudge-9B). It is highly valuable for researchers who want to systematically evaluate or improve the physical consistency of world models; its "disentangled" evaluation design philosophy is also worth emulating for other benchmarks.
+  * **Relationship to other important papers**: It has a direct methodological competitive/complementary relationship with WorldBench (also a physics-disentangled evaluation benchmark that appeared in 2026); both point out that existing video generation models are generally insufficient in physical consistency. It is recommended to study both papers together and compare their taxonomy differences.
+  * **ROCm/AMD gaps**: The paper does not mention the hardware platform used for training/inference, so no clear connection to ROCm/AMD can be identified. If an AMD team wants to use PhyGround to evaluate their own (or ROCm-trained/inferred) world models, they can directly adopt its publicly released prompts, human annotations, and PhyJudge-9B evaluator, but the paper itself does not involve ROCm-related content, so it would not be appropriate to speculate further.

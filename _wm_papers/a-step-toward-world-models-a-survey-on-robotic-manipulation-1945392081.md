@@ -7,12 +7,12 @@ permalink: /wm/a-step-toward-world-models-a-survey-on-robotic-manipulation-19453
 ---
 
 **Paper** : [A Step Toward World Models: A Survey on Robotic Manipulation](https://arxiv.org/abs/2511.02097)  
-**Source** : arXiv（尚未標明特定會議發表）  
+**Source** : arXiv (not yet published at a specific conference)  
 **arXiv ID** : 2511.02097
 
 ### Abstract
 
-自主代理（autonomous agent）被期望能在複雜、動態、不確定的環境中執行操作、導航與決策等任務。要達成這些能力,代理需要理解世界背後的運作機制與動態，而不僅是被動反應式控制或單純複製已觀察到的狀態。這促使世界模型（world model）作為一種內部表徵發展起來，用以編碼環境狀態、捕捉動態，並支援預測、規劃與推理。儘管關注度日增，但世界模型的定義、範圍、架構與必要能力仍然模糊。本綜述不預先設定固定定義,也不將範圍限制在明確被標記為「world model」的方法上,而是透過回顧機器人操作領域的方法，檢視那些展現出世界模型核心能力的方法。作者分析這些方法在感知（perception）、預測（prediction）、控制（control）三個角色上的作用,找出關鍵挑戰與解決方案，並提煉出一個完整世界模型應具備的核心組件、能力與功能，以此激勵朝向可泛化、實用化的機器人世界模型繼續發展。
+Autonomous agents are expected to perform manipulation, navigation, and decision-making tasks in complex, dynamic, and uncertain environments. To achieve these capabilities, agents need to understand the mechanisms and dynamics underlying the world, rather than merely reacting passively or replicating previously observed states. This has driven the development of the world model as an internal representation that encodes environmental states, captures dynamics, and supports prediction, planning, and reasoning. Despite growing attention, the definition, scope, architecture, and necessary capabilities of world models remain ambiguous. This survey does not presuppose a fixed definition, nor does it restrict its scope to methods explicitly labeled as "world models." Instead, by reviewing methods in the field of robotic manipulation, it examines approaches that exhibit the core capabilities of world models. The authors analyze the roles these methods play in perception, prediction, and control, identify key challenges and solutions, and distill the core components, capabilities, and functions that a complete world model should possess, thereby motivating continued progress toward generalizable, practical robotic world models.
 
 ### Method
 
@@ -24,37 +24,37 @@ _Fig. 1: Conceptual flow of the survey — clarifying motivation, scope, and pat
 
 _Fig. 3: Overview of world model paradigms — implicit world models, latent-dynamics world models, and video-generation-based world models._
 
-  * **要解決的問題** ：world model 的定義、範圍、架構與必要能力目前仍相當模糊,若僅限定討論「明確自稱為 world model」的方法會遺漏許多具備相同核心能力但未使用此名稱的重要工作。
-  * **Main method** ：本文採取「能力導向」而非「名稱導向」的綜述策略——不預設固定定義,而是透過檢視機器人操作領域中「展現出世界模型核心能力」的方法（即使它們未必自稱為 world model），分析這些方法在感知、預測、控制三個角色中的作用，藉此歸納出一個「完整世界模型」理論上應具備的核心組件與能力。
-  * **與以往方式的差異** ：與其他兩篇同期綜述（先給出明確操作型定義再分類文獻）不同，本文採取更開放、歸納式（bottom-up）的方法,先廣泛檢視具備相關能力的方法，再回頭提煉定義與必要組件，因此涵蓋範圍可能比嚴格定義下的綜述更廣。
-  * **重要方法設計描述** ：文章沿著「感知 → 預測 → 控制」三個角色分析既有機器人操作方法，找出各角色中遇到的關鍵挑戰（例如感知層的表徵選擇、預測層的動態建模準確性、控制層的動作執行可靠性）以及對應的解決方案，最終歸納出「完整世界模型」應包含的組件清單與功能規格,作為未來研究的路線指引。
+  * **Problem addressed**: The definition, scope, architecture, and necessary capabilities of world models remain quite ambiguous. Restricting discussion only to methods that "explicitly claim to be world models" would omit many important works that possess the same core capabilities but do not use this label.
+  * **Main method**: This paper adopts a "capability-oriented" rather than "name-oriented" survey strategy — instead of presupposing a fixed definition, it examines methods in robotic manipulation that "exhibit core world model capabilities" (even if they do not necessarily call themselves world models), analyzes the roles these methods play across perception, prediction, and control, and thereby distills the core components and capabilities that a "complete world model" should theoretically possess.
+  * **Difference from prior approaches**: Unlike two contemporaneous surveys (which first give an explicit operational definition and then classify the literature), this paper takes a more open, inductive (bottom-up) approach — first broadly examining methods with relevant capabilities, then working backward to distill definitions and necessary components. Its coverage may therefore be broader than surveys built on a strict definition.
+  * **Key methodological design**: The paper analyzes existing robotic manipulation methods along the three roles of "perception → prediction → control," identifying key challenges encountered at each role (e.g., representation choices at the perception layer, dynamics-modeling accuracy at the prediction layer, action-execution reliability at the control layer) and the corresponding solutions, ultimately distilling a list of components and functional specifications that a "complete world model" should include, serving as a roadmap for future research.
 
 
 
 ### Result
 
-  * 本綜述的「結果」是提煉出一套完整世界模型應具備的核心組件、能力與功能框架，並系統性分析既有機器人操作方法在感知/預測/控制三個角色上的表現與挑戰。
-  * 論文明確表達其目的是「激勵」（motivate）後續朝向可泛化、實用化的世界模型發展方向，而非提供一個封閉、最終版本的定義。
-  * 是否公正：由於採用開放式、能力導向的歸納方法，其涵蓋範圍與判斷標準（哪些方法算是「展現世界模型核心能力」）帶有一定主觀性,需要查證其他兩篇同期綜述（2605.00080、2606.00113）是否認同或補充此一分類視角。
+  * The "result" of this survey is a distilled framework of core components, capabilities, and functions that a complete world model should possess, along with a systematic analysis of how existing robotic manipulation methods perform and what challenges they face across the perception/prediction/control roles.
+  * The paper explicitly states its purpose is to "motivate" subsequent development toward generalizable, practical world models, rather than to provide a closed, final definition.
+  * Fairness assessment: Because this open, capability-oriented inductive approach is used, its coverage and criteria (which methods count as "exhibiting core world model capabilities") carry a degree of subjectivity, and it remains to be verified whether the two other contemporaneous surveys (2605.00080, 2606.00113) agree with or complement this classification perspective.
 
 
 
 ### Limitation
 
-  * 論文自陳的限制在於：world model 的定義、範圍、架構與核心能力目前仍然模糊，這既是本文試圖解決的問題,也是其分析結果本身仍然帶有的侷限——即提煉出的「核心組件」仍是作者主觀歸納,尚未形成社群共識。
-  * 由於不限定於「明確標榜為 world model」的方法，可能納入了大量廣義的感知/預測/控制方法，導致綜述範圍可能過於寬泛，與其他兩篇更聚焦、定義更嚴格的綜述（2606.00113）相比,深度與精確度上可能有所取捨。
+  * The paper's self-acknowledged limitation is that the definition, scope, architecture, and core capabilities of world models remain ambiguous — this is both the problem the paper attempts to solve and a limitation that persists in its own analytical results, i.e., the distilled "core components" remain the authors' subjective induction and have not yet formed community consensus.
+  * Because the survey is not restricted to methods "explicitly claiming to be world models," it may incorporate a large number of broadly defined perception/prediction/control methods, potentially making its scope overly broad. Compared with the other two more focused, more strictly defined surveys (2606.00113), there may be trade-offs in depth and precision.
 
 
 
 ### Related work
 
-  * 與同期另外兩篇綜述（arXiv:2605.00080、arXiv:2606.00113）構成 2025-2026 年間集中出現的 world model for robotic manipulation 綜述潮，三者互補：本篇提供最寬廣、能力導向的視角，2606.00113 提供最精確的操作型定義與功能分類，2605.00080 則橫跨操作/導航/自駕提供最廣泛的應用範圍。
-  * 判斷 related work 值得 survey 的程度：高，三篇綜述合併閱讀可以得到對「world model for robotics」領域相對完整且互相校驗的認識。
+  * Together with two other contemporaneous surveys (arXiv:2605.00080, arXiv:2606.00113), this paper is part of a wave of surveys on world models for robotic manipulation concentrated in 2025–2026. The three are complementary: this paper offers the broadest, capability-oriented perspective; 2606.00113 offers the most precise operational definition and functional classification; 2605.00080 spans manipulation, navigation, and autonomous driving to provide the widest range of applications.
+  * Assessment of how worthwhile the related work is to survey: high. Reading all three surveys together provides a relatively complete and mutually verifying understanding of the "world model for robotics" field.
 
 
 
 ### Conclusion
 
-  * 本文以較為開放、包容的方式定義研究範圍,適合作為理解「哪些既有機器人操作方法其實已具備 world model 核心能力」的入門讀物，尤其對於想要跳脫既有名詞框架、重新思考問題本質的讀者有參考價值。
-  * 與其他重要文章的關係：本文與 2606.00113、2605.00080 構成互補的綜述三部曲,建議搭配閱讀；其歸納出的核心組件框架也可用來檢視 Aether、MimicGen、Dreamitate 等具體工作是否滿足「完整世界模型」的能力要求。
-  * ROCm/AMD 關聯性：本綜述聚焦方法論與能力框架，未涉及具體硬體或加速器實作細節，因此看不出與 ROCm/AMD 的明確關聯。
+  * This paper defines its research scope in a relatively open, inclusive way, making it suitable as an introductory reading for understanding "which existing robotic manipulation methods already possess core world model capabilities," and it is particularly valuable for readers who wish to step outside existing terminological frameworks and rethink the essence of the problem.
+  * Relationship to other important papers: This paper, together with 2606.00113 and 2605.00080, forms a complementary trilogy of surveys and is recommended to be read alongside them; the core-component framework it distills can also be used to examine whether specific works such as Aether, MimicGen, and Dreamitate satisfy the capability requirements of a "complete world model."
+  * ROCm/AMD relevance: This survey focuses on methodology and capability frameworks and does not address specific hardware or accelerator implementation details, so no clear connection to ROCm/AMD can be identified.

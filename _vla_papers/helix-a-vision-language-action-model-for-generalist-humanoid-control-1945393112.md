@@ -7,48 +7,40 @@ permalink: /vla/helix-a-vision-language-action-model-for-generalist-humanoid-con
 ---
 
 **Paper** : [Helix: A Vision-Language-Action Model for Generalist Humanoid Control](https://www.figure.ai/news/helix)  
-**Source** : Figure AI 官方技術部落格(非正式 arXiv 論文,Figure AI 未發表對應的 arXiv 學術論文)  
-**arXiv ID** : 無(此為公司技術部落格發表,無 arXiv ID)
+**Source** : Figure AI's official technical blog (not a formal arXiv paper; Figure AI has not published a corresponding arXiv academic paper)  
+**arXiv ID** : None (published as a company technical blog post, no arXiv ID)
 
 ### Abstract
 
-Helix 是 Figure AI 發表的一種「System 1、System 2」式 VLA 模型,號稱首創能對整個人形機器人上半身(包含手腕、軀幹、頭部與各手指)進行高速率、靈巧控制。其核心創新針對先前方法的根本取捨進行突破:過去 VLM 骨幹雖具通用性但速度不足,而機器人視覺運動策略雖速度快但通用性不足。Helix 號稱是首個能對整個人形機器人上半身輸出高速率連續控制的 VLA,以 200Hz 協調 35 自由度(DoF)的動作空間,涵蓋從個別手指動作到末端執行器軌跡、頭部注視、軀幹姿態的所有層面。Helix 也號稱是首個能同時在兩台機器人上運作的 VLA,使兩台機器人能共同解決一項共享的長時程操作任務,處理它們從未見過的物品。有別於先前方法,Helix 使用單一組神經網路權重來學習所有行為——包括撿取放置物品、使用抽屜與冰箱、跨機器人互動——完全不需針對任務進行微調。
+Helix is a "System 1, System 2" style VLA model published by Figure AI, claimed to be the first capable of high-rate, dexterous control of an entire humanoid robot's upper body (including wrists, torso, head, and individual fingers). Its core innovation targets a fundamental trade-off in prior approaches: VLM backbones, while general-purpose, have historically been too slow, whereas robot visuomotor policies, while fast, have lacked generality. Helix is claimed to be the first VLA capable of outputting high-rate continuous control for an entire humanoid upper body, coordinating a 35-degree-of-freedom (DoF) action space at 200Hz, spanning everything from individual finger movements to end-effector trajectories, head gaze, and torso posture. Helix is also claimed to be the first VLA capable of running on two robots simultaneously, enabling two robots to jointly solve a shared long-horizon manipulation task, handling objects they have never seen before. Unlike previous approaches, Helix uses a single set of neural network weights to learn all behaviors—including picking and placing objects, using drawers and refrigerators, and cross-robot interaction—without requiring any task-specific fine-tuning.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945393112_helix_fig1.png) 
 
-_Figure 1: Scaling curves for different approaches to acquiring new robot skills — heuristic manipulation scales with PhD engineering time, imitation learning scales with collected data, Helix enables new skills specified on the fly via language (Helix 官網未提供獨立的 System 1/System 2 架構示意圖，僅以文字描述架構)_
+_Figure 1: Scaling curves for different approaches to acquiring new robot skills — heuristic manipulation scales with PhD engineering time, imitation learning scales with collected data, Helix enables new skills specified on the fly via language (the Helix website does not provide a standalone System 1/System 2 architecture diagram, only a textual description of the architecture)_
 
-  * 要解決的問題:先前的 VLA 方法面臨一個根本取捨——大型 VLM 骨幹具備通用的語意理解能力但推論速度不足以支撐高頻靈巧控制;而專門的視覺運動策略(visuomotor policy)速度雖快,卻缺乏語意通用性。Helix 試圖同時解決「通用性」與「高速率控制」這兩個看似衝突的需求。
-  * 主要方法:採用「System 1、System 2」雙系統設計——System 2 是一個 70 億參數的多模態語言模型,以 7-9Hz 運作,擔任分析型的「大腦」角色,負責語意理解與高層決策;System 1 是一個快速的視覺運動策略,負責高頻(200Hz)、35 自由度的連續控制輸出。
-  * 與以往方式的差異:Helix 並未採用客製化的全新架構,而是刻意使用標準架構組件——System 2 使用開源、開放權重的 VLM,System 1 使用簡單的基於 transformer 的視覺運動策略。其創新之處在於系統整合設計(單一權重集合學習所有行為、跨機器人協作、全上半身高頻控制),而非模型架構本身的創新。訓練資料為約 500 小時的多機器人、多操作員遠端teleoperation 資料,並使用自動標註 VLM 為資料生成事後(hindsight)指令標籤以支援語言條件化。
-  * 重要方法設計描述:System 2(7B 多模態 LLM,7-9Hz)接收視覺與語言輸入,產出語意層級的表徵或指令,傳遞給 System 1;System 1(transformer-based visuomotor policy)以 200Hz 高頻率輸出 35 自由度動作(涵蓋手腕、軀幹、頭部、各手指);模型使用單一組權重涵蓋所有已學會的行為(無需任務專屬微調);Helix 完全在低功耗嵌入式 GPU 上運行,無需雲端連線,適合商業部署;後續的「Helix Logistics」更新加入了隱式立體視覺(implicit stereo vision,提供深度感知運動精度)與多尺度視覺表徵(同時捕捉細節與場景層級理解)。
-
-
+  * Problem to be solved: Prior VLA approaches faced a fundamental trade-off—large VLM backbones have general semantic understanding capability but insufficient inference speed to support high-frequency dexterous control, while specialized visuomotor policies are fast but lack semantic generality. Helix attempts to simultaneously solve these two seemingly conflicting requirements of "generality" and "high-rate control."
+  * Main method: Adopts a "System 1, System 2" dual-system design—System 2 is a 7-billion-parameter multimodal language model operating at 7-9Hz, serving as the analytical "brain" responsible for semantic understanding and high-level decision-making; System 1 is a fast visuomotor policy responsible for high-frequency (200Hz), 35-degree-of-freedom continuous control output.
+  * Difference from prior approaches: Helix does not use a custom, entirely new architecture, but deliberately uses standard architectural components—System 2 uses an open-source, open-weight VLM, and System 1 uses a simple transformer-based visuomotor policy. Its innovation lies in system integration design (a single set of weights learning all behaviors, cross-robot collaboration, full upper-body high-frequency control), rather than in the model architecture itself. The training data consists of approximately 500 hours of multi-robot, multi-operator remote teleoperation data, using an auto-labeling VLM to generate hindsight instruction labels for the data to support language conditioning.
+  * Key method design description: System 2 (a 7B multimodal LLM, running at 7-9Hz) receives visual and language input and produces semantic-level representations or instructions, which are passed to System 1; System 1 (a transformer-based visuomotor policy) outputs 35-DoF actions at a high frequency of 200Hz (covering wrists, torso, head, and individual fingers); the model uses a single set of weights covering all learned behaviors (no task-specific fine-tuning needed); Helix runs entirely on low-power embedded GPUs without requiring a cloud connection, making it suitable for commercial deployment; a subsequent "Helix Logistics" update added implicit stereo vision (providing depth-aware motion precision) and multi-scale visual representations (capturing both fine detail and scene-level understanding simultaneously).
 
 ### Result
 
-  * 主要增強:Helix 號稱是首個能對人形機器人整個上半身(35 自由度)進行 200Hz 高頻連續控制的 VLA;首個能讓兩台機器人同時運作、協作完成共享長時程任務的 VLA;並且完全在嵌入式低功耗 GPU 上即時運行,無需任務專屬微調即可執行撿取放置、使用抽屜/冰箱等多樣行為。
-  * 是否公正:由於這是公司自家部落格發表(非經同行評審的學術論文),缺乏獨立第三方的量化評測數據(如成功率百分比、與其他模型的直接數值比較),其宣稱的「首創」與效能描述均來自 Figure AI 官方說法,尚無法比對其他論文的比較數據,公正性有限,需要查證是否有第三方或學術評測驗證這些說法。
-
-
+  * Main enhancements: Helix is claimed to be the first VLA capable of 200Hz high-frequency continuous control across an entire humanoid robot upper body (35 DoF); the first VLA enabling two robots to operate simultaneously and collaborate on a shared long-horizon task; and it runs entirely in real time on embedded low-power GPUs, capable of performing a variety of behaviors such as picking and placing objects and using drawers/refrigerators without task-specific fine-tuning.
+  * Whether the results are fair: Since this is published on the company's own blog (not a peer-reviewed academic paper), it lacks independent third-party quantitative evaluation data (such as success rate percentages or direct numerical comparisons with other models); the claimed "firsts" and performance descriptions all come from Figure AI's official statements, and there is currently no way to compare against other papers' data—fairness is limited, and it remains to be verified whether third-party or academic evaluations confirm these claims.
 
 ### Limitation
 
-  * 由於這不是經同行評審的學術論文,官方部落格中未明確列出限制章節或失敗案例分析。從公開資訊可推測的限制:(1) 缺乏公開的量化基準測試數據(如標準機器人操作 benchmark 上的成功率),難以與 OpenVLA、π0、GR00T N1 等有正式論文與量化評測的模型進行公正比較;(2) 訓練資料規模(約 500 小時遠端teleoperation 資料)相對於 OpenVLA(970k 筆示範)、π0(涵蓋 7 種本體 68 種任務)等經過同行評審論文詳述的資料規模,是否足夠支撐更廣泛的任務泛化,缺乏公開驗證;(3) 作為商業產品的一部分,其技術細節(如具體模型架構參數、訓練方法細節)的揭露程度不及學術論文完整,獨立研究者難以復現或深入分析。
-
-
+  * Since this is not a peer-reviewed academic paper, the official blog does not explicitly list a limitations section or failure-case analysis. Limitations that can be inferred from public information: (1) the lack of public quantitative benchmark data (such as success rates on standard robot manipulation benchmarks) makes it difficult to fairly compare with models like OpenVLA, π0, and GR00T N1 that have formal papers and quantitative evaluations; (2) whether the training data scale (approximately 500 hours of remote teleoperation data), compared to the data scales detailed in peer-reviewed papers such as OpenVLA (970k demonstrations) and π0 (covering 7 embodiments, 68 tasks), is sufficient to support broader task generalization lacks public verification; (3) as part of a commercial product, the disclosure of its technical details (such as specific model architecture parameters and training method details) is less complete than in academic papers, making it difficult for independent researchers to reproduce or analyze in depth.
 
 ### Related work
 
-  * Helix 的「System 1 / System 2」雙系統設計理念與 NVIDIA GR00T N1(2503.14734)的雙系統(VLM + 擴散變換器)架構高度相似,兩者都採用「慢速語意理解 + 快速動作生成」的分工原則,值得對照比較兩者的具體實現差異。
-  * 後續 Figure AI 發布了「Helix Logistics」更新部落格,加入隱式立體視覺與多尺度視覺表徵改進,顯示 Helix 仍在持續迭代中。
-  * 值得 survey 的程度中等:由於缺乏正式學術論文與量化評測數據,其技術可信度與可比較性不及本次任務中其他有 arXiv 論文的模型(RT-2、OpenVLA、π0、GR00T N1),建議將其視為業界工程實踐的參考案例,而非嚴謹的學術研究對象,survey 時應以了解「業界動態」為主要目的,而非作為技術細節的可靠來源。
-
-
+  * Helix's "System 1 / System 2" dual-system design philosophy is highly similar to NVIDIA GR00T N1's (2503.14734) dual-system (VLM + diffusion transformer) architecture; both adopt the division-of-labor principle of "slow semantic understanding + fast action generation," making it worthwhile to compare the specific implementation differences between the two.
+  * Figure AI subsequently published a "Helix Logistics" update blog post, adding implicit stereo vision and multi-scale visual representation improvements, showing that Helix continues to iterate.
+  * Moderately worth surveying: due to the lack of a formal academic paper and quantitative evaluation data, its technical credibility and comparability are lower than other models in this batch that have arXiv papers (RT-2, OpenVLA, π0, GR00T N1). It is recommended to treat it as a reference case for industry engineering practice rather than a rigorous academic research subject; when surveying, the primary goal should be understanding "industry dynamics" rather than treating it as a reliable source of technical detail.
 
 ### Conclusion
 
-  * 綜合評價:Helix 展示了人形機器人 VLA 在商業化部署上的一種可行工程路徑(雙系統、單一權重、嵌入式低功耗運行),對於了解業界(尤其是人形機器人新創公司)如何將 VLA 概念落地為實際產品具有參考價值;但由於缺乏同行評審與公開量化評測,其技術聲稱的嚴謹度不及本次任務中其他有正式 arXiv 論文的模型,建議謹慎看待其宣稱的「首創」與效能描述。
-  * 與其他重要文章的關係:Helix 與 GR00T N1 的雙系統(System 1/System 2)設計理念相呼應,兩者都反映了「人形機器人 VLA 需要拆分語意理解與高頻動作生成」這一業界共識;與 π0、OpenVLA 等學術模型相比,Helix 更強調工程落地(單一權重覆蓋所有行為、嵌入式低功耗部署),顯示產業界與學術界在 VLA 研究上有不同的側重點(產業重視部署效率與產品化,學術界重視可解釋性與量化評測嚴謹度)。對 ROCm/AMD 而言,Helix 強調完全在嵌入式低功耗 GPU 上運行(暗示可能使用 NVIDIA Jetson 系列或類似嵌入式平台),若 AMD 有對應的嵌入式/邊緣 GPU 產品線,這類「VLA 邊緣部署」的市場趨勢值得關注,但論文(部落格)本身未提及具體使用的硬體型號或是否考慮過 AMD 平台,此為觀察到的產業趨勢而非論文明文提及的關聯。
+  * Overall assessment: Helix demonstrates a viable engineering path for commercial deployment of humanoid robot VLAs (dual-system, single set of weights, embedded low-power operation), which is valuable for understanding how industry (especially humanoid robotics startups) turns VLA concepts into real products; however, due to the lack of peer review and public quantitative evaluation, the rigor of its technical claims is lower than other models in this batch with formal arXiv papers, and its claimed "firsts" and performance descriptions should be treated with caution.
+  * Relationship with other important papers: Helix's dual-system (System 1/System 2) design philosophy echoes that of GR00T N1; both reflect an industry consensus that "humanoid robot VLAs need to separate semantic understanding from high-frequency action generation." Compared with academic models such as π0 and OpenVLA, Helix places more emphasis on engineering deployment (a single set of weights covering all behaviors, embedded low-power deployment), showing that industry and academia have different priorities in VLA research (industry emphasizes deployment efficiency and productization, academia emphasizes interpretability and rigorous quantitative evaluation). For ROCm/AMD, Helix's emphasis on running entirely on embedded low-power GPUs (implying possible use of the NVIDIA Jetson series or similar embedded platforms) suggests that this "VLA edge deployment" market trend is worth watching if AMD has a corresponding embedded/edge GPU product line; however, the paper (blog post) itself does not mention the specific hardware model used or whether an AMD platform was considered—this is an observed industry trend rather than a connection explicitly stated in the paper.

@@ -7,12 +7,12 @@ permalink: /wm/world-model-for-robot-learning-a-comprehensive-survey-1945539095/
 ---
 
 **Paper** : [World Model for Robot Learning: A Comprehensive Survey](https://arxiv.org/abs/2605.00080)  
-**Source** : arXiv（尚未標明特定會議發表）  
+**Source** : arXiv (no specific conference publication indicated yet)  
 **arXiv ID** : 2605.00080
 
 ### Abstract
 
-世界模型（world model）是對環境如何在動作條件下演變的預測性表徵，已成為機器人學習的核心組件,支援策略學習、規劃、模擬、評估與資料生成，並隨著基礎模型（foundation model）與大規模影片生成技術興起而快速發展。然而，現有文獻在架構、功能角色與具身應用領域上相當分散。本綜述從機器人學習的視角出發，系統性檢視世界模型如何與機器人策略耦合、如何作為強化學習與評估的學習型模擬器（learned simulator）、以及機器人視訊世界模型如何從「想像式生成」演進到「可控、結構化、基礎模型規模」的形式；並進一步將這些概念與導航（navigation）、自駕車連結，總結代表性資料集、基準測試與評估協議。作者承諾將持續維護配套的 GitHub repository。
+A world model is a predictive representation of how the environment evolves conditioned on actions, and it has become a core component of robot learning, supporting policy learning, planning, simulation, evaluation, and data generation, evolving rapidly alongside the rise of foundation models and large-scale video generation techniques. However, existing literature is quite fragmented in terms of architecture, functional role, and embodied application domain. This survey systematically examines, from a robot learning perspective, how world models couple with robot policies, how they serve as learned simulators for reinforcement learning and evaluation, and how robot video world models have evolved from "imagination-based generation" to "controllable, structured, foundation-model-scale" forms; it further connects these concepts to navigation and autonomous driving, and summarizes representative datasets, benchmarks, and evaluation protocols. The authors commit to continuously maintaining an accompanying GitHub repository.
 
 ### Method
 
@@ -20,37 +20,37 @@ permalink: /wm/world-model-for-robot-learning-a-comprehensive-survey-1945539095/
 
 _Figure 1: Overview of the organization of this survey - architectural coupling of world models with robot policies, world models as simulators, and related evaluation/benchmarks._
 
-  * **要解決的問題** ：world model 相關文獻分散於不同架構（latent dynamics、video diffusion 等）、不同功能角色（策略耦合、模擬器、資料生成器）與不同應用領域（操作、導航、自駕），缺乏系統性整理。
-  * **Main method** ：這是一篇綜述（survey），並非提出新模型，而是建立一套分類框架，從三個角度組織文獻：(1) world model 與機器人策略如何耦合（例如作為策略的內部表徵或作為外部模擬器）；(2) world model 作為強化學習訓練與評估用的「學習型模擬器」的角色；(3) 機器人視訊世界模型從單純的「想像式生成」逐步演進至「可控、結構化、基礎模型規模」的技術脈絡。
-  * **與以往方式的差異** ：相較於既有可能僅聚焦單一子領域（如僅操作或僅導航）的綜述，本文試圖橫跨機器人操作、導航與自駕車三大應用場景，提供一個更全面的統一視角，並特別強調 world model 與策略學習/強化學習/評估之間的功能性關係，而非只做架構分類。
-  * **重要方法設計描述** ：文章架構預期依三條主軸展開：策略耦合面向（policy-coupled world model）、模擬器面向（learned simulator for RL/evaluation）、視訊生成面向（imagination-based to foundation-scale video world models），並在此基礎上補充資料集、基準測試（benchmark）與評估協議（evaluation protocol）的整理，最後連結到導航與自駕領域的對應應用。
+  * **Problem being addressed**: literature on world models is scattered across different architectures (latent dynamics, video diffusion, etc.), different functional roles (policy coupling, simulator, data generator), and different application domains (manipulation, navigation, autonomous driving), lacking systematic organization.
+  * **Main method**: this is a survey rather than a new model proposal; it establishes a taxonomy that organizes the literature from three angles: (1) how world models couple with robot policies (e.g., as an internal representation of the policy or as an external simulator); (2) the role of world models as "learned simulators" for reinforcement learning training and evaluation; (3) the technical evolution of robot video world models from pure "imagination-based generation" to "controllable, structured, foundation-model-scale" forms.
+  * **Difference from prior approaches**: compared to existing surveys that may focus on only a single sub-area (e.g., only manipulation or only navigation), this paper attempts to span robotic manipulation, navigation, and autonomous driving—three major application scenarios—providing a more comprehensive unified perspective, with particular emphasis on the functional relationship between world models and policy learning/reinforcement learning/evaluation, rather than merely architectural classification.
+  * **Description of key method design**: the article's structure is expected to unfold along three axes: the policy-coupled world model dimension, the learned-simulator-for-RL/evaluation dimension, and the video-generation dimension (from imagination-based to foundation-scale video world models); on this basis it supplements coverage of datasets, benchmarks, and evaluation protocols, and finally connects to corresponding applications in navigation and autonomous driving.
 
 
 
 ### Result
 
-  * 作為綜述論文，其「結果」體現在系統性地梳理與分類快速成長的 world model for robot learning 文獻，釐清關鍵範式（paradigm）與應用，並指出主要挑戰與未來方向。
-  * 是否公正：由於是廣泛文獻回顧，其涵蓋範圍與分類是否全面、是否有遺漏重要工作，需要查證其他同期綜述（如清單中另兩篇 2606.00113、2511.02097）的分類方式是否一致或互補,以交叉驗證其完整性與客觀性。
+  * As a survey paper, its "result" is manifested in systematically organizing and classifying the rapidly growing literature on world models for robot learning, clarifying key paradigms and applications, and pointing out major challenges and future directions.
+  * Fairness: since this is a broad literature review, whether its coverage and classification are comprehensive or have omissions needs to be verified against other contemporaneous surveys (such as the other two in the list, 2606.00113 and 2511.02097) to check whether their classification approaches are consistent or complementary, in order to cross-validate its completeness and objectivity.
 
 
 
 ### Limitation
 
-  * 綜述類論文的限制在於：其分類框架反映作者主觀的組織方式，可能與其他綜述（例如同期的 2606.00113、2511.02097）採用不同的切分角度,導致讀者需要交叉比對才能得到較全面的認識。
-  * 摘要未提供具體的量化評估或效能比較數據，其「結果」偏向質性整理而非量化證據，這是綜述類文章的通性限制。
-  * 論文提及會持續維護 GitHub repository 以補充新工作,顯示作者也意識到此領域演進快速、當前版本可能很快過時。
+  * The limitation of survey-type papers lies in the fact that their classification framework reflects the authors' subjective way of organizing material, which may differ from other surveys (e.g., the contemporaneous 2606.00113 and 2511.02097) that adopt different ways of dividing the field, requiring readers to cross-reference in order to gain a more complete understanding.
+  * The abstract does not provide specific quantitative evaluations or performance comparison data; its "result" leans toward qualitative organization rather than quantitative evidence, which is a general limitation of survey-type articles.
+  * The paper mentions that it will continuously maintain a GitHub repository to supplement new work, showing that the authors are also aware that this field is evolving rapidly and that the current version may quickly become outdated.
 
 
 
 ### Related work
 
-  * 本文與同一時期的另外兩篇 world model 綜述（arXiv:2606.00113《World Models for Robotic Manipulation: A Survey》、arXiv:2511.02097《A Step Toward World Models: A Survey on Robotic Manipulation》）在主題上高度重疊，值得交叉閱讀比較三者的分類框架異同。
-  * 判斷 related work 值得 survey 的程度：高，本篇本身即為 survey，其列出的參考文獻與分類體系本身就是進一步追蹤 world model 領域具體技術論文（如 Aether、MimicGen、Dreamitate 等）的重要索引。
+  * This paper overlaps significantly in topic with two other contemporaneous world model surveys (arXiv:2606.00113 "World Models for Robotic Manipulation: A Survey" and arXiv:2511.02097 "A Step Toward World Models: A Survey on Robotic Manipulation"), and is worth cross-reading to compare the similarities and differences in their classification frameworks.
+  * Assessment of how worth surveying the related work is: high. As a survey itself, its reference list and taxonomy serve as an important index for further tracking specific technical papers in the world model field (such as Aether, MimicGen, Dreamitate).
 
 
 
 ### Conclusion
 
-  * 作為 2026 年較新的世界模型綜述,本文提供了一個橫跨策略、模擬器、視訊生成三個角度的統一框架,適合作為研究入門與快速掌握領域全貌的參考資料，值得優先閱讀。
-  * 與其他重要文章的關係：本文可作為理解本次清單中其他具體技術論文（Aether、MimicGen、Dreamitate）在整體 world model 分類體系中定位的「地圖」，同時也應與同期的兩篇綜述互相比對，避免因單一綜述的分類偏好而產生片面理解。
-  * ROCm/AMD 關聯性：作為文獻綜述，本文不涉及具體硬體實作細節，因此看不出與 ROCm/AMD 的直接關聯；但其中提及的「基礎模型規模的視訊世界模型」訓練與部署，隱含著對大規模 GPU 運算資源的高度需求，這類大規模訓練/推論在 ROCm 生態上的成熟度（相較於 CUDA 生態）是 AMD 在此領域布局時需要持續關注與補強的面向。
+  * As a relatively recent (2026) world model survey, this paper provides a unified framework spanning policy, simulator, and video generation perspectives, suitable as an entry point for research and for quickly grasping the overall landscape of the field—worth reading first.
+  * Relationship to other important papers: this paper can serve as a "map" for understanding where other specific technical papers in this list (Aether, MimicGen, Dreamitate) sit within the overall world model taxonomy, and should also be cross-referenced with the other two contemporaneous surveys to avoid a one-sided understanding arising from a single survey's classification preferences.
+  * ROCm/AMD relevance: as a literature survey, this paper does not touch on specific hardware implementation details, so no direct connection to ROCm/AMD is apparent; however, the "foundation-model-scale video world models" it mentions imply a high demand for large-scale GPU computing resources for training and deployment, and the maturity of ROCm ecosystem support for such large-scale training/inference (compared to the CUDA ecosystem) is an area AMD needs to continuously monitor and strengthen when positioning itself in this field.

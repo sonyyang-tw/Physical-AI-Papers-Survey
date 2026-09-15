@@ -7,12 +7,12 @@ permalink: /wm/dreamitate-real-world-visuomotor-policy-learning-via-video-genera
 ---
 
 **Paper** : [Dreamitate: Real-World Visuomotor Policy Learning via Video Generation](https://arxiv.org/abs/2406.16862)  
-**Source** : arXiv / CoRL 2024（Conference on Robot Learning）/ Columbia University, Toyota Research Institute, Stanford University  
+**Source** : arXiv / CoRL 2024 (Conference on Robot Learning) / Columbia University, Toyota Research Institute, Stanford University  
 **arXiv ID** : 2406.16862
 
 ### Abstract
 
-機器人操作策略面對多樣視覺環境時的泛化能力是關鍵挑戰。Dreamitate 提出一個視覺運動（visuomotor）策略學習框架,利用在大規模網路影片上預訓練的視訊生成模型（video diffusion model）,針對特定任務的人類示範進行微調（fine-tune）。在測試時，模型根據新場景的影像生成一段「任務執行影片」,再將此合成影片直接用於控制機器人。其關鍵洞見是：使用常見工具（common tools）可以自然地橋接人類手部與機器人夾爪之間的具身差異（embodiment gap）。作者在四個複雜度遞增的任務上驗證，顯示利用網路規模生成模型能讓策略達到明顯優於現有行為克隆（behavior cloning）方法的泛化能力。
+The ability of robot manipulation policies to generalize across diverse visual environments is a key challenge. Dreamitate proposes a visuomotor policy learning framework that leverages a video diffusion model pretrained on large-scale web video, fine-tuned on task-specific human demonstrations. At test time, the model generates a "task execution video" conditioned on an image of the new scene, and this synthesized video is then used directly to control the robot. A key insight is that using common tools naturally bridges the embodiment gap between human hands and robot grippers. The authors validate the approach on four tasks of increasing complexity, showing that leveraging web-scale generative models allows the policy to achieve generalization significantly better than existing behavior cloning methods.
 
 ### Method
 
@@ -24,37 +24,37 @@ _Figure 1: Real-World Visuomotor Policy Learning via Video Generation - Dreamita
 
 _Figure 2: Method Overview - stereo camera recordings of human demonstrations, video model fine-tuning, and 3D trajectory extraction for closed-loop execution._
 
-  * **要解決的問題** ：行為克隆類策略在面對訓練分布之外的視覺場景（新背景、新光照、新物件外觀）時泛化能力不足。
-  * **Main method** ：先在人類示範影片上微調一個預訓練的視訊擴散模型，使其能根據新場景的起始影像生成「執行任務」的合成影片；再從生成影片中以視覺追蹤（3D tracking）工具軌跡,轉換為機器人的顯式動作序列來控制機械手臂。
-  * **與以往方式的差異** ：不同於直接從影像回歸動作的行為克隆策略，Dreamitate 把「預測未來」與「動作生成」拆成兩階段——先用生成模型「想像」出任務執行過程的影片，再把影片轉譯為動作,藉此把網路規模影片資料中蘊含的視覺泛化能力遷移到機器人策略上。
-  * **重要方法設計描述** ：策略流程為：(1) 輸入新場景觀測影像；(2) 微調後的視訊擴散模型生成一段以工具（如夾子、鏟子等常見工具）操作物件的未來影片；(3) 對生成影片中的工具進行3D追蹤，得到工具在空間中的運動軌跡；(4) 將該軌跡轉換為機器人末端執行器的動作命令，直接執行。使用「工具」作為人類示範與機器人執行之間的共同媒介，是橋接具身差異的核心設計。
+  * **Problem addressed**: Behavior-cloning-type policies generalize poorly when facing visual scenes outside the training distribution (new backgrounds, new lighting, new object appearances).
+  * **Main method**: A pretrained video diffusion model is first fine-tuned on human demonstration videos, so that it can generate a synthesized video of "performing the task" conditioned on a starting image of a new scene; then, tool trajectories are extracted from the generated video via visual tracking (3D tracking) and converted into an explicit action sequence to control the robotic arm.
+  * **Difference from prior approaches**: Unlike behavior-cloning policies that directly regress actions from images, Dreamitate splits the process into two stages — "predicting the future" and "generating actions" — first using a generative model to "imagine" the video of the task-execution process, then translating the video into actions, thereby transferring the visual generalization ability embedded in web-scale video data to the robot policy.
+  * **Key methodological design**: The policy pipeline is: (1) input an observation image of the new scene; (2) the fine-tuned video diffusion model generates a future video of a tool (such as tongs, a shovel, or other common tools) manipulating the object; (3) 3D tracking is performed on the tool in the generated video to obtain its motion trajectory in space; (4) the trajectory is converted into commands for the robot's end effector and executed directly. Using "tools" as the shared medium between human demonstration and robot execution is the core design for bridging the embodiment gap.
 
 
 
 ### Result
 
-  * 在四個複雜度遞增的操作任務上，Dreamitate 相較於現有行為克隆基線方法,展現出明顯更高的視覺泛化能力（能應對訓練時未見過的場景外觀變化）。
-  * 論文是否公正：Columbia/TRI/Stanford 團隊提供了專案網站與程式碼（cvlab-columbia/dreamitate），具一定可重現性；但具體數值指標與基線比較細節摘要未詳述，需要查證全文與其他論文（例如後續的 video-generation-as-policy 相關工作，如 2508.00795 "Video Generators are Robot Policies"）的比較數據以確認結果一致性。
+  * On four manipulation tasks of increasing complexity, Dreamitate demonstrates significantly higher visual generalization ability (able to handle scene-appearance changes not seen during training) compared to existing behavior cloning baselines.
+  * Fairness of the paper: The Columbia/TRI/Stanford team provides a project website and code (cvlab-columbia/dreamitate), giving it a degree of reproducibility; however, the abstract does not detail specific quantitative metrics or baseline comparison details, and verification against the full text and other papers (such as later works on video-generation-as-policy, e.g., 2508.00795 "Video Generators are Robot Policies") is needed to confirm consistency of results.
 
 
 
 ### Limitation
 
-  * 方法依賴「常見工具」作為人類與機器人之間的媒介，對於不涉及工具操作、純粹徒手/夾爪直接操作物件的任務，此方法的適用性摘要未明確提及，需要進一步查證全文。
-  * 依賴視訊生成模型推論以及後續3D追蹤，可能帶來較高的推論延遲，論文摘要未提及即時性（real-time）表現，此為實務部署上的潛在弱項。
-  * 生成影片的品質與3D追蹤精度會直接影響最終動作準確性，屬於典型「生成式世界模型驅動策略」共通的誤差累積風險，但摘要未具體討論失敗模式。
+  * The method relies on "common tools" as the medium between human and robot; the abstract does not clearly address its applicability to tasks that do not involve tool use, i.e., purely bare-handed/direct gripper manipulation of objects, and further verification of the full text is needed.
+  * Relying on video generation model inference plus subsequent 3D tracking may introduce relatively high inference latency; the abstract does not mention real-time performance, which is a potential weakness for practical deployment.
+  * The quality of the generated video and the accuracy of 3D tracking directly affect final action accuracy, a typical error-accumulation risk shared by "generative world-model-driven policies" in general, but the abstract does not specifically discuss failure modes.
 
 
 
 ### Related work
 
-  * 屬於「video generation 驅動機器人策略」路線的早期代表作之一，與同一研究方向下更晚近的工作（如 2508.00795《Video Generators are Robot Policies》)有明顯延續關係,顯示這條路線持續受到關注並擴展。
-  * 判斷 related work 值得 survey 的程度：高，Dreamitate 常被近期 world model / video-based policy 相關綜述引用，作為「以生成影片代理動作預測」範式的代表工作之一。
+  * This belongs to the "video-generation-driven robot policy" track as one of its early representative works, with a clear continuation in later, more recent work along the same research direction (such as 2508.00795, "Video Generators are Robot Policies"), showing that this track continues to receive attention and expansion.
+  * Assessment of how worthwhile the related work is to survey: high. Dreamitate is often cited by recent world model / video-based policy surveys as a representative work of the paradigm of "using generated video as a proxy for action prediction."
 
 
 
 ### Conclusion
 
-  * 本文是連接「大規模視訊生成模型」與「機器人操作策略」的重要早期示範性工作，其「以工具為橋樑」的具身差異解決思路具有一定啟發性,值得作為 world model / video-based policy 研究的參考文獻。
-  * 與其他重要文章的關係：可視為 MimicGen（幾何式資料生成）路線之外的另一種資料/策略生成範式,兩者分別代表「幾何重組」與「生成式影片模仿」；後續也與 world model 綜述（如本次清單中的多篇 survey）中討論的「video world model 驅動 policy」類別相呼應。
-  * ROCm/AMD 關聯性：本方法核心依賴視訊擴散模型的訓練與推論，這類大型生成模型的訓練/推論在 ROCm 上的支援程度（如 PyTorch ROCm 對應的 diffusers 生態、3D tracking 工具鏈的 GPU 相容性）需要另行查證；摘要中未提及具體硬體或框架細節,無法判斷是否有明確關聯，誠實說明看不出明確關聯。
+  * This paper is an important early demonstration connecting "large-scale video generation models" with "robot manipulation policies." Its "tools as a bridge" approach to solving the embodiment gap is somewhat inspiring, and it is worth citing as a reference for world model / video-based policy research.
+  * Relationship to other important papers: It can be seen as an alternative data/policy generation paradigm distinct from the MimicGen (geometric data generation) track — the two respectively represent "geometric recomposition" and "generative video imitation" — and it also echoes the "video world model-driven policy" category discussed in world model surveys (such as the multiple surveys in this collection).
+  * ROCm/AMD relevance: This method fundamentally relies on training and inference of a video diffusion model, and the degree of support for training/inference of this kind of large generative model on ROCm (such as the PyTorch ROCm equivalent of the diffusers ecosystem, and GPU compatibility of the 3D tracking toolchain) needs to be separately verified; the abstract does not mention specific hardware or framework details, so no clear connection can be determined, and honestly, no clear connection can be identified.

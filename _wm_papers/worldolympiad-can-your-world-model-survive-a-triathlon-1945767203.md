@@ -12,7 +12,7 @@ permalink: /wm/worldolympiad-can-your-world-model-survive-a-triathlon-1945767203
 
 ### Abstract
 
-WorldOlympiad 是一個用來全面診斷「影片式世界模型」(video-based world models) 的評測基準，聚焦三個互補面向：物理真實性 (physical faithfulness)、幾何一致性 (geometric consistency)、以及互動保真度 (interaction fidelity)。現有基準大多只評估視覺品質、語意對齊或短期時間連貫性，難以判斷生成影片是否遵守物理規則、維持一致的 3D 結構、以及在長時間範圍內維持可控互動。WorldOlympiad 將世界模型評測拆解成三條賽道（物理、幾何、互動），並涵蓋遊戲、機器人、一般真實世界影片三大下游場景，藉此揭露一般影片品質指標無法捕捉的失敗模式。作者在多個當前最先進的世界模型上做實驗，發現在物理推理、3D 一致性、長時間互動上都存在明顯落差。
+WorldOlympiad is a benchmark for comprehensively diagnosing video-based world models, focusing on three complementary aspects: physical faithfulness, geometric consistency, and interaction fidelity. Existing benchmarks mostly evaluate only visual quality, semantic alignment, or short-term temporal coherence, making it hard to judge whether generated video obeys physical rules, maintains consistent 3D structure, and sustains controllable interaction over long horizons. WorldOlympiad decomposes world model evaluation into three tracks (physics, geometry, interaction) and covers three major downstream scenarios—games, robotics, and general real-world video—thereby exposing failure modes that general video quality metrics cannot capture. The authors conduct experiments on several current state-of-the-art world models and find substantial gaps in physical reasoning, 3D consistency, and long-term interaction.
 
 ### Method
 
@@ -24,43 +24,43 @@ _Figure 1: Overview of the WorldOlympiad pipeline for data collection, long-vide
 
 _Figure 3: Data standardization pipeline from raw videos to refined action-caption annotations._
 
-  * **要解決的問題** ：現有世界模型評測基準太偏重視覺品質/語意對齊/短期連貫性，無法回答「生成的影片是否物理正確、幾何一致、且能長時間維持可控互動」這個更根本的問題。
-  * **Main method** ：提出三條評測賽道
-    * Physical track：使用物體分割 (object segmentation) 搭配 MLLM-as-judge，評估生成影片是否遵循力學、熱現象、材料特性等可解釋的物理規則。
-    * Geometry track：用 Gaussian Splatting 對生成影片做 3D 重建，評估結構一致性、跨視角連貫性、相機軌跡對齊程度。
-    * Interaction track：評估生成的 rollout 是否遵循複雜的動作提示 (action prompt)，並在連續影片片段之間維持平滑連貫的轉場。
-    * 三條賽道再交叉覆蓋三大下游場景（遊戲、機器人、通用真實世界影片），形成可擴展、可解釋的評測套件。
-  * **與以往方式的差異** ：以往世界模型評測（如 FVD、CLIP score 等）多是整體視覺/語意層面的指標，WorldOlympiad 把評測拆成物理/幾何/互動三個可解釋的子面向，並針對每個面向設計專門的量測手段（分割+MLLM判斷、3D重建、動作-影片對齊），使失敗模式可被定位到具體原因,而非只給單一分數。
-  * **重要設計描述** ：整體架構是一個「診斷式」評測流程：輸入待測世界模型 → 產生多場景 rollouts → 分別送入三條賽道的獨立分析管線（物理判別器、3D重建器、動作對齊評估器）→ 各自輸出子指標 → 匯總成可解釋的能力剖繪 (capability profile)，而非單一總分。
+  * **Problem being addressed**: existing world model evaluation benchmarks are too heavily weighted toward visual quality/semantic alignment/short-term coherence, and cannot answer the more fundamental question of "whether the generated video is physically correct, geometrically consistent, and able to sustain controllable interaction over long periods."
+  * **Main method**: three evaluation tracks are proposed:
+    * Physical track: uses object segmentation combined with MLLM-as-judge to evaluate whether generated video adheres to interpretable physical rules such as mechanics, thermal phenomena, and material properties.
+    * Geometry track: performs 3D reconstruction on generated video using Gaussian Splatting to evaluate structural consistency, cross-view coherence, and camera trajectory alignment.
+    * Interaction track: evaluates whether generated rollouts follow complex action prompts and maintain smooth, coherent transitions between consecutive video segments.
+    * The three tracks are then cross-applied across three major downstream scenarios (games, robotics, general real-world video), forming a scalable, interpretable evaluation suite.
+  * **Difference from prior approaches**: previous world model evaluation metrics (such as FVD, CLIP score, etc.) are mostly overall visual/semantic-level metrics; WorldOlympiad decomposes evaluation into three interpretable sub-aspects—physics/geometry/interaction—and designs specialized measurement methods for each aspect (segmentation + MLLM judgment, 3D reconstruction, action-video alignment), so that failure modes can be traced to a specific cause rather than only yielding a single score.
+  * **Description of key design**: the overall architecture is a "diagnostic" evaluation pipeline: input the world model under test → generate rollouts across multiple scenarios → feed them separately into the independent analysis pipelines of the three tracks (physics discriminator, 3D reconstructor, action alignment evaluator) → each outputs sub-metrics → aggregate into an interpretable capability profile, rather than a single overall score.
 
 
 
 ### Result
 
-  * 對多個最先進的世界模型做實驗後，發現它們在物理推理、3D一致性、長時間互動上都有實質差距（substantial gaps），代表視覺品質好的模型不一定物理正確或幾何一致。
-  * 摘要未提供具體數值分數或模型排名，需要查證全文或 project page（https://alibaba-damo-academy.github.io/WorldOlympiad/）取得詳細結果表。
-  * 是否公正：由於這是一個新提出的基準，其評測方法（MLLM-as-judge、Gaussian Splatting重建）本身也可能帶有偏差（例如MLLM判斷的一致性、重建誤差），論文摘要未討論這些評測工具本身的可靠性驗證，需要查證全文的驗證章節。
-  * 需要查證其他論文（如 iWorld-Bench）是否對相同模型有不同的排名結果。
+  * After experimenting on several state-of-the-art world models, the authors find that they all have substantial gaps in physical reasoning, 3D consistency, and long-term interaction, indicating that models with good visual quality are not necessarily physically correct or geometrically consistent.
+  * The abstract does not provide specific numerical scores or model rankings; the full paper or project page (https://alibaba-damo-academy.github.io/WorldOlympiad/) needs to be consulted for detailed result tables.
+  * Fairness: since this is a newly proposed benchmark, its evaluation methods (MLLM-as-judge, Gaussian Splatting reconstruction) may themselves carry bias (e.g., consistency of MLLM judgments, reconstruction error), and the abstract does not discuss reliability validation of these evaluation tools; this needs to be verified against the full paper's validation section.
+  * It is necessary to verify whether other papers (such as iWorld-Bench) produce different ranking results on the same models.
 
 
 
 ### Limitation
 
-  * 摘要未明確提及作者自陳的limitation章節內容。
-  * 從方法設計推測，潛在弱項可能包括：MLLM-as-judge 的判斷穩定性與偏差、Gaussian Splatting 重建品質本身對生成影片的偽影敏感、以及基準覆蓋場景（遊戲/機器人/通用影片）是否足以代表真實部署場景，這些都需要查證全文確認。
+  * The abstract does not explicitly mention the content of the authors' self-reported Limitation section.
+  * Inferred from the method design, potential weaknesses may include: the stability and bias of MLLM-as-judge judgments, the sensitivity of Gaussian Splatting reconstruction quality to artifacts in the generated video itself, and whether the scenarios covered by the benchmark (games/robotics/general video) are sufficiently representative of real deployment scenarios—all of which need to be verified against the full paper.
 
 
 
 ### Related work
 
-  * 同期還有 iWorld-Bench (arXiv:2605.03941)，同樣是針對互動式世界模型的基準，但更聚焦距離感知、記憶等互動能力與統一動作生成框架，二者可以互相對照參考。
-  * 暫無發現明確的更新後續研究（如針對 WorldOlympiad 基準做二次分析或擴展的論文）。
-  * 值得 survey 的程度：中高。這類評測基準論文本身通常會被後續世界模型論文引用作為評測工具，建議追蹤其 GitHub repo（alibaba-damo-academy/WorldOlympiad）及排行榜更新。
+  * The contemporaneous iWorld-Bench (arXiv:2605.03941) is also a benchmark for interactive world models, but focuses more on distance perception, memory, and a unified action generation framework; the two can be compared against each other.
+  * No clear follow-up research (such as a secondary analysis or extension of the WorldOlympiad benchmark) has been found so far.
+  * Worth surveying: medium-high. Benchmark papers of this kind are usually cited by subsequent world model papers as an evaluation tool; it is recommended to track its GitHub repo (alibaba-damo-academy/WorldOlympiad) and leaderboard updates.
 
 
 
 ### Conclusion
 
-  * 整體評價：這是一篇對 embodied AI / world model 研究者很有參考價值的評測基準論文，尤其是把物理正確性和3D一致性獨立出來評測，補足了過去只看視覺品質的盲點，值得參考。
-  * 與其他重要文章的關係：延伸/補強了過去以 FVD、CLIP 等指標為主的世界模型評測方法，並與同期的 iWorld-Bench 形成互補（前者偏物理/幾何/互動三維度，後者偏距離感知/記憶/動作生成統一框架）。
-  * ROCm/AMD 待補強部分：這篇論文本身不涉及硬體或訓練框架，看不出與 ROCm 的直接關聯；但若 AMD 要建立自己的世界模型評測/驗證流程（例如驗證在 MI300 系列上訓練或推論的世界模型是否物理一致），此基準的三軌評測方法論可作為評測框架設計的參考基礎。
+  * Overall assessment: this is a benchmark paper of significant reference value for embodied AI/world model researchers, especially in isolating physical correctness and 3D consistency as separate evaluation dimensions, filling a blind spot left by past approaches that only looked at visual quality—worth referencing.
+  * Relationship to other important papers: it extends/strengthens past world model evaluation methods that relied mainly on metrics like FVD and CLIP, and forms a complementary pair with the contemporaneous iWorld-Bench (the former emphasizes the three dimensions of physics/geometry/interaction, while the latter emphasizes distance perception/memory/a unified action generation framework).
+  * Areas for ROCm/AMD to strengthen: this paper itself does not involve hardware or training frameworks, so no direct connection to ROCm is apparent; however, if AMD wants to build its own world model evaluation/validation pipeline (for example, to verify whether a world model trained or run on the MI300 series is physically consistent), this benchmark's three-track evaluation methodology could serve as a reference basis for designing an evaluation framework.

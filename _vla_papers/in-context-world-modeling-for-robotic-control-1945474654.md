@@ -12,51 +12,51 @@ permalink: /vla/in-context-world-modeling-for-robotic-control-1945474654/
 
 ### Abstract
 
-本論文提出 In-Context World Modeling (ICWM)，將「系統識別（system identification）」視為一個上下文內（in-context）適應問題。現代 VLA 模型通常只以「當前觀察 + 語言指令」為條件，因此對新的相機視角或機器人形態等設定變化難以泛化——因為它們隱含假設了訓練時遇到的固定執行情境，任何新環境都需要大量資料微調。ICWM 讓機器人策略能從一小段「自我產生、與任務無關」的互動歷史中，自主推斷出關鍵的系統變數。與傳統的上下文學習（In-Context Learning）使用示範來指定「要做什麼任務」不同，ICWM 利用上下文視窗來理解「系統如何運作」。透過在執行任務前先處理這些互動，模型能隱含地捕捉當前系統的世界動態，從而在不更新參數的情況下適應新的設定。模擬與真實機器人平台上的大量實驗顯示，ICWM 在新相機視角下顯著優於標準 VLA baseline。
+This paper proposes In-Context World Modeling (ICWM), treating "system identification" as an in-context adaptation problem. Modern VLA models typically condition only on "the current observation + language instruction," and thus generalize poorly to changes in setup such as new camera viewpoints or robot morphologies—because they implicitly assume the fixed execution context encountered during training, and any new environment requires extensive fine-tuning data. ICWM enables a robot policy to autonomously infer key system variables from a short history of "self-generated, task-agnostic" interactions. Unlike traditional in-context learning, which uses demonstrations to specify "what task to do," ICWM uses the context window to understand "how the system works." By processing these interactions before executing a task, the model can implicitly capture the current system's world dynamics, allowing it to adapt to new setups without any parameter updates. Extensive experiments on simulation and real robot platforms show that ICWM significantly outperforms standard VLA baselines under novel camera viewpoints.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945474654_icwm_fig1.png) 
 
-_Figure 1: In-Context World Modeling (ICWM) 概念圖。標準 VLA 模型因固定的觀察-動作假設，在新的系統配置下經常失敗；如同人類會探索陌生的控制介面以建立心智世界模型，ICWM 使機器人能透過自我探測（self-probing）的互動上下文，自主推斷系統動態。_
+_Figure 1: Conceptual illustration of In-Context World Modeling (ICWM). Standard VLA models, due to their fixed observation-action assumptions, often fail under new system configurations; just as humans explore an unfamiliar control interface to build a mental world model, ICWM enables a robot to autonomously infer system dynamics through self-probing interaction context._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945474654_icwm_fig2.png) 
 
-_Figure 2: ICWM 訓練與推論管線總覽。(1) 訓練階段：模型在跨多種系統配置蒐集的資料上訓練，其中與任務無關的互動片段被前置（prepend）到每筆訓練樣本作為上下文；(2) 推論階段：機器人於測試時先執行隨機探索以蒐集系統上下文，再據此透過上下文內推論（in-context inference）引導策略生成精確動作。_
+_Figure 2: Overview of the ICWM training and inference pipeline. (1) Training phase: the model is trained on data collected across multiple system configurations, where task-agnostic interaction segments are prepended to each training sample as context; (2) Inference phase: at test time, the robot first performs random exploration to gather system context, and then uses in-context inference based on this context to guide the policy in generating precise actions._
 
-  * **要解決的問題** ：VLA 模型僅以當前觀察與語言指令為條件，未將底層系統設定（如相機視角、機器人形態）視為變數，導致對任何新的執行環境都需要資料密集的微調才能適應。
-  * **主要方法** ：ICWM 將「系統識別」重新定義為上下文內適應問題——
-    * 讓機器人在任務執行前，先進行一小段「自我產生、與具體任務無關」的探索性互動（task-agnostic interactions）。
-    * 模型將這段互動歷史放入上下文視窗（context window）中處理，從中隱含推斷出當前系統的動態特性（例如相機視角如何對應到動作空間、機器人形態的物理限制等）。
-    * 在推斷出系統變數後，才開始執行具體任務，且整個適應過程不需要更新模型參數（no parameter updates）。
-  * **與以往方式的差異** ：傳統的 In-Context Learning 用示範資料來告訴模型「要做什麼任務」（what），而 ICWM 反其道而行，用上下文互動來讓模型理解「系統如何運作」（how）——即把上下文學習的目標從任務規格轉移到系統識別本身，這是一個概念上的轉向。
-  * **重要方法設計** ：可以理解為兩階段流程——先有一段「探索/校準」階段（模型透過任務無關的自我互動收集系統資訊並在上下文中隱含建模系統動態），接著才進入「任務執行」階段（同一個模型利用剛推斷出的系統理解來執行具體任務指令），全程無需梯度更新或微調。
+  * **Problem addressed**: VLA models condition only on the current observation and language instruction, without treating the underlying system configuration (such as camera viewpoint or robot morphology) as a variable, causing any new execution environment to require data-intensive fine-tuning to adapt.
+  * **Main method**: ICWM redefines "system identification" as an in-context adaptation problem —
+    * Before executing a task, the robot first performs a short segment of "self-generated, task-agnostic" exploratory interaction.
+    * The model processes this interaction history within its context window, from which it implicitly infers the dynamic characteristics of the current system (e.g., how the camera viewpoint maps to the action space, the physical constraints of the robot morphology, etc.).
+    * Only after inferring the system variables does the model begin executing the specific task, and the entire adaptation process requires no parameter updates.
+  * **Differences from prior approaches**: Traditional in-context learning uses demonstration data to tell the model "what task to do," whereas ICWM does the opposite, using contextual interaction to let the model understand "how the system works" — that is, it shifts the goal of in-context learning from task specification to system identification itself, a conceptual pivot.
+  * **Key design**: This can be understood as a two-stage process — first an "exploration/calibration" stage (the model gathers system information through task-agnostic self-interaction and implicitly models system dynamics within its context), followed by a "task execution" stage (the same model uses its newly inferred understanding of the system to execute the specific task instruction), with the entire process requiring no gradient updates or fine-tuning.
 
 
 
 ### Result
 
-  * 在模擬與真實機器人平台上的大量實驗顯示，ICWM 在「新相機視角（novel camera viewpoints）」情境下顯著優於標準 VLA baseline。
-  * 是否公正：摘要僅提及在「新相機視角」上的優勢，未提供具體數值（成功率百分比、與哪些具體 baseline 比較），也未提及在「機器人形態變化」（摘要開頭提到的另一種泛化目標）上的實際結果是否同樣顯著；需要查證全文以取得完整的定量比較數據以及對比的 baseline 清單。
+  * Extensive experiments on simulation and real robot platforms show that ICWM significantly outperforms standard VLA baselines under "novel camera viewpoints."
+  * Fairness: the abstract only mentions the advantage under "novel camera viewpoints" without providing specific numbers (success rate percentages, or which specific baselines were compared), nor does it mention whether results under "robot morphology variation" (the other generalization target mentioned at the start of the abstract) are equally significant; the full text needs to be checked to obtain complete quantitative comparison data and the list of compared baselines.
 
 
 
 ### Limitation
 
-  * 論文自陳的限制：摘要未明確列出限制段落，需要查證全文。
-  * 從方法設計推測的弱項：ICWM 依賴「一小段自我產生的任務無關互動」來完成系統識別，若目標環境變化過於劇烈或探索互動本身就無法揭露足夠的系統資訊（例如某些機器人形態差異在任務無關互動中不會顯現），此方法的適應效果可能受限；此外，額外的探索階段可能帶來額外的執行時間開銷，摘要未提及開銷大小，需要查證全文。
+  * Limitations stated by the paper: the abstract does not explicitly list a limitations section; the full text needs to be checked.
+  * Weaknesses inferred from the method design: ICWM relies on "a short segment of self-generated, task-agnostic interaction" to accomplish system identification; if the target environment changes too drastically, or if the exploratory interaction itself fails to reveal sufficient system information (e.g., certain robot morphology differences may not manifest in task-agnostic interaction), the adaptation performance of this method may be limited. In addition, the extra exploration phase may introduce additional runtime overhead; the abstract does not mention the magnitude of this overhead, and the full text needs to be checked.
 
 
 
 ### Related work
 
-  * 暫無發現更新的相關研究（本次搜尋範圍內未找到直接引用或延伸 ICWM 的後續論文）。
-  * 值得 survey 的程度：中高。「上下文內系統識別」是一個與清單中其他 WAM/VLA 泛化研究（例如「Do World Action Models Generalize Better than VLAs?」關注的視覺/語言擾動穩健性）互補的另一種泛化維度——即「新硬體/新視角設定」而非「同一設定下的擾動」，值得作為理解 VLA 泛化問題全貌的一部分。
+  * No newer related research directly building on this work was found (within the scope of this search, no follow-up papers directly citing or extending ICWM were found).
+  * Worth surveying: medium-high. "In-context system identification" is a generalization dimension complementary to other WAM/VLA generalization studies on the list (e.g., "Do World Action Models Generalize Better than VLAs?" which focuses on robustness to visual/language perturbations) — namely, "new hardware/new viewpoint configurations" rather than "perturbations within the same configuration" — worth including as part of understanding the full picture of VLA generalization problems.
 
 
 
 ### Conclusion
 
-  * 綜合評價：具參考價值，尤其對關注「跨平台/跨視角部署」問題的工程師而言。其核心概念（用上下文互動做系統識別，而非用示範做任務規格）提供了一個不需微調就能適應新執行環境的思路，這對於實務上機器人硬體/相機配置經常變動的場景很有意義。
-  * 與其他論文關係：ICWM 與清單中的「Do World Action Models Generalize Better than VLAs?」都關注 VLA 的泛化局限，但切入點不同——後者測試「擾動穩健性」，前者測試「新硬體/視角配置適應」；兩篇論文可視為互補的泛化性研究方向，而非直接的延伸或挑戰關係。
-  * ROCm/AMD 關聯：從摘要內容看不出與 ROCm/AMD 有明確關聯，論文未提及訓練或推論所用硬體平台。
+  * Overall assessment: worth referencing, especially for engineers concerned with "cross-platform/cross-viewpoint deployment" problems. Its core concept (using contextual interaction for system identification rather than demonstrations for task specification) offers an approach to adapting to new execution environments without fine-tuning, which is meaningful in practical settings where robot hardware/camera configurations frequently change.
+  * Relationship to other papers: ICWM and "Do World Action Models Generalize Better than VLAs?" on the list both focus on VLA generalization limitations, but from different angles — the latter tests "robustness to perturbations," the former tests "adaptation to new hardware/viewpoint configurations"; the two papers can be viewed as complementary generalization research directions rather than a direct extension or challenge relationship.
+  * ROCm/AMD relevance: no clear connection to ROCm/AMD can be discerned from the abstract's content; the paper does not mention the hardware platform used for training or inference.

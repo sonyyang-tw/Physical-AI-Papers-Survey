@@ -12,7 +12,7 @@ permalink: /vla/vlabench-a-large-scale-benchmark-for-language-conditioned-roboti
 
 ### Abstract
 
-通用型具身智能體被設計來理解使用者的自然語言指令或意圖,並精確執行動作以完成通用任務。近期,以基礎模型為基礎的方法,特別是 Vision-Language-Action（VLA）模型,已展現出解決語言條件操作（Language-Conditioned Manipulation, LCM）任務的顯著潛力。然而,現有的 benchmark 並未充分滿足 VLA 及相關演算法的需求。為了在大型語言模型的脈絡下更好地定義這類通用任務,並推進 VLA 研究,作者提出 VLABench,一個開源的 benchmark,用於評估通用 LCM 任務學習。VLABench 提供 100 個精心設計的任務類別,每個類別內都有高強度的隨機化,總共涵蓋 2000 多個物件。VLABench 在四個關鍵面向上有別於既有 benchmark:(1) 需要世界知識與常識遷移的任務;(2) 使用蘊含隱含人類意圖的自然語言指令,而非樣板化指令;(3) 需要多步驟推理的長時程任務;(4) 同時評估動作策略與語言模型能力。此 benchmark 評估多項能力,包括對網格與紋理的理解、空間關係、語意指令、物理定律、知識遷移與推理等。為支援下游微調,作者也提供透過自動化框架（結合啟發式技能與先驗資訊）收集的高品質訓練資料。實驗結果顯示,目前最先進的預訓練 VLA 模型以及基於 VLM 的工作流方法,在此 benchmark 的任務上都面臨挑戰。
+General-purpose embodied agents are designed to understand a user's natural language instructions or intentions and to precisely execute actions to complete general-purpose tasks. Recently, foundation-model-based approaches, especially Vision-Language-Action (VLA) models, have shown remarkable potential for solving Language-Conditioned Manipulation (LCM) tasks. However, existing benchmarks do not adequately meet the needs of VLA and related algorithms. To better define such general-purpose tasks in the context of large language models and to advance VLA research, the authors propose VLABench, an open-source benchmark for evaluating general LCM task learning. VLABench provides 100 carefully designed task categories, each with a high degree of randomization, spanning more than 2,000 objects in total. VLABench differs from existing benchmarks in four key respects: (1) tasks that require world knowledge and common-sense transfer; (2) natural language instructions that carry implicit human intent, rather than templated instructions; (3) long-horizon tasks that require multi-step reasoning; and (4) simultaneous evaluation of both action policies and language model capabilities. The benchmark evaluates a range of abilities, including understanding of mesh and texture, spatial relationships, semantic instructions, physical laws, knowledge transfer, and reasoning. To support downstream fine-tuning, the authors also provide high-quality training data collected via an automated framework (combining heuristic skills and prior information). Experimental results show that current state-of-the-art pretrained VLA models, as well as VLM-based workflow methods, both face challenges on the tasks in this benchmark.
 
 ### Method
 
@@ -24,38 +24,38 @@ _Figure 1: VLABench overview._
 
 _Figure 6: VLABench evaluation workflow._
 
-  * 要解決的問題：既有的機器人操作 benchmark 無法充分滿足 VLA 及相關演算法的評測需求——例如缺乏世界知識與常識遷移的考驗、指令多為固定樣板而非蘊含隱含意圖的自然語言、任務多為單步驟而非長時程多步驟推理、且通常只評估動作策略而不評估語言理解能力。
-  * Main method：VLABench 建構了一個涵蓋 100 個任務類別、2000 多個物件的大規模模擬 benchmark,並在每個任務類別內加入高強度隨機化,以避免模型透過記憶樣板而非真正理解取巧。任務設計特意涵蓋四個以往 benchmark 較少強調的面向：世界知識/常識遷移、隱含意圖的自然語言指令、需要多步驟推理的長時程任務,以及同時評估動作策略與語言模型能力的雙軌評測。此外,作者提供一套自動化資料收集框架（結合啟發式技能與先驗資訊）,用於生成高品質的下游微調訓練資料。
-  * 和以往方式的差異：與以往 benchmark（任務多為短時程、指令樣板化、僅評估動作成功率）不同,VLABench 刻意將任務設計得更貼近真實世界的模糊性與複雜度——指令蘊含隱含人類意圖而非明確樣板、任務需要多步驟長時程推理、且評測範圍擴及語言/視覺理解能力。
-  * 重要方法設計描述：整體 benchmark 可以想像成兩層任務結構——Primitive Tasks（基礎任務,60個,只需一到兩個維度的能力與少量技能組合,例如單一抓取或放置動作）與 Composite Tasks（組合任務,40個,需要多步驟推理與長時程規劃,涉及更多技能與能力的組合）。評測框架進一步分為三大類：對預訓練或微調後 VLA 模型的評估、整合基礎模型與各種演算法的啟發式工作流評估,以及對視覺語言模型（VLM）在多維度能力上的評估（如 mesh/紋理理解、空間關係、物理定律推理）。
+  * Problem addressed: Existing robot manipulation benchmarks do not adequately meet the evaluation needs of VLA and related algorithms — for example, they lack tests of world knowledge and common-sense transfer, their instructions are mostly fixed templates rather than natural language carrying implicit intent, most tasks are single-step rather than long-horizon multi-step reasoning tasks, and they typically evaluate only action policy performance without evaluating language understanding capability.
+  * Main method: VLABench constructs a large-scale simulated benchmark spanning 100 task categories and over 2,000 objects, with a high degree of randomization within each task category to prevent models from exploiting memorized templates rather than genuine understanding. Task design deliberately covers four aspects that were less emphasized by previous benchmarks: world knowledge/common-sense transfer, natural language instructions with implicit intent, long-horizon tasks requiring multi-step reasoning, and a dual-track evaluation of both action policy and language model capability. Additionally, the authors provide an automated data-collection framework (combining heuristic skills and prior information) for generating high-quality training data for downstream fine-tuning.
+  * Difference from prior approaches: Unlike previous benchmarks (whose tasks are mostly short-horizon, whose instructions are templated, and which evaluate only action success rate), VLABench deliberately designs tasks that are closer to the ambiguity and complexity of the real world — instructions carry implicit human intent rather than explicit templates, tasks require multi-step long-horizon reasoning, and the evaluation scope extends to language/visual understanding capability.
+  * Key design description: The overall benchmark can be envisioned as a two-tier task structure — Primitive Tasks (60 basic tasks requiring only one or two dimensions of ability and a small combination of skills, such as a single grasp or place action) and Composite Tasks (40 combination tasks requiring multi-step reasoning and long-horizon planning, involving a larger combination of skills and abilities). The evaluation framework is further divided into three main categories: evaluation of pretrained or fine-tuned VLA models, evaluation of heuristic workflows integrating foundation models with various algorithms, and evaluation of vision-language models (VLMs) across multiple dimensions of capability (e.g., mesh/texture understanding, spatial relationships, physical-law reasoning).
 
 
 
 ### Result
 
-  * 實驗結果顯示,目前最先進的預訓練 VLA 模型與基於 VLM 的工作流方法,在 VLABench 的任務上都面臨顯著挑戰（摘要未提供具體成功率數字,需查證全文的實驗表格）。
-  * 主要增強/揭露的部分：此 benchmark 主要增強的並非某個模型的性能,而是評測維度的完整性——揭露了現有 VLA 模型在長時程推理、隱含意圖理解、世界知識遷移等方面的普遍不足。
-  * 是否公正：作為 ICCV 2025 正式接受的論文,已經過同行評審把關;但由於是新提出的 benchmark,其任務設計是否存在對特定模型架構的隱性偏好,需要查證全文與第三方評測結果,暫無法確認是否有與其他論文結果不符之處。
+  * Experimental results show that current state-of-the-art pretrained VLA models and VLM-based workflow methods both face significant challenges on VLABench's tasks (the abstract does not provide specific success-rate numbers; the experimental tables in the full text need to be checked).
+  * Main improvement/revelation: What this benchmark mainly enhances is not the performance of any specific model, but rather the completeness of the evaluation dimensions — it reveals the widespread inadequacy of existing VLA models in long-horizon reasoning, implicit-intent understanding, and world-knowledge transfer.
+  * Fairness: As a paper formally accepted at ICCV 2025, it has undergone peer review; however, since this is a newly proposed benchmark, whether its task design has any implicit bias toward specific model architectures needs to be verified against the full text and third-party evaluation results, and it is currently not possible to confirm whether there are any discrepancies with other papers' results.
 
 
 
 ### Limitation
 
-  * 摘要中沒有明確自陳的 limitation 段落,需要查證全文。
-  * 從實驗結果推測的潛在弱項：現有 SOTA VLA 模型與 VLM 工作流都在此 benchmark 上遇到困難,意味著任務難度可能偏高,短期內作為模型能力天花板的參考價值大於日常迭代驗證工具;此外作為模擬 benchmark,其能否充分代表真實世界操作場景的多樣性仍需 sim-to-real 驗證。
+  * The abstract does not have an explicitly stated limitations section; the full text needs to be checked.
+  * Potential weaknesses inferred from the experimental results: Since current SOTA VLA models and VLM workflows all encounter difficulty on this benchmark, the task difficulty may be relatively high, meaning that in the short term its value lies more in serving as a reference for the ceiling of model capability rather than as a tool for day-to-day iterative validation. In addition, as a simulation benchmark, whether it can fully represent the diversity of real-world manipulation scenarios still requires sim-to-real validation.
 
 
 
 ### Related work
 
-  * 與同批次的 vla-eval（arXiv:2603.13966）高度相關,VLABench 很可能是 vla-eval 所支援的 benchmark 之一;也與 VLA survey（arXiv:2604.23001）中提到的 benchmark 在長時程推理評估上的結構性缺口直接呼應。
-  * 論文於 2024年12月提交、2025年10月正式發表於 ICCV,暫無法確認是否已有直接後續改進版本,建議查證作者團隊（Fudan University OpenMOSS）後續發表。
-  * Related work 值得 survey 的程度高:是理解 VLA 長時程推理評測子領域的重要參考點。
+  * Highly related to vla-eval (arXiv:2603.13966) from the same batch — VLABench is likely one of the benchmarks supported by vla-eval; it also directly echoes the structural gap in long-horizon reasoning evaluation mentioned in the VLA survey (arXiv:2604.23001).
+  * The paper was submitted in December 2024 and formally published at ICCV in October 2025; it is currently not possible to confirm whether there is a direct follow-up improved version, and it is recommended to check for subsequent publications by the author team (Fudan University OpenMOSS).
+  * Degree to which the related work is worth surveying: high — an important reference point for understanding the sub-field of long-horizon reasoning evaluation for VLA.
 
 
 
 ### Conclusion
 
-  * 綜合評價：VLABench 是一篇經過同行評審（ICCV 2025）、任務設計完整且針對既有 benchmark 明確缺口提出系統解法的高品質 benchmark 論文,對評測 VLA 模型的推理與泛化能力有很高參考價值。
-  * 與其他重要文章的關係：與同批次的 vla-eval、VLA survey（2604.23001）構成緊密的引用/呼應關係。
-  * 對 ROCm/AMD：看不出與 ROCm/AMD 有明確的直接關聯,論文聚焦於機器人操作任務的 benchmark 設計與模擬環境建構,未提及具體訓練/推論硬體平台選型；此 benchmark 涉及大規模模擬渲染,若 AMD 想驗證 GPU/ROCm 在大規模機器人模擬效能上的表現,可作為測試案例,但此為推測方向。
+  * Overall assessment: VLABench is a peer-reviewed (ICCV 2025), well-designed benchmark paper that systematically addresses clear gaps in existing benchmarks, offering high reference value for evaluating the reasoning and generalization capability of VLA models.
+  * Relationship to other important papers: Forms a close citation/echoing relationship with vla-eval and the VLA survey (2604.23001) from the same batch.
+  * Relevance to ROCm/AMD: No clear direct connection to ROCm/AMD can be identified; the paper focuses on the design of robotic manipulation task benchmarks and simulation environment construction, without mentioning specific training/inference hardware platform choices. This benchmark involves large-scale simulation rendering, so if AMD wants to validate GPU/ROCm performance on large-scale robot simulation, it could serve as a test case, but this is a speculative direction.

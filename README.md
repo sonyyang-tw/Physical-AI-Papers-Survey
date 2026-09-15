@@ -1,18 +1,23 @@
 # Physical AI Papers Survey
 
-自動化 VLA (Vision-Language-Action) 與 World Model 論文精選導讀資料庫，由 Paper Survey Harness 每日自動維護。
+An automated curation and survey database of VLA (Vision-Language-Action) and World Model papers, maintained daily by the Paper Survey Harness.
 
-網站: https://sonyyang-tw.github.io/Physical-AI-Papers-Survey/
+Site: https://sonyyang-tw.github.io/Physical-AI-Papers-Survey/
 
-## 結構
+Available in English (default) and [Traditional Chinese](https://sonyyang-tw.github.io/Physical-AI-Papers-Survey/zh/).
 
-- `_vla_papers/` — VLA 論文完整導讀（Jekyll collection）
-- `_wm_papers/` — World Model 論文完整導讀（Jekyll collection）
-- `vla-index.md` — VLA 主題分類頁
-- `wm-index.md` — World Model 主題分類頁
-- `assets/images/` — 論文截圖
+## Structure
 
-## 本機預覽
+- `_vla_papers/` — complete English surveys of VLA papers (Jekyll collection)
+- `_wm_papers/` — complete English surveys of World Model papers (Jekyll collection)
+- `_zh_vla_papers/` — complete Chinese surveys of VLA papers (Jekyll collection)
+- `_zh_wm_papers/` — complete Chinese surveys of World Model papers (Jekyll collection)
+- `vla/index.md` — VLA topic taxonomy page (English)
+- `wm/index.md` — World Model topic taxonomy page (English)
+- `zh/vla/index.md`, `zh/wm/index.md` — Chinese equivalents
+- `assets/images/` — paper figure screenshots
+
+## Local preview
 
 ```bash
 bundle install

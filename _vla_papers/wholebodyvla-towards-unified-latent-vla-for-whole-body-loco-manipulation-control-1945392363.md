@@ -7,12 +7,12 @@ permalink: /vla/wholebodyvla-towards-unified-latent-vla-for-whole-body-loco-mani
 ---
 
 **Paper** : [WorldBench: Benchmarking Physical Understanding of World Models by Isolating Physics Concepts](https://arxiv.org/abs/2601.21282)  
-**Source** : arXiv (cs.CV)，專案頁：<https://world-bench.github.io/>  
+**Source** : arXiv (cs.CV), Project page: <https://world-bench.github.io/>  
 **arXiv ID** : 2601.21282
 
 ### Abstract
 
-WorldBench 是一個影片式基準，專門用來評估生成式世界模型對物理概念的理解，其核心設計理念是「解耦（disentangle）」——每次測試只孤立評估單一物理概念或定律，而非讓多個物理法則同時糾纏在一次評分中。作者指出，現有物理向影片基準常有「糾纏」問題：單一測試同時評估多種物理定律與概念，根本上限制了診斷能力。WorldBench 設計了兩個層級的評測：(1) 直覺物理理解層級，涵蓋較高層次概念，如物體恆存性（object permanence）、尺度/透視關係；(2) 低層次物理常數與材質屬性評測，如摩擦係數、流體黏度，藉此精確衡量生成影片與真實世界的偏差程度。作者評測了多個 SOTA 影片式世界模型，發現這些模型在特定物理概念上存在明顯且一致的失敗模式，所有受測模型都缺乏產生可靠真實世界互動所需的物理一致性。
+WorldBench is a video-based benchmark specifically designed to evaluate generative world models' understanding of physics concepts, with a core design philosophy of "disentanglement" — each test isolates and evaluates a single physical concept or law, rather than entangling multiple physical laws in a single score. The authors point out that existing physics-oriented video benchmarks often suffer from an "entanglement" problem: a single test simultaneously evaluates multiple physical laws and concepts, which fundamentally limits diagnostic capability. WorldBench designs two levels of evaluation: (1) intuitive physics understanding, covering higher-level concepts such as object permanence and scale/perspective relationships; (2) low-level physical constants and material properties, such as coefficients of friction and fluid viscosity, precisely measuring the degree of deviation between generated video and the real world. The authors evaluated multiple SOTA video-based world models and found that these models exhibit clear and consistent failure modes on specific physical concepts, and that all tested models lack the physical consistency required to produce reliable real-world interactions.
 
 ### Method
 
@@ -24,42 +24,42 @@ _Figure 1: WholeBodyVLA teaser._
 
 _Figure 2: WholeBodyVLA pipeline._
 
-  * 要解決的問題：現有物理向影片基準的測試題目往往同時牽涉多種物理定律/概念（糾纏），導致無法精確定位模型在哪個具體物理概念上失敗，診斷能力受限。
-  * Main method：WorldBench 提出「概念特定、解耦式（concept-specific, disentangled）」評測框架，設計兩個層級的基準：
-    * 高層次直覺物理理解：測試如物體恆存性（物體被遮擋後是否仍「存在」）、尺度與透視關係等人類直覺層面的物理概念。
-    * 低層次物理常數與材質屬性：測試如摩擦係數、流體黏度等具體、可量化的物理量，藉此測量生成影片與真實物理現象之間「差多遠」的定量差距。
-  * 與以往方式的差異：以往基準的單一測試題常同時涉及多個物理法則（例如一個「球滾下斜坡」的場景同時涉及重力、摩擦力、彈性碰撞等），失敗時無法歸因到具體哪個定律；WorldBench 刻意將每個測試設計為只孤立測試單一概念/定律，使診斷更精確、可擴展。
-  * 重要方法設計描述：可以想像整個基準分為兩條測試軌道——直覺物理軌道透過設計特定場景（例如物體暫時被遮擋、鏡頭尺度變化）來檢驗模型是否維持物體的連續性、大小/距離關係等「常識級」物理理解；低層次物理常數軌道則透過受控的物理情境（例如特定材質的物體在特定表面上滑動、特定黏度液體的流動行為）來量化模型生成結果與已知物理常數/材質屬性真實值之間的偏差。兩軌道均為影片式評測，即輸入 prompt 由世界模型生成影片後，再依照設計好的物理準則對生成結果進行評分。
+  * Problem addressed: Test items in existing physics-oriented video benchmarks often involve multiple physical laws/concepts simultaneously (entanglement), making it impossible to precisely pinpoint which specific physical concept a model fails on, thereby limiting diagnostic capability.
+  * Main method: WorldBench proposes a "concept-specific, disentangled" evaluation framework, designing two levels of benchmarks:
+    * High-level intuitive physics understanding: tests concepts such as object permanence (whether an object is still considered to "exist" after being occluded) and scale/perspective relationships — physical concepts at the level of human intuition.
+    * Low-level physical constants and material properties: tests specific, quantifiable physical quantities such as coefficients of friction and fluid viscosity, thereby measuring the quantitative gap between generated video and real physical phenomena.
+  * Difference from prior approaches: Test items in previous benchmarks often involved multiple physical laws at once (e.g., a scene of "a ball rolling down a slope" simultaneously involves gravity, friction, and elastic collision), so when a failure occurs, it cannot be attributed to a specific law; WorldBench deliberately designs each test to isolate a single concept/law, making diagnosis more precise and the benchmark more extensible.
+  * Key design description: The whole benchmark can be imagined as split into two testing tracks — the intuitive physics track designs specific scenarios (e.g., an object temporarily occluded, changes in camera scale) to examine whether the model maintains "common-sense-level" physical understanding such as object continuity and size/distance relationships; the low-level physical constants track uses controlled physical scenarios (e.g., a specific material sliding on a specific surface, the flow behavior of a liquid with a specific viscosity) to quantify the deviation between the model's generated output and the true values of known physical constants/material properties. Both tracks are video-based evaluations — a world model generates video from an input prompt, and the generated result is then scored according to pre-designed physical criteria.
 
 
 
 ### Result
 
-  * 主要成果：對多個 SOTA 影片式世界模型進行了評測，發現「所有受測模型都存在特定物理概念上的失敗模式」，且普遍缺乏產生可靠真實世界互動所需的物理一致性；透過解耦式評測，能夠精確指出模型在哪些具體物理概念（如摩擦、黏度、物體恆存性等）上表現不佳。
-  * 增強部分：主要增強了「物理理解評測的診斷精細度」（相較整體單一分數，可逐概念分析）與「可擴展性」（新的物理概念可以模組化地加入基準）。
-  * 是否公正：摘要中未提供具體的模型排名或分數表格細節（僅描述「所有模型都有失敗模式」這種定性結論），因此難以直接比較各模型的優劣程度；需要查證其他論文（尤其同期的 PhyGround，arXiv:2605.10806）是否對相同或重疊的模型集合有類似或不同的評測結論，以確認結果的一致性。
+  * Main result: Multiple SOTA video-based world models were evaluated, and it was found that "all tested models exhibit failure modes on specific physical concepts" and generally lack the physical consistency required to produce reliable real-world interactions; through disentangled evaluation, the benchmark can precisely pinpoint which specific physical concepts (e.g., friction, viscosity, object permanence) a model performs poorly on.
+  * Improvements: The main improvements are in the "diagnostic granularity of physical-understanding evaluation" (compared to a single overall score, per-concept analysis is now possible) and "extensibility" (new physical concepts can be added to the benchmark in a modular fashion).
+  * Fairness: The abstract does not provide specific model rankings or detailed score tables (only the qualitative conclusion that "all models have failure modes"), making it difficult to directly compare the relative strengths of different models. It would be necessary to check whether other papers (especially the concurrent PhyGround, arXiv:2605.10806) reach similar or different evaluation conclusions on the same or overlapping set of models, in order to confirm the consistency of the results.
 
 
 
 ### Limitation
 
-  * 論文中自陳的限制：僅根據 arXiv abstract 頁面資訊，摘要本身未明確列出 limitation 段落內容，需要查證全文以確認作者自陳的限制。
-  * 從結果推測的弱項：
-    * 論文本身的核心發現是「所有模型都有物理理解缺陷」，這雖然是有意義的診斷結果，但也代表目前尚無模型能作為「物理理解良好」的正面對照組，基準的可比較性（哪個模型相對更好）可能因此打折扣。
-    * 低層次物理常數（如摩擦係數、黏度）的評測依賴人類或自動化評判者判斷生成影片是否符合特定物理量的「視覺表現」，這種視覺層面的定量判斷本身可能存在誤差或主觀性，論文摘要未說明評判方式的可靠性驗證。
-    * 論文歷經 v1（2026年1月）到 v2（2026年8月）近半年的修訂，可能反映評測方法或模型集合有調整，需查證版本間差異。
+  * Limitations stated by the authors: Based solely on information from the arXiv abstract page, the abstract itself does not explicitly list a limitations section; the full text needs to be checked to confirm the authors' self-stated limitations.
+  * Weaknesses inferred from the results:
+    * The paper's core finding is that "all models have deficiencies in physical understanding," which, while a meaningful diagnostic result, also means there is currently no model that can serve as a positive control representing "good physical understanding," which may reduce the comparability of the benchmark (which model is relatively better).
+    * The evaluation of low-level physical constants (e.g., friction coefficient, viscosity) relies on human or automated judges assessing whether the generated video's "visual appearance" matches a specific physical quantity; this kind of visual-level quantitative judgment may itself carry error or subjectivity, and the abstract does not describe how the reliability of the judging method was validated.
+    * The paper went through revisions from v1 (January 2026) to v2 (August 2026), spanning nearly half a year, which may reflect adjustments to the evaluation method or model set; the differences between versions need to be checked.
 
 
 
 ### Related work
 
-  * 與同期出現的 PhyGround（arXiv:2605.10806，本次同時處理的另一篇論文）在主題與方法論上高度重疊，兩者都採用「解耦式」評測理念但呈現方式不同（WorldBench 分「直覺物理」與「物理常數」兩層級；PhyGround 用 13 類定律分類法＋評判模型 PhyJudge-9B）。建議交叉比較兩者對相同物理概念（如摩擦力、流體行為）的評測方法與發現是否一致。
-  * Related work 值得 survey 的程度：高。物理一致性評測是 2026 年上半年 world model 研究的熱門子方向，值得整理成一個小型 survey，系統性比較 WorldBench、PhyGround 及其他同類基準。
+  * Highly overlapping in topic and methodology with the concurrent PhyGround (arXiv:2605.10806, another paper handled in this same batch); both adopt a "disentangled" evaluation philosophy but present it differently (WorldBench splits into "intuitive physics" and "physical constants" tiers; PhyGround uses a 13-category law taxonomy plus the PhyJudge-9B judge model). It is recommended to cross-compare the evaluation methods and findings of the two for the same physical concepts (e.g., friction, fluid behavior) to see whether they are consistent.
+  * Degree to which the related work is worth surveying: high. Physical-consistency evaluation is a popular sub-direction of world model research in the first half of 2026, worth compiling into a small survey systematically comparing WorldBench, PhyGround, and other similar benchmarks.
 
 
 
 ### Conclusion
 
-  * 綜合評價：WorldBench 提出的「解耦式」評測理念清晰且具説服力，能有效解決傳統物理向基準因測試題糾纏多重物理概念而導致診斷模糊的問題，對於想要系統性理解世界模型物理弱點的研究者是值得參考的一篇工作；但由於未讀取全文，具體的模型排名數據、評判方法的可靠性驗證等細節仍待查證。
-  * 與其他重要文章的關係：與 PhyGround 構成同一時期、同一問題意識下的兩種不同解法路線，建議一併研讀比較；兩者共同的結論（現有世界模型物理一致性普遍不足）也呼應了 embodied AI 領域對「世界模型能否真正支撐機器人規劃與模擬」的普遍疑慮。
-  * ROCm/AMD 待補強部分：論文未提及訓練/評測所用硬體或框架資訊，看不出與 ROCm/AMD 的明確關聯，不宜臆測。若 AMD 團隊想利用 WorldBench 評估自家以 ROCm 訓練的世界模型的物理一致性，可直接採用其公開的評測框架，但這屬於使用者自行延伸應用，非論文本身內容。
+  * Overall assessment: WorldBench's "disentangled" evaluation philosophy is clear and persuasive, effectively solving the problem of diagnostic ambiguity caused by traditional physics-oriented benchmarks entangling multiple physical concepts in a single test item. It is worth referencing for researchers who want to systematically understand the physical weaknesses of world models; however, since the full text has not been read, specific model ranking data and validation of the reliability of the judging method remain to be verified.
+  * Relationship to other important papers: Forms two different solution paths addressing the same problem consciousness at the same period alongside PhyGround; it is recommended to study and compare both together. Their shared conclusion (that existing world models generally lack physical consistency) also echoes the broader skepticism in the embodied AI field about whether world models can truly support robot planning and simulation.
+  * Areas needing further ROCm/AMD investigation: The paper does not mention the hardware or framework used for training/evaluation, so no clear connection to ROCm/AMD can be identified; this should not be speculated upon. If an AMD team wants to use WorldBench to evaluate the physical consistency of their own ROCm-trained world models, they could directly adopt its published evaluation framework, but that would be a user-driven extension application rather than content of the paper itself.

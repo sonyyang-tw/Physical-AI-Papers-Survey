@@ -1,5 +1,5 @@
 title: Physical AI Papers Survey
-description: "VLA 與 World Model 論文精選導讀資料庫"
+description: "A curated survey database of VLA (Vision-Language-Action) and World Model papers"
 baseurl: "/Physical-AI-Papers-Survey"
 url: "https://sonyyang-tw.github.io"
 
@@ -8,9 +8,9 @@ collections:
     output: true
   wm_papers:
     output: true
-  en_vla_papers:
+  zh_vla_papers:
     output: true
-  en_wm_papers:
+  zh_wm_papers:
     output: true
 
 markdown: kramdown

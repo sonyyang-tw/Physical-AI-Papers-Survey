@@ -12,53 +12,45 @@ permalink: /vla/ecovla-energy-efficient-device-edge-co-inference-for-vision-lang
 
 ### Abstract
 
-Vision-Language-Action (VLA) 模型已成為具身智能（Embodied AI）的重要基礎，但其高昂的推理成本對機器人系統的實際部署帶來挑戰。純裝置端（on-device）推理受限於有限的算力與能耗預算，難以同時滿足即時控制與節能需求；而將推理工作卸載到邊緣伺服器（edge server）又容易受系統狀況波動影響，帶來不可預測的延遲風險。裝置-邊緣協同推理（device-edge co-inference）是一個有潛力的解方，但針對 VLA 模型的系統性研究仍相當稀少，尤其缺乏能同時處理即時性限制與系統級能源效率的統一協同推理框架。因此，本文提出 EcoVLA，一個自適應的裝置-邊緣協同推理框架，在滿足即時性限制的前提下最大化系統能源效率。EcoVLA 首先對不同 VLA 範式建立統一的「階段級（stage-level）」抽象，建立與架構無關的協同推理設計空間；接著建立一個聯合裝置-邊緣-網路延遲與能耗預測模型，以快速評估候選協同推理方案；在此基礎上，EcoVLA 能以毫秒級的開銷持續選擇滿足即時限制的最節能方案，並適應網路與系統狀態的即時變化；此外還加入輕量級的跨階段中間張量傳輸機制，降低跨裝置協作帶來的通訊開銷。實驗結果顯示，在 20 Hz 動作輸出頻率限制下，EcoVLA 相較既有協同推理方法，系統能源效率最多提升 236%，同時能在動態網路與邊緣工作負載條件下持續滿足服務等級目標（SLO）。
+Vision-Language-Action (VLA) models have become an important foundation for embodied AI, but their high inference cost poses challenges for the practical deployment of robotic systems. Pure on-device inference, constrained by limited compute and energy budgets, struggles to simultaneously satisfy real-time control and energy-saving requirements; offloading inference work to an edge server, on the other hand, is easily affected by fluctuating system conditions, introducing unpredictable latency risk. Device-edge co-inference is a promising solution, but systematic research targeting VLA models remains quite scarce, and in particular there is a lack of a unified co-inference framework that can simultaneously handle real-time constraints and system-level energy efficiency. This paper therefore proposes EcoVLA, an adaptive device-edge co-inference framework that maximizes system energy efficiency while satisfying real-time constraints. EcoVLA first establishes a unified "stage-level" abstraction for different VLA paradigms, building an architecture-agnostic co-inference design space; it then constructs a joint device-edge-network latency and energy prediction model to rapidly evaluate candidate co-inference schemes; based on this, EcoVLA can continuously select the most energy-efficient scheme satisfying the real-time constraint with millisecond-level overhead, adapting to real-time changes in network and system state; in addition, a lightweight cross-stage intermediate-tensor transmission mechanism is added to reduce the communication overhead introduced by cross-device collaboration. Experimental results show that, under a 20 Hz action-output frequency constraint, EcoVLA improves system energy efficiency by up to 236% compared to existing co-inference methods, while continuously meeting service-level objectives (SLOs) under dynamic network and edge workload conditions.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945364578_ecovla_fig1.png) 
 
-_Figure 1: EcoVLA 的挑戰與動機 ——說明裝置端-邊緣端協同推論在即時性與能耗限制下面臨的核心問題。_
+_Figure 1: Challenges and motivation for EcoVLA — illustrating the core problems faced by device-edge co-inference under real-time and energy constraints._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945364578_ecovla_fig2.png) 
 
-_Figure 2: EcoVLA 框架總覽 ——展示裝置端與邊緣端協同推論架構如何在滿足即時性約束下最佳化能耗。_
+_Figure 2: Overview of the EcoVLA framework — showing how the device-edge co-inference architecture optimizes energy consumption while satisfying real-time constraints._
 
-  * **要解決的問題** ：VLA 模型推理成本高，純裝置端運算難以兼顧即時性與能耗限制；純邊緣卸載又因網路/系統波動而延遲不可預測。如何在「即時性限制」與「系統級能源效率」之間取得最佳平衡，且適用於各種不同架構的 VLA 模型，是本文核心問題。
-  * **Main method** ：EcoVLA 提出（1）統一的「階段級抽象」，將不同 VLA 模型架構拆解成可獨立分配到裝置或邊緣執行的階段，建立與具體架構無關的協同推理設計空間；（2）聯合裝置-邊緣-網路的延遲與能耗預測模型，用於快速評估各種協同推理方案；（3）基於預測模型，以毫秒級開銷持續動態選擇滿足即時限制下最省能的方案；（4）輕量級跨階段中間張量傳輸機制，降低裝置與邊緣間傳輸中間特徵的通訊開銷。
-  * **和以往方式的差異** ：既有協同推理研究多半針對特定模型架構設計，缺乏通用性；EcoVLA 的階段級抽象讓框架能適用於「任意架構的 VLA 模型」，並且是首個同時兼顧「即時性約束」與「系統級（裝置+邊緣+網路）能源效率」的統一框架，而非僅優化單一指標（如純延遲或純能耗）。
-  * **架構/流程描述** ：VLA 推理流程被拆解為多個「階段」（例如視覺編碼、語言處理、動作解碼等），系統持續監測裝置端算力/電量、邊緣伺服器負載、以及網路狀況，透過預測模型即時估算各種「裝置/邊緣分配方案」的預期延遲與能耗，選出在滿足 20Hz 等即時輸出頻率限制下能耗最低的方案；當網路或系統狀態改變時，方案會動態調整；跨裝置傳輸的中間張量會經過輕量壓縮/傳輸機制以減少額外通訊開銷。
-
-
+  * **Problem addressed**: VLA models have high inference cost, and pure on-device computation struggles to balance real-time and energy constraints; pure edge offloading, meanwhile, produces unpredictable latency due to network/system fluctuations. The core question of this paper is how to strike the best balance between "real-time constraints" and "system-level energy efficiency," in a way applicable to VLA models of various different architectures.
+  * **Main method**: EcoVLA proposes (1) a unified "stage-level abstraction" that decomposes different VLA model architectures into stages that can be independently assigned to run on the device or at the edge, building an architecture-agnostic co-inference design space; (2) a joint device-edge-network latency and energy prediction model, used to rapidly evaluate various co-inference schemes; (3) based on the prediction model, continuously and dynamically selecting the most energy-efficient scheme satisfying the real-time constraint, with millisecond-level overhead; (4) a lightweight cross-stage intermediate-tensor transmission mechanism, reducing the communication overhead of transmitting intermediate features between the device and the edge.
+  * **Difference from prior approaches**: Existing co-inference research has mostly been designed for specific model architectures, lacking generality; EcoVLA's stage-level abstraction allows the framework to apply to "VLA models of arbitrary architecture," and it is the first unified framework to simultaneously address both "real-time constraints" and "system-level (device + edge + network) energy efficiency," rather than optimizing only a single metric (such as pure latency or pure energy consumption).
+  * **Description of the architecture/pipeline**: The VLA inference pipeline is decomposed into multiple "stages" (e.g., visual encoding, language processing, action decoding, etc.); the system continuously monitors on-device compute/power, edge server load, and network conditions, using the prediction model to estimate in real time the expected latency and energy consumption of various "device/edge assignment schemes," selecting the scheme with the lowest energy consumption that satisfies the real-time output-frequency constraint (e.g., 20 Hz); when network or system state changes, the scheme is dynamically adjusted; intermediate tensors transmitted across devices go through a lightweight compression/transmission mechanism to reduce additional communication overhead.
 
 ### Result
 
-  * 在 20 Hz 動作輸出頻率的即時性限制下，EcoVLA 相較既有協同推理方法，系統能源效率最多提升 236%。
-  * 能在動態網路與邊緣工作負載變化的條件下，持續維持服務等級目標（SLO，即即時性要求）的滿足。
-  * 摘要未提供跨多種 VLA 模型架構的詳細對比數據（僅籠統提及「跨 VLA 模型的實驗結果」），需要查證全文取得各架構個別表現的細節。
-  * 是否公正：236% 這一數字為與「既有協同推理方法」比較所得，究竟比較對象是哪些具體方法、是否涵蓋足夠廣泛的基準，需要查證其他論文的比較數據以判斷是否公正。
-
-
+  * Under the real-time constraint of a 20 Hz action-output frequency, EcoVLA improves system energy efficiency by up to 236% compared to existing co-inference methods.
+  * It can continuously maintain satisfaction of the service-level objective (SLO, i.e., the real-time requirement) under conditions of dynamic network and edge workload changes.
+  * The abstract does not provide detailed comparison data across multiple VLA model architectures (only vaguely mentioning "experimental results across VLA models"); the full text needs to be checked to obtain the details of individual performance for each architecture.
+  * Fairness: the 236% figure is derived from comparison with "existing co-inference methods"; exactly which specific methods were compared against, and whether a sufficiently broad range of baselines was covered, needs to be verified against other papers' comparative data to judge fairness.
 
 ### Limitation
 
-  * 論文本身摘要未明確列出限制。
-  * 從方法設計看，此框架高度依賴準確的延遲/能耗預測模型；若實際部署環境（如網路狀況劇烈波動、邊緣伺服器異質性極高）超出預測模型訓練/校準時的假設範圍，效能提升幅度可能會打折扣，此點摘要未討論，需要查證全文。
-  * 論文聚焦於「系統/部署層面」的效率優化，並未涉及模型本身架構或參數量的改動，因此其效果的天花板受限於底層 VLA 模型本身的效能與推理成本結構。
-
-
+  * The paper's abstract itself does not explicitly list limitations.
+  * From the methodological design, this framework relies heavily on an accurate latency/energy prediction model; if the actual deployment environment (e.g., drastically fluctuating network conditions, highly heterogeneous edge servers) exceeds the assumptions under which the prediction model was trained/calibrated, the magnitude of the efficiency improvement may be reduced. This point is not discussed in the abstract and needs to be verified in the full text.
+  * The paper focuses on efficiency optimization at the "system/deployment level" and does not involve changes to the model's own architecture or parameter count, so the ceiling of its effect is limited by the performance and inference-cost structure of the underlying VLA model itself.
 
 ### Related work
 
-  * 摘要提及「既有協同推理方法」作為比較對象，但未列出具體論文名稱。
-  * 此論文與 VLA-Perf（本清單論文6，同樣談 VLA 推理效能與部署位置選擇）主題高度相關，兩者可互為補充：VLA-Perf 提供分析框架與設計原則，EcoVLA 則提供實際的自適應調度系統。
-  * 暫無發現更新的直接後續研究（本文為 2026 年 8 月新發表工作）。
-  * Related work 值得 survey 的程度：高，此文與 VLA-Perf、VLA-Adapter 等效率導向論文一起讀，有助於建立「VLA 部署工程」（而非單純模型演算法）這條技術脈絡的完整圖像，對 ROCm/AMD 相關工程師特別有參考價值。
-
-
+  * The abstract mentions "existing co-inference methods" as comparison targets, but does not list specific paper names.
+  * This paper is highly related in topic to VLA-Perf (paper 6 on this list, which likewise discusses VLA inference performance and deployment-location selection); the two can be complementary: VLA-Perf provides an analytical framework and design principles, while EcoVLA provides an actual adaptive scheduling system.
+  * No newer direct follow-up research has been found so far (this paper is newly published in August 2026).
+  * Degree to which the related work merits surveying: high. Reading this paper alongside efficiency-oriented papers such as VLA-Perf and VLA-Adapter helps build a complete picture of the technical lineage of "VLA deployment engineering" (as opposed to purely model algorithms), of particular reference value to engineers working with ROCm/AMD.
 
 ### Conclusion
 
-  * 本文是少見專注在「VLA 系統級部署（裝置-邊緣協同）」的工程導向論文，對於實際將 VLA 部署到資源受限機器人系統的工程師極具參考價值，值得精讀。
-  * 與其他重要文章的關係：本文與 VLA-Perf（分析 VLA 推理效能地形圖）形成互補關係——VLA-Perf 提供「應該如何設計 VLA 模型與系統」的分析工具與 15 條要點，EcoVLA 則是針對「裝置-邊緣協同」這一具體部署場景的落地方案；也與 VLA-Adapter（模型端輕量化）、VLA-AD（蒸餾）共同構成 VLA 效率化的三個層次（模型設計、訓練後壓縮、系統部署）。
-  * 對 ROCm/AMD 的關聯：此文的核心是「裝置端與邊緣端協同的能耗-延遲聯合優化」，若 AMD 的邊緣 GPU（如嵌入式 Ryzen AI / MI 系列邊緣加速卡）要應用於機器人系統，這類協同推理框架具有直接參考價值；但論文本身未提及具體硬體平台或是否測試過 ROCm 環境，AMD 若想將 ROCm 生態系整合進類似的裝置-邊緣協同框架，仍需查證全文的具體硬體假設與能耗模型是否可移植到 AMD 平台。
+  * This paper is a rare engineering-oriented paper focused on "system-level VLA deployment (device-edge co-inference)," of great reference value for engineers actually deploying VLA to resource-constrained robotic systems, and worth reading closely.
+  * Relationship to other important papers: this paper is complementary to VLA-Perf (which analyzes the VLA inference performance landscape) — VLA-Perf provides analytical tools and 15 design guidelines for "how VLA models and systems should be designed," while EcoVLA is a concrete deployment solution for the specific scenario of "device-edge co-inference"; together with VLA-Adapter (model-side lightweighting) and VLA-AD (distillation), they form three levels of VLA efficiency work (model design, post-training compression, system deployment).
+  * ROCm/AMD relevance: the core of this paper is "joint energy-latency optimization of device-edge collaboration." If AMD's edge GPUs (e.g., embedded Ryzen AI / MI-series edge accelerator cards) are to be applied to robotic systems, this type of co-inference framework has direct reference value; however, the paper itself does not mention specific hardware platforms or whether it was tested in a ROCm environment. If AMD wants to integrate the ROCm ecosystem into a similar device-edge co-inference framework, it would still need to verify in the full text whether the specific hardware assumptions and energy model are portable to AMD platforms.

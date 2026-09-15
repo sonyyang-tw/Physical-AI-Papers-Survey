@@ -12,55 +12,47 @@ permalink: /wm/other-vehicle-trajectories-are-also-needed-a-driving-world-model-
 
 ### Abstract
 
-EOT-WM 是一個自動駕駛用的世界模型，重點在於同時控制「自車（ego vehicle）」與「他車（other vehicles）」的軌跡，用於生成更真實的駕駛模擬影片。作者指出，先進的端到端自動駕駛系統會預測他車的運動並規劃自車軌跡，而現有的世界模型多半只強調自車軌跡的可控性，讓他車運動不可控，因而難以真實模擬自車與周遭環境的互動。EOT-WM 先將 BEV（鳥瞰圖）空間中自車與他車的軌跡投影到影像座標，以像素位置將軌跡與影片中對應的車輛匹配；再用時空變分自編碼器（Spatial-Temporal VAE）將軌跡影片編碼，與駕駛影片的潛在表示在時空上對齊；並設計軌跡注入式擴散 Transformer（trajectory-injected diffusion Transformer）對含噪潛在影片去噪以生成影片。作者也提出一個基於控制潛在相似度的新指標評估軌跡可控性。在 nuScenes 資料集上的實驗顯示，該方法相較 SOTA 方法 FID 提升 30%、FVD 提升 55%，並能用自產軌跡預測未見過的駕駛場景。
+EOT-WM is a world model for autonomous driving that focuses on simultaneously controlling the trajectories of both the "ego vehicle" and "other vehicles," in order to generate more realistic driving simulation videos. The authors point out that advanced end-to-end autonomous driving systems predict the motion of other vehicles while planning the ego vehicle's trajectory, but existing world models mostly only emphasize controllability of the ego vehicle's trajectory, leaving the motion of other vehicles uncontrollable, which makes it difficult to realistically simulate interactions between the ego vehicle and its surrounding environment. EOT-WM first projects the trajectories of the ego vehicle and other vehicles from BEV (bird's-eye-view) space into image coordinates, matching trajectories to the corresponding vehicles in the video via pixel positions; it then uses a Spatial-Temporal VAE to encode the trajectory videos, aligning them spatially and temporally with the latent representation of the driving video; and it designs a trajectory-injected diffusion Transformer to denoise the noisy latent video and generate the output video. The authors also propose a new metric based on controlled latent similarity to evaluate trajectory controllability. Experiments on the nuScenes dataset show that this method improves FID by 30% and FVD by 55% relative to SOTA methods, and can use its own generated trajectories to predict previously unseen driving scenarios.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945392511_eotwm_fig1.jpg) 
 
-_Figure 1: EOT-WM能生成更真實的影片,並可同時控制ego車輛與其他車輛的軌跡,這些軌跡以video space方式表示。_
+_Figure 1: EOT-WM can generate more realistic videos, and can simultaneously control the trajectories of the ego vehicle and other vehicles, with these trajectories represented in video space._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945392511_eotwm_fig2.jpg) 
 
-_Figure 2: EOT-WM架構示意圖。_
+_Figure 2: Schematic diagram of the EOT-WM architecture._
 
-  * 要解決的問題：既有的駕駛世界模型只能可控地生成自車軌跡，他車運動是不可控（隨機或依賴資料分佈），無法真實模擬自車與其他交通參與者之間的互動場景，限制了世界模型作為模擬器評估自動駕駛系統的可信度。
-  * Main method：EOT-WM（Ego-Other vehicle Trajectories World Model）統一控制自車與他車軌跡於同一影片潛在空間，核心分三部分：
-    * Video-based Trajectory Representation（VTR）：將 BEV 空間中每台車（自車＋他車）的軌跡投影到影像座標系，透過像素位置將軌跡與影片畫面中的對應車輛匹配。
-    * Aligned Motion Guidance Generation（AMGG）：用時空 VAE 將這些「軌跡影片」編碼，使其在空間與時間上都能與駕駛影片本身的潛在表示對齊。
-    * Trajectory-injected Diffusion Transformer（TiDiT）：以擴散 Transformer 對含噪的影片潛在做去噪，並在去噪過程注入軌跡引導訊號，生成受控的駕駛影片。
-  * 與以往方式的差異：以往方法（如僅以自車軌跡或路徑點作為條件）忽略他車的可控性，導致模擬中他車行為與真實互動脫節；EOT-WM 把多台車的軌跡都轉換到統一的視覺潛在空間中處理，讓生成模型能同時「看懂」自車與他車的運動意圖。
-  * 重要方法設計描述：模型建構於 CogVideoX（一個文字/影像轉影片的擴散模型）之上；輸入端除了原始駕駛影片外，還有一組軌跡影片（把每輛車的未來軌跡畫成視覺化的軌跡圖層，位置對應影像座標系）；這些軌跡影片經 VTR 對齊車輛身份、經 AMGG 編碼成與駕駛影片同維度的潛在張量；TiDiT 在擴散去噪的每一步將軌跡潛在與影片潛在共同輸入 Transformer，逐步去噪生成最終的駕駛影片，因此軌跡條件可以同時影響自車與畫面中每台他車的運動軌跡。
-
-
+  * **Problem addressed**: Existing driving world models can only controllably generate the ego vehicle's trajectory, while the motion of other vehicles is uncontrollable (random or data-distribution-dependent), making it impossible to realistically simulate interaction scenarios between the ego vehicle and other traffic participants, which limits the credibility of world models as simulators for evaluating autonomous driving systems.
+  * **Main method**: EOT-WM (Ego-Other vehicle Trajectories World Model) unifies control of ego and other vehicle trajectories within the same video latent space. The core consists of three parts:
+    * Video-based Trajectory Representation (VTR): projects each vehicle's (ego and other) trajectory from BEV space into the image coordinate system, matching trajectories to the corresponding vehicles in the video frames via pixel positions.
+    * Aligned Motion Guidance Generation (AMGG): uses a Spatial-Temporal VAE to encode these "trajectory videos" so they align spatially and temporally with the latent representation of the driving video itself.
+    * Trajectory-injected Diffusion Transformer (TiDiT): uses a diffusion Transformer to denoise the noisy video latent, injecting trajectory guidance signals during the denoising process to generate a controlled driving video.
+  * **Difference from prior approaches**: Previous methods (e.g., using only ego trajectories or waypoints as conditioning) neglect the controllability of other vehicles, causing the behavior of other vehicles in the simulation to become disconnected from real interactions. EOT-WM converts the trajectories of multiple vehicles into a unified visual latent space, allowing the generative model to simultaneously "understand" the motion intentions of both the ego vehicle and other vehicles.
+  * **Key design details**: The model is built on top of CogVideoX (a text/image-to-video diffusion model). In addition to the original driving video, the input includes a set of trajectory videos (visualizing the future trajectory of each vehicle as a trajectory layer positioned according to the image coordinate system). These trajectory videos are aligned with vehicle identities via VTR, encoded into latent tensors of the same dimensionality as the driving video via AMGG, and TiDiT jointly feeds the trajectory latents and video latents into the Transformer at each step of the diffusion denoising process, progressively denoising to generate the final driving video — so the trajectory conditioning can simultaneously influence the motion trajectories of the ego vehicle and every other vehicle in the frame.
 
 ### Result
 
-  * 主要成果：在 nuScenes 資料集上，相較於當時的 SOTA 方法，FID 提升 30%，FVD 提升 55%；並提出新指標（基於控制潛在相似度）評估軌跡可控性，顯示軌跡控制的忠實度較高。此外模型可用自己生成的軌跡去預測未見過的駕駛場景，顯示一定的泛化能力。
-  * 增強部分：主要增強了「影片生成品質」（FID/FVD 大幅提升）與「多車軌跡可控性」，這是相對於先前只控制自車軌跡的方法的核心差異化優勢。
-  * 是否公正：摘要中提供的 FID/FVD 提升百分比是作者自行比較的結果，未說明具體比較對象是哪一個/哪幾個 SOTA baseline，也未見第三方或後續論文對這些數字的獨立驗證。需要查證其他論文（例如後續的 driving world model benchmark 論文）是否有對 EOT-WM 的結果做過交叉驗證或提出不同看法。
-
-
+  * **Main results**: On the nuScenes dataset, compared to the SOTA method at the time, FID improved by 30% and FVD improved by 55%. A new metric (based on controlled latent similarity) was proposed to evaluate trajectory controllability, showing high fidelity of trajectory control. In addition, the model can use its own generated trajectories to predict previously unseen driving scenarios, demonstrating a certain degree of generalization ability.
+  * **Contributions**: The main contributions are enhanced "video generation quality" (large improvements in FID/FVD) and "multi-vehicle trajectory controllability," which is the core differentiating advantage over previous methods that only controlled ego vehicle trajectories.
+  * **Fairness**: The FID/FVD improvement percentages provided in the abstract are results of the authors' own comparisons; the specific baseline(s) being compared against are not stated, and no third-party or subsequent paper has independently verified these numbers. It is necessary to check whether other papers (e.g., subsequent driving world model benchmark papers) have cross-validated or presented differing views on EOT-WM's results.
 
 ### Limitation
 
-  * 論文中自陳的限制：僅讀取 arXiv abstract 頁面，摘要本身未列出明確的 limitation 章節內容。
-  * 從結果推測的弱項：
-    * 方法依賴 BEV 到影像座標的投影與像素位置匹配，在遮蔽（occlusion）嚴重或車輛密集重疊的場景中，軌跡與車輛的匹配可能不穩定，但摘要未討論此情形。
-    * 僅在 nuScenes（單一資料集、特定感測器配置與地區）上驗證，跨資料集或跨感測器配置的泛化性未知。
-    * 論文歷經多次修訂（v1 到 v4，橫跨 2025 年 3 月至 11 月），可能反映方法或評估在審稿過程中有調整，但無法從摘要判斷具體變更內容。
-
-
+  * **Limitations stated by the authors**: Based only on the arXiv abstract page, the abstract itself does not list an explicit limitations section.
+  * **Weaknesses inferred from the results**:
+    * The method relies on BEV-to-image projection and pixel-position matching, which may become unstable in heavily occluded or densely overlapping vehicle scenes, though the abstract does not discuss this situation.
+    * The method is only validated on nuScenes (a single dataset with specific sensor configurations and region), so its generalization across datasets or sensor configurations is unknown.
+    * The paper has undergone multiple revisions (v1 to v4, spanning March to November 2025), which may reflect adjustments to the method or evaluation during the review process, though the specific changes cannot be determined from the abstract alone.
 
 ### Related work
 
-  * 根據網路搜尋，該研究方向已有後續相關工作，例如 2026 年的「EgoExo-WM: Unlocking Exo Video for Ego World Models」以及「Ego-Dynamics-Augmented World Model for Autonomous Driving with Zero-Shot Cross-Chassis Adaptation」，顯示 driving world model 領域持續朝向更豐富的視角融合與跨載具泛化發展。另外 2025 年 10 月出現的survey「A Comprehensive Survey on World Models for Embodied AI」(arXiv:2510.16732) 有引用本論文，可作為快速掌握該領域全貌的入口。
-  * Related work 值得 survey 的程度：高。此領域（driving world model 的可控性與多主體互動模擬）持續有新工作發表，建議透過上述 survey 快速定位其他相關方法並比較。
-
-
+  * According to web searches, this research direction already has follow-up work, such as "EgoExo-WM: Unlocking Exo Video for Ego World Models" (2026) and "Ego-Dynamics-Augmented World Model for Autonomous Driving with Zero-Shot Cross-Chassis Adaptation," showing that the driving world model field continues to move toward richer viewpoint fusion and cross-vehicle generalization. In addition, a survey published in October 2025, "A Comprehensive Survey on World Models for Embodied AI" (arXiv:2510.16732), cites this paper and can serve as a quick entry point for understanding the overall landscape of this field.
+  * **How worth surveying this related work is**: High. This field (controllability and multi-agent interaction simulation in driving world models) continues to see new work published, and the above survey is recommended for quickly locating other related methods for comparison.
 
 ### Conclusion
 
-  * 綜合評價：EOT-WM 針對「他車軌跡不可控」這一具體且實用的問題提出了清晰的架構解法（VTR + AMGG + TiDiT），FID/FVD 提升幅度可觀，是駕駛世界模型可控性研究中值得參考的一篇工作，尤其其軌跡到影像座標的投影技巧具有工程可複製性。
-  * 與其他重要文章的關係：延伸自以 CogVideoX 等影片擴散模型為底座的 driving world model 系列工作，挑戰的是「只能控制自車軌跡」這類先前方法的局限；與後續的 EgoExo-WM、Ego-Dynamics-Augmented World Model 等工作在同一脈絡下持續演進。
-  * ROCm/AMD 待補強部分：摘要未提及訓練/推論所使用的硬體平台或框架細節，看不出與 ROCm/AMD 的明確關聯，不宜臆測。若團隊要在 AMD 硬體上復現此類以 CogVideoX 為底座的擴散 Transformer 訓練流程，需要另外查證 CogVideoX 系列模型在 ROCm 上的支援狀況。
+  * **Overall assessment**: EOT-WM proposes a clear architectural solution (VTR + AMGG + TiDiT) to the specific and practical problem of "uncontrollable other-vehicle trajectories," with a significant improvement in FID/FVD. It is a worthwhile reference in research on driving world model controllability, especially for its engineering-reproducible technique of projecting trajectories into image coordinates.
+  * **Relationship to other important papers**: This work builds on the line of driving world model research based on video diffusion models such as CogVideoX, and challenges the limitation of previous methods that could "only control ego vehicle trajectories." It continues to evolve in the same context as subsequent works such as EgoExo-WM and Ego-Dynamics-Augmented World Model.
+  * **ROCm/AMD gaps**: The abstract does not mention the hardware platform or framework details used for training/inference, so no clear connection to ROCm/AMD can be identified, and it would not be appropriate to speculate. If a team wants to reproduce this type of CogVideoX-based diffusion Transformer training pipeline on AMD hardware, they would need to separately verify the ROCm support status of the CogVideoX series of models.

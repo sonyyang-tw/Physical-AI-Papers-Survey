@@ -12,51 +12,43 @@ permalink: /vla/explicit-language-memory-for-long-horizon-planning-in-vision-lan
 
 ### Abstract
 
-本文針對 VLA 模型在長時程任務上的四大挑戰：(1) 稀疏的專家示範資料限制跨任務組合泛化能力；(2) 長時程任務的非馬可夫特性使僅依賴當前觀測的策略難以維持時間一致性；(3) 有限的閉環錯誤修正能力導致執行誤差累積；(4) 端到端動作微調可能弱化 VLM 骨幹的高階語意表徵。為解決這些問題，作者提出一個具備「顯式語言記憶模組」的階層式長時程 VLA 架構。核心概念是將離散的時間觀測轉換為具時間邏輯的連貫文字記憶序列。系統拆分為高層 VLM 與低層 VLA：高層 VLM 透過視覺問答（VQA）訓練範式進行語意推理，低層 VLA 則依據子任務指令與視覺觀測執行精確的連續控制。高層 VLM 以先前記憶為脈絡錨點，遞迴更新語言記憶與子任務指令，實現長時程執行過程中的持續時間追蹤與動態修正。作者在多個模擬環境中驗證，並在真實機器人平台上進行 sim-to-real 實驗。
+This paper addresses four major challenges facing VLA models on long-horizon tasks: (1) sparse expert demonstration data limits cross-task compositional generalization; (2) the non-Markovian nature of long-horizon tasks makes it difficult for policies relying only on the current observation to maintain temporal consistency; (3) limited closed-loop error correction ability leads to accumulating execution errors; and (4) end-to-end action fine-tuning can weaken the high-level semantic representations of the VLM backbone. To address these issues, the authors propose a hierarchical long-horizon VLA architecture with an "explicit language memory module." The core idea is to convert discrete temporal observations into a coherent, temporally-logical textual memory sequence. The system is split into a high-level VLM and a low-level VLA: the high-level VLM performs semantic reasoning via a visual question answering (VQA) training paradigm, while the low-level VLA executes precise continuous control based on sub-task instructions and visual observations. The high-level VLM uses prior memory as a contextual anchor, recursively updating the language memory and sub-task instructions, enabling continuous temporal tracking and dynamic correction throughout long-horizon execution. The authors validate the approach in multiple simulation environments and conduct sim-to-real experiments on a real robot platform.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945364103_explmem_fig1.png) 
 
-_圖示：基於 pi-0.5 的兩階段(two-stage)架構示意，說明語言記憶模組如何嵌入既有 VLA 推理流程中，於長時程規劃任務中提供顯式的語言層級記憶支援。_
+_Figure: Illustration of the two-stage architecture built on pi-0.5, showing how the language memory module is embedded within the existing VLA reasoning pipeline to provide explicit language-level memory support for long-horizon planning tasks._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945364103_explmem_fig2.png) 
 
-_圖示：顯式語言記憶(Explicit Language Memory)架構細節。展示語言記憶模組如何記錄、更新並檢索過去子任務完成狀態的語言化摘要，供長時程規劃決策使用，避免因視覺狀態相似而產生的子任務判斷錯誤。_
+_Figure: Details of the Explicit Language Memory architecture. Shows how the language memory module records, updates, and retrieves language-based summaries of past sub-task completion status for use in long-horizon planning decisions, avoiding sub-task misjudgments caused by visually similar states._
 
-  * 要解決的問題：長時程 VLA 任務面臨資料稀疏（限制組合泛化）、非馬可夫特性（難以維持時間一致性）、誤差累積（缺乏閉環修正）、以及動作微調弱化語意表徵等四項挑戰。
-  * Main method：提出階層式架構，將系統拆分為「高層 VLM」與「低層 VLA」兩層：
-    * 高層 VLM：透過 VQA（視覺問答）訓練範式進行語意層級推理，其核心創新是將離散的時間觀測轉換為一段「具時間邏輯的連貫文字記憶序列」（explicit language memory），並以遞迴方式、用前一輪記憶作為脈絡錨點（contextual anchor），持續更新語言記憶與子任務指令。
-    * 低層 VLA：依據高層下達的子任務指令與當前視覺觀測，執行精確連續控制動作。
-  * 和以往方式的差異：與 MemoryVLA/MemoryVLA++/LaMem-VLA 等以「潛在向量（latent token）」形式儲存記憶的方法不同，本文採用「顯式文字（explicit language）」作為記憶載體，這帶來可解釋性優勢——記憶內容本身即為人類可讀的自然語言描述；同時透過遞迴更新機制，讓高層規劃具備閉環錯誤修正能力，而非開環單向執行。
-  * 重要方法設計描述：可將架構想像為「兩層決策管線」——高層 VLM 像一位持續寫日誌的規劃者，每個時間步驟根據當前觀測與先前的文字記憶，透過 VQA 式問答推理更新一段連貫的文字敘述（記錄已完成、正在進行、待辦事項及執行狀態），並據此產出新的子任務指令；低層 VLA 則像一位執行者，僅需根據子任務指令與當下畫面做連續動作控制，兩層之間以自然語言指令與記憶串接。
-
-
+  * Problem to be solved: Long-horizon VLA tasks face four challenges—sparse data (limiting compositional generalization), non-Markovian dynamics (difficult to maintain temporal consistency), error accumulation (lacking closed-loop correction), and action fine-tuning weakening semantic representations.
+  * Main method: Proposes a hierarchical architecture that splits the system into a "high-level VLM" and a "low-level VLA":
+    * High-level VLM: performs semantic-level reasoning via a VQA (visual question answering) training paradigm. Its core innovation is converting discrete temporal observations into a "coherent, temporally-logical textual memory sequence" (explicit language memory), recursively using the previous round's memory as a contextual anchor to continuously update the language memory and sub-task instructions.
+    * Low-level VLA: executes precise continuous control actions based on the sub-task instructions issued by the high level and the current visual observation.
+  * Difference from prior approaches: Unlike methods such as MemoryVLA/MemoryVLA++/LaMem-VLA that store memory as "latent tokens," this paper uses "explicit language" as the memory carrier, which brings an interpretability advantage—the memory content itself is a human-readable natural language description. The recursive update mechanism also gives high-level planning closed-loop error correction ability, rather than open-loop, one-way execution.
+  * Key method design description: The architecture can be thought of as a "two-tier decision pipeline"—the high-level VLM acts like a planner continuously keeping a log, updating, at each timestep, a coherent textual narrative (recording what has been completed, what is in progress, what remains, and execution status) via VQA-style question-answer reasoning based on the current observation and prior text memory, and issuing new sub-task instructions accordingly. The low-level VLA acts like an executor, performing continuous action control based only on the sub-task instruction and the current frame. The two tiers are linked via natural-language instructions and memory.
 
 ### Result
 
-  * 論文在多個模擬環境中驗證，並在真實機器人平台上做 sim-to-real 實驗；結果顯示顯式語言記憶提升了複雜長時程任務的成功率與穩健性，同時提供了決策過程的可解釋語意說明。
-  * 摘要未提供具體量化數字（如成功率百分比、與哪些基線比較的具體提升幅度），因此無法在此判斷其效果的具體量級。
-  * 是否公正：由於摘要未附上具體數據，難以評估其結果的說服力與是否有選擇性報告；需要查證全文以取得詳細實驗數字，並確認是否有其他論文（如同期的 MemoryVLA 系列、LaMem-VLA）在類似基準上有不同結論或提出對「顯式語言記憶」與「潛在記憶」孰優孰劣的比較。
-
-
+  * The paper validates the approach in multiple simulation environments and conducts sim-to-real experiments on a real robot platform; results show that explicit language memory improves success rate and robustness on complex long-horizon tasks, while also providing interpretable semantic explanations of the decision process.
+  * The abstract does not provide specific quantitative figures (such as success rate percentages or improvement margins relative to specific baselines), so the exact magnitude of the effect cannot be judged here.
+  * Whether the results are fair: Since the abstract does not include specific data, it is difficult to assess the persuasiveness of the results or whether reporting is selective; the full paper needs to be checked for detailed experimental numbers, and it should be confirmed whether other papers (such as contemporaneous work in the MemoryVLA series or LaMem-VLA) reach different conclusions on similar benchmarks or offer a comparison of "explicit language memory" versus "latent memory."
 
 ### Limitation
 
-  * 摘要未明確自陳限制。從方法設計推測，顯式語言記憶（文字形式）相較於潛在向量記憶可能存在資訊壓縮損失（自然語言難以完整表達所有視覺細節）、以及高層 VLM 遞迴生成文字記憶帶來的額外推論延遲，但此為推測，論文本身未於摘要中討論。
-  * 摘要中未提供具體成功率數字，也是本篇摘要層級的一項resut透明度限制，需要查證全文以獲得完整實驗細節與失敗案例分析。
-
-
+  * The abstract does not explicitly state limitations. Inferred from the method design, explicit language memory (in text form) may lose information relative to latent vector memory (natural language may not fully capture all visual details), and the high-level VLM's recursive generation of text memory may introduce additional inference latency—but this is speculative, as the paper itself does not discuss it in the abstract.
+  * The absence of specific success-rate figures in the abstract is itself a limitation in results transparency at the abstract level; the full paper needs to be checked for complete experimental details and failure-case analysis.
 
 ### Related work
 
-  * 摘要未提及具體 related work 比較對象，但可判斷此文與 MemoryVLA、MemoryVLA++、LaMem-VLA、EventVLA 同屬 2026 年前後探討「VLA 記憶機制」的研究群體，差異在於記憶表徵形式（文字 vs. 潛在向量）與架構層級（階層式雙系統 vs. 單一整合模型）。
-  * 暫無發現此篇之後更新的直接後續研究（同作者群），但其「顯式語言記憶＋階層式雙系統」的思路與其他記憶方法形成有趣對比，值得在 survey 中與 LaMem-VLA（顯式標榜「latent-memory-native」，隱含與此類顯式語言記憶方法相對照）一併討論。
-
-
+  * The abstract does not mention specific related-work comparison targets, but this paper can be judged to belong, along with MemoryVLA, MemoryVLA++, LaMem-VLA, and EventVLA, to the same research cluster examining "VLA memory mechanisms" around 2026, differing in memory representation form (text vs. latent vector) and architectural level (hierarchical dual-system vs. single integrated model).
+  * No direct follow-up work by the same author group has been found so far, but the "explicit language memory + hierarchical dual-system" approach forms an interesting contrast with other memory methods, and is worth discussing in a survey alongside LaMem-VLA (which explicitly bills itself as "latent-memory-native," implicitly contrasting with this kind of explicit language memory approach).
 
 ### Conclusion
 
-  * 綜合評價：此文提出的「顯式語言記憶」路線在可解釋性上具有獨特優勢（記憶內容為人類可讀文字，便於除錯與信任建立），對於重視系統可解釋性與人機協作場景的讀者有參考價值；但由於摘要缺乏具體量化結果，其相對於潛在向量記憶方法的效能優劣仍待查證全文確認。
-  * 與其他重要文章的關係：本文與 MemoryVLA/MemoryVLA++（潛在感知-認知記憶庫）、LaMem-VLA（潛在記憶原生框架）代表了 VLA 記憶機制的兩條不同路線——「顯式文字記憶」vs.「潛在向量記憶」，彼此之間形成方法論上的對照與潛在挑戰關係，但摘要未明確指出直接比較的基線論文。
-  * ROCm/AMD 待補強部分：摘要未提及任何硬體平台資訊。由於此架構為「高層 VLM ＋ 低層 VLA」雙系統設計，涉及兩次獨立模型推論（且高層需生成較長文字記憶序列），推論延遲與吞吐量可能是實務部署上的重要考量；若需在 ROCm 平台落地，可能需評估雙模型並行/串接推論管線的排程與記憶體管理效率，但此為基於架構推測，論文本身未提供相關資訊，看不出與 ROCm/AMD 的明確關聯。
+  * Overall assessment: The "explicit language memory" approach proposed in this paper has a unique advantage in interpretability (the memory content is human-readable text, facilitating debugging and trust-building), which is valuable for readers who prioritize system interpretability and human-robot collaboration scenarios; however, since the abstract lacks specific quantitative results, its performance relative to latent vector memory methods still needs to be confirmed against the full paper.
+  * Relationship with other important papers: This paper, together with MemoryVLA/MemoryVLA++ (latent perception-cognition memory bank) and LaMem-VLA (latent-memory-native framework), represents two different tracks of VLA memory mechanisms—"explicit text memory" vs. "latent vector memory"—forming a methodological contrast and potential challenge relationship, though the abstract does not explicitly identify a directly compared baseline paper.
+  * ROCm/AMD gaps: The abstract does not mention any hardware platform information. Since this architecture is a "high-level VLM + low-level VLA" dual-system design involving two separate model inference passes (with the high level needing to generate a relatively long text memory sequence), inference latency and throughput may be an important practical deployment consideration; deploying on ROCm may require evaluating the scheduling and memory management efficiency of a dual-model parallel/chained inference pipeline—but this is speculative based on the architecture, and the paper itself provides no relevant information, so no clear connection to ROCm/AMD can be identified.

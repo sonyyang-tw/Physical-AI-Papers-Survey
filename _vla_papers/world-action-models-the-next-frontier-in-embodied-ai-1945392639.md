@@ -7,56 +7,56 @@ permalink: /vla/world-action-models-the-next-frontier-in-embodied-ai-1945392639/
 ---
 
 **Paper** : [World Action Models: The Next Frontier in Embodied AI](https://arxiv.org/abs/2605.12090)  
-**Source** : arXiv (cs.RO / cs.CL / cs.CV)，survey 性質論文  
+**Source** : arXiv (cs.RO / cs.CL / cs.CV), a survey paper  
 **arXiv ID** : 2605.12090
 
 ### Abstract
 
-本論文是一篇系統性綜述，正式定義並命名了「World Action Models (WAMs)」這個新興範式：一種將「預測性狀態建模（world model）」與「動作生成」統一起來的具身基礎模型，目標是對「未來狀態與動作的聯合分布」建模，而非像傳統 VLA 只學習觀察到動作的反應式映射。作者指出，VLA 雖然在具身策略學習上具有強大的語意泛化能力，但缺乏對物理世界如何在介入下演化的顯式建模；越來越多研究透過整合 world model 來彌補這個不足。由於此領域文獻在架構、學習目標與應用場景上高度分散，缺乏統一的概念框架，本文提出正式定義、釐清相關概念、追溯 VLA 與 world model 研究的源流融合，並將現有方法整理為「Cascaded WAMs」與「Joint WAMs」兩大分類，再依生成模態、條件機制與動作解碼策略進一步細分。
+This paper is a systematic survey that formally defines and names the emerging paradigm of "World Action Models (WAMs)": embodied foundation models that unify "predictive state modeling (world models)" with "action generation," aiming to model the "joint distribution of future states and actions," rather than merely learning a reactive observation-to-action mapping as traditional VLA does. The authors point out that although VLA has strong semantic generalization ability for embodied policy learning, it lacks explicit modeling of how the physical world evolves under intervention; an increasing body of research integrates world models to compensate for this shortcoming. Since the literature in this field is highly fragmented in terms of architecture, learning objectives, and application scenarios, and lacks a unified conceptual framework, this paper offers a formal definition, clarifies related concepts, traces the confluence of VLA and world model research, and organizes existing methods into two major categories — "Cascaded WAMs" and "Joint WAMs" — further subdividing them by generative modality, conditioning mechanism, and action decoding strategy.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945392639_wam_survey_fig1.png) 
 
-_Figure 1: World Action Models (WAMs) 代表性研究的時序演進與分類。左側分支呈現 Joint WAM 架構的發展，將世界預測與動作生成緊密耦合，並進一步分歧為自回歸（Autoregressive）與擴散式（Diffusion-based）表徵方案，其中連續式方法再細分為 Unified Stream 與 Multi-Stream 骨幹；右側分支總結 Cascaded WAM 管線的發展，其中世界建模與動作執行主要解耦，沿著顯式（Explicit）與隱式（Implicit）表徵對齊路線演進。_
+_Figure 1: The temporal evolution and classification of representative World Action Models (WAMs) research. The left branch shows the development of the Joint WAM architecture, which tightly couples world prediction with action generation and further diverges into Autoregressive and Diffusion-based representation schemes, with the continuous methods further subdivided into Unified Stream and Multi-Stream backbones; the right branch summarizes the development of the Cascaded WAM pipeline, where world modeling and action execution are largely decoupled, evolving along Explicit and Implicit representation-alignment lines._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945392639_wam_survey_fig2.png) 
 
-_Figure 2: 本綜述回顧之 World Action Models (WAMs) 全景路線圖與分類。文獻被系統性歸類為四大核心維度：背景（Background）、架構（Architecture）、訓練資料（Training data）、評測協定（Evaluation）。_
+_Figure 2: The panoramic roadmap and taxonomy of World Action Models (WAMs) reviewed in this survey. The literature is systematically categorized into four core dimensions: Background, Architecture, Training data, and Evaluation._
 
-  * **要解決的問題** ：VLA 模型學習的是反應式的「觀察 → 動作」映射，沒有顯式建模物理世界在動作介入下如何演化，導致其世界理解能力有限；同時，將 world model 整合進動作生成管線的研究快速增長但高度分散，缺乏統一分類與命名。
-  * **主要方法（本質是分類與概念框架，而非單一模型）** ：
-    * **正式定義 WAMs** ：明確界定 WAM 為「同時對未來狀態與動作的聯合分布建模」的具身基礎模型，並與相關概念（如純粹的 world model、傳統 VLA）做區隔。
-    * **分類體系（taxonomy）** ：將現有方法分為兩大類——Cascaded WAMs（世界模型與動作生成器級聯，先預測未來狀態再生成動作）與 Joint WAMs（世界模型與動作生成聯合建模），再依生成模態、條件機制、動作解碼策略進一步細分。
-    * **資料生態系統分析** ：系統性分析支撐 WAM 發展的資料來源——機器人遠端操作（teleoperation）、可攜式人類示範、模擬環境、網路規模的第一人稱（egocentric）影片。
-    * **評測協定整理** ：歸納新興的評測方式，圍繞視覺保真度（visual fidelity）、物理常識（physical commonsense）、動作合理性（action plausibility）三個面向。
-  * **與以往方式的差異** ：以往文獻中，「world model 整合進 VLA」的研究各自為政，用詞與分類不一致；本文首次系統性統一命名（WAM）、提出跨架構的二元分類（Cascaded vs. Joint），並將資料與評測協定納入同一個框架下討論。
+  * **Problem addressed** : VLA models learn a reactive "observation → action" mapping without explicitly modeling how the physical world evolves under action intervention, resulting in limited world understanding; meanwhile, research integrating world models into action-generation pipelines is growing rapidly but is highly fragmented, lacking a unified taxonomy and naming.
+  * **Main method (essentially a taxonomy and conceptual framework, rather than a single model)** :
+    * **Formal definition of WAMs** : Clearly defines a WAM as an embodied foundation model that "jointly models the distribution of future states and actions," and distinguishes it from related concepts (such as pure world models and traditional VLA).
+    * **Taxonomy** : Organizes existing methods into two main categories — Cascaded WAMs (where a world model and an action generator are cascaded, first predicting future states and then generating actions) and Joint WAMs (where world modeling and action generation are jointly modeled), further subdivided by generative modality, conditioning mechanism, and action decoding strategy.
+    * **Analysis of the data ecosystem** : Systematically analyzes the data sources underpinning WAM development — robot teleoperation, portable human demonstrations, simulated environments, and web-scale egocentric video.
+    * **Organization of evaluation protocols** : Summarizes emerging evaluation methods, organized around three dimensions: visual fidelity, physical commonsense, and action plausibility.
+  * **Difference from prior approaches** : In previous literature, research on "integrating world models into VLA" was fragmented, with inconsistent terminology and classification; this paper is the first to systematically unify the naming (WAM), propose a cross-architecture binary taxonomy (Cascaded vs. Joint), and bring data and evaluation protocols into the same discussion framework.
 
 
 
 ### Result
 
-  * 作為 survey 論文，其「結果」是提供了第一個系統性的 WAM 全景整理，釐清了關鍵架構典範（Cascaded / Joint）及其取捨（trade-offs），並指出開放挑戰與未來研究方向。
-  * 是否公正：作為分類與命名型 survey，其分類是否被社群廣泛採用仍需觀察；由於是綜述而非實驗論文，不涉及具體 benchmark 數據對比，因此不適用「其他論文結果是否相符」的問題，但其分類框架本身的完整性與涵蓋面是否公正、全面，需要查證全文所涵蓋的論文清單是否有明顯遺漏。
+  * As a survey paper, its "result" is providing the first systematic panoramic organization of WAMs, clarifying key architectural paradigms (Cascaded/Joint) and their trade-offs, and pointing out open challenges and future research directions.
+  * Fairness: As a taxonomy- and naming-oriented survey, whether its classification will be widely adopted by the community remains to be seen; since it is a survey rather than an experimental paper, it does not involve specific benchmark data comparisons, so the question of "whether other papers' results conflict with this paper's" does not apply. However, whether the taxonomy's completeness and coverage are fair and comprehensive needs to be verified by checking whether the list of papers covered in the full text has any notable omissions.
 
 
 
 ### Limitation
 
-  * 論文自陳的限制：摘要中提及該領域「文獻仍然分散、缺乏統一框架」，這是論文試圖解決的問題本身，摘要未進一步說明本綜述分類法本身的侷限性（例如是否有方法無法乾淨地歸入 Cascaded/Joint 二元分類）。
-  * 從內容推測的弱項：任何分類型 survey 都可能存在分類邊界模糊、新方法快速湧現導致分類法過時的風險；需要查證全文以了解作者對此的討論。
+  * Limitations stated by the authors: The abstract mentions that this field's literature is "still fragmented and lacks a unified framework" — this is the very problem the survey attempts to solve; the abstract does not further discuss the limitations of this survey's own taxonomy (e.g., whether there are methods that cannot be cleanly categorized into the Cascaded/Joint binary classification).
+  * Weaknesses inferred from the content: Any taxonomy-based survey may face blurred classification boundaries and the risk of the taxonomy becoming outdated as new methods rapidly emerge; the full text needs to be checked to see how the authors discuss this.
 
 
 
 ### Related work
 
-  * 本論文本身即是對相關研究的大範圍整理，涵蓋 VLA 與 world model 的源流演進；由於是 2026 年 5 月的綜述，其涵蓋範圍應包含清單中「Do World Action Models Generalize Better than VLAs?」等同時期論文，但兩者關係（是否互相引用）需要查證全文確認。
-  * 值得 survey 的程度：高。作為命名與分類此新興範式的首篇系統性綜述，是快速了解 WAM 領域全貌的重要入口文獻，建議作為研究此方向的起手式閱讀材料。
+  * This paper itself is a broad organization of related research, covering the confluence of VLA and world model research; since it is a survey from May 2026, its coverage should include contemporaneous papers in this list such as "Do World Action Models Generalize Better than VLAs?", but whether the two cite each other needs to be verified against the full text.
+  * Degree to which it is worth surveying: high. As the first systematic survey to name and classify this emerging paradigm, it is an important entry point for quickly understanding the full landscape of the WAM field, and is recommended as the starting reading material for this research direction.
+  * Relationship to other papers: This paper's taxonomy (Cascaded/Joint WAMs) can serve as a shared vocabulary and reference framework for understanding other WAM-related papers in this list (such as "Do World Action Models Generalize Better than VLAs?" and "Robots Need More than VLA and World Models"); it is an "umbrella" survey encompassing the rest of the WAM-related work.
 
 
 
 ### Conclusion
 
-  * 綜合評價：非常值得參考。此文為 World Action Models 這個新興且快速發展的範式提供了統一命名、分類與資料/評測整理，是進入該領域的重要地圖型文獻，適合作為系列閱讀的起點。
-  * 與其他論文關係：此文的分類框架（Cascaded / Joint WAMs）可作為理解清單中其他 WAM 相關論文（如「Do World Action Models Generalize Better than VLAs?」、「Robots Need More than VLA and World Models」）的共通詞彙與參照座標；它本身是「傘型」綜述，統攝了其餘 WAM 相關工作。
-  * ROCm/AMD 關聯：從摘要內容看不出與 ROCm/AMD 有明確關聯，論文未涉及具體硬體或訓練框架討論；但由於 WAM 通常涉及大規模影片生成式模型（video generation），對於 AMD/ROCm 而言，值得留意的是此類模型對大規模影片預訓練與擴散式生成的運算需求，是否有對應的 ROCm 生態系統支援（如影片擴散模型的訓練/推論優化）需要另外查證，論文本身未提及。
+  * Overall assessment: Highly worth referencing. This paper provides a unified naming, taxonomy, and organization of data/evaluation for the emerging, rapidly developing World Action Models paradigm, serving as an important map-like reference for entering this field and a good starting point for a reading series.
+  * Relevance to ROCm/AMD: No clear connection to ROCm/AMD can be identified from the abstract's content, as the paper does not discuss specific hardware or training frameworks; however, since WAMs typically involve large-scale video generative models, it is worth noting — for AMD/ROCm — the computational demands of large-scale video pretraining and diffusion-based generation, and whether there is corresponding ROCm ecosystem support (e.g., training/inference optimization for video diffusion models) needs to be separately verified, as the paper itself does not address this.

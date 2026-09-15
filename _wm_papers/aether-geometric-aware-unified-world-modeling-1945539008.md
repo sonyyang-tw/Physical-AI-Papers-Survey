@@ -7,12 +7,12 @@ permalink: /wm/aether-geometric-aware-unified-world-modeling-1945539008/
 ---
 
 **Paper** : [Aether: Geometric-Aware Unified World Modeling](https://arxiv.org/abs/2503.18945)  
-**Source** : arXiv / ICCV 2025 & ICCV 2025 RIWM Outstanding Paper / Aether Team（Shanghai AI Laboratory 等）  
+**Source** : arXiv / ICCV 2025 & ICCV 2025 RIWM Outstanding Paper / Aether Team (Shanghai AI Laboratory, et al.)  
 **arXiv ID** : 2503.18945
 
 ### Abstract
 
-將幾何重建（geometric reconstruction）與生成式建模（generative modeling）整合，是開發具備類人空間推理能力 AI 系統的關鍵挑戰。Aether 提出一個統一框架，透過聯合優化三項核心能力——(1) 4D 動態重建、(2) 動作條件式影片預測、(3) 目標條件式視覺規劃——使世界模型具備幾何感知的推理能力。透過任務交錯式特徵學習（task-interleaved feature learning），Aether 在重建、預測、規劃三項目標之間達成知識協同共享。建立在影片生成模型之上，此框架即使完全未見過真實世界資料，也展現出零樣本（zero-shot）的「合成到真實」泛化能力，並在動作跟隨與重建任務上都達到零樣本泛化，重建效果甚至可與領域專屬模型相當或更優。
+Integrating geometric reconstruction with generative modeling is a key challenge in developing AI systems with human-like spatial reasoning capabilities. Aether proposes a unified framework that, by jointly optimizing three core capabilities — (1) 4D dynamic reconstruction, (2) action-conditioned video prediction, and (3) goal-conditioned visual planning — equips world models with geometry-aware reasoning. Through task-interleaved feature learning, Aether achieves shared, mutually reinforcing knowledge across the reconstruction, prediction, and planning objectives. Built on top of a video generation model, this framework demonstrates zero-shot "synthetic-to-real" generalization even when it has never encountered real-world data, and achieves zero-shot generalization on both action-following and reconstruction tasks, with reconstruction performance comparable to or better than domain-specific models.
 
 ### Method
 
@@ -24,38 +24,38 @@ _Figure 1: An overview of Aether, trained entirely on synthetic data - highlight
 
 _Figure 4: The overall pipeline of Aether - with different condition combinations, Aether can serve different tasks._
 
-  * **要解決的問題** ：幾何重建（精確但缺乏生成/預測能力）與生成式影片模型（能生成但缺乏精確幾何一致性）長期被視為兩條分離的技術路線,如何統一兩者以支援具備空間推理的世界模型是核心問題。
-  * **Main method** ：Aether 以影片生成模型為基礎，同時學習 4D 動態重建、動作條件式影片預測、目標條件式視覺規劃三項任務，透過任務交錯的特徵學習機制讓三者共享並互相強化彼此的表徵;並使用相機軌跡（camera trajectory）作為「幾何知情的動作空間」（geometry-informed action space），使動作條件預測與視覺規劃可以基於幾何一致的相機運動來驅動。
-  * **與以往方式的差異** ：與只做重建（無生成/預測能力）或只做生成（缺乏精確幾何一致性）的既有方法不同，Aether 將三種能力放入同一個訓練框架中聯合優化，並且完全基於合成（synthetic）4D 資料訓練,搭配自動化資料標註管線取得精確的4D幾何知識,卻仍能零樣本泛化到真實世界。
-  * **重要方法設計描述** ：整體架構建立於既有的影片生成骨幹上，透過在同一模型中交錯訓練「給定影片預測其4D幾何結構」「給定起始幀與相機軌跡動作預測未來影片」「給定起始與目標影像進行視覺路徑規劃」三種任務，共享底層特徵表示；相機軌跡本身被當作動作介面，讓模型在做動作條件生成與規劃時，天然地帶有幾何一致的約束。
+  * **Problem addressed**: Geometric reconstruction (precise but lacking generative/predictive ability) and generative video models (able to generate but lacking precise geometric consistency) have long been regarded as two separate technical tracks. How to unify the two to support world models with spatial reasoning is the core problem.
+  * **Main method**: Aether builds on a video generation model and simultaneously learns 4D dynamic reconstruction, action-conditioned video prediction, and goal-conditioned visual planning, using a task-interleaved feature-learning mechanism so that the three tasks share and mutually reinforce their representations. It also uses camera trajectories as a "geometry-informed action space," so that action-conditioned prediction and visual planning can be driven by geometrically consistent camera motion.
+  * **Difference from prior approaches**: Unlike prior methods that only perform reconstruction (without generative/predictive ability) or only perform generation (lacking precise geometric consistency), Aether places all three capabilities within a single jointly optimized training framework, and is trained entirely on synthetic 4D data, using an automated data-annotation pipeline to obtain precise 4D geometric knowledge, yet still generalizes zero-shot to the real world.
+  * **Key methodological design**: The overall architecture is built on an existing video generation backbone, interleaving training across three tasks within the same model — "given a video, predict its 4D geometric structure," "given a starting frame and a camera-trajectory action, predict the future video," and "given a start and goal image, perform visual path planning" — while sharing the underlying feature representation. The camera trajectory itself is treated as the action interface, so that when the model performs action-conditioned generation and planning, it naturally carries geometrically consistent constraints.
 
 
 
 ### Result
 
-  * 即使訓練時從未見過真實世界資料（僅使用合成4D資料），Aether 在動作跟隨（action following）與重建任務上都達到零樣本泛化，重建效果可與專門針對重建設計的領域模型相當或更好。
-  * 論文獲 ICCV 2025 及 ICCV 2025 RIWM（Robotics in the Wild Models）Outstanding Paper 肯定,顯示在同行評審社群中獲得高度認可。
-  * 是否公正：論文提供專案頁與程式碼（InternRobotics/Aether），具備可重現性；由於只根據摘要與已知資訊撰寫,對於其量化比較數據是否與其他 4D 重建/世界模型論文的報告結果一致，需要查證其他論文的比較數據。
+  * Even though it never saw real-world data during training (using only synthetic 4D data), Aether achieves zero-shot generalization on both action-following and reconstruction tasks, with reconstruction performance comparable to or better than domain models specifically designed for reconstruction.
+  * The paper received the ICCV 2025 and ICCV 2025 RIWM (Robotics in the Wild Models) Outstanding Paper award, indicating a high degree of recognition within the peer-review community.
+  * Fairness assessment: The paper provides a project page and code (InternRobotics/Aether), giving it a degree of reproducibility; since this write-up was prepared based only on the abstract and publicly known information, whether its quantitative comparison data are consistent with results reported by other 4D reconstruction/world model papers needs to be verified against those other papers' comparison data.
 
 
 
 ### Limitation
 
-  * 據已知資訊，作者自陳的限制包括：在高度動態場景（如大幅度運動或密集人群）中表現較弱；相機姿態估計在某些情況下不夠穩定；在做視覺規劃任務時，建議起始觀測與目標影像的空間/視覺距離不宜過遠,否則效果會下降。
-  * 完全基於合成資料訓練，雖然展現出良好的零樣本遷移能力，但對於合成資料未能涵蓋的真實世界複雜物理現象（如可變形物體、精細接觸力學）,其表現上限尚待更多真實世界驗證,摘要未提供此類細節，需要進一步查證全文。
+  * Based on available information, the authors' self-acknowledged limitations include: weaker performance in highly dynamic scenes (e.g., large-scale motion or dense crowds); camera pose estimation that is not sufficiently stable in some cases; and, for visual planning tasks, a recommendation that the spatial/visual distance between the starting observation and the goal image should not be too large, otherwise performance degrades.
+  * Trained entirely on synthetic data — while this yields good zero-shot transfer capability, the performance ceiling for real-world complex physical phenomena not covered by synthetic data (e.g., deformable objects, fine-grained contact mechanics) still awaits further real-world validation. The abstract does not provide such details, and further verification of the full text is needed.
 
 
 
 ### Related work
 
-  * Aether 代表了 world model 領域中「幾何 + 生成統一」路線的重要進展，與同期的空間智能模型（如 World Labs 的相關工作）、以及後續綜述（如本次清單中的多篇 2026 年 world model survey）都會將其列為代表性方法之一。
-  * 判斷 related work 值得 survey 的程度：高，這類「4D 重建 + 動作預測 + 視覺規劃」三合一框架，是目前 world model for robotics 領域中被多篇綜述反覆提及的重要範式,值得投入時間追蹤其後續衍生工作。
-  * 暫無發現比 Aether 更新、直接取代其定位的單一後續工作，但本次清單中的多篇 2026 survey（如 arXiv:2605.00080、2606.00113）很可能已將 Aether 納入其分類討論中，建議在閱讀這些綜述時交叉比對。
+  * Aether represents an important advance in the "geometry + generation unification" track within the world model field, and along with contemporaneous spatial intelligence models (e.g., related work from World Labs) and subsequent surveys (such as the multiple 2026 world model surveys in this collection), it will likely be listed as a representative method.
+  * Assessment of how worthwhile the related work is to survey: high. This "4D reconstruction + action prediction + visual planning" three-in-one framework is an important paradigm repeatedly mentioned across multiple surveys in the world model for robotics field, and is worth following its derivative works.
+  * No single newer work directly superseding Aether's position has been identified so far, but the multiple 2026 surveys in this collection (e.g., arXiv:2605.00080, 2606.00113) likely already include Aether in their classification discussions; it is recommended to cross-reference when reading these surveys.
 
 
 
 ### Conclusion
 
-  * 本文是 world model 領域中融合幾何重建與生成式預測/規劃的代表性工作,獲得 ICCV 2025 Outstanding Paper 肯定，具有較高的參考價值，特別適合作為理解「4D geometry-aware world model」設計思路的入門文獻。
-  * 與其他重要文章的關係：本論文可視為對「純生成式 video world model（缺乏幾何一致性）」與「純幾何重建模型（缺乏預測/規劃能力）」兩條路線的整合與挑戰,填補了兩者之間的空白；它也常被後續 survey 論文（如清單中的 world model 綜述）引用作為關鍵技術節點。
-  * ROCm/AMD 關聯性：論文建立在影片生成模型（可能基於 diffusion transformer 架構）之上，訓練與推論規模可能相當大;由於摘要未提及具體訓練框架或硬體細節，無法確認其對 ROCm 生態的相容性,誠實說明看不出明確關聯。若 AMD 團隊想在 ROCm 上復現此類統一世界模型，需要額外查證其開源程式碼對非 CUDA 環境（如 PyTorch ROCm 後端）的支援程度，這也是目前 ROCm 在大型影片生成/4D重建模型訓練上普遍面臨的生態成熟度落差。
+  * This paper is a representative work in the world model field that fuses geometric reconstruction with generative prediction/planning. Having received the ICCV 2025 Outstanding Paper award, it carries high reference value and is especially suitable as an introductory read for understanding the design philosophy of "4D geometry-aware world models."
+  * Relationship to other important papers: This paper can be seen as an integration of and challenge to two tracks — "purely generative video world models (lacking geometric consistency)" and "purely geometric reconstruction models (lacking predictive/planning ability)" — filling the gap between them; it is also frequently cited by subsequent survey papers (such as the world model surveys in this collection) as a key technical milestone.
+  * ROCm/AMD relevance: The paper is built on top of a video generation model (possibly based on a diffusion transformer architecture), and the training and inference scale may be quite large. Since the abstract does not mention specific training frameworks or hardware details, its compatibility with the ROCm ecosystem cannot be confirmed, and honestly, no clear connection can be identified. If an AMD team wants to reproduce this kind of unified world model on ROCm, further verification of the extent to which its open-source code supports non-CUDA environments (e.g., the PyTorch ROCm backend) is needed — this is also a common ecosystem maturity gap that ROCm currently faces in training large-scale video generation/4D reconstruction models.

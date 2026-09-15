@@ -12,52 +12,44 @@ permalink: /vla/dual-latent-memory-in-vision-language-action-models-for-robotic-
 
 ### Abstract
 
-本文指出主流 VLA 模型在馬可夫假設下，主要依賴當前觀測預測動作，因而難以應對長時程、具時間依賴性的任務。既有記憶增強 VLA 方法要嘛擴大觀測視窗，要嘛從記憶庫檢索歷史作為策略端的輔助脈絡，但這些記憶始終存在於 VLA 推理的原生潛在嵌入空間之外，使歷史經驗無法流暢地與多模態推理及動作生成交織融合。為此，作者提出 LaMem-VLA，一個「潛在記憶原生」（latent-memory-native）框架，將歷史經驗重建為潛在記憶 token，直接與 VLA 推理交織。其核心包含四個協同元件：(i) curator（策展者）將歷史經驗組織成短期與長期兩個互補的記憶庫；(ii) seeker（探尋者）使用多模態認知查詢兩個記憶庫，檢索與脈絡相關的證據；(iii) condenser（凝縮者）將檢索到的證據重建為緊湊的短期與長期潛在記憶 token；(iv) weaver（編織者）將這些記憶 token 與當前觀測、指令一起注入成一個連續的嵌入序列。透過在同一連續潛在空間中表徵、檢索、消費歷史經驗，LaMem-VLA 使記憶能在有界脈絡下直接參與 VLA 推理並引導動作生成。作者在 SimplerEnv 與 LIBERO 上進行大量實驗，證實 LaMem-VLA 的優越性。
+This paper points out that mainstream VLA models, under the Markov assumption, mainly rely on the current observation to predict actions, making them ill-suited to long-horizon tasks with temporal dependencies. Existing memory-augmented VLA methods either expand the observation window or retrieve history from a memory bank as auxiliary context on the policy side, but in both cases the memory always exists outside the native latent embedding space of VLA inference, preventing historical experience from being fluidly interwoven with multimodal reasoning and action generation. To address this, the authors propose LaMem-VLA, a "latent-memory-native" framework that reconstructs historical experience as latent memory tokens directly interwoven with VLA reasoning. Its core consists of four collaborative components: (i) a curator that organizes historical experience into two complementary memory vaults, short-term and long-term; (ii) a seeker that queries both vaults using multimodal cognition to retrieve context-relevant evidence; (iii) a condenser that reconstructs the retrieved evidence into compact short-term and long-term latent memory tokens; and (iv) a weaver that injects these memory tokens together with the current observation and instruction into a single continuous embedding sequence. By representing, retrieving, and consuming historical experience within the same continuous latent space, LaMem-VLA allows memory to directly participate in VLA reasoning within a bounded context and guide action generation. The authors conduct extensive experiments on SimplerEnv and LIBERO, confirming the superiority of LaMem-VLA.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945391543_lamemvla_fig1.png) 
 
-_Figure 1：記憶增強型 VLA 模型的範式比較。與先前將歷史經驗存於輔助記憶庫、再透過檢索方式消費記憶的作法不同，圖中對比了不同記憶機制的設計理念與資訊流動方式。_
+_Figure 1: Comparison of paradigms for memory-augmented VLA models. Unlike prior approaches that store historical experience in an auxiliary memory bank and then consume memory via retrieval, this figure compares the design philosophy and information flow of different memory mechanisms._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945391543_lamemvla_fig2.png) 
 
-_Figure 2：LaMem-VLA 框架架構。給定指令與當前觀測，視覺-語言編碼器首先將輸入編碼為多模態表徵，再透過雙尺度潛在記憶(dual-scale latent memory)機制進行記憶的寫入、檢索與融合，驅動動作生成。_
+_Figure 2: LaMem-VLA framework architecture. Given an instruction and the current observation, the vision-language encoder first encodes the input into a multimodal representation, and then a dual-scale latent memory mechanism performs memory writing, retrieval, and fusion, driving action generation._
 
-  * 要解決的問題：既有記憶增強 VLA 方法將記憶視為「策略端外部輔助脈絡」，記憶存在於 VLA 原生潛在嵌入空間之外，導致歷史經驗無法與多模態推理及動作生成自然交織融合，限制了記憶的有效利用。
-  * Main method：提出「潛在記憶原生」框架 LaMem-VLA，由四個協同元件組成：
-    * Curator（策展者）：將歷史經驗組織成兩個互補的記憶庫——短期記憶庫（short-term vault）與長期記憶庫（long-term vault）。
-    * Seeker（探尋者）：利用當前多模態認知（multimodal cognition）查詢這兩個記憶庫，檢索與當前脈絡相關的證據。
-    * Condenser（凝縮者）：將檢索到的證據重建、壓縮為緊湊的短期與長期「潛在記憶 token」。
-    * Weaver（編織者）：將這些潛在記憶 token 與當前觀測、指令一起，編織成單一連續嵌入序列，直接餵入 VLA 的推理流程。
-  * 和以往方式的差異：核心差異在於記憶的「表徵空間」——本方法將記憶表徵、檢索、消費全程都保持在與 VLA 推理相同的連續潛在空間中（"latent-memory-native"），而非像既有方法把記憶當作外部模組（如文字記憶、獨立記憶庫）事後拼接進策略輸入,因此能讓記憶在有界脈絡（bounded context）下直接、流暢地參與推理與動作生成過程,而非僅作為附加脈絡。
-  * 重要方法設計描述：可將此架構想像成一條「記憶生產線」——策展者先把原始歷史經驗分裝進短期/長期兩個倉庫；探尋者依據當下任務需求主動去倉庫裡查找相關證據；凝縮者把找到的證據壓縮成精簡的潛在向量（而非保留原始高維度資料）；最後編織者將這些壓縮後的記憶向量與當前畫面、指令的嵌入表徵縫合成一條連續序列，直接送入 VLA 的多模態推理主幹，使記憶與當前推理處於同一運算空間、無縫銜接。
-
-
+  * Problem addressed: Existing memory-augmented VLA methods treat memory as "external auxiliary context on the policy side," with memory existing outside the native latent embedding space of VLA, which prevents historical experience from naturally intertwining with multimodal reasoning and action generation, limiting the effective use of memory.
+  * Main method: The paper proposes the "latent-memory-native" framework LaMem-VLA, composed of four collaborative components:
+    * Curator: organizes historical experience into two complementary memory vaults — a short-term vault and a long-term vault.
+    * Seeker: uses current multimodal cognition to query both vaults, retrieving evidence relevant to the current context.
+    * Condenser: reconstructs and compresses the retrieved evidence into compact short-term and long-term "latent memory tokens."
+    * Weaver: weaves these latent memory tokens together with the current observation and instruction into a single continuous embedding sequence, fed directly into the VLA's reasoning pipeline.
+  * Difference from prior approaches: The core difference lies in the "representation space" of memory — this method keeps memory representation, retrieval, and consumption entirely within the same continuous latent space as VLA reasoning ("latent-memory-native"), rather than treating memory as an external module (e.g., textual memory, a separate memory bank) that is spliced into the policy input after the fact as in prior methods. This allows memory to directly and smoothly participate in the reasoning and action-generation process within a bounded context, rather than serving merely as additional context.
+  * Description of the key methodological design: This architecture can be envisioned as a "memory production line" — the curator first packages raw historical experience into the short-term/long-term vaults; the seeker actively searches the vaults for relevant evidence based on the current task's needs; the condenser compresses the found evidence into compact latent vectors (rather than retaining the original high-dimensional data); finally, the weaver stitches these compressed memory vectors together with the embedded representations of the current frame and instruction into a continuous sequence, feeding it directly into the VLA's multimodal reasoning backbone, so that memory and current reasoning occupy the same computational space and are seamlessly connected.
 
 ### Result
 
-  * 在 SimplerEnv 與 LIBERO 兩個公開基準上進行大量實驗，摘要中陳述「證實了 LaMem-VLA 的優越性」（demonstrate the superiority），但未在摘要中提供具體量化數字（如成功率百分比、相對提升幅度）。
-  * 是否公正：由於摘要未附上具體實驗數據，無法在此判斷其效果的具體量級與說服力；需要查證全文以取得詳細的成功率、消融實驗結果，並確認與哪些基線（是否包含 MemoryVLA、EventVLA 等同期記憶增強 VLA）比較。
-
-
+  * Extensive experiments are conducted on two public benchmarks, SimplerEnv and LIBERO. The abstract states that they "demonstrate the superiority" of LaMem-VLA, but does not provide specific quantitative numbers (such as success-rate percentages or relative improvement magnitudes) in the abstract.
+  * Fairness: since the abstract does not provide specific experimental data, it is impossible to judge the specific magnitude and persuasiveness of its effect here; the full text needs to be checked for detailed success rates, ablation results, and confirmation of which baselines it was compared against (whether it includes contemporary memory-augmented VLAs such as MemoryVLA or EventVLA).
 
 ### Limitation
 
-  * 摘要未明確自陳限制。從架構設計推測，四段式流水線（curator → seeker → condenser → weaver）涉及多次檢索與壓縮操作，可能帶來額外的推論延遲；同時「短期/長期記憶庫」的容量管理與更新策略（何時淘汰舊記憶）在摘要中未說明，需查證全文。
-  * 摘要未提供具體量化結果也是本篇在透明度上的一項限制，難以獨立評估其效能與穩健性。
-
-
+  * The abstract does not explicitly state limitations. Inferring from the architectural design, the four-stage pipeline (curator → seeker → condenser → weaver) involves multiple retrieval and compression operations, which may introduce additional inference latency; meanwhile, the capacity management and update strategy of the "short-term/long-term vaults" (when old memories are evicted) is not explained in the abstract and needs to be verified in the full text.
+  * The absence of specific quantitative results in the abstract is also a transparency limitation of this paper, making it difficult to independently assess its effectiveness and robustness.
 
 ### Related work
 
-  * 摘要中明確以「既有記憶增強 VLA 方法將記憶置於原生潛在空間之外」作為批評既有方法（可能包括 Explicit Language Memory 的顯式文字記憶,以及部分將記憶當作外部檢索模組的方法）的出發點,隱含挑戰/對照關係，但未點名具體論文。
-  * 判斷此文與 MemoryVLA/MemoryVLA++（同樣使用潛在 token 形式的記憶，但強調「感知-認知」雙軌而非「短期-長期」雙軌）、EventVLA（強調稀疏事件記憶而非連續潛在記憶）同屬 2026 年 VLA 潛在記憶研究群體，彼此設計理念相近但細節路線不同，值得在 survey 中並列比較，判斷其 related work 具有中高度的 survey 價值。
-
-
+  * The abstract explicitly frames "existing memory-augmented VLA methods placing memory outside the native latent space" as its critique of prior methods (possibly including explicit textual memory such as Explicit Language Memory, as well as approaches that treat memory as an external retrieval module), implying a challenge/contrast relationship, though it does not name specific papers.
+  * This paper is judged to belong to the same 2026 VLA latent-memory research group as MemoryVLA/MemoryVLA++ (which likewise uses token-form latent memory but emphasizes a "perception-cognition" dual track rather than "short-term-long-term") and EventVLA (which emphasizes sparse event memory rather than continuous latent memory); their design philosophies are similar but the detailed approaches differ, making them worth comparing side by side in a survey, so its related work has moderately high survey value.
 
 ### Conclusion
 
-  * 綜合評價：LaMem-VLA 提出的「記憶全程留在同一潛在空間」的設計理念具有一定的方法論吸引力（避免記憶與推理之間的表徵鴻溝），四段式流水線（curator/seeker/condenser/weaver）架構清晰、分工明確，但由於摘要缺乏具體量化結果，實際效能優劣仍待查證全文與後續社群復現確認。
-  * 與其他重要文章的關係：本文與 MemoryVLA/MemoryVLA++（感知-認知記憶庫）、EventVLA（稀疏事件記憶）、Explicit Language Memory（顯式文字記憶）共同構成 2026 年 VLA 記憶機制研究的多元路線圖，彼此在「記憶表徵形式」（潛在向量 vs. 文字）與「記憶組織方式」（短期/長期 vs. 感知/認知 vs. 稀疏事件）上各有取捨，適合作為同一 survey 主題下並列比較的一組論文。
-  * ROCm/AMD 待補強部分：摘要未提及任何硬體平台資訊。此方法涉及多階段記憶檢索與潛在向量壓縮操作，這類非標準的注意力/檢索運算在不同硬體平台上的算子支援程度可能有差異，但論文本身未提供任何實測數據或硬體討論，因此看不出與 ROCm/AMD 的明確關聯，此為推測，非論文結論。
+  * Overall assessment: The design philosophy of LaMem-VLA — "keeping memory in the same latent space throughout" — has methodological appeal (avoiding the representational gap between memory and reasoning), and its four-stage pipeline (curator/seeker/condenser/weaver) has a clear architecture with well-defined division of labor; however, since the abstract lacks specific quantitative results, its actual effectiveness still needs to be verified in the full text and confirmed through subsequent community reproduction.
+  * Relationship to other important papers: this paper, together with MemoryVLA/MemoryVLA++ (perception-cognition memory vaults), EventVLA (sparse event memory), and Explicit Language Memory (explicit textual memory), jointly form a diverse roadmap of 2026 VLA memory-mechanism research; each makes different trade-offs on "memory representation form" (latent vectors vs. text) and "memory organization" (short-term/long-term vs. perception/cognition vs. sparse events), making them suitable to compare side by side under the same survey topic.
+  * Gaps regarding ROCm/AMD: the abstract does not mention any hardware platform information. This method involves multi-stage memory retrieval and latent-vector compression operations; the degree of operator support for such non-standard attention/retrieval computations may differ across hardware platforms, but the paper itself provides no measured data or hardware discussion, so no clear connection to ROCm/AMD is apparent; this is speculation, not a conclusion of the paper.

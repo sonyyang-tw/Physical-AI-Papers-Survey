@@ -7,59 +7,59 @@ permalink: /wm/iworld-bench-a-benchmark-for-interactive-world-models-with-a-unif
 ---
 
 **Paper** : [iWorld-Bench: A Benchmark for Interactive World Models with a Unified Action Generation Framework](https://arxiv.org/abs/2605.03941)  
-**Source** : arXiv (cs.CV, cs.AI)，Accepted at ICML 2026  
+**Source** : arXiv (cs.CV, cs.AI), Accepted at ICML 2026  
 **arXiv ID** : 2605.03941
 
 ### Abstract
 
-達成通用人工智慧 (AGI) 需要能夠自適應學習與互動的智能體，而互動式世界模型 (interactive world models) 提供了可擴展的感知、推理、行動環境。然而目前研究仍缺乏大規模資料集與統一基準來評測其物理互動能力。本文提出 iWorld-Bench，一個用於訓練與測試世界模型在「距離感知」與「記憶」等互動相關能力上表現的綜合基準。作者建構了包含 33 萬個影片片段的多樣化資料集，並挑選出 2,100 個涵蓋不同視角、天氣、場景的高品質樣本。由於現有世界模型的互動模式（action modality）各不相同，作者提出一個「動作生成框架 (Action Generation Framework)」以統一評測標準，設計六種任務類型，共產生 4,900 個測試樣本，聯合評估模型在視覺生成、軌跡跟隨、記憶三方面的表現。作者評測了 14 個具代表性的世界模型，發現了關鍵限制並為未來研究提供洞見。排行榜公開於 iWorld-Bench.com。
+Achieving artificial general intelligence (AGI) requires agents capable of adaptive learning and interaction, and interactive world models provide a scalable environment for perception, reasoning, and action. However, current research still lacks large-scale datasets and unified benchmarks to evaluate their physical interaction capabilities. This paper proposes iWorld-Bench, a comprehensive benchmark for training and testing world models' performance on interaction-related capabilities such as "distance perception" and "memory." The authors construct a diverse dataset containing 330,000 video clips, and select 2,100 high-quality samples covering different viewpoints, weather conditions, and scenes. Since existing world models differ in their interaction modes (action modality), the authors propose an "Action Generation Framework" to unify the evaluation standard, designing six task types that together produce 4,900 test samples, jointly assessing model performance in visual generation, trajectory following, and memory. The authors evaluate 14 representative world models, identifying key limitations and providing insights for future research. The leaderboard is publicly available at iWorld-Bench.com.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945539121_iworldbench_fig1.png) 
 
-_Figure 1: iWorld-Bench 總覽，涵蓋 UGV/UAV/人類/機器人四種視角，結合統一的 Action Generation Framework 評測互動式世界模型。_
+_Figure 1: iWorld-Bench overview, covering four viewpoints — UGV/UAV/human/robot — combined with a unified Action Generation Framework to evaluate interactive world models._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945539121_iworldbench_fig2.png) 
 
-_Figure 2: 資料處理流程與總覽，包含資料收集、統一化、VLM 輔助標註、人工驗證四步驟。_
+_Figure 2: Data processing pipeline and overview, including the four steps of data collection, unification, VLM-assisted annotation, and human verification._
 
-  * **要解決的問題** ：不同世界模型的互動輸入模式（動作條件的形式，例如文字指令、軌跡座標、鍵盤按鍵等）彼此不統一，導致難以用同一套基準做公平比較；同時業界缺乏大規模、涵蓋多元場景（不同視角/天氣/場景）的互動能力評測資料。
-  * **Main method** ：
-    * 建構 330k 影片片段資料集，篩選出 2.1k 高品質樣本，涵蓋多視角、天氣、場景變化。
-    * 提出「Action Generation Framework」把不同世界模型各自的動作輸入形式，轉換/統一成可比較的評測介面。
-    * 基於此框架設計 6 種任務類型（涵蓋視覺生成品質、軌跡跟隨準確度、長期記憶維持能力），共生成 4.9k 測試樣本。
-    * 對 14 個代表性世界模型進行評測。
-  * **與以往方式的差異** ：以往針對世界模型的評測往往綁定特定模型的動作介面，難以跨模型比較；iWorld-Bench 透過統一動作生成框架，讓不同動作模態的模型可以在同一套任務下被公平評測，並額外強調「距離感知」與「記憶」這兩個過去較少被系統性測試的互動能力面向。
-  * **重要設計描述** ：整體流程為資料收集（330k clips）→ 品質篩選（2.1k samples，涵蓋視角/天氣/場景多樣性）→ 透過 Action Generation Framework 產生統一格式的動作條件輸入 → 依六種任務類型批次生成 4.9k 測試樣本 → 送入 14 個世界模型做視覺生成、軌跡跟隨、記憶三面向評分 → 建立排行榜。
+  * **Problem addressed**: The interactive input modes of different world models (the form of action conditioning, such as text instructions, trajectory coordinates, keyboard keys, etc.) are not unified with each other, making it difficult to use a single benchmark for fair comparison; at the same time, the industry lacks large-scale interaction-capability evaluation data covering diverse scenarios (different viewpoints/weather/scenes).
+  * **Main method**:
+    * Constructs a 330k video clip dataset, filters it down to 2.1k high-quality samples covering variations in viewpoint, weather, and scene.
+    * Proposes an "Action Generation Framework" that converts/unifies the different action input forms of various world models into a comparable evaluation interface.
+    * Based on this framework, designs 6 task types (covering visual generation quality, trajectory-following accuracy, and long-term memory retention ability), together generating 4.9k test samples.
+    * Evaluates 14 representative world models.
+  * **Difference from previous approaches**: Previous evaluations of world models were often tied to a specific model's action interface, making cross-model comparison difficult; iWorld-Bench uses a unified action generation framework so that models with different action modalities can be fairly evaluated under the same set of tasks, and additionally emphasizes the two interaction-capability dimensions of "distance perception" and "memory" that have previously been less systematically tested.
+  * **Key design description**: The overall pipeline is: data collection (330k clips) → quality filtering (2.1k samples, covering diversity in viewpoint/weather/scene) → generating unified-format action-conditioned input via the Action Generation Framework → batch-generating 4.9k test samples according to six task types → feeding into 14 world models for scoring across the three dimensions of visual generation, trajectory following, and memory → building the leaderboard.
 
 
 
 ### Result
 
-  * 評測 14 個具代表性世界模型後，找出了「關鍵限制」（key limitations），但摘要未列出具體數值分數，需要查證全文或 iWorld-Bench.com 排行榜取得詳細比較數據。
-  * 是否公正：由於此論文已被 ICML 2026 接受，經過同儕審查，方法論相對可信；但摘要未透露評測時是否對所有模型使用相同運算資源/取樣設定，需要查證全文以確認公平性。
-  * 需要查證其他論文（例如 WorldOlympiad）在重疊模型上的評測結果是否與此一致，摘要未提供足夠資訊直接比對。
+  * After evaluating 14 representative world models, "key limitations" were identified, but the abstract does not list specific numerical scores; the full text or the iWorld-Bench.com leaderboard needs to be checked to obtain detailed comparison data.
+  * Whether it is fair: since this paper has been accepted by ICML 2026 and has undergone peer review, the methodology is relatively credible; but the abstract does not reveal whether the same computational resources/sampling settings were used for all models during evaluation, which needs to be checked in the full text to confirm fairness.
+  * It needs to be verified whether the evaluation results of other papers (such as WorldOlympiad) on overlapping models are consistent with this one; the abstract does not provide enough information for direct comparison.
 
 
 
 ### Limitation
 
-  * 摘要提及「識別出關鍵限制」，但未具體展開是哪些限制，需要查證全文的實驗分析章節。
-  * 從方法設計推測，潛在弱項可能包括：Action Generation Framework 在轉換不同動作模態時可能引入近似誤差，統一化過程本身可能對某些原生動作模態的模型不利或有利；2.1k 高品質樣本規模仍相對有限，可能無法完全代表真實世界互動多樣性。
+  * The abstract mentions "identifying key limitations," but does not specifically elaborate on what these limitations are, which needs to be checked in the experimental analysis section of the full text.
+  * Inferred from the method design, potential weaknesses may include: the Action Generation Framework may introduce approximation error when converting different action modalities, and the unification process itself may disadvantage or favor models with certain native action modalities; the 2.1k high-quality sample scale is still relatively limited and may not fully represent the diversity of real-world interactions.
 
 
 
 ### Related work
 
-  * 同期的 WorldOlympiad (arXiv:2606.11129) 也是世界模型基準論文，但著重物理/幾何/互動三軌評測，與 iWorld-Bench 的距離感知/記憶/統一動作框架形成互補視角，值得對照閱讀。
-  * 暫無發現明確的更新後續研究（例如針對 iWorld-Bench 做二次分析或擴展的論文）。
-  * 值得 survey 的程度：中高，尤其對於需要選擇評測工具的研究者，此篇的統一動作框架設計思路具有實用參考價值。
+  * The contemporaneous WorldOlympiad (arXiv:2606.11129) is also a world model benchmark paper, but focuses on three tracks of physical/geometric/interaction evaluation, forming a complementary perspective to iWorld-Bench's distance perception/memory/unified action framework, worth reading alongside.
+  * No clearly updated follow-up research (such as a paper doing secondary analysis or extension of iWorld-Bench) has been found so far.
+  * Degree worth surveying: medium-high, especially for researchers who need to choose an evaluation tool — this paper's unified action framework design approach has practical reference value.
 
 
 
 ### Conclusion
 
-  * 整體評價：這是一篇已被 ICML 2026 接受、方法論嚴謹的世界模型基準論文，其「統一動作生成框架」解決了跨模型比較的實際痛點，對於希望公平比較不同互動式世界模型的研究者有參考價值。
-  * 與其他重要文章的關係：與 WorldOlympiad 同屬 2026 年出現的世界模型評測基準浪潮，兩者互補（前者聚焦距離感知/記憶/統一動作介面，後者聚焦物理/幾何一致性）；也可能被後續 VLA / world-model-as-simulator 類論文（如 WoVR、Interactive World Simulator）引用作為評測手段。
-  * ROCm/AMD 待補強部分：論文本身聚焦於評測基準設計，不涉及底層硬體或訓練框架，看不出與 ROCm 的直接關聯；若 AMD 要驗證自家硬體上訓練/推論的世界模型的互動能力，此基準可作為現成評測工具參考。
+  * Overall assessment: This is a methodologically rigorous world model benchmark paper that has been accepted by ICML 2026. Its "unified action generation framework" solves the practical pain point of cross-model comparison, providing reference value for researchers who wish to fairly compare different interactive world models.
+  * Relationship with other important articles: Belongs to the same 2026 wave of world model evaluation benchmarks as WorldOlympiad, and the two are complementary (the former focuses on distance perception/memory/unified action interfaces, the latter focuses on physical/geometric consistency); it may also be cited as an evaluation method by subsequent VLA / world-model-as-simulator papers (such as WoVR, Interactive World Simulator).
+  * Areas for ROCm/AMD improvement: The paper itself focuses on evaluation benchmark design and does not involve underlying hardware or training frameworks, so no direct connection to ROCm can be found; if AMD wants to verify the interactive capabilities of world models trained/inferred on its own hardware, this benchmark can serve as a ready-made evaluation tool for reference.

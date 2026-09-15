@@ -12,53 +12,45 @@ permalink: /vla/chainflow-vla-causal-flow-planning-with-vision-language-models-1
 
 ### Abstract
 
-ChainFlow-VLA 是一個針對端到端自動駕駛規劃問題的框架，統一了自回歸（causal）軌跡生成與擴散式（diffusion）全域精修在同一個機率框架下。論文指出現有方法存在一個根本矛盾：自回歸模型能捕捉具因果性的時序依賴關係，但逐步解碼容易累積誤差、導致次優的全域結構；擴散模型能做全域最佳化，但缺乏顯式的因果約束，在互動性強、安全攸關的場景中不可靠。ChainFlow-VLA 將規劃問題表述為「由自回歸模式構成的混合分布」，並學習以視覺語言模型（VLM）為條件的殘差分布。具體而言，一個自回歸生成器（Chain）先產生離散的因果軌跡模式集合，接著一個擴散式精修器（Flow）利用 VLM 隱藏狀態作為語意先驗，在殘差空間中進行「模式條件式修正」，同時保留因果結構。實驗顯示該方法在 NAVSIM v1 排行榜上達到 94.85 分的 state-of-the-art 成績，接近人類水準（94.8 分）。
+ChainFlow-VLA is a framework for end-to-end autonomous-driving planning that unifies autoregressive (causal) trajectory generation and diffusion-based global refinement within a single probabilistic framework. The paper points out a fundamental contradiction in existing methods: autoregressive models can capture causal temporal dependencies, but step-by-step decoding is prone to error accumulation, leading to suboptimal global structure; diffusion models can perform global optimization, but lack explicit causal constraints, making them unreliable in highly interactive, safety-critical scenarios. ChainFlow-VLA formulates the planning problem as "a mixture distribution composed of autoregressive modes," and learns a residual distribution conditioned on a vision-language model (VLM). Specifically, an autoregressive generator (Chain) first produces a set of discrete causal trajectory modes, and then a diffusion-based refiner (Flow) uses the VLM's hidden states as semantic priors to perform "mode-conditioned correction" in the residual space, while preserving the causal structure. Experiments show that this method achieves a state-of-the-art score of 94.85 on the NAVSIM v1 leaderboard, close to human-level performance (94.8).
 
-注意：此論文的應用場景為自動駕駛（autonomous driving）的軌跡規劃，而非傳統機器人手臂/人形機器人操作任務的 VLA；其「VLA」用法接近「以 VLM 為條件的動作/軌跡生成」，與清單中其他機器人操作類 VLA 論文的應用領域不同，閱讀時需留意此差異。
+Note: The application scenario of this paper is trajectory planning for autonomous driving, rather than the traditional robotic-arm/humanoid manipulation VLA task; its use of "VLA" is closer to "VLM-conditioned action/trajectory generation," differing in application domain from the robot-manipulation VLA papers elsewhere on this list; readers should be aware of this distinction.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945365318_chainflow_fig1.png) 
 
-_Figure 1: 三種將 VLM 整合進端到端自動駕駛的典範比較。(a) VLM 引導式管線：VLM 預測高層引導訊號來操控端到端模型，但會產生資訊瓶頸，限制細粒度軌跡精修；(b) 特徵層融合：結合 VLM 與感知骨幹網路，經融合模組後接動作專家，但缺乏原則性機制來確保局部動態與全域軌跡結構的一致性；(c) 本文方法（ChainFlow-VLA）：將軌跡預測表述為統一的因果-流程（causal-flow）過程，AR 生成器產生具時序一致性的候選軌跡，再由擴散模型於殘差空間中精修，並以微調後的 VLM 表徵作為語意流條件注入，實現因果推理、全域最佳化與高層語意之間的緊密耦合。_
+_Figure 1: Comparison of three paradigms for integrating VLMs into end-to-end autonomous driving. (a) VLM-guided pipeline: the VLM predicts high-level guidance signals to steer the end-to-end model, but this creates an information bottleneck that limits fine-grained trajectory refinement; (b) feature-level fusion: combines the VLM with a perception backbone, followed by a fusion module and an action expert, but lacks a principled mechanism to ensure consistency between local dynamics and global trajectory structure; (c) our method (ChainFlow-VLA): formulates trajectory prediction as a unified causal-flow process, where an AR generator produces temporally consistent candidate trajectories that are then refined by a diffusion model in the residual space, with fine-tuned VLM representations injected as semantic-flow conditioning, achieving tight coupling among causal reasoning, global optimization, and high-level semantics._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945365318_chainflow_fig2.png) 
 
-_Figure 2: ChainFlow-VLA 架構圖。模型先執行自回歸軌跡生成（Chain）以產生 K 個因果候選軌跡，接著透過 VLM 引導的殘差擴散（Flow）進行精修。藉由學習 AR 候選軌跡與真實軌跡之間的殘差，模型將因果 rollout 與 VLM 語意引導統一起來，把規劃問題表述為在 AR 誘導模式上的 VLM 條件式殘差分布混合。_
+_Figure 2: ChainFlow-VLA architecture diagram. The model first performs autoregressive trajectory generation (Chain) to produce K causal candidate trajectories, then refines them via VLM-guided residual diffusion (Flow). By learning the residual between AR candidate trajectories and ground-truth trajectories, the model unifies causal rollout and VLM semantic guidance, formulating the planning problem as a VLM-conditioned residual distribution mixture over AR-induced modes._
 
-  * **要解決的問題** ：端到端自動駕駛規劃中，自回歸模型（時序因果性佳但誤差累積）與擴散模型（全域一致性佳但缺乏因果約束）長期被視為互斥的兩種典範，缺乏一個原則性的方法將兩者統一在單一軌跡分布內。
-  * **主要方法** ：將規劃建模為「AR 誘導模式（mode）的混合分布」，並學習 VLM 條件下的殘差分布：
-    * **Chain（自回歸生成器）** ：產生一組離散的因果軌跡模式。
-    * **Flow（擴散式精修器）** ：以 VLM 的隱藏狀態作為語意先驗，對這些模式做「模式條件式」的殘差修正，修正過程中保留原本的因果結構。
-  * **與以往方式的差異** ：不同於將 AR 與 diffusion 視為兩個獨立典範分別使用，本論文首次在單一機率框架下把兩者串接（先離散因果生成、後全域殘差精修），並透過直接注入 VLM 隱藏狀態，將高層場景理解無縫融入細粒度軌跡調整。
-  * **重要方法設計** ：架構可理解為兩階段管線——先用自回歸解碼器生成候選的離散軌跡模式（保留時序因果依賴），再用擴散模型在這些模式的殘差空間上做精修（引入 VLM 語意先驗），確保最終軌跡既有因果一致性又有全域最佳化的品質。
-
-
+  * **Problem addressed**: In end-to-end autonomous-driving planning, autoregressive models (good temporal causality but error accumulation) and diffusion models (good global consistency but lacking causal constraints) have long been regarded as two mutually exclusive paradigms, lacking a principled method to unify both within a single trajectory distribution.
+  * **Main method**: The planning problem is modeled as "a mixture distribution over AR-induced modes," learning a residual distribution conditioned on the VLM:
+    * **Chain (autoregressive generator)**: produces a set of discrete causal trajectory modes.
+    * **Flow (diffusion-based refiner)**: uses the VLM's hidden states as semantic priors to perform "mode-conditioned" residual correction on these modes, preserving the original causal structure during correction.
+  * **Difference from prior approaches**: Unlike treating AR and diffusion as two separate paradigms used independently, this paper is the first to chain them within a single probabilistic framework (discrete causal generation first, followed by global residual refinement), and by directly injecting the VLM's hidden states, it seamlessly incorporates high-level scene understanding into fine-grained trajectory adjustment.
+  * **Description of the key methodological design**: The architecture can be understood as a two-stage pipeline — first an autoregressive decoder generates candidate discrete trajectory modes (preserving temporal causal dependencies), then a diffusion model refines them in the residual space of these modes (introducing a VLM semantic prior), ensuring the final trajectory has both causal consistency and globally optimized quality.
 
 ### Result
 
-  * 在 NAVSIM v1 leaderboard 上取得 94.85 分，達到 state-of-the-art，且接近人類表現的 94.8 分。
-  * 論文聲稱在模糊（ambiguous）與長尾（long-tail）場景中具穩健規劃能力。
-  * 是否公正：NAVSIM v1 是一個公開排行榜，具一定公信力，但摘要未提供與其他方法的詳細對比數據（例如次高分方法的分數與差距），也未說明評測是否涵蓋所有安全攸關場景類別；需要查證其他論文（如 NAVSIM 排行榜上其他方法）以確認相對優勢的穩固性與統計顯著性。
-
-
+  * Achieves a score of 94.85 on the NAVSIM v1 leaderboard, reaching state-of-the-art and close to the human-level score of 94.8.
+  * The paper claims robust planning ability in ambiguous and long-tail scenarios.
+  * Fairness: NAVSIM v1 is a public leaderboard with a degree of credibility, but the abstract does not provide detailed comparison data with other methods (e.g., the score and gap versus the second-highest-scoring method), nor does it state whether the evaluation covers all safety-critical scenario categories; other papers (e.g., other methods on the NAVSIM leaderboard) would need to be checked to confirm the robustness of the relative advantage and its statistical significance.
 
 ### Limitation
 
-  * 論文自陳的限制：摘要中未明確列出自陳的 limitation 段落內容，需要查證全文以了解。
-  * 從架構設計推測：兩階段（AR + diffusion）管線可能增加推論延遲，這對自動駕駛這類即時性要求高的應用是否可行，摘要未提及具體的推論速度或延遲數據，需要進一步查證全文。
-
-
+  * Self-stated limitations: The abstract does not explicitly list a limitation section; the full text would need to be checked to understand this.
+  * Inferred from the architectural design: the two-stage (AR + diffusion) pipeline may increase inference latency, and whether this is feasible for a real-time-sensitive application like autonomous driving is unclear, as the abstract does not mention specific inference speed or latency data; the full text would need to be checked further.
 
 ### Related work
 
-  * 摘要與可取得資訊中未發現此論文的直接後續研究；作者聲稱程式碼將釋出於 GitHub（AFARI-Research/ChainFlow-VLA），可持續追蹤該倉庫的更新與引用情況。暫無發現更新的相關研究。
-  * 值得 survey 的程度：中等。作為自動駕駛規劃的方法論文，對 ROCm/AMD 背景下研究一般機器人操作 VLA 的工程師而言，其架構思路（AR + diffusion 混合、VLM 條件殘差修正）具有跨領域參考價值，但應用場景差異較大，非必讀範疇。
-
-
+  * No direct follow-up research on this paper has been found in the abstract or currently available information; the authors state that code will be released on GitHub (AFARI-Research/ChainFlow-VLA), so the repository's updates and citation status can be tracked going forward. No newer related research has been found so far.
+  * Degree to which it merits surveying: moderate. As a method paper for autonomous-driving planning, its architectural ideas (AR + diffusion hybrid, VLM-conditioned residual correction) have cross-domain reference value for engineers researching general robot-manipulation VLAs in an ROCm/AMD context, but given the difference in application scenario, it is not essential reading.
 
 ### Conclusion
 
-  * 綜合評價：作為自動駕駛規劃方法，其統一 AR 與 diffusion 的思路具創新性且有具體排行榜數據支撐，值得作為「VLM 條件式軌跡生成」設計模式的參考，但與典型機器人操作 VLA（如 LeVERB、pi0 系列）研究目標不同，不宜直接視為同一子領域的核心論文。
-  * 與其他論文關係：本論文聚焦自動駕駛而非機器人操作，與清單中其他 World Action Model / VLA 機器人操作論文的關係較弱，主要共通點是同樣使用 VLM 作為條件輸入；論文本身未在摘要中明確比較或挑戰哪些具體既有 VLA/WAM 論文。
-  * ROCm/AMD 關聯：從摘要內容看不出與 ROCm/AMD 有明確關聯，論文未提及訓練/推論硬體平台細節，不宜強行連結。
+  * Overall assessment: As an autonomous-driving planning method, its approach of unifying AR and diffusion is innovative and backed by concrete leaderboard data, making it worth referencing as a design pattern for "VLM-conditioned trajectory generation," but since its goals differ from typical robot-manipulation VLAs (e.g., LeVERB, the pi0 series), it should not be treated directly as a core paper of that specific sub-field.
+  * Relationship to other papers: This paper focuses on autonomous driving rather than robot manipulation, and has a relatively weak relationship to other World Action Model / VLA robot-manipulation papers on the list, sharing mainly the commonality of using a VLM as conditioning input; the paper's abstract does not explicitly compare or challenge any specific existing VLA/WAM papers.
+  * ROCm/AMD relevance: No clear connection to ROCm/AMD is apparent from the abstract; the paper does not mention training/inference hardware platform details, so no such connection should be forced.

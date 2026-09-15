@@ -1,16 +1,16 @@
 ---
 layout: default
 ---
-{% assign is_en = false %}
-{% if page.url contains '/en/' %}
-  {% assign is_en = true %}
+{% assign is_zh = false %}
+{% if page.url contains '/zh/' %}
+  {% assign is_zh = true %}
 {% endif %}
 <article class="paper">
   <div class="paper-nav">
-    {% if is_en %}
-      <a href="{{ site.baseurl }}/en/{{ page.section }}/">&larr; Back to {% if page.section == 'vla' %}VLA Papers{% else %}World Model Papers{% endif %}</a>
+    {% if is_zh %}
+      <a href="{{ site.baseurl }}/zh/{{ page.section }}/">&larr; 返回{% if page.section == 'vla' %} VLA Papers{% else %} World Model Papers{% endif %}列表</a>
     {% else %}
-      <a href="{{ site.baseurl }}/{{ page.section }}/">&larr; 返回{% if page.section == 'vla' %} VLA Papers{% else %} World Model Papers{% endif %}列表</a>
+      <a href="{{ site.baseurl }}/{{ page.section }}/">&larr; Back to {% if page.section == 'vla' %}VLA Papers{% else %}World Model Papers{% endif %}</a>
     {% endif %}
   </div>
   <h1>{{ page.title }}</h1>

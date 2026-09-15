@@ -7,12 +7,12 @@ permalink: /wm/from-world-models-to-world-action-models-a-concise-tutorial-for-r
 ---
 
 **Paper** : [From World Models to World Action Models: A Concise Tutorial for Robotics](https://arxiv.org/abs/2607.00836)  
-**Source** : arXiv（尚未標明特定會議發表，附有 GitHub 頁面 clearlab-sustech/WorldModelSurvey）  
+**Source** : arXiv (not yet designated for a specific conference; accompanied by a GitHub page clearlab-sustech/WorldModelSurvey)  
 **arXiv ID** : 2607.00836
 
 ### Abstract
 
-本文並非提供一份詳盡的綜述，而是一篇針對機器人領域「世界模型」與「世界行動模型」（world action model）的簡明教學（tutorial）。閱讀完本教學後,讀者應能清楚理解什麼構成「世界」（world）、世界模型與世界行動模型如何被定義，以及它們在機器人 AI 系統中扮演的角色。教學內容也發展出一個統一視角,用以比較代表性方法，例如 World Labs 的空間智能模型（spatial intelligence model）、Yann LeCun 的 JEPA 框架、以及 NVIDIA 的 Cosmos 平台,並釐清這些模型在表徵方式、預測能力與互動機制上的差異。
+This paper does not aim to provide an exhaustive survey, but rather a concise tutorial on "world models" and "world action models" for the field of robotics. After reading this tutorial, readers should clearly understand what constitutes a "world," how world models and world action models are defined, and what roles they play in robotic AI systems. The tutorial also develops a unified perspective for comparing representative approaches, such as World Labs' spatial intelligence model, Yann LeCun's JEPA framework, and NVIDIA's Cosmos platform, clarifying the differences among these models in terms of representation, predictive capability, and interaction mechanisms.
 
 ### Method
 
@@ -24,38 +24,38 @@ _Figure 1: Illustration of the components of a world._
 
 _Figure 8: Taxonomy of world action models — coupling future observation prediction with robot action generation in different ways._
 
-  * **要解決的問題** ：機器人領域中「世界模型」與「世界行動模型」等術語缺乏清晰、統一的定義與比較框架,初學者難以快速掌握核心概念與代表性方法之間的差異。
-  * **Main method** ：本文以教學（tutorial）形式而非窮盡式綜述（exhaustive survey）呈現,先定義「世界」（what constitutes a "world"）,再定義世界模型與世界行動模型的概念,並說明它們在機器人 AI 系統中的角色定位；最後建立一個統一的比較視角,用以並列分析多個代表性平台/框架。
-  * **與以往方式的差異** ：與前述三篇窮盡式綜述（回顧大量文獻並建立分類法）不同，本文定位為「概念教學」,目標是幫助讀者建立清晰的心智模型（mental model），而非提供詳盡的文獻覆蓋；其比較對象也更聚焦在具有高知名度、代表性的平台級工作（World Labs、JEPA、NVIDIA Cosmos），而非廣泛的學術論文清單。
-  * **重要方法設計描述** ：教學文章的結構預期依序展開：(1) 「世界」的定義與範疇；(2) 世界模型（world model）的定義——著重於「預測環境如何演變」的表徵能力；(3) 世界行動模型（world action model）的定義——在世界模型基礎上進一步整合「動作」，使模型不僅能預測環境演變,還能將預測與具體行動決策連結；(4) 以統一比較框架逐一分析 World Labs 空間智能模型、LeCun 的 JEPA（Joint Embedding Predictive Architecture）、NVIDIA Cosmos 平台在表徵方式（representation）、預測能力（predictive capability）、互動機制（interaction mechanism）三個維度上的異同。
+  * **Problem addressed**: Terms such as "world model" and "world action model" in the field of robotics lack a clear, unified definition and comparative framework, making it difficult for beginners to quickly grasp the core concepts and the differences between representative methods.
+  * **Main method**: This paper is presented in tutorial form rather than as an exhaustive survey. It first defines "what constitutes a world," then defines the concepts of world models and world action models, and explains their role in robotic AI systems; finally it establishes a unified comparative perspective for analyzing several representative platforms/frameworks side by side.
+  * **Difference from previous approaches**: Unlike the three exhaustive surveys mentioned above (which review large amounts of literature and build taxonomies), this paper is positioned as a "conceptual tutorial," with the goal of helping readers build a clear mental model rather than providing detailed literature coverage; its comparison objects are also more focused on well-known, representative platform-level works (World Labs, JEPA, NVIDIA Cosmos) rather than a broad list of academic papers.
+  * **Key design description**: The tutorial's structure is expected to unfold sequentially as follows: (1) the definition and scope of a "world"; (2) the definition of a world model — emphasizing the representational capacity to "predict how the environment will evolve"; (3) the definition of a world action model — building on the world model to further integrate "action," so that the model can not only predict environmental evolution but also connect the prediction to concrete action decisions; (4) using a unified comparative framework to analyze the World Labs spatial intelligence model, LeCun's JEPA (Joint Embedding Predictive Architecture), and the NVIDIA Cosmos platform one by one along three dimensions: representation, predictive capability, and interaction mechanism.
 
 
 
 ### Result
 
-  * 本教學的「成果」在於提供一個清晰、統一的概念框架與比較視角，幫助讀者釐清 World Labs、JEPA、NVIDIA Cosmos 等知名平台/框架在世界模型光譜上的定位差異。
-  * 是否公正：由於這是一篇教學性質文章而非提出新方法或新實驗結果的論文，其「結果」偏向概念性整理，並不涉及量化實驗比較；其對三個平台的比較是否全面、客觀，需要查證其他論文或這些平台自身的技術文件加以驗證。
-  * 值得留意的是，該論文歷經多次修訂（v1 至 v7，橫跨2026年7月至8月），顯示作者持續根據回饋精煉內容，也反映此領域概念仍在快速演變中。
+  * The "result" of this tutorial lies in providing a clear, unified conceptual framework and comparative perspective, helping readers clarify how well-known platforms/frameworks such as World Labs, JEPA, and NVIDIA Cosmos are positioned on the world model spectrum.
+  * Whether it is fair: Since this is a tutorial-style article rather than a paper proposing a new method or new experimental results, its "results" lean toward conceptual organization and do not involve quantitative experimental comparisons; whether its comparison of the three platforms is comprehensive and objective needs to be verified against other papers or the technical documentation of these platforms themselves.
+  * It is worth noting that the paper has undergone multiple revisions (v1 through v7, spanning July to August 2026), showing that the authors continue to refine the content based on feedback, and also reflecting that concepts in this field are still evolving rapidly.
 
 
 
 ### Limitation
 
-  * 教學性質文章的固有限制在於：其定義與分類是作者主觀提出的教學框架，未必等同於學術界公認的標準定義，讀者仍需交叉參照其他更嚴謹的綜述（如本清單中的三篇 survey）以獲得更全面、經過同行檢驗的認識。
-  * 論文自陳「並非提供詳盡綜述」，因此在文獻覆蓋廣度上有意識地做了取捨，讀者若需要完整的文獻回顧,仍需搭配其他綜述閱讀。
-  * 對 World Labs、JEPA、NVIDIA Cosmos 三者的比較細節,摘要未提供具體結論（例如何者更適合何種任務）,需要進一步查證全文以了解其比較框架的實際判斷結果。
+  * An inherent limitation of tutorial-style articles is that their definitions and classifications are a teaching framework subjectively proposed by the authors, which may not necessarily be equivalent to standard definitions recognized by academia. Readers still need to cross-reference other more rigorous surveys (such as the three surveys in this list) to gain a more comprehensive, peer-reviewed understanding.
+  * The paper states itself that it "does not aim to provide an exhaustive survey," so it deliberately makes trade-offs in the breadth of literature coverage; readers who need a complete literature review still need to read other surveys alongside it.
+  * The abstract does not provide specific conclusions on the comparison details between World Labs, JEPA, and NVIDIA Cosmos (e.g., which one is more suitable for which task); the full text needs to be checked further to understand the actual judgment results of its comparative framework.
 
 
 
 ### Related work
 
-  * 與 JEPA（Yann LeCun 提出的 Joint Embedding Predictive Architecture）、NVIDIA Cosmos（NVIDIA 的世界基礎模型平台）、World Labs 的空間智能模型直接相關，這三者都是目前業界/學界關注度極高的世界模型代表性框架，值得延伸閱讀其各自的原始技術報告以獲得更深入的理解。
-  * 判斷 related work 值得 survey 的程度：中高，作為概念性入門教學，其比較框架有助於快速建立對業界主流世界模型平台的認識，但若需要嚴謹的技術細節與量化比較，仍需搭配原始論文或本清單中的其他綜述閱讀。
+  * Directly related to JEPA (the Joint Embedding Predictive Architecture proposed by Yann LeCun), NVIDIA Cosmos (NVIDIA's world foundation model platform), and World Labs' spatial intelligence model — all three are representative world model frameworks currently receiving extremely high attention from industry and academia, worth reading their original technical reports for a deeper understanding.
+  * Assessment of the degree to which the related work is worth surveying: medium-high. As a conceptual introductory tutorial, its comparative framework helps quickly build an understanding of mainstream industry world model platforms, but if rigorous technical details and quantitative comparisons are needed, it still needs to be paired with the original papers or other surveys in this list.
 
 
 
 ### Conclusion
 
-  * 本文作為一篇「概念教學」而非技術綜述，適合作為快速建立 world model / world action model 基礎認識的入門讀物，特別是對於想快速了解 World Labs、JEPA、NVIDIA Cosmos 三大代表性框架差異的讀者相當實用;但若需要深入的技術細節或量化比較，仍應搭配其他更詳盡的綜述（如清單中的三篇 survey）與各平台原始論文。
-  * 與其他重要文章的關係：本文提出的「world model → world action model」演進脈絡,與本清單中其他綜述（如 2606.00113 的「動作條件式預測系統」定義）在概念上相呼應，都在強調「動作」如何整合進世界模型之中；NVIDIA Cosmos 作為其比較對象之一，也與 NVIDIA 出品的 MimicGen（資料生成）在同一生態系脈絡下,值得一併理解 NVIDIA 在 embodied AI 世界模型領域的整體布局。
-  * ROCm/AMD 關聯性：文中提及的 NVIDIA Cosmos 平台明確建立在 NVIDIA 的軟硬體生態（CUDA、Isaac 等）之上，這突顯出目前業界主流世界模型平台高度綁定 NVIDIA 生態的現況；這對 AMD/ROCm 而言是一個值得關注的落差——若要在 ROCm 上發展對應的世界基礎模型（world foundation model）平台或至少確保現有開源世界模型（如 Cosmos 的開源部分、JEPA 系列）能在 ROCm 上訓練與推論，需要投入資源建置對應的框架相容性與生態系整合，這是 ROCm 在 embodied AI / world model 領域可明確指出的尚待補強之處。
+  * This paper, as a "conceptual tutorial" rather than a technical survey, is suitable as introductory reading for quickly building a foundational understanding of world models / world action models, especially for readers who want to quickly understand the differences among the three representative frameworks of World Labs, JEPA, and NVIDIA Cosmos; however, if in-depth technical details or quantitative comparisons are needed, it should still be paired with other more detailed surveys (such as the three surveys in the list) and the original papers of each platform.
+  * Relationship with other important articles: The "world model → world action model" evolution proposed in this paper echoes conceptually with other surveys in this list (such as the definition of "action-conditioned prediction systems" in 2606.00113), both emphasizing how "action" is integrated into world models; NVIDIA Cosmos, as one of its comparison objects, is also worth understanding together with NVIDIA's MimicGen (data generation) within the same ecosystem context, as part of NVIDIA's overall layout in the embodied AI world model field.
+  * ROCm/AMD relevance: The NVIDIA Cosmos platform mentioned in the paper is clearly built on NVIDIA's software/hardware ecosystem (CUDA, Isaac, etc.), which highlights the current situation in which mainstream world model platforms in the industry are highly tied to the NVIDIA ecosystem; this is a gap worth AMD/ROCm's attention — if a corresponding world foundation model platform is to be developed on ROCm, or at least to ensure that existing open-source world models (such as the open-source parts of Cosmos, the JEPA series) can be trained and inferred on ROCm, resources need to be invested in building corresponding framework compatibility and ecosystem integration. This is a clearly identifiable area for ROCm to strengthen in the embodied AI / world model field.

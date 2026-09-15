@@ -12,7 +12,7 @@ permalink: /vla/gr00t-n1-an-open-foundation-model-for-generalist-humanoid-robots
 
 ### Abstract
 
-通用機器人需要一個多用途的身體與一個智慧的大腦。近期人形機器人的進展展現了作為建構「人類世界通才自主性」硬體平台的巨大潛力。一個在大規模、多樣資料來源上訓練的機器人基礎模型,對於讓機器人能推理新情境、穩健處理真實世界的變異性、並快速學習新任務至關重要。為此,作者提出 GR00T N1,一個開源的人形機器人基礎模型。GR00T N1 是一個具雙系統架構的視覺-語言-動作(VLA)模型:視覺-語言模組(System 2)透過視覺與語言指令理解環境;隨後的擴散變換器模組(System 1)即時生成流暢的運動動作。兩個模組緊密耦合並端到端聯合訓練。作者以真實機器人軌跡、人類影片、以及合成生成的資料集的異質混合來訓練 GR00T N1。作者展示其通才機器人模型 GR00T N1 在標準模擬基準上、跨多種機器人本體,均優於最先進的模仿學習基線。此外,作者將模型部署於 Fourier GR-1 人形機器人上,執行語言條件式雙臂操作任務,以高資料效率達成優異表現。
+General-purpose robots need a versatile body and an intelligent brain. Recent advances in humanoid robots have shown great promise as a hardware platform for building generalist autonomy in the human world. A robot foundation model trained on large-scale, diverse data sources is essential for enabling robots to reason about novel situations, robustly handle real-world variability, and rapidly learn new tasks. To this end, the authors introduce GR00T N1, an open foundation model for humanoid robots. GR00T N1 is a Vision-Language-Action (VLA) model with a dual-system architecture: the vision-language module (System 2) understands the environment through visual and language instructions, and the subsequent diffusion transformer module (System 1) generates fluid motor actions in real time. The two modules are tightly coupled and trained jointly end-to-end. The authors train GR00T N1 on a heterogeneous mixture of real robot trajectories, human videos, and synthetically generated datasets. They show that their generalist robot model, GR00T N1, outperforms state-of-the-art imitation learning baselines on standard simulation benchmarks across multiple robot embodiments. Furthermore, they deploy the model on a Fourier GR-1 humanoid robot to perform language-conditioned bimanual manipulation tasks, achieving strong performance with high data efficiency.
 
 ### Method
 
@@ -24,35 +24,27 @@ _Figure 2: GR00T N1 Model Overview — dual-system VLA design converting image/l
 
 _Figure 3: GR00T N1 Model Architecture — trained across embodiments from single-arm robots to bimanual humanoid hands_
 
-  * 要解決的問題:如何建構一個能同時處理「高層語意理解(看懂場景、聽懂指令)」與「低層即時動作生成(流暢、高頻的馬達控制)」兩種不同時間尺度需求的通才人形機器人基礎模型。
-  * 主要方法:採用雙系統(dual-system)架構,借鑑認知科學中「系統一/系統二」的概念——System 2(視覺-語言模組)負責較慢但語意豐富的環境理解與指令解析;System 1(擴散變換器,diffusion transformer)負責即時、高頻的動作生成。兩者緊密耦合、端到端聯合訓練,而非分開訓練後拼接。
-  * 與以往方式的差異:先前多數 VLA 模型使用單一整合架構同時處理語意理解與動作生成(如 RT-2 的單一 token 序列生成,或 π0 的 VLM+動作專家),GR00T N1 更明確地將「語意理解」與「動作生成」拆分為兩個不同時間尺度運作的系統,並使用擴散變換器(而非 flow matching 或自回歸 token)作為動作生成模組;此外訓練資料首次系統性地混合真實機器人軌跡、人類影片與合成資料三種異質來源(所謂的「資料金字塔」)。
-  * 重要方法設計描述:視覺-語言骨幹採用 NVIDIA Eagle-2 VLM 編碼語言與影像輸入;後續的 DiT(diffusion transformer)-based flow-matching 策略模組輸出高頻動作;公開釋出的 GR00T-N1-2B 模型總參數量 2.2B(其中 VLM 部分 1.34B),在 L40 GPU 上以 bf16 精度採樣 16 個動作的 chunk 僅需 63.9ms;訓練資料呈現「資料金字塔」結構——資料量從底層到頂層遞減,但機體專屬性(embodiment-specificity)遞增,底層為大量通用人類影片與合成資料,頂層為少量但高度貼合特定機體(如 Fourier GR-1)的真實示範。
-
-
+  * Problem to be solved: How to build a generalist humanoid robot foundation model that can simultaneously handle "high-level semantic understanding (perceiving the scene, understanding instructions)" and "low-level real-time action generation (fluid, high-frequency motor control)," two requirements operating at very different time scales.
+  * Main method: Adopts a dual-system architecture, drawing on the "System 1 / System 2" concept from cognitive science—System 2 (vision-language module) handles slower but semantically rich environment understanding and instruction parsing, while System 1 (diffusion transformer) handles real-time, high-frequency action generation. The two are tightly coupled and trained jointly end-to-end, rather than trained separately and stitched together.
+  * Difference from prior approaches: Most prior VLA models used a single integrated architecture to handle both semantic understanding and action generation simultaneously (such as RT-2's single token sequence generation, or π0's VLM + action expert). GR00T N1 more explicitly splits "semantic understanding" and "action generation" into two systems operating at different time scales, and uses a diffusion transformer (rather than flow matching or autoregressive tokens) as the action generation module. Additionally, the training data for the first time systematically mixes three heterogeneous sources—real robot trajectories, human videos, and synthetic data (the so-called "data pyramid").
+  * Key method design description: The vision-language backbone uses NVIDIA's Eagle-2 VLM to encode language and image inputs; the subsequent DiT (diffusion transformer)-based flow-matching policy module outputs high-frequency actions. The publicly released GR00T-N1-2B model has 2.2B total parameters (of which the VLM portion is 1.34B), and sampling a chunk of 16 actions on an L40 GPU in bf16 precision takes only 63.9ms. The training data follows a "data pyramid" structure—data volume decreases from the base to the top, while embodiment-specificity increases: the base consists of large amounts of general human video and synthetic data, while the top consists of a small amount of highly embodiment-specific (e.g., Fourier GR-1) real demonstrations.
 
 ### Result
 
-  * 主要增強:GR00T N1 在標準模擬基準上、跨單臂、雙臂、人形等多種機器人本體,均優於最先進的模仿學習基線;在真實 Fourier GR-1 人形機器人上執行語言條件式雙臂操作任務時,展現出高資料效率下的優異表現。推論速度方面,2B 參數模型在 L40 GPU 上採樣 16 步動作僅需 63.9ms,顯示其在實用部署上具有相當的即時性。
-  * 是否公正:論文由 NVIDIA 發表,比較基準為「最先進的模仿學習基線」,具體基線名稱與數值需要查證全文以確認比較公正性;由於模型與 GitHub 程式碼已開源(Isaac GR00T,並持續更新至 N1.7),具有較高的可驗證性,一定程度佐證了其結果的可信度。
-
-
+  * Main enhancements: GR00T N1 outperforms state-of-the-art imitation learning baselines on standard simulation benchmarks across single-arm, bimanual, and humanoid robot embodiments; on the real Fourier GR-1 humanoid robot performing language-conditioned bimanual manipulation tasks, it shows strong performance with high data efficiency. In terms of inference speed, the 2B-parameter model samples a 16-step action chunk on an L40 GPU in just 63.9ms, indicating substantial real-time practicality for deployment.
+  * Whether the results are fair: The paper is published by NVIDIA, and the comparison baseline is "state-of-the-art imitation learning baselines"; the specific baseline names and numbers require verification against the full paper to confirm fairness of comparison. Since the model and code are open-sourced (Isaac GR00T, continuously updated up to N1.7), it has high verifiability, which to some extent corroborates the credibility of its results.
 
 ### Limitation
 
-  * 論文摘要未明確列出限制章節,但可推測的弱項:(1)「資料金字塔」概念意味著頂層(最貼合真實特定機體的資料)數量最少,對於全新、未涵蓋在資料金字塔頂層的機體本體,遷移效果需要查證全文;(2) 雙系統架構雖然分工明確,但兩系統之間的協調延遲、以及 System 2 語意理解結果如何有效傳遞給 System 1 動作生成,其設計細節與潛在瓶頸需要查證全文;(3) 目前公開的 GR00T-N1-2B 為縮小版模型,完整版模型的效能與資源需求可能有落差。
-
-
+  * The abstract does not explicitly list a limitations section, but inferred weaknesses include: (1) the "data pyramid" concept means the top tier (data most closely matched to a specific real embodiment) has the smallest quantity, so transfer performance to entirely new embodiments not covered at the top of the data pyramid requires verification against the full paper; (2) although the dual-system architecture has clear division of labor, the coordination latency between the two systems and how effectively System 2's semantic understanding results are passed to System 1's action generation, along with design details and potential bottlenecks, require verification against the full paper; (3) the currently public GR00T-N1-2B is a scaled-down model, and the full-size model's performance and resource requirements may differ.
 
 ### Related work
 
-  * GitHub 上的 Isaac GR00T 專案已持續演進至 N1.7,加入全身人形控制與大規模人類影片預訓練等新特性,顯示此系列模型仍在快速迭代中。
-  * GR00T(N1 系列)已被多篇 2026 年 VLA 機制可解釋性論文(如 Not All Features Are Created Equal, 2603.19233)列為分析對象之一(與 π0.5、SmolVLA 並列為多路徑架構代表),顯示其架構設計具有代表性。
-  * 值得 survey 的程度極高:GR00T N1 是 NVIDIA 在人形機器人基礎模型領域的旗艦工作,其雙系統架構與資料金字塔訓練策略對理解當前人形機器人 VLA 的技術路線具有重要參考價值。
-
-
+  * The Isaac GR00T project on GitHub has continued to evolve up to N1.7, adding new features such as whole-body humanoid control and large-scale human video pretraining, showing that this model series is still iterating rapidly.
+  * GR00T (the N1 series) has been listed as an analysis subject by multiple 2026 VLA mechanistic interpretability papers (such as Not All Features Are Created Equal, 2603.19233), alongside π0.5 and SmolVLA as representative multi-pathway architectures, showing that its architectural design is considered representative.
+  * Extremely worthwhile to survey: GR00T N1 is NVIDIA's flagship work in the humanoid robot foundation model space, and its dual-system architecture and data pyramid training strategy are of significant reference value for understanding the current technical trajectory of humanoid robot VLAs.
 
 ### Conclusion
 
-  * 綜合評價:GR00T N1 透過雙系統架構與異質資料混合訓練,針對人形機器人這一更複雜的具身型態提出了系統性的解決方案,並以開源方式釋出模型與程式碼,對整個人形機器人 VLA 生態系有重要推動作用,值得深入參考。
-  * 與其他重要文章的關係:GR00T N1 與 π0.5、SmolVLA 同屬「多路徑(VLM + 專家/動作模組分離)」架構陣營,並被 Not All Features Are Created Equal(2603.19233)等論文用作分析對象,證實其專家路徑與 VLM 路徑確實編碼不同資訊(動作程式 vs 目標語意)。這與 Helix(Figure AI)的「System 1 / System 2」設計理念高度相似,顯示雙系統架構已成為人形機器人 VLA 的主流設計範式之一。對 ROCm/AMD 而言,GR00T N1 公開的推論效能數據(L40 GPU 上 63.9ms/16-step chunk)提供了一個具體的效能參照點,若 AMD 欲評估自家 GPU 在人形機器人 VLA 推論上的競爭力,可將此作為基準比較對象;但論文本身僅提及 NVIDIA 自家 GPU(L40)的測試數據,未提及 ROCm 或 AMD 硬體上的表現,此為延伸判斷而非論文明文比較。
+  * Overall assessment: GR00T N1 proposes a systematic solution for the more complex embodiment of humanoid robots via a dual-system architecture and heterogeneous data mixture training, and releases the model and code openly, providing an important boost to the entire humanoid robot VLA ecosystem—well worth in-depth reference.
+  * Relationship with other important papers: GR00T N1, along with π0.5 and SmolVLA, belongs to the "multi-pathway (separate VLM + expert/action module)" architectural camp, and is used as an analysis subject by papers such as Not All Features Are Created Equal (2603.19233), which confirm that its expert pathway and VLM pathway indeed encode different information (action programs vs. goal semantics). This is highly similar to Helix's (Figure AI) "System 1 / System 2" design philosophy, showing that dual-system architecture has become one of the mainstream design paradigms for humanoid robot VLAs. For ROCm/AMD, GR00T N1's published inference performance data (63.9ms/16-step chunk on an L40 GPU) provides a concrete performance reference point; if AMD wants to assess its own GPUs' competitiveness in humanoid robot VLA inference, this can serve as a benchmark comparison. However, the paper itself only mentions test data on NVIDIA's own GPU (L40), not performance on ROCm or AMD hardware—this is an extrapolated judgment rather than an explicit comparison in the paper.

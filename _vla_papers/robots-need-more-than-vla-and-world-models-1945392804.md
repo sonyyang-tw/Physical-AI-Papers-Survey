@@ -7,54 +7,46 @@ permalink: /vla/robots-need-more-than-vla-and-world-models-1945392804/
 ---
 
 **Paper** : [Robots Need More than VLA and World Models](https://arxiv.org/abs/2606.06556)  
-**Source** : arXiv (cs.RO)，立場論文（position paper）  
+**Source** : arXiv (cs.RO), a position paper  
 **arXiv ID** : 2606.06556
 
 ### Abstract
 
-這是一篇立場論文（position paper），主張「通用機器人智能」目前被過度簡化為一個「策略規模化（policy-scaling）」問題——即收集更多機器人示範資料、訓練更大的 VLA 模型、期待更廣泛的泛化。作者認為這個框架是不完整的：真正的核心瓶頸不只是策略學習本身，而是缺乏將世界上大量非結構化行為資料轉換為可用的機器人監督信號的機制。人類動作、網路影片、模擬 rollout、互動式示範中蘊含了關於任務、目標、接觸（contacts）、失敗與物理限制的豐富資訊，但這些資訊大多無法被機器人策略直接使用，因為它們缺乏「具身特定的動作標籤」、「任務語意」與「獎勵結構」。作者提出下一代機器人系統所欠缺的四個組成要素：資料介面（為非結構化行為自動標註）、具身介面（將人類動作重定向為機器人動作）、世界模型介面（做具物理基礎的 3D 推理）、獎勵介面（從影片與語言推斷任務進度與成功與否）。
+This is a position paper arguing that "general-purpose robot intelligence" is currently over-simplified into a "policy-scaling" problem — that is, collecting more robot demonstration data, training larger VLA models, and hoping for broader generalization. The authors argue that this framing is incomplete: the real core bottleneck is not merely policy learning itself, but the lack of mechanisms to convert the vast amount of unstructured behavioral data in the world into usable robot supervision signals. Human actions, internet videos, simulated rollouts, and interactive demonstrations contain rich information about tasks, goals, contacts, failures, and physical constraints, but most of this information cannot be directly used by robot policies because it lacks "embodiment-specific action labels," "task semantics," and "reward structure." The authors propose four missing components for next-generation robot systems: a data interface (for automatically labeling unstructured behavior), an embodiment interface (for retargeting human actions into robot actions), a world-model interface (for physically grounded 3D reasoning), and a reward interface (for inferring task progress and success from video and language).
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945392804_robots_need_more_fig1.png) 
 
-_Figure 1: 下一代機器人技術將來自遠超越單純擴大視覺語言動作（VLA）模型規模的進展。_
+_Figure 1: The next generation of robotics will come from progress that goes far beyond simply scaling up vision-language-action (VLA) models._
 
-  * **要解決的問題** ：目前業界對「通用機器人智能」的主流敘事，把問題簡化為「更多資料 + 更大 VLA 模型 = 更好泛化」的規模化問題，但作者認為真正瓶頸在於缺乏將世界上豐富的非結構化行為資料（人類動作、網路影片、模擬 rollout、互動示範）轉換為機器人可用監督信號的「介面」機制。
-  * **主要方法（本質是立場論述 + 研究議程提案，而非新模型）** ：作者identify出四個「缺失的組成元件」，並針對每個元件回顧現有進展：
-    * **資料介面（Data interfaces）** ：用於自動標註（autolabelling）非結構化行為資料，使其可被機器人策略使用。
-    * **具身介面（Embodiment interfaces）** ：將人類動作重定向（retargeting）為特定機器人的動作空間。
-    * **世界模型介面（World-model interfaces）** ：提供具物理基礎的 3D 推理能力。
-    * **獎勵介面（Reward interfaces）** ：從影片與語言中推斷任務進度與成功與否，建立獎勵/評估信號。  
-作者針對每個元件，綜述機器人基礎模型、跨具身資料集、從影片學習、world model、獎勵建模等相關領域的近期進展，並提出一個研究議程（research agenda），主張機器人系統應該不只從機器人示範中學習,而是從更廣泛的物理世界資料中學習。
-  * **與以往方式的差異** ：與單純「擴大 VLA 規模」或「加入 world model」的技術路線不同，本文從系統性角度指出，即使有更好的策略模型或世界模型，若沒有把「非結構化的世界資料」轉換成「結構化的機器人監督信號」的介面機制，這些資料依然無法被有效利用；因此提出應優先投入建構這四類介面本身。
-
-
+  * **Problem addressed**: the current mainstream industry narrative on "general-purpose robot intelligence" simplifies the problem into a scaling issue of "more data + bigger VLA models = better generalization," but the authors argue that the real bottleneck lies in the lack of "interface" mechanisms for converting the world's abundant unstructured behavioral data (human actions, internet videos, simulated rollouts, interactive demonstrations) into supervision signals usable by robots.
+  * **Main method (essentially a position argument plus a research agenda proposal, rather than a new model)**: the authors identify four "missing components" and review existing progress for each:
+    * **Data interfaces**: for autolabelling unstructured behavioral data so it can be used by robot policies.
+    * **Embodiment interfaces**: for retargeting human actions into the action space of a specific robot.
+    * **World-model interfaces**: providing physically grounded 3D reasoning capability.
+    * **Reward interfaces**: inferring task progress and success from video and language, establishing reward/evaluation signals.  
+The authors survey recent progress in robot foundation models, cross-embodiment datasets, learning from video, world models, reward modeling, and related areas for each component, and propose a research agenda arguing that robot systems should learn not only from robot demonstrations, but from the broader physical-world data.
+  * **Difference from prior approaches**: unlike technical routes that simply "scale up VLA" or "add a world model," this paper points out from a systemic perspective that even with better policy models or world models, if there is no interface mechanism to convert "unstructured world data" into "structured robot supervision signals," such data still cannot be effectively used; the paper therefore argues that priority should be given to building these four types of interfaces.
 
 ### Result
 
-  * 作為立場論文，並無實驗結果或 benchmark 數據；其「成果」是提出一個四要素的研究議程框架，並綜述各要素相關領域（機器人基礎模型、跨具身資料集、影片學習、world model、獎勵建模）的現有進展。
-  * 是否公正：由於是立場論文而非實證研究，不涉及具體實驗結果與其他論文結果是否相符的問題；但其論述是否全面公正，取決於其綜述的相關工作是否有明顯偏頗或遺漏，需要查證全文的具體引用範圍。
-
-
+  * As a position paper, there are no experimental results or benchmark data; its "output" is a four-component research agenda framework, along with a survey of existing progress in each related area (robot foundation models, cross-embodiment datasets, video learning, world models, reward modeling).
+  * Fairness assessment: since this is a position paper rather than an empirical study, the question of whether specific experimental results agree with other papers does not apply; however, whether its argument is comprehensive and fair depends on whether its survey of related work has notable bias or omissions, which needs to be checked against the full paper's scope of citations.
 
 ### Limitation
 
-  * 論文自陳的限制：作為立場論文，其本質就是提出一個尚待驗證的研究議程，而非提供已解決問題的方案；四個「介面」本身仍是待建構的開放問題，論文並未聲稱已經解決它們。
-  * 從內容推測的弱項：立場論文的說服力依賴論述品質而非實證數據，讀者需自行判斷其提出的四要素分類是否完整、是否遺漏其他重要瓶頸（例如安全性、長期規劃、多機器人協作等），摘要未涵蓋這些面向。
-
-
+  * Limitations stated by the authors: as a position paper, its nature is to propose a research agenda that still needs to be validated, rather than to provide solutions to already-solved problems; the four "interfaces" themselves remain open problems yet to be built, and the paper does not claim to have already solved them.
+  * Weaknesses inferred from the content: the persuasiveness of a position paper depends on the quality of its argument rather than empirical data; readers need to judge for themselves whether the proposed four-component taxonomy is complete, or whether it omits other important bottlenecks (such as safety, long-horizon planning, multi-robot collaboration, etc.), which the abstract does not cover.
 
 ### Related work
 
-  * 此文的核心論點與清單中「Robots Need More than VLA and World Models」明確挑戰的對象，包括依賴 VLA 規模化敘事的研究（隱含挑戰了單純堆疊資料與模型規模的既有 VLA 路線），也與「World Action Models」相關綜述（2605.12090）在「world model 作為機器人智能一部分」的觀點上有交集，但本文主張 world model 本身仍不足夠，還需額外的資料/具身/獎勵介面。
-  * 暫無發現更新的相關研究（本次搜尋範圍內未找到直接延伸此立場論文的後續工作）。
-  * 值得 survey 的程度：中高。作為對「VLA + World Model 即可解決通用機器人智能」這一流行敘事的批判性反思，適合作為在深入技術細節前，先建立宏觀研究視角的閱讀材料。
-
-
+  * The core argument of this paper directly challenges the object explicitly targeted by "Robots Need More than VLA and World Models" in this list, including research that relies on the VLA scaling narrative (implicitly challenging the existing VLA route of simply stacking more data and larger models); it also overlaps with the "World Action Models" related survey (2605.12090) on the viewpoint that "world models are part of robot intelligence," but this paper argues that world models alone are still insufficient, and that additional data/embodiment/reward interfaces are needed.
+  * No newer related research directly extending this position paper has been found within the scope of this search.
+  * Survey value: medium-high. As a critical reflection on the popular narrative that "VLA + world models alone can solve general-purpose robot intelligence," it is suitable reading material for establishing a macro research perspective before diving into technical details.
 
 ### Conclusion
 
-  * 綜合評價：值得參考，尤其適合作為理解「VLA/WAM 技術路線侷限性」的高層次視角補充。它不提供具體技術方案，但點出了業界可能忽略的系統性瓶頸（資料轉換介面),對於規劃長期研究方向有參考價值。
-  * 與其他論文關係：此文對清單中偏重規模化與架構創新的論文（如 LeVERB、ChainFlow-VLA、WAM 相關論文）提出了一種「即使這些技術都做好了,仍然不夠」的批判性補充視角，主張還需要資料、具身、世界模型、獎勵四類介面共同作用；可視為對整個 VLA/WAM 技術路線的一種「後設反思」。
-  * ROCm/AMD 關聯：從摘要內容看不出與 ROCm/AMD 有明確關聯，論文完全未提及具體硬體或框架，屬於純研究方向論述，不宜牽強附會。
+  * Overall assessment: worth referencing, especially as a high-level perspective supplement for understanding the limitations of the VLA/WAM technical route. It offers no concrete technical solution, but points out a systemic bottleneck (the data-conversion interface) that the industry may be overlooking, providing reference value for planning long-term research directions.
+  * Relationship to other papers: this paper offers a critical supplementary perspective — "even if these technologies are all perfected, it still won't be enough" — to papers in this list that emphasize scaling and architectural innovation (such as LeVERB, ChainFlow-VLA, and WAM-related papers), arguing that data, embodiment, world-model, and reward interfaces must also work together; it can be viewed as a "meta-reflection" on the entire VLA/WAM technical route.
+  * ROCm/AMD relevance: no clear connection to ROCm/AMD can be seen from the abstract; the paper makes no mention whatsoever of specific hardware or frameworks, being purely a research-direction argument, so it would be inappropriate to force such a connection.

@@ -6,18 +6,18 @@ permalink: /
 
 # Physical AI Papers Survey
 
-自動化論文精選與導讀資料庫，聚焦 **Vision-Language-Action (VLA)** 與 **World Model** 兩大 Physical AI 研究方向。每篇論文皆依統一模板撰寫完整導讀（Abstract / Method / Result / Limitation / Related work / Conclusion），並附上論文原圖截圖。
+An automated paper curation and survey database focused on two major Physical AI research directions: **Vision-Language-Action (VLA)** and **World Models**. Every paper is written up using a unified template (Abstract / Method / Result / Limitation / Related work / Conclusion), with original figures included as screenshots.
 
-每個工作日會自動搜尋並推送當日/近期最重要的論文（依 top conference 認可度、發表機構、方法論創新程度篩選），持續累積成長。
+Each working day, the harness automatically searches for and pushes the most important paper published that day or recently (selected by top-conference recognition, publishing institution, and methodological innovation), growing the collection continuously.
 
-## 兩大主題
+## Two Main Topics
 
 ### [VLA Papers →]({{ site.baseurl }}/vla/)
-Vision-Language-Action 模型研究：架構典範、階層式規劃、效率優化、記憶與長時程控制、資料與評測、具身多樣性、World Model 整合、可解釋性。
+Vision-Language-Action model research: architecture paradigms, hierarchical planning, efficiency optimization, memory and long-horizon control, data and benchmarks, embodiment diversity, world model integration, and interpretability.
 
 ### [World Model Papers →]({{ site.baseurl }}/wm/)
-World Model 研究：影片生成式世界模型、機器人動作條件世界模型、自動駕駛應用、Model-based RL、評測 benchmark、資料引擎與模擬器、綜述與分類。
+World model research: video-generation world models, robot-specific action-conditioned world models, autonomous driving applications, model-based RL, evaluation benchmarks, data engines and simulators, and surveys/taxonomies.
 
 ---
 
-*由 Paper Survey Harness 自動維護，每日持續更新。*
+*Maintained automatically by the Paper Survey Harness, updated daily.*

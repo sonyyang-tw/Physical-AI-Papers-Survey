@@ -12,52 +12,44 @@ permalink: /vla/how-fast-can-i-run-my-vla-demystifying-vla-inference-performance
 
 ### Abstract
 
-這是一篇針對「高效率 VLA 模型（Efficient VLAs）」的完整綜述。作者指出，VLA 模型雖然在具身智能（embodied intelligence）領域表現亮眼，但基礎 VLA 模型往往受限於龐大架構帶來的高昂運算與資料需求。目前雖已有大量研究致力於提升 VLA 效率，但缺乏統一框架來整合這些分散的成果。本綜述首次針對「模型-訓練-資料」整個流程進行系統性回顧，提出統一分類法，將現有技術歸納為三大支柱：(1) 高效模型設計（架構與壓縮）、(2) 高效訓練（降低訓練運算負擔）、(3) 高效資料收集（解決機器人資料取得與利用的瓶頸）。文章也整理代表性應用、關鍵挑戰，並規劃未來研究方向。
+This is a comprehensive survey on "Efficient VLA Models." The authors note that while VLA models perform impressively in the field of embodied intelligence, foundational VLA models are often constrained by the high computational and data requirements imposed by their massive architectures. Although a large body of research has focused on improving VLA efficiency, there is a lack of a unified framework to integrate these scattered results. This survey is the first to systematically review the entire "model-training-data" pipeline, proposing a unified taxonomy that organizes existing techniques into three main pillars: (1) efficient model design (architecture and compression), (2) efficient training (reducing training computational burden), and (3) efficient data collection (addressing bottlenecks in acquiring and utilizing robot data). The paper also compiles representative applications, key challenges, and future research directions.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945391760_vlaperf_fig1.png) 
 
-_Fig. 1：從 Foundational VLA 到 Efficient VLA 的轉變。Foundational VLA 受限於即時性不足、運算成本過高、資料收集效率低等根本挑戰；透過高效模型設計、高效訓練、高效資料收集三大核心方法，Efficient VLA 得以在邊緣裝置上實現高效能部署。_
+_Fig. 1: The transition from Foundational VLA to Efficient VLA. Foundational VLA is constrained by fundamental challenges such as insufficient real-time responsiveness, excessive computational cost, and inefficient data collection; through the three core approaches of efficient model design, efficient training, and efficient data collection, Efficient VLA achieves high-performance deployment on edge devices._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945391760_vlaperf_fig2.png) 
 
-_Fig. 3：VLA 模型總覽。VLA 整合視覺編碼器擷取視覺特徵、LLM 骨幹網路融合多模態輸入、以及動作解碼器（MLP-based、自回歸式、或生成式）產生機器人控制訊號，實現端到端的視覺-語言-動作推理以完成具身操作任務。_
+_Fig. 3: Overview of VLA models. A VLA integrates a vision encoder to extract visual features, an LLM backbone to fuse multimodal inputs, and an action decoder (MLP-based, autoregressive, or generative) to produce robot control signals, enabling end-to-end vision-language-action reasoning to accomplish embodied manipulation tasks._
 
-  * 要解決的問題：VLA 領域的效率相關研究分散、缺乏統一分類與比較框架，使研究者難以掌握整體趨勢與各方法之間的取捨。
-  * Main method：提出一套跨越「模型-訓練-資料」全流程的統一分類法（taxonomy），將現有 Efficient VLA 技術分為三大類：
-    * Efficient Model Design：涵蓋高效架構設計（如更精簡的視覺-語言-動作骨幹網路）與模型壓縮技術（如量化、蒸餾、剪枝等）。
-    * Efficient Training：涵蓋降低訓練所需運算資源的技術（如參數高效微調、混合精度訓練等）。
-    * Efficient Data Collection：涵蓋解決機器人示範資料稀缺、收集成本高昂問題的技術（如資料增強、模擬到真實遷移、自動化資料生成等）。
-  * 和以往方式的差異：此前沒有一篇綜述以「全流程」角度（而非僅聚焦模型架構）系統性梳理 VLA 效率化技術；本文首次將模型設計、訓練、資料三個階段整合進單一分類框架中做批判性回顧。
-  * 重要方法設計描述：本文屬於綜述型論文，並非提出新架構，而是以文字與圖表方式，將散落在各篇原始論文中的效率化技巧依上述三軸線分類、比較、歸納，並輔以應用案例說明（如具體機器人平台上的部署效果）。
-
-
+  * Problem to be solved: Efficiency-related research in the VLA field is scattered and lacks a unified classification and comparison framework, making it difficult for researchers to grasp overall trends and the trade-offs between different methods.
+  * Main method: Proposes a unified taxonomy spanning the entire "model-training-data" pipeline, classifying existing Efficient VLA techniques into three major categories:
+    * Efficient Model Design: covers efficient architecture design (such as more streamlined vision-language-action backbones) and model compression techniques (such as quantization, distillation, and pruning).
+    * Efficient Training: covers techniques for reducing the computational resources required for training (such as parameter-efficient fine-tuning and mixed-precision training).
+    * Efficient Data Collection: covers techniques for addressing the scarcity and high cost of collecting robot demonstration data (such as data augmentation, sim-to-real transfer, and automated data generation).
+  * Difference from prior approaches: No previous survey has systematically organized VLA efficiency techniques from a "full-pipeline" perspective (rather than focusing only on model architecture); this paper is the first to integrate the three stages of model design, training, and data into a single classification framework for critical review.
+  * Key method design description: This is a survey-type paper rather than one proposing a new architecture; instead, it uses text and diagrams to classify, compare, and summarize efficiency techniques scattered across individual original papers along the three axes above, supplemented with application case studies (such as deployment results on specific robot platforms).
 
 ### Result
 
-  * 由於本文為綜述而非原創實驗論文，並無自行提出的量化實驗結果；其成果體現在對現有文獻的系統化整理、分類與批判性比較上，並歸納出目前 Efficient VLA 領域的代表性方法與應用場景。
-  * 是否公正：由於是綜述，內容取決於作者選取與詮釋文獻的角度，本摘要未提供具體評測數據，因此難以判斷是否有選擇性偏頗；需要查證全文中對各分類方法的比較是否公允，以及是否有遺漏重要工作。
-
-
+  * Since this is a survey rather than an original experimental paper, it does not present its own quantitative experimental results; its contribution lies in the systematic organization, classification, and critical comparison of existing literature, summarizing the representative methods and application scenarios currently found in the Efficient VLA field.
+  * Whether the results are fair: Since this is a survey, the content depends on the authors' selection and interpretation of the literature; the abstract does not provide specific evaluation data, so it is difficult to judge whether there is selective bias. It needs to be verified against the full text whether the comparisons of various classified methods are fair and whether any important work has been omitted.
 
 ### Limitation
 
-  * 論文摘要未明確提及自陳限制，但作為綜述類文章，其固有限制通常包括：涵蓋範圍受限於截稿時間點的文獻（該論文 v2 版於 2026 年 2 月更新，但技術演進快速，新方法可能未被納入）、分類體系為作者主觀建構，可能無法涵蓋所有邊緣案例。
-  * 需要進一步查證全文以了解其列出的具體挑戰（challenges）與未來研究路線圖（roadmap）內容。
-
-
+  * The abstract does not explicitly state self-identified limitations, but as a survey-type article, its inherent limitations typically include: coverage limited to literature available at the time of writing (this paper's v2 version was updated in February 2026, but technical evolution is rapid and newer methods may not have been included); and the classification scheme is a subjective construction by the authors that may not cover all edge cases.
+  * Further verification of the full text is needed to understand the specific challenges and future research roadmap it lists.
 
 ### Related work
 
-  * 論文本身即是對大量既有 VLA 效率化工作的統整，其列出的具體 related work 需要查閱全文才能得知。
-  * 論文提供持續更新的專案頁面（https://evla-survey.github.io/），顯示作者有意持續追蹤該領域最新進展，這類「活文件」型綜述對於快速演進的 VLA 領域相當有價值。
-  * 判斷此篇 survey 值得作為入門與追蹤 VLA 效率化技術全貌的起點，適合作為後續深入閱讀個別方法論文前的地圖。
-
-
+  * The paper itself is a synthesis of a large body of existing VLA efficiency work; the specific related work it lists requires consulting the full text to determine.
+  * The paper provides a continuously updated project page (https://evla-survey.github.io/), indicating that the authors intend to keep tracking the latest developments in this field. This kind of "living document" survey is quite valuable for the rapidly evolving VLA field.
+  * This survey is judged to be a worthwhile starting point for both entering and tracking the overall landscape of VLA efficiency techniques, suitable as a map before diving into individual method papers.
 
 ### Conclusion
 
-  * 綜合評價：作為 2025-2026 年關於「高效 VLA」主題的首篇系統性綜述，此文對於想快速掌握該領域全貌、尤其是關心運算與資料效率（而非單純追求準確率）的讀者非常有參考價值，適合作為文獻回顧的起點。
-  * 與其他重要文章的關係：本文本質上是「彙整者」的角色，涵蓋並比較了大量原始 VLA 方法論文（例如 CogACT、pi-0 等代表性 VLA 模型，以及各種壓縮/蒸餾/高效訓練技術論文），但摘要中未具體點名比較對象，需查閱全文確認。
-  * 對 ROCm/AMD 待補強部分的判斷：摘要未提及任何特定硬體平台（如 GPU 廠商、ROCm、CUDA）的討論，因此無法從摘要判斷此綜述是否觸及推論/訓練硬體層面的效率議題（例如是否討論了不同加速器上的優化）。若企業側重 ROCm 上的 VLA 推論效率，需要查證全文是否有涉及硬體層面的探討，目前看不出明確關聯。
+  * Overall assessment: As the first systematic survey on the theme of "Efficient VLA" for 2025-2026, this paper is highly valuable for readers who want to quickly grasp the overall landscape of this field, especially those who care about computational and data efficiency (rather than purely pursuing accuracy), and is well suited as a starting point for literature review.
+  * Relationship with other important papers: This paper essentially plays the role of an "aggregator," covering and comparing a large number of original VLA method papers (such as representative VLA models like CogACT and pi-0, as well as various compression/distillation/efficient training technique papers), but the abstract does not specifically name the comparison targets—the full text needs to be consulted to confirm.
+  * Assessment of ROCm/AMD gaps: The abstract does not mention discussion of any specific hardware platform (such as GPU vendor, ROCm, or CUDA), so it cannot be determined from the abstract whether this survey touches on efficiency issues at the inference/training hardware level (such as discussing optimizations across different accelerators). If a company is focused on VLA inference efficiency on ROCm, the full text needs to be checked for hardware-level discussion; currently no clear connection is apparent.

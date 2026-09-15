@@ -7,54 +7,54 @@ permalink: /wm/world-models-for-robotic-manipulation-a-survey-1945391939/
 ---
 
 **Paper** : [World Models for Robotic Manipulation: A Survey](https://arxiv.org/abs/2606.00113)  
-**Source** : arXiv（尚未標明特定會議發表）  
+**Source** : arXiv (no specific conference publication indicated yet)  
 **arXiv ID** : 2606.00113
 
 ### Abstract
 
-機器人操作（manipulation）需要能預判動作將如何改變物件、接觸與場景幾何,才能在執行前做出判斷。學習型世界模型提供了這種能力，透過在機器人介入下預測任務相關的未來演變，但「世界模型」一詞現已涵蓋潛在動態模型（latent dynamics model）、動作條件式影片生成器、三維/四維場景預測器、物理知情模擬器,以及嵌入視覺-語言-動作（VLA）系統中的預測模組,範圍的擴散使文獻碎片化、模糊了對操作任務真正重要的設計選擇。本綜述以三個問題組織文獻：預測的是何種未來表徵、預測如何與動作連結、以及預測在機器人學習流程中的何時被使用。作者將世界模型操作型定義為「動作條件式的預測系統」，區分於感知模組、逆向模型、策略、獎勵與價值函數,並將既有工作歸納為五個表徵家族，發展出區分「整合式預測-動作模型」與「顯式預測式規劃器」的功能分類法，並歸類基礎設施角色（合成經驗生成、候選篩選、基於搜索的評估、學習型環境、結果驗證）,涵蓋預訓練、後訓練與推論時適應三階段，回顧34個操作資料集，並整理預測保真度、任務表現與模擬器可靠度的評估協議。
+Robotic manipulation requires the ability to anticipate how an action will change objects, contact, and scene geometry before execution. Learned world models provide this capability by predicting task-relevant future evolution conditioned on robot intervention, but the term "world model" now encompasses latent dynamics models, action-conditioned video generators, 3D/4D scene predictors, physics-informed simulators, and prediction modules embedded within vision-language-action (VLA) systems—this diffusion of scope has fragmented the literature and blurred the design choices that truly matter for manipulation tasks. This survey organizes the literature around three questions: what future representation is predicted, how prediction is linked to action, and when prediction is used within the robot learning pipeline. The authors give world models an operational definition as "action-conditioned predictive systems," distinguishing them from perception modules, inverse models, policies, and reward/value functions, and organize existing work into five representation families. They develop a functional taxonomy distinguishing "integrated prediction-action models" from "explicit predictive planners," and categorize infrastructure roles (synthetic experience generation, candidate filtering, search-based evaluation, learned environments, outcome verification) spanning pretraining, post-training, and inference-time adaptation stages. They review 34 manipulation datasets and organize evaluation protocols for prediction fidelity, task performance, and simulator reliability.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945391939_wmsurvey_fig1.png) 
 
-_Fig. 1: 世界模型預測與任務相關的未來世界演變（通常以觀測與機器人動作為條件）。本文以三個互補軸線整理文獻：預測表示 (predicted representation)、預測核心 (predictive core)，以及預測在動作介面、學習基礎設施、學習生命週期中所扮演的角色。_
+_Fig. 1: World models predict task-relevant future world evolution (typically conditioned on observations and robot actions). This paper organizes the literature along three complementary axes: predicted representation, predictive core, and the role of prediction in the action interface, learning infrastructure, and learning lifecycle._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945391939_wmsurvey_fig2.png) 
 
-_Fig. 3: 直接預測-動作介面的功能分類法 (Functional taxonomy)。(a-b) 整合式預測-動作模型將預測嵌入動作生成模型內部；(c-e) 顯式預測規劃器將預測暴露為中介目標（子目標、軌跡、或結構化計畫），交由下游控制器實現。_
+_Fig. 3: Functional taxonomy of direct prediction-action interfaces. (a-b) Integrated prediction-action models embed prediction within the action generation model itself; (c-e) explicit predictive planners expose prediction as an intermediate target (subgoal, trajectory, or structured plan) to be realized by a downstream controller._
 
-  * **要解決的問題** ：world model 一詞在機器人操作領域中定義過於寬泛，涵蓋眾多不同技術路線，導致難以釐清對操作任務真正關鍵的設計選擇。
-  * **Main method** ：以三個核心問題（預測什麼未來表徵、如何連結動作、何時在學習流程中使用）作為分類軸，並給出可操作的定義——「world model = 動作條件式的預測系統」，明確與感知模組、逆向模型、策略、獎勵/價值函數區分開來；在此基礎上建立五個表徵家族的分類，以及區分「整合式預測-動作模型」（prediction 與 action 融合在同一模型）與「顯式預測式規劃器」（先預測後規劃，兩階段分離）的功能分類法。
-  * **與以往方式的差異** ：相較於單純依架構（如 RNN-based、diffusion-based）分類的方式,本文更強調「功能角色」與「使用時機」這兩個維度，特別是提出五種基礎設施角色（合成經驗生成、候選篩選、基於搜索的評估、學習型環境、結果驗證）,把 world model 放進整個機器人學習流程（預訓練/後訓練/推論時適應）的脈絡中理解，是較獨特的組織方式。
-  * **重要方法設計描述** ：文章先給出操作型定義以劃定範圍，再用「表徵家族 x 功能角色 x 使用階段」的三維分類矩陣整理文獻，並額外系統性回顧34個操作資料集與對應的三類評估協議（預測保真度、任務表現、模擬器可靠度），最後點出開放挑戰（接觸建模、幻覺控制、動作對齊、閉迴路使用下的基準測試）。
+  * **Problem being addressed**: the term "world model" in robotic manipulation is defined too broadly, encompassing many different technical approaches, making it difficult to clarify the design choices that are truly critical for manipulation tasks.
+  * **Main method**: using three core questions (what future representation is predicted, how it is linked to action, and when it is used within the learning pipeline) as classification axes, the paper gives an actionable definition—"a world model = an action-conditioned predictive system"—clearly distinguishing it from perception modules, inverse models, policies, and reward/value functions. Building on this, it establishes a taxonomy of five representation families, along with a functional taxonomy distinguishing "integrated prediction-action models" (where prediction and action are fused within the same model) from "explicit predictive planners" (predict first, then plan, with the two stages separated).
+  * **Difference from prior approaches**: compared to approaches that simply classify by architecture (e.g., RNN-based, diffusion-based), this paper places greater emphasis on the dimensions of "functional role" and "usage timing," particularly proposing five infrastructure roles (synthetic experience generation, candidate filtering, search-based evaluation, learned environments, outcome verification) and situating world models within the context of the entire robot learning pipeline (pretraining/post-training/inference-time adaptation)—a relatively distinctive way of organizing the material.
+  * **Description of key method design**: the article first gives an operational definition to delineate scope, then organizes the literature using a three-dimensional classification matrix of "representation family × functional role × usage stage," additionally systematically reviewing 34 manipulation datasets and their corresponding three types of evaluation protocols (prediction fidelity, task performance, simulator reliability), and finally identifies open challenges (contact modeling, hallucination control, action alignment, and benchmarking under closed-loop usage).
 
 
 
 ### Result
 
-  * 此綜述的「成果」是提供了一套更精確、可操作的 world model 定義與功能分類法,並系統性回顧34個機器人操作資料集及對應評估協議,幫助釐清該領域快速成長但混亂的文獻現狀。
-  * 論文明確指出目前領域仍存在的開放挑戰：接觸建模（contact modeling）、幻覺控制（hallucination control，即生成式模型可能產生不符合物理規律的預測）、動作對齊（action alignment）、以及在閉迴路（closed-loop）使用情境下的基準測試不足。
-  * 是否公正：作為綜述，其分類框架與定義是否被社群廣泛採納，需要查證其他論文（尤其是清單中另外兩篇 world model 綜述）是否採用相似或衝突的定義方式，以判斷其分類法的普適性。
+  * The "result" of this survey is providing a more precise, actionable definition and functional taxonomy of world models, and systematically reviewing 34 robotic manipulation datasets along with corresponding evaluation protocols, helping to clarify the current state of this rapidly growing but chaotic field.
+  * The paper explicitly points out open challenges that remain in the field: contact modeling, hallucination control (i.e., generative models may produce predictions that do not conform to physical laws), action alignment, and insufficient benchmarking under closed-loop usage scenarios.
+  * Fairness: as a survey, whether its classification framework and definitions are broadly adopted by the community needs to be verified against other papers (especially the other two world model surveys in this list) to see whether they adopt similar or conflicting definitions, in order to judge the generalizability of its taxonomy.
 
 
 
 ### Limitation
 
-  * 論文本身承認的限制（開放挑戰）包括接觸建模、幻覺控制、動作對齊、閉迴路基準測試不足，這些既是領域限制也是本綜述指出的未解問題。
-  * 由於是綜述，其「操作型定義」本身帶有一定主觀性,不同研究者對「什麼算是 world model」可能有不同看法，本文的定義是否能成為公認標準仍待觀察。
+  * The limitations self-acknowledged by the paper (open challenges) include contact modeling, hallucination control, action alignment, and insufficient closed-loop benchmarking—these are both limitations of the field and open problems pointed out by this survey.
+  * Since this is a survey, its "operational definition" itself carries a degree of subjectivity; different researchers may hold different views on "what counts as a world model," and whether this paper's definition can become a widely accepted standard remains to be seen.
 
 
 
 ### Related work
 
-  * 與同期兩篇 world model 綜述（arXiv:2605.00080、arXiv:2511.02097）高度相關，三者可視為 2025-2026 年間 world model for robotics 領域集中出現的綜述潮，值得交叉比較其分類角度的異同（本篇更強調功能角色與流程階段，2605.00080 更強調策略耦合/模擬器/視訊生成三軸,2511.02097 則不限定「明確標榜為 world model」的方法,採用能力導向的視角）。
-  * 判斷 related work 值得 survey 的程度：高，尤其是其提出的「動作條件式預測系統」定義與五種基礎設施角色分類，對於釐清 world model 與 VLA（vision-language-action）系統中預測模組的關係具有實用價值。
+  * This paper is highly related to two other contemporaneous world model surveys (arXiv:2605.00080 and arXiv:2511.02097). The three can be viewed as part of a wave of surveys on world models for robotics that emerged concentrated in 2025-2026, and it is worth cross-comparing the differences in their classification angles (this paper emphasizes functional role and pipeline stage more; 2605.00080 emphasizes the three axes of policy coupling/simulator/video generation more; 2511.02097 does not restrict itself to methods "explicitly labeled as world models," adopting instead a capability-oriented perspective).
+  * Assessment of how worth surveying the related work is: high, especially its proposed "action-conditioned predictive system" definition and five infrastructure role classifications, which have practical value for clarifying the relationship between world models and the prediction modules within VLA (vision-language-action) systems.
 
 
 
 ### Conclusion
 
-  * 本文提供了目前所見最精確、可操作化的 world model 定義,並針對機器人操作場景做了細緻的功能分類與資料集/評估協議整理,對於想要系統性理解該領域技術選擇的研究者相當有參考價值。
-  * 與其他重要文章的關係：本文的「動作條件式預測系統」定義有助於釐清 Aether、MimicGen、Dreamitate 等具體工作在整體分類中的定位（例如 Aether 屬於整合式預測-規劃模型，Dreamitate 則接近「video generation 驅動的顯式預測」路線）；也與同期另外兩篇綜述形成互補視角。
-  * ROCm/AMD 關聯性：本綜述聚焦於方法論與分類，未涉及具體硬體實作，故看不出與 ROCm/AMD 的直接關聯；但文中指出的「幻覺控制」「閉迴路基準測試」等開放挑戰，若要在 AMD 硬體上開發對應的評估基準與模擬器,仍需另行確認相關開源工具鏈（如物理模擬引擎、VLA 訓練框架）對 ROCm 的支援完整度。
+  * This paper provides what appears to be the most precise, actionable definition of world models currently available, and offers a detailed functional classification and dataset/evaluation protocol organization specific to robotic manipulation scenarios, making it very valuable for researchers who want to systematically understand the technical choices in this field.
+  * Relationship to other important papers: this paper's "action-conditioned predictive system" definition helps clarify the positioning of specific works such as Aether, MimicGen, and Dreamitate within the overall taxonomy (for example, Aether falls under integrated prediction-planning models, while Dreamitate is closer to the "video-generation-driven explicit prediction" route); it also forms a complementary perspective with the other two contemporaneous surveys.
+  * ROCm/AMD relevance: this survey focuses on methodology and classification and does not touch on specific hardware implementation, so no direct connection to ROCm/AMD is apparent; however, for open challenges mentioned in the text such as "hallucination control" and "closed-loop benchmarking," developing corresponding evaluation benchmarks and simulators on AMD hardware would still require separately confirming the completeness of ROCm support for related open-source toolchains (such as physics simulation engines and VLA training frameworks).

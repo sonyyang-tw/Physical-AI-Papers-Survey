@@ -12,53 +12,53 @@ permalink: /vla/libero-para-a-diagnostic-benchmark-and-metrics-for-paraphrase-ro
 
 ### Abstract
 
-本文指出 VLA 模型雖然透過預訓練視覺-語言骨幹網路在機器人操作上表現優異，但在下游機器人場景中，模型通常僅用有限資料微調，導致過度擬合特定指令表述方式，而對「改寫（paraphrase）指令」的穩健性長期未被充分研究。為研究此缺口，作者提出 LIBERO-Para，一個可獨立變化「動作表達方式」與「物件指稱方式」的受控基準，用於細粒度分析語言泛化能力。作者在七種 VLA 配置（參數量從 0.6B 到 7.5B）上進行測試，觀察到在改寫情境下模型效能一致下降 22 至 52 個百分點（pp）。此下降主要由「物件層級的詞彙變化」驅動——即使是簡單的同義詞替換也會造成大幅效能下降，顯示模型依賴表面層級的字詞匹配而非語意層面的真正理解（grounding）。此外，80% 至 96% 的失敗案例源於「規劃層級的軌跡分歧」而非執行層面的錯誤，顯示改寫會干擾任務識別本身，而非動作執行的精確度。作者也指出，二元成功率（binary success rate）會將所有改寫一視同仁，掩蓋模型是否在不同難度層級上表現一致或僅倚賴較簡單案例的問題。為此，作者提出 PRIDE 指標，利用語意與句法因素量化改寫難度。
+This paper points out that while VLA models achieve strong performance on robot manipulation via pretrained vision-language backbones, they are typically fine-tuned with limited data in downstream robot scenarios, leading to overfitting to specific instruction phrasings, while robustness to "paraphrased" instructions has long been under-studied. To investigate this gap, the authors propose LIBERO-Para, a controlled benchmark that can independently vary "action expressions" and "object references," enabling fine-grained analysis of language generalization ability. The authors test seven VLA configurations (ranging from 0.6B to 7.5B parameters), observing that performance consistently drops by 22 to 52 percentage points (pp) under paraphrased conditions. This drop is primarily driven by "object-level lexical variation"—even simple synonym substitutions cause large performance drops, showing that models rely on surface-level word matching rather than genuine semantic grounding. Furthermore, 80% to 96% of failure cases stem from "planning-level trajectory divergence" rather than execution-level errors, showing that paraphrasing disrupts task identification itself rather than the precision of action execution. The authors also point out that binary success rate treats all paraphrases equally, obscuring whether a model performs consistently across different difficulty levels or merely relies on easier cases. To address this, the authors propose the PRIDE metric, which quantifies paraphrase difficulty using semantic and syntactic factors.
 
 ### Method
 
 ![Figure]({{ site.baseurl }}/assets/images/1945766990_liberopara_fig1.png) 
 
-_Figure 1: 資料稀缺微調下的釋義穩健性差距 ——VLA 模型可能在微調時過擬合於特定的指令措辭，導致對同義改寫的指令泛化能力不足。_
+_Figure 1: The paraphrase robustness gap under data-scarce fine-tuning — VLA models may overfit to specific instruction phrasing during fine-tuning, resulting in insufficient generalization to synonymous paraphrased instructions._
 
 ![Figure]({{ site.baseurl }}/assets/images/1945766990_liberopara_fig2.png) 
 
-_Figure 2: LIBERO-Para 總覽 ——相較於原始 LIBERO，LIBERO-Para 透過受控的兩軸釋義（物件、動作）評估資料稀缺微調下的釋義穩健性。_
+_Figure 2: Overview of LIBERO-Para — compared to the original LIBERO, LIBERO-Para evaluates paraphrase robustness under data-scarce fine-tuning through controlled two-axis paraphrasing (objects, actions)._
 
-  * 要解決的問題：VLA 模型在有限資料微調下容易過度擬合特定指令表述方式，導致對「改寫後」的自然語言指令穩健性不足，而這個問題此前缺乏系統性、可控的診斷工具與評測指標。
-  * Main method：
-    * 建立 LIBERO-Para 基準：在 LIBERO 基礎上，獨立且可控地變化兩個維度——「動作表達方式」（action expressions，如同一動作的不同措辭）與「物件參照方式」（object references，如同一物件的不同稱呼/同義詞），使研究者能細粒度地分析究竟是哪一維度的語言變化造成模型失效。
-    * 提出 PRIDE 指標：一套基於語意（semantic）與句法（syntactic）因素量化「改寫難度」的度量方法，取代傳統二元成功率（成功/失敗），使評測能反映不同難度層級下模型表現是否一致，而非僅呈現整體平均值掩蓋模型「挑軟柿子吃」的問題。
-  * 和以往方式的差異：既有 VLA 評測多聚焦於視覺/物理層面的泛化（如新物件、新場景），較少系統性、獨立地控制語言層面的變化因子；本文首次將「動作表達」與「物件參照」拆解為兩個正交（可獨立操縱）的變數，並搭配可量化難度的 PRIDE 指標，而非僅用單一整體改寫集合做粗略評測。
-  * 重要方法設計描述：可將此方法想像為一套「語言壓力測試框架」——研究者先取得 LIBERO 原始任務指令，再系統性生成大量改寫版本（分別只改動作用詞、只改物件稱呼、或兩者都改），將這些改寫指令餵給七種不同規模（0.6B 至 7.5B 參數）的 VLA 模型執行，並記錄成功率變化與失敗發生在「規劃階段」（任務識別錯誤）還是「執行階段」（動作精確度不足）；PRIDE 指標則額外根據每個改寫版本與原始指令之間的語意/句法距離，為其標註一個「難度分數」，使評測結果能反映難度分佈而非單一平均數。
+  * Problem addressed: VLA models under limited-data fine-tuning tend to overfit to specific instruction phrasings, resulting in insufficient robustness to "paraphrased" natural language instructions—a problem that previously lacked systematic, controllable diagnostic tools and evaluation metrics.
+  * Main method:
+    * Establish the LIBERO-Para benchmark: based on LIBERO, independently and controllably vary two dimensions—"action expressions" (different phrasings of the same action) and "object references" (different names/synonyms for the same object)—allowing researchers to analyze in fine-grained detail which dimension of linguistic variation causes model failure.
+    * Propose the PRIDE metric: a metric based on semantic and syntactic factors that quantifies "paraphrase difficulty," replacing the traditional binary success rate (success/failure), so that evaluation can reflect whether a model performs consistently across different difficulty levels, rather than only presenting an overall average that obscures a model "cherry-picking" easier cases.
+  * Differences from prior approaches: Existing VLA evaluations mostly focus on visual/physical-level generalization (e.g., new objects, new scenes), with less systematic, independent control of linguistic-level variation factors; this paper is the first to decompose "action expression" and "object reference" into two orthogonal (independently manipulable) variables, paired with the quantifiable PRIDE difficulty metric, rather than using only a single overall paraphrase set for coarse evaluation.
+  * Key method design description: this method can be imagined as a "linguistic stress-testing framework"—researchers first take the original LIBERO task instructions, then systematically generate a large number of paraphrased versions (changing only the action wording, only the object naming, or both), feed these paraphrased instructions to seven VLA models of different scales (0.6B to 7.5B parameters) to execute, and record success rate changes and whether failures occur at the "planning stage" (task identification error) or the "execution stage" (insufficient action precision); the PRIDE metric additionally assigns a "difficulty score" to each paraphrased version based on its semantic/syntactic distance from the original instruction, allowing evaluation results to reflect a difficulty distribution rather than a single average.
 
 
 
 ### Result
 
-  * 在七種 VLA 配置（0.6B-7.5B 參數量）上，改寫指令導致效能一致下降 22 至 52 個百分點，顯示改寫穩健性問題廣泛存在於不同規模模型中，且並非僅是小模型的問題（大模型如 7.5B 也同樣受影響）。
-  * 效能下降主要由「物件層級詞彙變化」驅動——即使只是簡單同義詞替換，也造成大幅下降，證實模型很大程度依賴表面字詞匹配而非真正的語意理解。
-  * 80%-96% 的失敗案例屬於「規劃層級軌跡分歧」而非執行誤差，意味著問題核心在於模型「誤解了要做什麼任務」，而非「知道要做什麼但做不精確」。
-  * 是否公正：本文為診斷型基準論文，測試對象涵蓋七種不同規模的公開 VLA 配置，具有一定廣度；數字（22-52pp 下降、80-96% 失敗屬規劃層級）具體且來自作者自建的受控實驗，可信度較高。但由於是新提出的基準，尚需查證其他論文是否已在此基準上復現類似結論，或對於「同義詞替換」的選取方式是否存在其他解讀空間。
+  * Across seven VLA configurations (0.6B-7.5B parameters), paraphrased instructions consistently cause performance drops of 22 to 52 percentage points, showing that the paraphrase robustness problem is widespread across models of different scales, not just an issue for small models (large models like 7.5B are equally affected).
+  * The performance drop is primarily driven by "object-level lexical variation"—even simple synonym substitutions cause large drops, confirming that models rely heavily on surface-level word matching rather than genuine semantic understanding.
+  * 80%-96% of failure cases are "planning-level trajectory divergence" rather than execution errors, meaning the core issue is that the model "misunderstands what task to do," rather than "knowing what to do but executing imprecisely."
+  * Fairness: this paper is a diagnostic benchmark paper, testing seven publicly available VLA configurations of different scales, giving it a certain breadth; the numbers (22-52pp drop, 80-96% of failures at the planning level) are specific and come from the authors' own controlled experiments, giving them reasonable credibility. However, since this is a newly proposed benchmark, it still needs verification as to whether other papers have reproduced similar conclusions on this benchmark, or whether there are alternative interpretations of the "synonym substitution" selection method.
 
 
 
 ### Limitation
 
-  * 此篇為診斷/評測型論文，其本質限制在於：僅指出問題（穩健性不足）與量化該問題（PRIDE 指標），並未提出解決方案（即並非一篇提出新 VLA 架構或訓練方法來解決改寫穩健性問題的論文）。
-  * 論文摘要未明確自陳其他限制，但可推測 LIBERO-Para 基準本身建立在 LIBERO 模擬環境之上，其發現（如物件詞彙敏感度）是否能完全類推至其他模擬環境或真實機器人場景，仍需要查證全文以及後續研究驗證。
+  * As a diagnostic/evaluation paper, its inherent limitation is that it only identifies the problem (insufficient robustness) and quantifies it (the PRIDE metric), without proposing a solution (i.e., it is not a paper proposing a new VLA architecture or training method to solve the paraphrase robustness problem).
+  * The abstract does not explicitly state other limitations, but it can be inferred that the LIBERO-Para benchmark itself is built on the LIBERO simulation environment, and whether its findings (such as sensitivity to object vocabulary) fully generalize to other simulation environments or real robot scenarios still requires verification from the full text and subsequent research.
 
 
 
 ### Related work
 
-  * 摘要未提及與其他 VLA 記憶或效率相關論文（如 MemoryVLA 系列、EventVLA、LaMem-VLA）的直接關聯，主題上屬於「語言穩健性/泛化評測」而非「記憶機制」,是本次七篇論文中唯一聚焦於「診斷與評測」而非「新架構提出」的論文。
-  * 暫無發現此篇之後更新的直接後續研究，但由於已被 EMNLP 2026 主會議接受，可預期會在語言模型與機器人交叉領域產生一定影響力，值得追蹤後續是否有其他團隊提出針對性的穩健性改善方法並在此基準上驗證。
+  * The abstract does not mention any direct connection to other VLA memory or efficiency-related papers (such as the MemoryVLA series, EventVLA, or LaMem-VLA); topically, this paper is about "language robustness/generalization evaluation" rather than "memory mechanisms," making it the only paper among these seven focused on "diagnosis and evaluation" rather than "proposing a new architecture."
+  * No direct follow-up research to this paper has been found so far, but since it has been accepted at the EMNLP 2026 main conference, it can be expected to have some influence at the intersection of language models and robotics; it is worth tracking whether other teams propose targeted robustness improvement methods and validate them on this benchmark.
 
 
 
 ### Conclusion
 
-  * 綜合評價：LIBERO-Para 提出的「獨立控制動作表達與物件參照」的診斷框架設計嚴謹，且發現「物件層級詞彙敏感度」與「失敗主要源於規劃而非執行」這兩點具有重要的診斷價值，對於任何從事 VLA 指令理解、語言穩健性研究的讀者都非常值得參考，是一篇高品質的評測基準論文（已被 EMNLP 2026 接受）。
-  * 與其他重要文章的關係：本文與其餘六篇聚焦「記憶機制」的論文（MemoryVLA 系列、EventVLA、LaMem-VLA、Explicit Language Memory）主題不同，但可視為互補——記憶機制論文致力於提升 VLA 對「時間/歷史」的穩健性，而 LIBERO-Para 揭示的是 VLA 對「語言表述變化」的脆弱性，兩者共同指出當前 VLA 模型在不同維度上都存在「表面模式匹配、缺乏真正理解」的通病，值得在整體 VLA survey 中並列討論以呈現該領域的穩健性挑戰全貌。
-  * 對 ROCm/AMD 待補強部分：摘要完全未涉及任何硬體平台、推論效率或訓練資源的討論，此篇論文的貢獻純粹在評測方法論與資料集層面，與 ROCm/AMD 硬體優化沒有明顯的直接關聯，看不出明確關聯。
-  * 附註：使用者提供的論文清單中列出「LIBERO-Para/Plus/Pro/X」多個變體名稱，但經查證 arXiv:2603.28301 的正式論文標題僅為《LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models》，摘要中未提及 Plus/Pro/X 等其他變體名稱（僅在 MemoryVLA++ 的摘要中提及 "Libero-Plus" 作為其評測基準之一，兩者為不同論文）。因此本頁僅根據實際查證到的 LIBERO-Para 論文內容撰寫，不臆測其餘變體的存在或內容。
+  * Overall assessment: LIBERO-Para's diagnostic framework of "independently controlling action expression and object reference" is rigorously designed, and its findings that "object-level lexical sensitivity" and "failures mainly originate from planning rather than execution" have important diagnostic value. It is highly worth referencing for any reader working on VLA instruction understanding or language robustness research, and is a high-quality evaluation benchmark paper (already accepted at EMNLP 2026).
+  * Relationship to other important papers: this paper differs in topic from the other six papers focused on "memory mechanisms" (the MemoryVLA series, EventVLA, LaMem-VLA, Explicit Language Memory), but can be seen as complementary—memory mechanism papers work to improve VLA robustness to "time/history," while LIBERO-Para reveals VLA's fragility to "variation in linguistic phrasing." Together they point to a common ailment across different dimensions of current VLA models: "surface-level pattern matching without genuine understanding," worth discussing side by side in an overall VLA survey to present the full picture of the field's robustness challenges.
+  * ROCm/AMD gaps to address: the abstract does not involve any discussion of hardware platforms, inference efficiency, or training resources; this paper's contribution lies purely in evaluation methodology and dataset construction, with no obvious direct connection to ROCm/AMD hardware optimization.
+  * Note: the paper list provided by the user includes multiple variant names such as "LIBERO-Para/Plus/Pro/X," but upon verification, the formal title of arXiv:2603.28301 is only "LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models," and the abstract does not mention other variant names such as Plus/Pro/X (only the MemoryVLA++ abstract mentions "Libero-Plus" as one of its evaluation benchmarks, which is a different paper). Therefore, this page is written solely based on the verified content of the LIBERO-Para paper, without speculating on the existence or content of other variants.
