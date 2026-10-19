@@ -70,6 +70,8 @@ Scope：處理非 Markov 長 horizon 操作任務的記憶機制（顯式語言�
 - [EventVLA: Event-Driven Visual Evidence Memory for Long-Horizon Vision-Language-Action Policies]({{ site.baseurl }}/zh/vla/eventvla-event-driven-visual-evidence-memory-for-long-horizon-vision-language-ac-1945538699/) — arXiv:2606.20092 — 動態關鍵幀證據記憶
 - [Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation (LaMem-VLA)]({{ site.baseurl }}/zh/vla/dual-latent-memory-in-vision-language-action-models-for-robotic-manipulation-1945391543/) — arXiv:2607.07608 — 雙重 latent 短/長期記憶
 
+- [MEM: Multi-Scale Embodied Memory for Vision Language Action Models]({{ site.baseurl }}/zh/vla/mem-multi-scale-embodied-memory-for-vision-language-action-models-1996734521/) — arXiv:2603.03596（Physical Intelligence）— 短 horizon 影片記憶與長 horizon 語言記憶雙模態系統,支援長達十五分鐘的操作任務與情境中策略調整
+
 ### 5. Data, Benchmarks & Simulation
 
 Scope：訓練語料、模擬環境，以及 VLA policy 的評測套件/穩健性壓力測試。
@@ -171,3 +173,12 @@ Scope：VLA 內部機制的因果分析、探測、失敗預測。
 - **來源**：arXiv:2609.35709，2026-09-28 當日新作（一週內新作），Horizon Robotics（地平線機器人）
 - **選用理由**：同時滿足選取標準中的兩項——(1) 大型產業實驗室出品，Horizon Robotics 為中國自動駕駛晶片與機器人領域的重要上市公司，近年積極投入人形機器人 VLA 研究；(2) 真正的方法論創新：首個透過擴充語言模型詞彙表來支援人形全身 loco-manipulation 的離散 VLA 模型，提出依身體部位拆解的 tokenizer 組合（FAST-RVQ 量化方案）與分組離散擴散解碼機制，解決了人形全身動作空間相較機械臂在 tokenization、異質訓練資料、即時推論三方面的複合瓶頸。目前尚未見正式頂會接受通知，暫以方法論創新與產業實驗室出品作為收錄依據，未滿足標準一（頂會接受）。
 - **摘要**：論文提出 Holo-M，將人形動作空間拆解為末端執行器、軀幹、手、運動學四個依身體部位劃分的 tokenizer，使模型能同時從遙操作、第一人稱人類影片、模擬等異質資料來源學習，且動作 token 直接併入語言模型既有詞彙表，避免獨立連續動作專家架構的「知識隔絕問題」。為滿足即時控制需求，採用分組離散擴散解碼而非自迴歸生成動作 token。在 SIMPLE 人形 loco-manipulation benchmark 上，generalist 設定下 Holo-M 總成績 143/180，領先次佳基線 Ψ0 的 114/180；specialist 設定下 163/180 對比 Ψ0 的 154/180，長 horizon 任務 Mobile P&P 上相對提升約 40%。限制在於論文為早期「v1」版本，長 horizon 語言推理尚未處理，且未提供機械臂場景下 FAST-RVQ 與原始 FAST 量化方案的直接消融對比。
+
+### 推送日期: 2026-10-19
+
+[MEM: Multi-Scale Embodied Memory for Vision Language Action Models]({{ site.baseurl }}/zh/vla/mem-multi-scale-embodied-memory-for-vision-language-action-models-1996734521/)
+
+- **所屬主題**:Memory, History-Awareness & Long-Horizon Control
+- **來源**:arXiv:2603.03596,2026-03-04 發佈(v2 修訂於 3 月 8 日,非 2026 年 9 月最新發佈,但本頁尚未記錄過,廣泛搜尋近一年 VLA 記憶子領域大型科技公司新作後確認為最具代表性、尚未收錄的選擇),Physical Intelligence(與 Stanford、UC Berkeley、MIT 合作,作者群涵蓋 Chelsea Finn、Sergey Levine 等業界知名研究者)
+- **選用理由**:同時滿足三項選取標準中的兩項——(1) 大型產業實驗室出品,Physical Intelligence 為 π 系列 VLA 背後的頂尖機器人基礎模型公司;(2) 真正的方法論創新:首次系統性提出短 horizon 影片記憶與長 horizon 語言記憶的混合模態架構,並透過詳盡消融實驗(對照 Pool Memory、Proprio Memory、樸素語言記憶、純後訓練記憶等多種基線)嚴謹驗證兩種記憶模組缺一不可。目前尚未見正式頂會接受通知,暫以產業實驗室出品與方法論創新作為收錄依據,未滿足標準一(頂會接受)。
+- **摘要**:論文指出機器人記憶必須以多種粒度表示過去事件,提出 Multi-Scale Embodied Memory(MEM),結合以高效影片編碼器壓縮的短 horizon 視覺記憶(時空分離注意力,複雜度由 O(n²K²) 降為 O(Kn²+nK²))與以語言為基礎、由高階 policy 顯式更新的長 horizon 記憶。整合進 π0.6 VLA 後,MEM policy 能執行長達十五分鐘的任務(如整理廚房、準備烤起司三明治),並能在情境中智慧調整操作策略(例如嘗試不同方向開啟冰箱)。消融實驗顯示兩種記憶模組缺一不可,且僅在後訓練階段引入記憶的版本明顯弱於完整預訓練+後訓練版本,顯示大規模多樣化預訓練資料是記憶機制發揮效用的關鍵前提。限制在於目前記憶範圍侷限於單一 episode(最長十五分鐘),核心長 horizon 任務數量仍相對有限,未來工作需探索橫跨數週、數月的持續學習記憶。
