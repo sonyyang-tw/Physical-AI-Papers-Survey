@@ -82,6 +82,8 @@ Scope：用於駕駛場景生成、模擬、閉環評測與規劃的影片/laten
 
 - [Percept-WAM: Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving]({{ site.baseurl }}/zh/wm/percept-wam-perception-enhanced-world-awareness-action-model-for-robust-end-1790912567/) — arXiv:2511.19221（CVPR 2026，Yinwang Intelligent Technology／華為智駕子公司＋復旦大學）— 首度在單一 VLM 內隱式整合 2D/3D 場景理解，以 World-PV/World-BEV token 取代問答式空間推理，感知與規劃基準雙重驗證
 
+- [UniFuture: A 4D Driving World Model for Future Generation and Perception]({{ site.baseurl }}/zh/wm/unifuture-a-4d-driving-world-model-for-future-generation-and-perception-1996734598/) — arXiv:2503.13587（ICRA 2026）— Dual-Latent Sharing 將影像與深度映射至共享 latent 空間，Multi-scale Latent Interaction 強制雙向時空一致性，同時提升未來生成與幾何感知表現
+
 ### 4. Model-Based RL / Latent Dynamics for Control
 
 Scope：經典 model-based RL，用學習到的 latent 動態模型做規劃/想像式 policy 學習（不一定是 pixel 層級，與機器人無關）。
@@ -175,3 +177,12 @@ Scope：定期重新定義此領域的綜述論文。
 - **來源**：arXiv:2608.24885，2026-08-25 發佈（約六週前新作），北京大學多媒體資訊處理全國重點實驗室 / 北京人形機器人創新中心，與紐約大學、電子科技大學、南洋理工大學、香港中文大學共同作者
 - **選用理由**：同時滿足選取標準中的兩項——(1) 嚴謹的方法論與基準測試設計，包含演算法框與統計信賴區間，並直接對 NVIDIA Cosmos-Predict2.5/Cosmos3 等業界級世界模型做診斷，風格與嚴謹度達頂會水準；(2) 真正的方法論創新：首次系統性揭露並形式化「動作條件化世界模型是否真的忠實跟隨任意合法動作」這一此前從未被嚴格驗證的假設，建立 WorldEcho 診斷 benchmark 與 WorldSync 三軸線（分佈覆蓋、表徵 grounding、介入效果對齊）訓練方法，並以真實機器人實驗證明其對下游 policy 改進的實質效益。目前尚未見正式頂會接受通知，暫以方法論創新與基準測試嚴謹度作為收錄依據，未滿足標準一（頂會接受）與標準二（大型科技公司出品，雖有多校合作但非業界實驗室主導）。
 - **摘要**：論文指出現有 AC-WM 評測幾乎都侷限於專家動作重播，無法揭露模型在面對一個正在被評測/改進的 policy 實際會查詢到的非專家動作時的表現。作者建立 WorldEcho benchmark，透過視覺完整性閘門與 SE(3) 軌跡對齊，在五類遞減專家依賴度的動作查詢下診斷 6 個現有 AC-WM，發現非專家查詢下完整性閘門加權誤差普遍上升、視覺失效率上升 6.3–28.1 個百分點。進一步提出 WorldSync，透過動作覆蓋擴增、Action-Forcing Expert 表徵 grounding、介入效果監督三軸線訓練,在 RoboTwin benchmark 上取得最佳綜合平衡表現，且在真實機器人疊杯任務的迭代式 policy 改進中達到 68% 成功率（+20 個百分點），遠超基線 CtrlWorld 的 56%（+8 個百分點）。限制在於目前驗證主要侷限於 RoboTwin 雙臂桌面操作與有限真實機器人任務，尚未涵蓋開放世界、長 horizon、多具身規模的評測。
+
+### 推送日期: 2026-10-19
+
+[UniFuture: A 4D Driving World Model for Future Generation and Perception]({{ site.baseurl }}/zh/wm/unifuture-a-4d-driving-world-model-for-future-generation-and-perception-1996734598/)
+
+- **所屬主題**:World Models for Autonomous Driving
+- **來源**:arXiv:2503.13587,2025-03-17 首次發佈 / 2026-02-26 發佈 v2 修訂版(非 2026 年 9 月最新發佈,但已確認獲 ICRA 2026 接受,本頁尚未記錄過,廣泛搜尋近一年自駕 world-model 新作後確認為最具代表性、尚未收錄的選擇),Dingkang Liang、Xiang Bai 等作者(華中科技大學)
+- **選用理由**:同時滿足三項選取標準中的兩項——(1) 已確認獲 ICRA 2026 接受(見論文 metadata「Accepted by ICRA 2026」);(2) 真正的方法論創新:首個明確以「統一外觀與幾何的聯合 4D 建模」為核心訴求的駕駛世界模型,透過 Dual-Latent Sharing 將影像與深度映射至共享 latent 空間、Multi-scale Latent Interaction 強制雙向時空一致性,解決了既有 DWM「要嘛只做 2D 生成、要嘛只做靜態 3D 感知」的二元侷限。暫未見大型科技公司直接參與(作者群為學術機構),未完全滿足標準二。
+- **摘要**:論文指出現有駕駛世界模型要嘛專注 2D 像素層級生成而忽略底層 3D 幾何(產生「電影般的幻覺」),要嘛是僅限靜態快照的深度感知模型,缺乏時間演化能力。作者提出 UniFuture,透過 Dual-Latent Sharing(DLS)將影像與深度映射至共享時空 latent 空間,搭配 Multi-scale Latent Interaction(MLI)機制強制幾何與外觀之間的雙向一致性(Inside Feedback 讓幾何約束視覺生成、Outside Feedback 讓視覺精修幾何估計)。在 nuScenes 資料集上,相較強基線 Vista,FID 降低 23.9%(15.5→11.8),深度估計 AbsRel 達 8.936,優於專門化方法 Marigold;在 Waymo 零樣本泛化評測中同樣全面超越 Vista。消融實驗證實影像與深度的聯合訓練(而非分開訓練)是效能提升的關鍵來源。限制在於深度標籤本身依賴 DepthAnythingV2 偽標籤,評測結果某種程度上是衡量與該偽標籤的一致性而非絕對幾何真實性,且目前僅驗證單目前視相機設定,尚未涵蓋多視角一致性生成。
