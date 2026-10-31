@@ -1,0 +1,24 @@
+{% assign is_zh = false %}
+{% if page.url contains '/zh/' or page.url == '/zh' %}
+  {% assign is_zh = true %}
+{% endif %}
+{% if is_zh %}
+  {% assign alt_url = page.url | remove_first: '/zh' %}
+  {% if alt_url == '' %}{% assign alt_url = '/' %}{% endif %}
+{% else %}
+  {% assign alt_url = '/zh' | append: page.url %}
+{% endif %}
+<div class="language-switcher">
+  <details>
+    <summary><i class="fa-solid fa-globe" aria-hidden="true"></i> {% if is_zh %}中文{% else %}English{% endif %}</summary>
+    <nav aria-label="Language selection">
+      {% if is_zh %}
+        <a href="{{ site.baseurl }}{{ page.url }}" aria-current="page">繁體中文</a>
+        <a href="{{ site.baseurl }}{{ alt_url }}">English</a>
+      {% else %}
+        <a href="{{ site.baseurl }}{{ alt_url }}">繁體中文</a>
+        <a href="{{ site.baseurl }}{{ page.url }}" aria-current="page">English</a>
+      {% endif %}
+    </nav>
+  </details>
+</div>

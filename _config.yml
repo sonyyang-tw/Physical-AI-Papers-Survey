@@ -1,0 +1,29 @@
+title: Physical AI Papers Survey
+description: "A curated survey database of VLA (Vision-Language-Action) and World Model papers"
+baseurl: "/Physical-AI-Papers-Survey"
+url: "https://sonyyang-tw.github.io"
+
+collections:
+  vla_papers:
+    output: true
+  wm_papers:
+    output: true
+  zh_vla_papers:
+    output: true
+  zh_wm_papers:
+    output: true
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  parse_block_html: true
+
+exclude:
+  - "*.py"
+  - "export/"
+  - "Gemfile"
+  - "README.md"
+
+plugins:
+  - jekyll-relative-links
