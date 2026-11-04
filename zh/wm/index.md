@@ -77,6 +77,8 @@ Scope：直接與機器人動作空間耦合的 world model，用於規劃、pol
 
 - [AnyWorld: Factorized Egocentric World Models for Cross-Embodiment Generalization]({{ site.baseurl }}/zh/wm/anyworld-factorized-egocentric-world-models-for-cross-embodiment-2608292420/) — arXiv:2608.29242（CoRL 2026，XPeng Robotics / 南洋理工大學 / A*STAR）— 將人類第一人稱互動分解為動作/相機/具身三因子，無需配對人類-機器人示範即可重組出多樣機器人原生 rollout，真實 IRON 人形機器人抓取成功率從 20.0% 提升至 55.0%
 
+- [AuroraWorld: Structured 4D World Modeling for Exo-to-Ego Video Generation in Robot Manipulation]({{ site.baseurl }}/zh/wm/auroraworld-structured-4d-world-modeling-for-exo-to-ego-video-generation-2611001770/) — arXiv:2611.00177（香港科技大學(廣州) / 新南威爾斯大學，2026-10-30 新作）— 將 exo-to-ego 影片合成重新形式化為結構化 4D 具身世界表徵推論，以空間/時間/動作三互補元件作為生成先驗，彌補機器人第一人稱資料稀缺的瓶頸
+
 ### 3. World Models for Autonomous Driving
 
 Scope：用於駕駛場景生成、模擬、閉環評測與規劃的影片/latent world model。
@@ -206,4 +208,4 @@ Scope：定期重新定義此領域的綜述論文。
 - **所屬主題**:Robot-Specific Action-Conditioned World Models（操作任務）
 - **來源**:arXiv:2608.29242,2026 年 8 月 29 日首次發佈,2026 年 9 月 1 日修訂版(v2),專案頁已確認獲 CoRL 2026 接受,本頁尚未記錄過,作者團隊來自南洋理工大學、新加坡 A*STAR 高等智能計算研究所、XPENG Robotics、浙江大學、香港中文大學聯合發表
 - **選用理由**:同時滿足三項選取標準中的兩項——(1) 大型產業實驗室出品,XPENG Robotics 為具國際知名度的人形機器人廠商,並與南洋理工大學、A*STAR、浙江大學等學術機構合作,專案頁確認獲 CoRL 2026 接受;(2) 真正的方法論創新:首次提出統一的動作-相機-具身分解介面,將單一未配對的人類第一人稱互動視為可重複使用的種子,重組為多樣機器人領域的視覺經驗,並透過受控能力介入實驗(而非僅報告整體平均增益)嚴謹驗證「視覺重組」與「動作校準」兩者缺一不可——純動作層級的反事實配對無法可靠學習語言接地的空間目標選擇,填補了既有人類影片利用方法「不會從無配對人類互動直接渲染完整機器人原生影片」的方法論空白。
-- **摘要**:論文指出大規模收集接觸豐富的機器人操作經驗仍是可泛化操作學習的主要瓶頸,人類第一人稱影片雖提供豐富物理互動,但每段錄影僅捕捉特定身體、相機軌跡、環境下的單一經驗切片。作者提出 AnyWorld,將互動分解為動作(渲染骨架控制影片)、相機(Plücker 光線嵌入)、具身(初始影格+文字標籤)三個條件,以隱擴散影片模型實現,訓練分為大規模人類互動(EgoDex)預訓練與無配對混合具身微調兩階段,無需任何人類-機器人影格層級對應關係。可控性評測顯示 AnyWorld 在 ActionAlign、CameraAlign、EmbodAcc 三項指標上全面優於 WAN Fun-Control 與 Cosmos-Predict2.5 基線,平均可控性分數達 0.778,同時維持具競爭力的 VBench 影片品質。在下游 VLA 適配任務上,加入 AnyWorld 生成資料後,RoboCasa GR1 的 18 項任務成功率從 49.8% 提升至 54.6%,真實 IRON 機器人 20 次抓取試驗成功率從 20.0% 大幅提升至 55.0%。透過受控能力介入實驗,作者進一步證實 AnyWorld 可針對性修復已知 policy 缺陷(部分完成狀態停滯、語言接地空間指令失效),且僅替換動作而不重組視覺情境的介入無法穩定達成,證明視覺重組的必要性。限制在於視覺 rollout 無法完整捕捉觸覺回饋與接觸力,方法依賴可靠的動作-相機軌跡提取,目前評測僅涵蓋三種具身,更廣泛的機器人形態與長程任務泛化留待未來工作。
+- **摘要**:論文指出大規模收集接觸豐富的機器人操作經驗仍是可泛化操作學習的主要瓶頸,人類第一人稱影片雖提供豐富物理互動,但每段錄影僅捕捉特定身體、相機軌跡、環境下的單一經驗切片。作者提出 AnyWorld,將互動分解為動作(渲染骨架控制影片)、相機(Plücker 光線嵌入)、具身(初始影格+文字標籤)三個條件,以隱擴散影片模型實現,訓練分為大規模人類互動(EgoDex)預訓練與無配對混合具身微調兩階段,無需任何人類-機器人影格層級對應關係。可控性評測顯示 AnyWorld 在 ActionAlign、CameraAlign、EmbodAcc 三項指標上全面優於 WAN Fun-Control 與 Cosmos-Predict2.5 基線,平均可控性分數達 0.778,同時維持具競爭力的 VBench 影片品質。在下游 VLA 適配任務上,加入 AnyWorld 生成資料後,RoboCasa GR1 的 18 項任務成功率從 49.8% 提升至 54.6%,真實 IRON 機器人 20 次抓取試驗成功率從 20.0% 大
