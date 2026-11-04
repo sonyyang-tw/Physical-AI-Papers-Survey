@@ -34,6 +34,8 @@ Scope：VLA 的核心動作生成機制設計 — token/action 如何被解碼�
 
 - [APT: Action Expert Pretraining Improves Instruction Generalization of Vision-Language-Action Policies]({{ site.baseurl }}/zh/vla/apt-action-expert-pretraining-improves-instruction-generalization-2606123660/) — arXiv:2606.12366（CoRL 2026，浙江大學/RobbyAnt/浙江人形機器人創新中心）— 以貝氏分解將 policy 拆為語言無關的 Vision-Action 先驗與語言條件化概似函數，兩階段訓練 action expert，解決連續動作 VLA 的 OOD 語言泛化瓶頸
 
+- [NestedVLA: Learning to Consolidate and Generate Skills for Vision-Language-Action Models]({{ site.baseurl }}/zh/vla/nestedvla-learning-to-consolidate-and-generate-skills-for-vision-language-ac-2610232710/) — arXiv:2610.23271（NeurIPS 2026，香港理工大學）— 以嵌入 VLA 的任務條件超網路「生成」action-expert 參數更新取代既有合併方法的「選擇」範式，解決多個獨立訓練 VLA policy 事後整合時的參數衝突問題
+
 ### 2. Hierarchy: High-Level Planning/Reasoning vs Low-Level Control
 
 Scope：VLM/reasoner 負責任務分解、低階 policy 負責執行的階層式系統；含 VLA 的 chain-of-thought / latent reasoning。
@@ -202,4 +204,4 @@ Scope：VLA 內部機制的因果分析、探測、失敗預測。
 - **所屬主題**:Architecture Paradigms（架構典範：Autoregressive / Diffusion / Flow-matching / Hybrid）
 - **來源**:arXiv:2606.12366,2026 年 6 月 10 日首次發佈,2026 年 10 月 2 日修訂版(v2)確認獲 CoRL 2026 接受(論文 metadata 明確標註「Accepted by CoRL2026」),本頁尚未記錄過,作者團隊來自浙江大學、RobbyAnt、浙江人形機器人創新中心
 - **選用理由**:同時滿足三項選取標準中的兩項——(1) 已確認獲 CoRL 2026 接受(見論文 metadata「Accepted by CoRL2026」);(2) 真正的方法論創新:首次將貝氏分解從既有工作(BayesVLA)的「事後診斷工具」轉化為可操作的兩階段訓練方法,直接針對連續動作 VLA policy 語言泛化失敗的根源——action expert 隨機初始化於失衡資料上形成視覺捷徑——提出系統性解方,並驗證其可遷移至 π 與 GR00T 兩種主流架構,在模擬與真實世界評測中均取得一致且有說服力的增益。暫未見大型科技公司直接參與(作者群為學術機構與新創 RobbyAnt),未完全滿足標準二。
-- **摘要**:論文指出連續動作 VLA policy 對分佈外(OOD)語言指令的泛化能力普遍薄弱,根源在於 VLA 資料存在結構性失衡——每條軌跡的大量視覺-動作影格僅對應單一語言指令,使隨機初始化的 action expert 傾向學會視覺捷徑而非真正依賴語言,且這類捷徑產生的噪聲梯度會進一步污染 VLM 骨幹的語言表徵。作者從貝氏觀點將 policy 分解為語言無關的 Vision-Action 先驗與語言條件化的 VLA 概似函數,提出 APT 兩階段訓練法:Stage 1 僅以視覺 token 為條件,在天然平衡的視覺-動作配對資料上預訓練 action expert 的 VA 先驗;Stage 2 引入語言 token 並以逐層閘控融合機制聯合微調整個 policy。在 LIBERO-PRO 基準上,OpenVLA 與 π0 在語言擾動下完全崩潰(成功率 0%),π0.5 僅能維持同義改寫但無法應對真正的 OOD 任務,APT(Ft VLM)平均成功率達 27%,全面優於 π0.5(11%)與同期 LangForce(14%);在 Rigid Object Pick-Place 與真實世界 Pick-Place/Clutter Pick-Place/組合任務評測中,APT 同樣全面優於 π0.5,尤其在「任務鏈接」(單一句子同時指定多個任務)場景下,π0.5 近乎完全失敗而 APT 能穩定依序執行。限制在於目前設計未明確建模長程記憶,評測範疇也侷限於桌面操作,尚未延伸至移動或全身操作任務。
+- **摘要**:論文指出連續動作 VLA policy 對分佈外(OOD)語言指令的泛化能力普遍薄弱,根源在於 VLA 資料存在結構性失衡——每條軌跡的大量視覺-動作影格僅對應單一語言指令,使隨機初始化的 action expert 傾向學會視覺捷徑而非真正依賴語言,且這類捷徑產生的噪聲梯度會進一步污染 VLM 骨幹的語言表徵。作者從貝氏觀點將 policy 分解為語言無關的 Vision-Action 先驗與語言條件化的 VLA 概似函數,提出 APT 兩階段訓練法:Stage 1 僅以視覺 token 為條件,在天然平衡的視覺-動作配對資料上預訓練 action expert 的 VA 先驗;Stage 2 引入語言 token 並以逐層閘控融合機制聯合微調整個 policy。在 LIBERO-PRO 基準上,OpenVLA 與 π0 在語言擾動下完全崩潰(成功率 0%),π0.5 僅能維持同義改寫但無法應對真正的 OOD 任務,APT
