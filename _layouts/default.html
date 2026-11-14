@@ -1,0 +1,42 @@
+{% assign is_zh = false %}
+{% if page.url contains '/zh/' or page.url == '/zh' %}
+  {% assign is_zh = true %}
+{% endif %}
+<!DOCTYPE html>
+<html lang="{% if is_zh %}zh-Hant{% else %}en{% endif %}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | Physical AI Papers Survey</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    {% if is_zh %}
+    <a href="{{ site.baseurl }}/zh/" class="site-title">Physical AI Papers Survey</a>
+    <nav>
+      <a href="{{ site.baseurl }}/zh/vla/">VLA Papers</a>
+      <a href="{{ site.baseurl }}/zh/wm/">World Model Papers</a>
+    </nav>
+    {% else %}
+    <a href="{{ site.baseurl }}/" class="site-title">Physical AI Papers Survey</a>
+    <nav>
+      <a href="{{ site.baseurl }}/vla/">VLA Papers</a>
+      <a href="{{ site.baseurl }}/wm/">World Model Papers</a>
+    </nav>
+    {% endif %}
+  </header>
+  <main class="content">
+    {{ content }}
+  </main>
+  <footer class="site-footer">
+    {% if is_zh %}
+    <p>由 Paper Survey Harness 自動維護 &middot; <a href="https://github.com/sonyyang-tw/Physical-AI-Papers-Survey">GitHub Repo</a></p>
+    {% else %}
+    <p>Maintained automatically by Paper Survey Harness &middot; <a href="https://github.com/sonyyang-tw/Physical-AI-Papers-Survey">GitHub Repo</a></p>
+    {% endif %}
+  </footer>
+  {% include lang-switcher.html %}
+</body>
+</html>
