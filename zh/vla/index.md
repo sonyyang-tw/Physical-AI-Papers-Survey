@@ -169,51 +169,6 @@ Scope：VLA 內部機制的因果分析、探測、失敗預測。
 
 > 以下由排程任務自動新增，每篇新論文皆標註推送日期、所屬主題分類、來源（arXiv 當日新作 / top conference）。
 
-### 推送日期: 2026-10-27
-
-[Fast-VLA: You Only Think Once for Robot Manipulation]({{ site.baseurl }}/zh/vla/fast-vla-you-only-think-once-for-robot-manipulation-2610213890/)
-
-- **所屬主題**:Efficiency（壓縮 / 快速推論 / 資料效率訓練）
-- **來源**:arXiv:2610.21389,2026-10-15 發佈(本頁尚未記錄過,屬近期新作),華為新加坡研究中心(Huawei Singapore Research Center)
-- **選用理由**:同時滿足三項選取標準中的兩項——(1) 大型產業實驗室出品,出自華為新加坡研究中心;(2) 真正的方法論創新:首次明確提出將「VLM 情境建立」與「閉環控制」解耦的單次思考架構,每個 episode 僅呼叫一次凍結 VLM,透過固定 KV 任務記憶搭配輕量線上 actor,將 RoboTwin 攤銷推論時間降低 10.9–17.1 倍,同時在 RoboTwin 2.0 與 LIBERO/LIBERO-Plus 上維持具競爭力的成功率。目前尚未見正式頂會接受通知,暫以產業實驗室出品與方法論創新作為收錄依據,未滿足標準一(頂會接受)。
-- **摘要**:論文指出 VLA policy 普遍將數十億參數規模的 VLM 置於控制閉環之中,每當預測新的 action chunk 就要重新計算一次任務情境,然而任務理解的變化速度遠慢於機器人狀態本身。作者提出 Fast-VLA,於每個 episode 開始時僅呼叫一次凍結的 4B VLM,將指令與初始多視角畫面編碼為固定的逐層 KV 任務記憶;執行期間一個輕量線上 actor 以可學習的時間/手臂索引查詢結合當下視覺與本體感覺回饋,從固定記憶中擷取任務情境並預測動作,全程不需重新運行基礎模型。Fast-VLA 在 RoboTwin 2.0 Clean/Randomized 上達到 92.46%/92.40% 成功率,在 LIBERO/LIBERO-Plus 上達到 95.95%/79.11%,相較同硬體上三個持續條件化基線,攤銷推論時間降低 10.9–17.1 倍,post-prefill 線上常駐記憶體僅需 1.22 GiB。任務記憶替換實驗證實 actor 確實依賴與當前 episode 相符的任務記憶,驗證此一次性情境建立策略的有效性。限制在於論文未提供真實機械臂驗證,且假設任務理解在整個 episode 中保持穩定,若任務目標中途發生根本性變化,固定任務記憶可能無法反映新情境。
-
-### 推送日期: 2026-10-28
-
-[REACT: Rolling Denoising and Dual Decoupling for Reactive Robot Control with VLA Models]({{ site.baseurl }}/zh/vla/react-rolling-denoising-and-dual-decoupling-for-reactive-robot-control-with-vla-2610120070/)
-
-- **所屬主題**:Efficiency（壓縮 / 快速推論 / 資料效率訓練）
-- **來源**:arXiv:2610.12007,2026-10-08 發佈(本頁尚未記錄過,屬近期新作),已確認獲 CoRL 2026 接受為 Spotlight,作者團隊含南方科技大學（SUSTech）等機構研究者
-- **選用理由**:同時滿足三項選取標準中的兩項——(1) 已確認獲 CoRL 2026 接受為 Spotlight(見論文 metadata「Accepted to CoRL 2026 as Spotlight」與項目頁 react-vla.github.io);(2) 真正的方法論創新:首次提出交錯 flow 時間步的滾動去噪持久動作緩衝區,將「長 chunk 平滑執行」與「頻繁重規劃高反應性」這一 flow-based VLA 閉環控制的結構性權衡,轉化為單一機制下的連續光譜,搭配感知/VLM編碼/DiT去噪/動作執行四階段解耦的 Dual Decoupling,在 RoboTwin 2.0 與跨平台真實世界任務上同時提升成功率、降低反應延遲、產生更平滑軌跡。暫未見大型科技公司直接參與(作者群為學術機構),未完全滿足標準二。
-- **摘要**:論文指出 flow-based VLA policy 以 action chunk 產生時序連貫動作,但存在長 chunk 平滑執行 vs. 頻繁重規劃高反應性之間的根本性閉環權衡。作者提出 REACT,一套滾動去噪框架,維護具有交錯 flow 時間步的持久動作緩衝區——每個控制步驟以最新觀測對整個 horizon 去噪,執行最乾淨的動作區塊,將部分精修的未來區塊向前推移,並在尾端補入新雜訊,使每個最終執行的動作區塊實際上已經過多個最近觀測反覆精修。搭配 Staircase Training 讓單次前向傳播即可監督所有去噪階段,並以 Dual Decoupling 將感知、VLM 編碼、DiT 去噪、動作執行四個環節解耦,支援高頻觀測更新與動作串流。在真實世界評測中,REACT 達到 64.8% 成功率,優於最佳 π0.5 基線(58.7%)與 Async+RTC(17.7%);反應延遲降至約 734 毫秒,較完整 chunk 重新生成的 π0.5(1505 毫秒)快近 2 倍,接近人類遙操作的 705 毫秒水準,並在 ARX X5 機器人上達到超過 3 倍的 jerk 降低。限制在於論文未提供完整限制章節,Dual Decoupling 架構的多階段異頻設計在不同硬體平台部署時可能需要細膩調校,且滾動去噪機制對環境變化速度與觀測更新頻率相匹配的假設,在極端快速動態場景下的穩健性尚待進一步壓力測試。
-
-### 推送日期: 2026-10-29
-
-[RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions]({{ site.baseurl }}/zh/vla/rynnvla-latent-scaling-robotic-manipulation-foundation-models-with-3d-ground-2610343560/)
-
-- **所屬主題**:Data, Benchmarks & Simulation
-- **來源**:arXiv:2610.34356,2026-10-25 發佈(本頁尚未記錄過,屬近期新作),DAMO Academy(阿里巴巴集團)、Hupan Lab、Hong Kong Embodied AI Lab、香港中文大學(CUHK)聯合發表
-- **選用理由**:同時滿足三項選取標準中的兩項——(1) 大型產業實驗室出品,DAMO Academy 為阿里巴巴集團旗下頂尖研究機構,並與 CUHK 等學術機構合作;(2) 真正的方法論創新:首次提出結合殘差未來特徵預測、相機補償 3D 光流監督、相機運動解耦三項機制的 RynnLAM latent action 學習方法,在完全不需原生機器人動作標籤的前提下,從 30.1K 小時涵蓋人類、機器人、模擬的異質影片中學習 3D 接地 latent action 監督,並系統性驗證其作為 VLA 預訓練監督目標的有效性,4B policy 在 LIBERO、LIBERO-Plus、VLABench、RoboTwin 2.0 四套公開 benchmark 與六項真實世界任務上均取得具競爭力或最佳表現。目前尚未見正式頂會接受通知,暫以產業實驗室出品與方法論創新作為收錄依據,未滿足標準一(頂會接受)。
-- **摘要**:論文指出擴展 VLA 模型規模的核心瓶頸在於動作標註示範資料稀缺,且不同機器人具身的控制空間互不相容。作者提出 RynnVLA-Latent,核心為 RynnLAM——一套結合殘差未來特徵預測、相機補償 3D 光流偽標籤、相機運動解耦三項機制的 latent action 學習方法,無需原生機器人控制訊號即可從視覺轉變中學習連續、3D 接地的 latent action。將 RynnLAM 應用於 30.1K 小時人類、機器人、模擬影片後產出 7.4552 億筆 latent action 描述子,RynnVLA-Latent 的 Mixture-of-Transformers policy 透過 flow matching 學習預測這些描述子,再於後訓練階段將骨幹與 action expert 適配至具身專屬機器人動作。最終 4B policy 在 LIBERO 達到 98.8% 成功率,在未經 benchmark 專屬調整的 LIBERO-Plus 達到 84.7%,在 VLABench 五個賽道平均達到 51.9%,在 RoboTwin 2.0 雙臂 benchmark 平均達到 88.6%,並在涵蓋靈巧手與移動夾爪平台的六項真實世界任務中取得所有比較方法中的最高成功率。限制在於幾何監督皆為估計所得的偽標籤,不保證完整的相機與操作資訊分離,Policy 表現因任務而異且 RoboTwin 分數仍低於部分最強基線,部署至新機器人仍需具身專屬動作標註資料。
-
-### 推送日期: 2026-11-02
-
-[FocusVLA: Future-Intent Guided Dynamic View Routing for Vision-Language-Action Models]({{ site.baseurl }}/zh/vla/focusvla-future-intent-guided-dynamic-view-routing-for-vision-language-action-2610314230/)
-
-- **所屬主題**:Architecture Paradigms（架構典範：Autoregressive / Diffusion / Flow-matching / Hybrid）
-- **來源**:arXiv:2610.31423,2026-10-22 發佈(本頁尚未記錄過,屬近期新作),已確認獲 CoRL 2026 接受,作者團隊來自南京軟件技術研究院、中國科學院軟件研究所、中國科學院大學(南京)、南京郵電大學與河海大學等學術機構聯合發表
-- **選用理由**:同時滿足三項選取標準中的兩項——(1) 已確認獲 CoRL 2026 接受(見論文 metadata「Accepted at CoRL 2026」);(2) 真正的方法論創新:首次明確診斷並命名多視角 VLA 中的「視角依賴慣性」現象(policy 在任務早期形成的視角偏好會不當地延續至後續階段),並提出以「預測未來互動意圖」這一階段感知訊號驅動動態全局-局部視角路由,消融實驗證實預測性路由明顯優於反應式視覺或時間/狀態路由方案,在 RoboTwin 2.0 與真實世界雙重評測下均取得紮實增益。暫未見大型科技公司直接參與(作者群為學術機構),未完全滿足標準二。
-- **摘要**:論文指出可靠的機器人操作需要充分觀測物體、末端執行器及其空間關係,因此多視角輸入被廣泛使用,但既有 VLA 模型通常將多視角觀測融合為固定情境供動作生成使用,鮮少考慮 policy 的視覺依賴會隨操作階段改變。作者的實證分析發現,靜態融合範式下模型容易出現「視角依賴慣性」:policy 在任務早期階段根據當下操作需求形成對特定視角的強烈依賴後,即使後續階段的視覺需求已經改變,這種早期形成的觀測偏好仍會持續存在,使得 policy 難以依據任務進展動態調整全局與局部視角的相對貢獻。作者提出 FocusVLA,一套階段感知的多視角路由框架,從歷史動作預測未來互動意圖,並以此意圖訊號引導動作生成過程中的動態視角路由,在不修改既有 VLA 骨幹架構的前提下,適應性協調全局與局部觀測的貢獻。在 RoboTwin 2.0 的 50 項操作任務上,FocusVLA 相較最強基線 π0.5 平均成功率提升 10.10 個百分點;在真實世界評測中,FocusVLA 將成功率從 71.7% 提升至 85.0%,相較 π0.5 取得 13.3 個百分點增益。
-
-### 推送日期: 2026-11-03
-
-[APT: Action Expert Pretraining Improves Instruction Generalization of Vision-Language-Action Policies]({{ site.baseurl }}/zh/vla/apt-action-expert-pretraining-improves-instruction-generalization-2606123660/)
-
-- **所屬主題**:Architecture Paradigms（架構典範：Autoregressive / Diffusion / Flow-matching / Hybrid）
-- **來源**:arXiv:2606.12366,2026 年 6 月 10 日首次發佈,2026 年 10 月 2 日修訂版(v2)確認獲 CoRL 2026 接受(論文 metadata 明確標註「Accepted by CoRL2026」),本頁尚未記錄過,作者團隊來自浙江大學、RobbyAnt、浙江人形機器人創新中心
-- **選用理由**:同時滿足三項選取標準中的兩項——(1) 已確認獲 CoRL 2026 接受(見論文 metadata「Accepted by CoRL2026」);(2) 真正的方法論創新:首次將貝氏分解從既有工作(BayesVLA)的「事後診斷工具」轉化為可操作的兩階段訓練方法,直接針對連續動作 VLA policy 語言泛化失敗的根源——action expert 隨機初始化於失衡資料上形成視覺捷徑——提出系統性解方,並驗證其可遷移至 π 與 GR00T 兩種主流架構,在模擬與真實世界評測中均取得一致且有說服力的增益。暫未見大型科技公司直接參與(作者群為學術機構與新創 RobbyAnt),未完全滿足標準二。
-- **摘要**:論文指出連續動作 VLA policy 對分佈外(OOD)語言指令的泛化能力普遍薄弱,根源在於 VLA 資料存在結構性失衡——每條軌跡的大量視覺-動作影格僅對應單一語言指令,使隨機初始化的 action expert 傾向學會視覺捷徑而非真正依賴語言,且這類捷徑產生的噪聲梯度會進一步污染 VLM 骨幹的語言表徵。作者從貝氏觀點將 policy 分解為語言無關的 Vision-Action 先驗與語言條件化的 VLA 概似函數,提出 APT 兩階段訓練法:Stage 1 僅以視覺 token 為條件,在天然平衡的視覺-動作配對資料上預訓練 action expert 的 VA 先驗;Stage 2 引入語言 token 並以逐層閘控融合機制聯合微調整個 policy。在 LIBERO-PRO 基準上,OpenVLA 與 π0 在語言擾動下完全崩潰(成功率 0%),π0.5 僅能維持同義改寫但無法應對真正的 OOD 任務,APT 在真實世界平台上部署時面對分佈外指令仍能維持穩定成功率,展現兩階段視覺-語言解耦訓練對語言泛化的實質改善。
-
 ### 推送日期: 2026-11-09
 
 [FlowVLA: Enabling World Dynamics Understanding through Pluggable 3D Flow Learning]({{ site.baseurl }}/zh/vla/flowvla-enabling-world-dynamics-understanding-through-pluggable-3d-flow-2610161600/)
